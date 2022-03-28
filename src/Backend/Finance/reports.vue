@@ -525,13 +525,13 @@ export default {
   created() {
     this.fetchGl();
     this.fetchExpenses();
-    this.updategllist();
+
     this.fetchExpenses();
   },
 
   computed: {
     ...mapGetters(
-      "allDocuments",
+     [ "allDocuments",
       "allDeposits",
       "allMembers",
       "allLoans",
@@ -541,7 +541,7 @@ export default {
       "allPaymentsmade",
       "allPaymentsreceived",
       "allGl",
-      "allExpenses"
+      "allExpenses"]
     ),
     token() {
       return this.$store.state.accessToken;

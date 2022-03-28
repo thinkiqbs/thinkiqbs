@@ -232,7 +232,7 @@ export default {
     ]),
   },
   computed: {
-    ...mapGetters(
+    ...mapGetters([
       "allDocuments",
       "allDeposits",
       "allMembers",
@@ -242,6 +242,9 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived"
+
+    ]
+      
     ),
 
     token() {

@@ -687,7 +687,7 @@ export default {
   computed: {
     // computed: mapState(["token"]),
     ...mapState(["org1"]),
-    ...mapGetters("allMembers", "allOrg", "allUser"),
+    ...mapGetters(["allMembers", "allOrg", "allUser"]),
     token() {
       return this.$store.state.accessToken;
     },

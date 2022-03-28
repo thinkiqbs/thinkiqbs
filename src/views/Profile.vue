@@ -3195,14 +3195,14 @@ export default {
     ...mapState(["org1"]),
 
     ...mapGetters(
-      "allDocuments",
+     [ "allDocuments",
       "allMembers",
       "allDeposits",
       "allOrg",
       "allEmployer",
       "allLoantype",
       "allLoans",
-      "allGuarantors"
+      "allGuarantors"]
     ),
 
     token() {

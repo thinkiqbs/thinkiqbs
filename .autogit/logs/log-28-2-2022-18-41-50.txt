@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Mon Mar 28 2022 18:41:50 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Finance/bank.vue
+* src/Backend/Finance/fosa.vue
+* src/components/FinanceNav.vue
+* src/router/index.js
+
+
+Created files:
+* .autogit/logs/log-28-2-2022-18-11-37.txt
+
+
+Deleted files:
+
+
+Renamed files:

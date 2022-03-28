@@ -444,7 +444,7 @@
                           id="ember1181"
                           class="ember-text-field zf-date-picker date-picker ember-view form-control"
                           type="date"
-                          v-model="this.Loans.ApplicationDate"
+
                         />
                         <!---->
                       </div>
@@ -611,454 +611,7 @@
 
         <!-- Modal for Adding Guarantors  -->
 
-        <div
-          class="modal fade"
-          id="guarantorAdd"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  Add Guarantors
-                </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">Guarantors</h4>
-                      </div>
-
-                      <div class="card-body">
-                        <form @submit.prevent="submit">
-                          <div class="form-group row">
-                            <label for="" class="col-sm-2 form-control-label"
-                              >Select Email</label
-                            >
-
-                            <div class="form-group col-md-6">
-                              <select
-                                class="form-select ."
-                                id="select-country"
-                                data-live-search="true"
-                                v-model="this.loan.email"
-                                @change="change"
-                              >
-                                <option
-                                  v-for="option in optionloansemail"
-                                  v-bind:value="option.email"
-                                  :key="option.id"
-                                >
-                                  {{ option.email }}
-                                </option>
-                              </select>
-                            </div>
-
-                            <label for="" class="col-sm-2 form-control-label"
-                              >Loan ID</label
-                            >
-
-                            <div class="form-group col-md-2">
-                              <select
-                                class="form-select ."
-                                id="select-country"
-                                data-live-search="true"
-                                v-model="this.memberloan.id"
-                              >
-                                <option
-                                  v-for="option in optionloans"
-                                  v-bind:value="option.id"
-                                  :key="option.id"
-                                >
-                                  {{ loan.id }}
-                                </option>
-                              </select>
-                              <input v-model="loan.id" />
-                            </div>
-                          </div>
-
-                          <div class="form-group row">
-                            <label for="" class="col-sm-2 form-control-label"
-                              >Loan Product</label
-                            >
-
-                            <div class="col-sm-10">
-                              <input
-                                type="text"
-                                id="select-country"
-                                data-live-search="true"
-                                v-model="this.loan.loan_Type"
-                              />
-                            </div>
-                          </div>
-
-                          <div class="form-group row">
-                            <label class="col-form-label col-lg-2 required"
-                              >Amount Applied
-                            </label>
-                            <div class="col-lg-10">
-                              <div class="row">
-                                <div class="col-lg-3">
-                                  <div class="input-group">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text">
-                                        {{ this.loan.Amount }}
-                                      </span>
-                                    </div>
-
-                                    <input
-                                      v-model="loan.Amount"
-                                      type="number"
-                                      class="form-range"
-                                      min="0"
-                                      :max="maxtopup"
-                                      id="customRange2"
-                                      disabled
-                                    />
-                                  </div>
-                                </div>
-
-                                <label class="col-form-label col-lg-2 px-0"
-                                  >Loan Term {{ this.loan.Term }}</label
-                                >
-                                <div class="col-lg-2">
-                                  <input
-                                    type="number"
-                                    id="Term"
-
-                                    min="0"
-                                    :max="this.Loans.Term"
-                                    v-model="loan.Term"
-                                    Disabled
-                                  />
-                                </div>
-
-                                <label class="col-form-label col-lg-2 px-0"
-                                  >Interest
-                                </label>
-                                <div class="col-lg-2">
-                                  <input
-                                    type="number"
-                                    class="form-control"
-                                    id="Interest"
-                                    v-model="loan.interest"
-                                    disabled
-                                  />
-                                </div>
-
-                                <!---->
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-
-                          <!-- Loan Details  -->
-
-                          <div class="form-group row">
-                            <label class="col-form-label col-lg-2 required"
-                              >Total Repayment (KES)
-                            </label>
-                            <div class="col-lg-10">
-                              <div class="row">
-                                <div class="col-lg-3">
-                                  <div class="input-group">
-                                    <div class="input-group-prepend"></div>
-
-                                    <input
-                                      type="number"
-                                      class="form-control"
-                                      v-model="this.loan.Total_Loan"
-                                      Disabled
-                                    />
-                                  </div>
-                                  <!---->
-                                  <div
-                                    id="ember1178"
-                                    class="popover-container ember-view"
-                                  >
-                                    <div
-                                      id="ember1179"
-                                      class="d-none popover bs-popover-bottom ember-view pop-over-div"
-                                    >
-                                      <!---->
-                                    </div>
-                                  </div>
-                                </div>
-                                <label class="col-form-label col-lg-2 px-0"
-                                  >Monthly Repayment
-                                </label>
-                                <div class="col-lg-2">
-                                  <input
-                                    type="number "
-                                    class="form-control"
-                                    id="monthly"
-                                    v-model="loan.Monthrepayment"
-                                    disabled
-                                  />
-                                </div>
-
-                                <label class="col-form-label col-lg-2 px-0"
-                                  >Monthly Interest
-                                </label>
-                                <div class="col-lg-2">
-                                  <input
-                                    type="number"
-                                    class="form-control"
-                                    id="Interest"
-                                    v-model="this.loan.Interest_Monthly"
-                                    disabled
-                                  />
-                                </div>
-
-                                <!---->
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-
-                          <div class="form-group row">
-                            <label class="col-form-label col-lg-2 required"
-                              >Application Date</label
-                            >
-                            <div class="col-lg-5">
-                              <input
-                                placeholder="dd MMM yyyy"
-                                id="ember1181"
-                                class="ember-text-field zf-date-picker date-picker ember-view form-control"
-                                type="date"
-                                v-model="this.loan.ApplicationDate"
-                                disabled
-                              />
-                              <!---->
-                            </div>
-                          </div>
-
-                          <div class="row mx-0">
-                            <div
-                              class="unused-amount-zero offset-lg-7 col-lg-5 clearfix"
-                            >
-                              <div class="row">
-                                <p class="col-lg-8 text-right">
-                                  My Current Deposits :
-                                </p>
-                                <p class="col-lg-4 text-right">
-                                  {{ this.currentdeposits }}
-                                </p>
-                              </div>
-                              <div class="row">
-                                <p class="col-lg-8 text-right">
-                                  My Loan Balance :
-                                </p>
-                                <p class="col-lg-4 text-right">
-                                  {{ this.loanbalance }}
-                                </p>
-                              </div>
-                              <div class="row">
-                                <p class="col-lg-8 text-right">Available :</p>
-                                <p class="col-lg-4 text-right">
-                                  {{ maxtopup }}
-                                </p>
-                              </div>
-                              <div class="row">
-                                <p class="col-lg-8 text-right">Secured:</p>
-                                <p class="col-lg-4 text-right">
-                                  KES &nbsp; {{ this.secured }} //
-                                  {{ this.totalGuaranteed }}
-                                </p>
-                              </div>
-                              <div class="row">
-                                <p class="col-lg-8 text-right">
-                                  Unsecured:<a href="your link here">
-                                    <i class="fa fa-plus" aria-hidden="true"></i
-                                  ></a>
-                                </p>
-                                <p class="col-lg-4 text-right">
-                                  KES &nbsp; {{ this.unsecured }}
-                                </p>
-                              </div>
-                              <div class="row"></div>
-                            </div>
-                          </div>
-                          <div class="row mx-o">
-                            <div>
-                              <table class="table line-item-table">
-                                <thead>
-                                  <tr class="line-item-header">
-                                    <th>#</th>
-
-                                    <th>Date</th>
-                                    <th>Loan ID</th>
-                                    <!---->
-                                    <th class="text-left">Date Applied</th>
-                                    <th class="text-left">Guarantor Email</th>
-
-                                    <th class="text-left">Guaranteed Amount</th>
-
-                                    <th class="text-left">Status</th>
-
-                                    <!----><!---->
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr
-                                    v-for="(item, index) in guarantors"
-                                    :key="item.id"
-                                  >
-                                    <th scope="row">{{ index + 1 }}</th>
-                                    <td>{{ item.created }}</td>
-                                    <td>{{ item.Loan_id }}</td>
-                                    <td>{{ item.email }}</td>
-                                    <td>{{ item.Amount_guaranteed }}</td>
-
-                                    <td>
-                                      <div v-if="item.Status === '1'">
-                                        Pending Approval 1
-
-                                        <a href="#" class="lin"
-                                          >Add Guarantors</a
-                                        >
-                                      </div>
-                                      <div v-else-if="item.Status === '2'">
-                                        Pending Approval 2
-                                      </div>
-                                      <div v-else-if="item.Status === '3'">
-                                        Pending Approval 3
-                                      </div>
-                                      <div v-else>Disbursed</div>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td colspan="2" style="padding-top: 0px">
-                                      <small class="text-muted"
-                                        >**List contains only Approved
-                                        Loans</small
-                                      >
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td colspan="1" class="text-right">
-                                      <b>Total Loans</b>
-                                    </td>
-                                    <!---->
-                                    <td class="text-right">
-                                      <b>{{ this.totalLoans }}</b>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </form>
-
-                        <div v-if="this.unsecured <= 0">
-                          <button
-                            type="button"
-                            class="btn btn-outline-secondary col-lg-4"
-                            data-toggle="modal"
-                            data-target="#loan"
-                            @click="submitapproveloan"
-                          >
-                            Submit Loan for Approval
-                          </button>
-                          <a href="/loans">
-                            <button
-                              type="button"
-                              class="btn btn-outline-secondary col-lg-20"
-                            >
-                              Back to Loans
-                            </button>
-                          </a>
-                        </div>
-                        <div v-else>
-                          <div class="form-group col-md-10">
-                            <div class="row">
-                              <div class="col-3">
-                                <select
-                                  class="form-select ."
-                                  id="select-country"
-                                  data-live-search="true"
-                                  v-model="selectedemailG"
-                                  @change="changeGuarantor"
-                                >
-                                  <option
-                                    v-for="option in optionloansemail"
-                                    v-bind:value="option.email"
-                                    :key="option.id"
-                                  >
-                                    {{ option.email }}
-                                  </option>
-                                </select>
-                              </div>
-                              <label class="col-1">{{
-                                maximumtoguarantee
-                              }}</label>
-                              <div class="col-2">
-                                {{ selectedamountG }}
-                                <input
-                                  type="range"
-                                  class="form-range"
-                                  id="Term"
-
-                                  min="0"
-                                  :max="this.maximumtoguarantee"
-                                  v-model="selectedamountG"
-                                />
-                              </div>
-
-                              <div class="col-2">
-                                <button
-                                  @click="AddGuarantor"
-                                  type="button"
-                                  class="btn btn-outline-secondary"
-                                >
-                                  Request for Guarantors
-                                </button>
-                              </div>
-
-                              <div class="col-2">
-                                <a href="/loans">
-                                  <button
-                                    type="button"
-                                    class="btn btn-outline-secondary col-lg-20"
-                                  >
-                                    Back to Loans
-                                  </button>
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">Save</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <!-- End of Modal for guarntors  -->
 
@@ -1582,7 +1135,7 @@
 <script>
 import axios from "axios";
 import financeNav from "@/components/FinanceNav";
-import accountingHeader from "@/components/accountingHeader.vue";
+// import accountingHeader from "@/components/accountingHeader.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
 // import axios from "axios";
@@ -1603,7 +1156,7 @@ export default {
   name: "Journal-Area",
   components: {
     financeNav,
-    accountingHeader,
+    // accountingHeader,
   },
 
   data() {
@@ -1657,7 +1210,7 @@ export default {
       loan_type: "",
       role: [],
       roles: [],
-      path: "",
+
       loanschedule: [],
       selectedtax: "",
       payment: [
@@ -2384,9 +1937,7 @@ export default {
         });
     },
 
-    onChange() {
-      this.$router.push(this.path);
-    },
+   
 
     gotoops() {
       this.$router.push("/operations");
@@ -2619,7 +2170,7 @@ export default {
   },
   computed: {
     ...mapGetters(
-      "allDocuments",
+     [ "allDocuments",
       "allDeposits",
       "allMembers",
       "allLoans",
@@ -2629,7 +2180,7 @@ export default {
       "allPaymentsmade",
       "allPaymentsreceived",
       "allGl",
-      "allExpenses"
+      "allExpenses"]
     ),
 
     token() {

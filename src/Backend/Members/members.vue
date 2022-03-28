@@ -1966,7 +1966,7 @@
 
 		computed: {
 			...mapGetters(
-				"allDocuments",
+				["allDocuments",
 				"allDeposits",
 				"allMembers",
 				"allLoans",
@@ -1974,7 +1974,7 @@
 				"allUser",
 				"allBanktransactions",
 				"allPaymentsmade",
-				"allPaymentsreceived"
+				"allPaymentsreceived"]
 			),
 
 			token() {

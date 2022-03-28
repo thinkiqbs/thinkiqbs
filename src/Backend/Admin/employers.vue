@@ -344,7 +344,7 @@ export default {
 
   computed: {
     ...mapGetters(
-      "allDocuments",
+      ["allDocuments",
       "allDeposits",
       "allMembers",
       "allLoans",
@@ -353,7 +353,7 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived",
-      "allGl"
+      "allGl"]
     ),
     token() {
       return this.$store.state.accessToken;

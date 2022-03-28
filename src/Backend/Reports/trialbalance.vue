@@ -228,7 +228,7 @@ export default {
   },
   computed: {
     ...mapGetters(
-      "allDocuments",
+      ["allDocuments",
       "allGl",
       "allMembers",
       "allLoans",
@@ -236,7 +236,7 @@ export default {
       "allUser",
       "allBanktransactions",
       "allPaymentsmade",
-      "allPaymentsreceived"
+      "allPaymentsreceived"]
     ),
 
     token() {

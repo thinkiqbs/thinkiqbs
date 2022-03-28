@@ -359,7 +359,7 @@ export default {
           this.tableData = res.data.results;
           this.initDatatable();
         })
-        .catch((error) => Exception.handle(error));
+
     },
 
     deleteProduct(id) {

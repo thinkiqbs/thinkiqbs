@@ -244,7 +244,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters("fetchGl"),
+    ...mapGetters(["allGl"]),
 
     token() {
       return this.$store.state.accessToken;

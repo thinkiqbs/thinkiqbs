@@ -1135,7 +1135,7 @@
 <script>
 import axios from "axios";
 import financeNav from "@/components/FinanceNav";
-// import accountingHeader from "@/components/accountingHeader.vue";
+import accountingHeader from "@/components/accountingHeader.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
 // import axios from "axios";
@@ -1156,7 +1156,7 @@ export default {
   name: "Journal-Area",
   components: {
     financeNav,
-    // accountingHeader,
+    accountingHeader,
   },
 
   data() {

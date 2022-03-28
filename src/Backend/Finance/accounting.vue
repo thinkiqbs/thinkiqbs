@@ -11,7 +11,7 @@
           <!-- <button @click="$store.dispatch('all_loans')">+</button> -->
 
           <div class="row">
-            <!-- <accountingHeader></accountingHeader> -->
+            <accountingHeader></accountingHeader>
 
             <div class="col-sm-12">
               <div class="card">
@@ -90,7 +90,7 @@
 
 // import axios from "axios";
 import financeNav from "@/components/FinanceNav";
-// import accountingHeader from "@/components/accountingHeader.vue";
+import accountingHeader from "@/components/accountingHeader.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
 // import axios from "axios";
@@ -113,7 +113,7 @@ export default {
   name: "AccountingPage",
   components: {
     financeNav,
-    // accountingHeader,
+    accountingHeader,
   },
 
   data() {

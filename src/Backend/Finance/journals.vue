@@ -9,7 +9,7 @@
       <div class="col-10">
         <div class="mb-11" style="max-width: 98rem">
           <div class="row">
-            <!-- <accountingHeader></accountingHeader> -->
+            <accountingHeader></accountingHeader>
 
             <div class="col-sm-12">
               <div class="card">
@@ -341,7 +341,7 @@
 <script>
 import axios from "axios";
 import financeNav from "@/components/FinanceNav";
-// import accountingHeader from "@/components/accountingHeader.vue";
+import accountingHeader from "@/components/accountingHeader.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
 // import axios from "axios";
@@ -364,7 +364,7 @@ export default {
   name: "accounting-jounals",
   components: {
     financeNav,
-    // accountingHeader,
+    accountingHeader,
   },
 
   data() {

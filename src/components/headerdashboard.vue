@@ -303,12 +303,12 @@
                   >
                     <div class="p-2">
                       <router-link
-                        :to="{ path: 'expenses' }"
+                        to="/expenses"
                         class="dropdown-item d-flex align-items-center justify-content-between"
                         >Expenses</router-link
                       >
                       <router-link
-                        :to="{ path: 'purchasing' }"
+                        :to="/purchasing' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
                         >Purchasing</router-link
                       >

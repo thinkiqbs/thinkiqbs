@@ -1255,6 +1255,8 @@ export default {
     this.fetchExpenses();
     this.updategllist();
     this.fetchExpenses();
+    this.initDatatable();
+
   },
 
   methods: {

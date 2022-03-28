@@ -16,7 +16,7 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">All Expenses</h4>
+                  <h4 class="card-title">General Ledger</h4>
                   <span>Org:{{ companyid3 }}</span>
                   <div class="topnav-right">
                     <button
@@ -34,7 +34,7 @@
                   <!--  -->
 
                   <table
-                    class="table-borderless table-hover table-striped walla"
+                    class="table table-borderless table-hover table-striped walla"
                   >
                     <thead>
                       <tr class="line-item-header">
@@ -190,6 +190,7 @@ export default {
     this.Printlist();
     this.fetchGl();
     this.fetchDocuments();
+    this.initDatatable();
   },
 
   methods: {

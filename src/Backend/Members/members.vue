@@ -1377,7 +1377,7 @@
 	//Datatable Modules
 	// import "datatables.net-dt/js/dataTables.dataTables";
 	// import "datatables.net-dt/css/jquery.dataTables.min.css";
-	// import $ from "jquery";
+	import $ from "jquery";
 	import { mapGetters, mapActions } from "vuex";
 	// import PhoneMaskInput from "vue-phone-mask-input";
 
@@ -1474,6 +1474,7 @@
 			this.fetchBanktransactions();
 			this.fetchPaymentsmade();
 			this.fetchPaymentsreceived();
+			this.initDatatable();
 		},
 
 		mounted() {
@@ -1549,6 +1550,26 @@
 			]),
 
 			//create a dropdown menu trigger
+			initDatatable() {
+      setTimeout(() => {
+        $(".walla").DataTable({
+          pagingType: "full_numbers",
+          lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"],
+          ],
+          order: [
+            [0, "asc"],
+            [3, "desc"],
+          ],
+          responsive: true,
+          destroy: true,
+          retrieve: true,
+          autoFill: true,
+          colReorder: true,
+        });
+      }, 300);
+    },
 		
 			getmembers() {
 				const x = this.companyid;

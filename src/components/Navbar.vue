@@ -30,39 +30,14 @@
           </form>
         </div>
 
-        <div>
-          <button
-            class="btn btn-primary btn-margin"
-            v-if="!authenticated"
-            @click="login()"
-          >
-            Log In
-          </button>
-
-          <button
-            class="btn btn-primary btn-margin"
-            v-if="authenticated"
-            @click="privateMessage()"
-          >
-            Call Private
-          </button>
-
-          <button
-            class="btn btn-primary btn-margin"
-            v-if="authenticated"
-            @click="logout()"
-          >
-            Log Out
-          </button>
-          {{ "{{ " }}{{ "message" }} }}
-          <br />
-        </div>
+       
 
         <div class="d-flex align-items-right">
+
           <router-link
             style="float: right"
             class="nav-link dropdown-toggle"
-            :to="{ name: 'home' }"
+            to="/"
             ><span class="fs-sm fw-medium">HOME</span></router-link
           >
 

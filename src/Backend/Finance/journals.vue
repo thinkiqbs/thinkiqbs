@@ -500,6 +500,8 @@ export default {
   created() {
     this.updategllist();
     this.fetchExpenses();
+    this.initDatatable();
+
   },
 
   methods: {
@@ -522,6 +524,26 @@ export default {
     },
 
     //update GL
+    initDatatable() {
+      setTimeout(() => {
+        $(".walla").DataTable({
+          pagingType: "full_numbers",
+          lengthMenu: [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"],
+          ],
+          order: [
+            [0, "asc"],
+            [3, "desc"],
+          ],
+          responsive: true,
+          destroy: true,
+          retrieve: true,
+          autoFill: true,
+          colReorder: true,
+        });
+      }, 300);
+    },
 
     postJounal(item) {
       Promise.all([

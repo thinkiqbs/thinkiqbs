@@ -1,10 +1,6 @@
 <template>
     <Navbar></Navbar>
 
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/accounting">About</router-link>
-  </nav>
   <div class="container-fluid">
       <error />
       <div class="">

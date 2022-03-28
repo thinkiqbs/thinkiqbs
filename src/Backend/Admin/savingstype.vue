@@ -195,7 +195,7 @@
                     <hr />
 
                     <div class="form-group row">
-                      <div class=col-4>
+                      <div class=col-4-auto>
 
                         <div class="form-group boxed">
                           <div class="input-wrapper">

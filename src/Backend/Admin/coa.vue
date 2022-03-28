@@ -10,7 +10,7 @@
 
     <!-- Modal -->
     <div
-      class="modal fade"
+      class="modal fade modalbox"
       id="AddnewGL"
       tabindex="-1"
       role="dialog"
@@ -156,8 +156,10 @@
       </div>
     </div>
 
+    
+
     <div
-      class="modal fade"
+      class="modal fade modalbox"
       id="addmaster"
       tabindex="-1"
       role="dialog"
@@ -246,6 +248,8 @@
         </div>
       </div>
     </div>
+
+    
 
     <div class="col-10">
       <div class="mb-11" style="max-width: 98rem">

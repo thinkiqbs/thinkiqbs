@@ -21,8 +21,8 @@
                     type="button"
                     class="btn btn-success"
                     style="float: right"
-                    data-toggle="modal"
-                    data-target="#Addnewbank"
+                    data-bs-toggle="modal"
+                    data-bs-target="#Addnewbank"
                   >
                     Create New Account
                   </button>
@@ -141,7 +141,7 @@
 
         <!-- Modal to Add new Roles  -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Addnewbank"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -156,7 +156,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -307,7 +307,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>

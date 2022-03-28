@@ -178,7 +178,7 @@
 
         <!-- Modal Account Types -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Accountypes"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -229,7 +229,7 @@
         <!-- Modal for  Subaccounts -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Subaccounts"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -277,7 +277,7 @@
         </div>
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Counties"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -331,7 +331,7 @@
         <!-- Member Pledges  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Pledges"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -427,7 +427,7 @@
         <!-- Member Deposits Opening Balances   -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="DepositsOB"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -521,7 +521,7 @@
         <!-- Member Shares Opening Balances   -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="SharesOB"
           data-bs-backdrop="static"
           data-bs-keyboard="false"
@@ -617,7 +617,7 @@
       <!-- Member Loans Opening Balances   -->
 
       <div
-        class="modal fade"
+        class="modal fade modalbox"
         id="LoansOB"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -713,7 +713,7 @@
       <!-- Member Loans Schedule   -->
 
       <div
-        class="modal fade"
+        class="modal fade modalbox"
         id="LoansActive"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -809,7 +809,7 @@
       <!-- <-- Member Details  -->
 
       <div
-        class="modal fade"
+        class="modal fade modalbox"
         id="Members"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -964,7 +964,7 @@
     <!-- Members Details ends  -->
 
     <div
-      class="modal fade"
+      class="modal fade modalbox"
       id="Mainaccounts"
       data-bs-backdrop="static"
       data-bs-keyboard="false"

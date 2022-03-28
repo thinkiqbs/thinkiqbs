@@ -210,7 +210,7 @@
 		<!-- Modal for New Contribution  -->
 
 		<div
-			class="modal fade"
+			class="modal fade modalbox"
 			id="Contribution"
 			tabindex="-1"
 			aria-labelledby="exampleModalLabel"
@@ -369,7 +369,7 @@
 
 		<!-- Modal to Add Members  -->
 		<div
-			class="modal fade"
+			class="modal fade modalbox"
 			id="Addnewbank"
 			tabindex="-1"
 			aria-labelledby="exampleModalLabel"
@@ -543,7 +543,7 @@
 
 		<!-- Modal -->
 		<div
-			class="modal fade"
+			class="modal fade modalbox"
 			id="loan"
 			data-backdrop="static"
 			data-keyboard="false"
@@ -854,7 +854,7 @@
 		<!-- Member Information  -->
 
 		<div
-			class="modal fade"
+			class="modal fade modalbox"
 			id="MemberInfo"
 			data-backdrop="static"
 			data-keyboard="false"
@@ -1165,7 +1165,7 @@
 		<!-- End of Member information  -->
 
 		<div
-			class="modal fade"
+			class="modal fade modalbox"
 			id="exampleModal"
 			tabindex="-1"
 			aria-labelledby="exampleModalLabel"
@@ -1226,7 +1226,7 @@
 
 		<!-- Modal to Add Members  -->
 		<div
-			class="modal fade"
+			class="modal fade modalbox"
 			id="Addnewbank"
 			tabindex="-1"
 			aria-labelledby="exampleModalLabel"

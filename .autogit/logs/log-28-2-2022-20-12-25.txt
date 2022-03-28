@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Mon Mar 28 2022 20:12:25 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* public/index.html
+* src/Backend/Admin/banksetup.vue
+* src/Backend/Admin/coa.vue
+* src/Backend/Admin/employers.vue
+* src/assets/css/style.css
+
+
+Created files:
+* .autogit/logs/log-28-2-2022-19-42-14.txt
+
+
+Deleted files:
+
+
+Renamed files:

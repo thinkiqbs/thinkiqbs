@@ -178,7 +178,7 @@
 
         <!-- Modal -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -222,7 +222,7 @@
         <!-- Modal -->
         <!-- For Topup only  -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="topup"
           data-backdrop="static"
           data-keyboard="false"
@@ -629,7 +629,7 @@
         <!-- Modal for Adding Guarantors  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="guarantorAdd"
           tabindex="-1"
           role="dialog"
@@ -1048,7 +1048,7 @@
         <!-- Approval Template  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="ApprovalTemplate"
           tabindex="-1"
           role="dialog"

@@ -420,7 +420,7 @@
 
         <!-- Modal Pay Loans  -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="payloans"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -507,7 +507,7 @@
         <!-- Modal for Approvals  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Newexpense"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -746,7 +746,7 @@
 
         <!-- Modal -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -823,7 +823,7 @@
         </div>
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Editpayment"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -995,7 +995,7 @@
         </div>
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="AllocateReceipts"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -1272,7 +1272,7 @@
         <!-- New Modal for employer allocations this will focus on control accounts -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="AllocateReceiptsEmployer"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -1583,7 +1583,7 @@
         <!--  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Newpayments"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -1967,7 +1967,7 @@
         <!-- /form layouts -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="postcheque"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"

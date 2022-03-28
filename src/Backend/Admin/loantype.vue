@@ -175,7 +175,7 @@
         </div>
         <!-- Modal to Add new Loan Products  -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Newroles"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"

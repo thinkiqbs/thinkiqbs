@@ -169,6 +169,228 @@
             </div>
           </div>
         </div>
+
+        <div class="section full mt-1">
+            <div class="section-title">Basic Modal</div>
+            <div class="wide-block pt-2 pb-2">
+                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalBasic">Open Modal</a>
+            </div>
+        </div>
+
+        <!-- Modal Basic -->
+        <div class="modal fade modalbox" id="ModalBasic" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <a href="javascript:;" data-bs-dismiss="modal">Close</a>
+                    </div>
+                    <div class="modal-body">
+<!-- New -->
+
+ <form class="modal-content">
+                  <div class="container">
+                    <h2>Saving Product</h2>
+                    <p>Please fill in this form to create an saving product.</p>
+                    <hr />
+
+                    <div class="form-group">
+                      <div class=col-4>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">Name</label>
+                              <input type="text" class="form-control" id="name5" placeholder="Enter your name">
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
+                        </div>
+                     
+                    
+
+                      <div class=col-6>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">Name</label>
+                              <input type="text" class="form-control" id="name5" placeholder="Enter your name">
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+
+                    
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="email5">E-mail</label>
+                            <input type="email" class="form-control" id="email5" placeholder="E-mail address">
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="city5">City</label>
+                            <select class="form-control custom-select" id="city5">
+                                <option value="0">Select a city</option>
+                                <option value="1">New York City</option>
+                                <option value="2">Austin</option>
+                                <option value="3">Colorado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="password5">Password</label>
+                            <input type="password" class="form-control" id="password5" placeholder="Type a password">
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="phone5">Phone</label>
+                            <input type="tel" class="form-control" id="phone5" placeholder="Enter your phone number">
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="address5">Address</label>
+                            <textarea id="address5" rows="2" class="form-control"></textarea>
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
+
+
+
+
+<!-- end of  -->
+
+                        <form class="modal-content">
+                  <div class="container">
+                    <h2>Saving Product</h2>
+                    <p>Please fill in this form to create an saving product.</p>
+                    <hr />
+
+                    <label for="inputsavingtype">saving type </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputsavingtype"
+                      v-model="addsavingtype.saving_type"
+                      autocomplete="off"
+                    />
+
+                    <label for="inputEmail4">Description </label>
+                    <textarea
+                      type="textarea"
+                      class="form-control"
+                      id="inputEmail4"
+                      v-model="addsavingtype.saving_description"
+                    />
+
+                    <label for="inputZip">account Code</label>
+                    <select
+                      v-model="selected"
+                      class="form-control"
+                      @change="glchange"
+                    >
+                      <option
+                        v-for="option in allGls1"
+                        v-bind:value="option.maincode"
+                        :key="option.id"
+                      >
+                        {{ option.accountname }}
+                        <!-- {{ option.id }}
+													{{option.interest_rate}} -->
+                      </option>
+                    </select>
+                    <span>Selected: {{ selected }}</span>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="inputCity">minimum contribution</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="inputCity"
+                          v-model="addsavingtype.minimum_contribution"
+                        />
+                      </div>
+                      <!-- <div class="form-group col-md-4">
+												<label for="inputState">Calculation</label>
+												<select
+													id="inputState"
+													class="form-control"
+													v-model="addsavingtype.interest_calc_mode"
+												>
+													<option selected>Choose...</option>
+													<option>Reducing</option>
+													<option>Straight Line</option>
+												</select>
+											</div> -->
+                      <div class="form-group col-md-2">
+                        <label for="inputZip">max term</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputZip"
+                          v-model="addsavingtype.maximum_saving_term"
+                        />
+                      </div>
+                      <div class="form-group col-md-fs-2">
+                        <label for="inputZip">Int%</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="inputZip"
+                          v-model="addsavingtype.interest_rate"
+                        />
+                      </div>
+
+                      <div class="checkbox form-group col-md-fs-2">
+                        <label>
+                          Allow Security.
+
+                          <input
+                            type="checkbox"
+                            id="chkbox1"
+                            runat="server"
+                            v-model="addsavingtype.security"
+                          />
+                        </label>
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <!-- <label for="inputZip" >Memberkey</label> -->
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputZip"
+                          v-model="this.sel"
+                          hidden
+                        />
+                      </div>
+                      <div class="form-group col-md-3"></div>
+                    </div>
+
+                    <p>
+                      Members can apply to save on this product.
+                      <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
+                    </p>
+                  </div>
+                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Modal to Add new Roles  -->
         <div
           class="modal fade"

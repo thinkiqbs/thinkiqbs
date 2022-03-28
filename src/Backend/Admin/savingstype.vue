@@ -171,18 +171,18 @@
         </div>
 
         <div class="section full mt-1">
-            <div class="section-title">Basic Modal</div>
+            <div class="section-title">Loan Product</div>
             <div class="wide-block pt-2 pb-2">
                 <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalBasic">Open Modal</a>
             </div>
         </div>
 
         <!-- Modal Basic -->
-        <div class="modal fade modalbox" id="ModalBasic" tabindex="-1" role="dialog">
+        <div class="modal fade modalbox" id="Newroles" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <h5 class="modal-title">New Loan Product</h5>
                         <a href="javascript:;" data-bs-dismiss="modal">Close</a>
                     </div>
                     <div class="modal-body">
@@ -194,110 +194,50 @@
                     <p>Please fill in this form to create an saving product.</p>
                     <hr />
 
-                    <div class="form-group">
+                    <div class="form-group row">
                       <div class=col-4>
 
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                              <label class="label" for="name5">Name</label>
-                              <input type="text" class="form-control" id="name5" placeholder="Enter your name">
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                          </div>
-                        </div>
-                        </div>
-                     
-                    
-
-                      <div class=col-6>
-
-                        <div class="form-group boxed">
-                          <div class="input-wrapper">
-                              <label class="label" for="name5">Name</label>
-                              <input type="text" class="form-control" id="name5" placeholder="Enter your name">
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                          </div>
-                        </div>
-                      </div>
-                     
-                    </div>
-
-                    
-                    <div class="form-group boxed">
-                        <div class="input-wrapper">
-                            <label class="label" for="email5">E-mail</label>
-                            <input type="email" class="form-control" id="email5" placeholder="E-mail address">
-                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                        </div>
-                    </div>
-
-                    <div class="form-group boxed">
-                        <div class="input-wrapper">
-                            <label class="label" for="city5">City</label>
-                            <select class="form-control custom-select" id="city5">
-                                <option value="0">Select a city</option>
-                                <option value="1">New York City</option>
-                                <option value="2">Austin</option>
-                                <option value="3">Colorado</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group boxed">
-                        <div class="input-wrapper">
-                            <label class="label" for="password5">Password</label>
-                            <input type="password" class="form-control" id="password5" placeholder="Type a password">
-                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                        </div>
-                    </div>
-
-                    <div class="form-group boxed">
-                        <div class="input-wrapper">
-                            <label class="label" for="phone5">Phone</label>
-                            <input type="tel" class="form-control" id="phone5" placeholder="Enter your phone number">
-                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                        </div>
-                    </div>
-
-                    <div class="form-group boxed">
-                        <div class="input-wrapper">
-                            <label class="label" for="address5">Address</label>
-                            <textarea id="address5" rows="2" class="form-control"></textarea>
-                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                        </div>
-                    </div>
-                    </div>
-                    </form>
-
-
-
-
-<!-- end of  -->
-
-                        <form class="modal-content">
-                  <div class="container">
-                    <h2>Saving Product</h2>
-                    <p>Please fill in this form to create an saving product.</p>
-                    <hr />
-
-                    <label for="inputsavingtype">saving type </label>
-                    <input
+                              <label class="label" for="name5">Loan Product Name</label>
+                              <input
                       type="text"
                       class="form-control"
                       id="inputsavingtype"
                       v-model="addsavingtype.saving_type"
                       autocomplete="off"
                     />
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
+                        </div>
+                     
+                    
 
-                    <label for="inputEmail4">Description </label>
-                    <textarea
+                      <div class=col-8>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">Description</label>
+                              <textarea
                       type="textarea"
                       class="form-control"
                       id="inputEmail4"
                       v-model="addsavingtype.saving_description"
                     />
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                    <div class="form-group row">
+                      <div class=col>
 
-                    <label for="inputZip">account Code</label>
-                    <select
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">GL Account </label>
+                              <select
                       v-model="selected"
                       class="form-control"
                       @change="glchange"
@@ -313,50 +253,68 @@
                       </option>
                     </select>
                     <span>Selected: {{ selected }}</span>
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
+                        </div>
+                     
+                    
 
-                    <div class="form-row">
-                      <div class="form-group col-md-4">
-                        <label for="inputCity">minimum contribution</label>
-                        <input
+                      <div class=col>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">Minimum Contribution</label>
+                               <input
                           type="number"
                           class="form-control"
                           id="inputCity"
                           v-model="addsavingtype.minimum_contribution"
                         />
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
                       </div>
-                      <!-- <div class="form-group col-md-4">
-												<label for="inputState">Calculation</label>
-												<select
-													id="inputState"
-													class="form-control"
-													v-model="addsavingtype.interest_calc_mode"
-												>
-													<option selected>Choose...</option>
-													<option>Reducing</option>
-													<option>Straight Line</option>
-												</select>
-											</div> -->
-                      <div class="form-group col-md-2">
-                        <label for="inputZip">max term</label>
-                        <input
+
+                      <div class=col>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">Maximum Term</label>
+                              <input
                           type="text"
                           class="form-control"
                           id="inputZip"
                           v-model="addsavingtype.maximum_saving_term"
                         />
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-group col-md-fs-2">
-                        <label for="inputZip">Int%</label>
-                        <input
+                      <div class=col-2>
+
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                              <label class="label" for="name5">Interest </label>
+                             <input
                           type="number"
                           class="form-control"
                           id="inputZip"
                           v-model="addsavingtype.interest_rate"
                         />
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
                       </div>
+                      
+                     
+                    </div>
+                    <div class="form-group row">
+                       <div class=col-1>
 
-                      <div class="checkbox form-group col-md-fs-2">
-                        <label>
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                             <label>
                           Allow Security.
 
                           <input
@@ -366,27 +324,38 @@
                             v-model="addsavingtype.security"
                           />
                         </label>
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
                       </div>
+                      
+                     <div class=col>
 
-                      <div class="form-group col-md-3">
-                        <!-- <label for="inputZip" >Memberkey</label> -->
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="inputZip"
-                          v-model="this.sel"
-                          hidden
-                        />
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                               <div class="wide-block ">
+                <a class="btn btn-primary" @click="addrecords" >Save Product</a>
+            </div>
+                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                          </div>
+                        </div>
                       </div>
-                      <div class="form-group col-md-3"></div>
+                     
+                      
+                     
+                    </div>
                     </div>
 
-                    <p>
-                      Members can apply to save on this product.
-                      <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
-                    </p>
-                  </div>
-                </form>
+                    
+                    
+                    </form>
+
+
+
+
+<!-- end of  -->
+
+                      
                     </div>
                 </div>
             </div>
@@ -394,7 +363,7 @@
         <!-- Modal to Add new Roles  -->
         <div
           class="modal fade"
-          id="Newroles"
+          id="Newrolesx"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"

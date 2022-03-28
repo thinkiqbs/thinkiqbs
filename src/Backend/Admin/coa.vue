@@ -17,14 +17,14 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-xxl" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Chart of Account</h5>
             <button
               type="button"
               class="close"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
@@ -144,7 +144,7 @@
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
             >
               Close
             </button>
@@ -174,7 +174,7 @@
             <button
               type="button"
               class="close"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
@@ -235,7 +235,7 @@
             <button
               type="button"
               class="btn btn-secondary"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
             >
               Close
             </button>
@@ -274,8 +274,8 @@
                     type="button"
                     class="btn btn-success"
                     style="float: right"
-                    data-toggle="modal"
-                    data-target="#AddnewGL"
+                    data-bs-toggle="modal"
+                    data-bs-target="#AddnewGL"
                   >
                     New GL Account
                   </button>
@@ -285,8 +285,8 @@
                     type="button"
                     class="btn btn-success"
                     style="float: right"
-                    data-toggle="modal"
-                    data-target="#addmaster"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addmaster"
                   >
                     Add from Master
                   </button>

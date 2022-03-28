@@ -19,8 +19,8 @@
                   class="btn btn-success"
                   style="float: right"
                   type="button"
-                  data-toggle="modal"
-                  data-target="#Newemployer"
+                  data-bs-toggle="modal"
+                  data-bs-target="#Newemployer"
                 >
                   New
                 </button>
@@ -197,7 +197,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -254,7 +254,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -329,7 +329,7 @@ export default {
   },
 
   created() {
-    this.getProducts();
+
     this.initDatatable();
     this.initDatatable();
     this.fetchDocuments();

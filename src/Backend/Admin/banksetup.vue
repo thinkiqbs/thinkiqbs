@@ -373,9 +373,7 @@ export default {
     };
   },
 
-  created() {
-    this.getProducts();
-  },
+ 
 
   computed: {
     token() {

@@ -9,7 +9,7 @@ import LoansArea from '../Backend/Loans/loans.vue'
 import BankingActivities from '../Backend/Finance/bank.vue'
 import FosaPage from '../Backend/Finance/fosa.vue'
 import AccountingPage from '../Backend/Finance/accounting.vue'
-import AllReports from '../Backend/Finance/reports.vue'
+import ReportArea from '../Backend/Finance/reports.vue'
 import CustomizeOrg from '../Backend/Admin/organization.vue'
 import CreateOrg from '../Backend/Admin/createorganization.vue'
 
@@ -54,7 +54,7 @@ import payments from "../Backend/Finance/payments.vue";
 
 import fosa from "../Backend/Finance/fosa.vue";
 
-import reports from "../Backend/Finance/reports.vue";
+// import reports from "../Backend/Finance/reports.vue";
 import expenses from "../Backend/Finance/expenses.vue";
 import dashboards from "../Backend/Finance/dashboards.vue";
 import operations from "../Backend/Finance/operations.vue";
@@ -189,9 +189,9 @@ const routes = [{
         component: AccountingPage
     },
     {
-        path: '/reports',
-        name: 'reports',
-        component: AllReports
+        path: '/ReportArea',
+        name: 'ReportArea',
+        component: ReportArea
     },
     {
         path: '/customize',
@@ -624,9 +624,9 @@ const routes = [{
         },
     },
     {
-        path: "/reports",
-        name: "reports",
-        component: reports,
+        path: "/ReportArea",
+        name: "ReportArea",
+        component: ReportArea,
         meta: {
             requiresLogin: true,
         },

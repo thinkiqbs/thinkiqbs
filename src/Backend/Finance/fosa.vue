@@ -2192,16 +2192,16 @@ export default {
     // 		$("#walla").DataTable();
     // 	});
 
-    axios
-      .get("/sys_config/api/v1/EmployerProfile/", {
-        params: { employer_email: this.email },
-      })
-      .then((res) => {
-        this.employerprofile = res.data.results.filter(
-          (e) => e.company_id == this.companyid
-        );
-        this.initDatatable();
-      });
+    // axios
+    //   .get("/sys_config/api/v1/EmployerProfile/", {
+    //     params: { employer_email: this.email },
+    //   })
+    //   .then((res) => {
+    //     this.employerprofile = res.data.results.filter(
+    //       (e) => e.company_id == this.companyid
+    //     );
+    //     this.initDatatable();
+    //   });
 
     axios
       .get("/loans/api/v1/loans/", {
@@ -2973,7 +2973,7 @@ export default {
       );
       console.log(optemployer);
 
-      this.employeremail = optemployer.employer_email;
+      // this.employeremail = optemployer.employer_email;
       // this.selecteddepositscontrol = opt.deposits_control;
       // this.selectedaccmaster = opt.gl_account;
       // this.employerid = opt.id;

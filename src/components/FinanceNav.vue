@@ -136,7 +136,7 @@
         </div>
 
         <li class="nav-item" v-if="token != null">
-          <router-link to="/AllReports" exact
+          <router-link to="/ReportArea" exact
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

@@ -2154,7 +2154,7 @@ export default {
       selectedgl: "",
 
       checkedNames: [],
-      path: "",
+
       gl_account: "",
       checkpath: "",
       tableData: [],
@@ -2287,16 +2287,16 @@ export default {
     // 		$("#walla").DataTable();
     // 	});
 
-    axios
-      .get("/sys_config/api/v1/EmployerProfile/", {
-        params: { employer_email: this.email },
-      })
-      .then((res) => {
-        this.employerprofile = res.data.results.filter(
-          (e) => e.company_id == this.companyid
-        );
-        this.initDatatable();
-      });
+    // axios
+    //   .get("/sys_config/api/v1/EmployerProfile/", {
+    //     params: { employer_email: this.email },
+    //   })
+    //   .then((res) => {
+    //     this.employerprofile = res.data.results.filter(
+    //       (e) => e.company_id == this.companyid
+    //     );
+    //     this.initDatatable();
+    //   });
 
     axios
       .get("/loans/api/v1/loans/", {
@@ -2839,13 +2839,13 @@ export default {
       );
     },
 
-    employeridno: function () {
-      return this.$store.getters.allEmployer.filter(
-        (item) =>
-          item.company_id == this.companyid3 &&
-          item.employer_email == this.paymentrcvd.customer
-      )[0].id;
-    },
+    // employeridno: function () {
+    //   return this.$store.getters.allEmployer.filter(
+    //     (item) =>
+    //       item.company_id == this.companyid3 &&
+    //       item.employer_email == this.paymentrcvd.customer
+    //   )[0].id;
+    // },
 
     alldeposits: function () {
       return this.$store.getters.allDeposits.filter(
@@ -3220,7 +3220,7 @@ export default {
       );
       console.log(optemployer);
 
-      this.employeremail = optemployer.employer_email;
+      // this.employeremail = optemployer.employer_email;
       // this.selecteddepositscontrol = opt.deposits_control;
       // this.selectedaccmaster = opt.gl_account;
       // this.employerid = opt.id;
@@ -3296,7 +3296,7 @@ export default {
       const optemployer = this.allEmployer.find((o) => o.id == this.employerid);
       console.log(optemployer);
 
-      this.employeremail = optemployer.employer_email;
+      // this.employeremail = optemployer.employer_email;
       this.selectedemail = this.employeremail;
       // this.selecteddepositscontrol = opt.deposits_control;
       // this.selectedaccmaster = opt.gl_account;
@@ -3457,17 +3457,17 @@ export default {
       }
 
       if (this.paymentrcvd.customertype == "2") {
-        axios
-          .get("/sys_config/api/v1/EmployerProfile/", {
-            params: { employer_email: this.paymentrcvd.customer },
-          })
-          .then((res) => {
-            this.employer = res.data.results;
-            this.employerid = this.employer[0].id;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        // axios
+        //   .get("/sys_config/api/v1/EmployerProfile/", {
+        //     params: { employer_email: this.paymentrcvd.customer },
+        //   })
+        //   .then((res) => {
+        //     this.employer = res.data.results;
+        //     this.employerid = this.employer[0].id;
+        //   })
+        //   .catch((error) => {
+        //     console.error(error);
+        //   });
 
         axios
           .get("/members/api/v1/MonthDeposits/", {

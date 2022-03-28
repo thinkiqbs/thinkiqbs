@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Mon Mar 28 2022 23:24:02 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Finance/accounting.vue
+* src/Backend/Finance/documents.vue
+* src/Backend/Finance/expenses.vue
+* src/Backend/Finance/journals.vue
+
+
+Created files:
+* .autogit/logs/log-28-2-2022-22-53-50.txt
+
+
+Deleted files:
+
+
+Renamed files:

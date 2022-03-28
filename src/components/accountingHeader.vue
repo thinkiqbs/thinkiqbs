@@ -128,104 +128,94 @@
       </div>
     </div>
     <div class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex">
-      <div class="d-flex align-items-center">
-        <div class="dropdown d-inline-block ms-2" style="float: right">
-          <button
-            type="button"
-            class="btn btn-sm btn-alt-secondary d-flex align-items-center"
-            id="page-header-user-dropdown"
-            data-bs-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <img
-              class="rounded-circle"
-              src="@/assets/images/faces/4.jpg"
-              alt="Header Avatar"
-              style="width: 21px"
-            />
-            <span class="d-none d-sm-inline-block ms-2">Sub Ledgers</span>
-            <i
-              class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
-            ></i>
-          </button>
-          <div
-            class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
-            aria-labelledby="page-header-user-dropdown"
-            style=""
-          >
-            <div class="p-2">
-              <router-link
-                to="/expenses"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Expenses</router-link
-              >
-              <router-link></router-link>
-              <router-link
-                to="/payments"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Payments</router-link
-              >
-              <router-link></router-link>
-              <router-link
-                 to="/receipts"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Receipts</router-link
-              >
-              <router-link
-                 to="/purchasing" 
-                 class="dropdown-item d-flex
-                align-items-center justify-content-between"
-                >Purchasing</router-link
-              >
-              <router-link
-                 to="/sales"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Sales</router-link
-              >
+     <div class="d-flex align-items-center">
+                <div class="dropdown d-inline-block ms-2">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-alt-secondary d-flex align-items-center"
+                    id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      class="bi bi-menu-down"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M7.646.146a.5.5 0 0 1 .708 0L10.207 2H14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h3.793L7.646.146zM1 7v3h14V7H1zm14-1V4a1 1 0 0 0-1-1h-3.793a1 1 0 0 1-.707-.293L8 1.207l-1.5 1.5A1 1 0 0 1 5.793 3H2a1 1 0 0 0-1 1v2h14zm0 5H1v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zM2 4.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"
+                      />
+                    </svg>
+                    <span class="d-none d-sm-inline-block ms-2"
+                      >Sub Ledgers</span
+                    >
+                    <i
+                      class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
+                    ></i>
+                  </button>
+                  <div
+                    class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
+                    aria-labelledby="page-header-user-dropdown"
+                    style=""
+                  >
+                    <div class="p-2">
+                      <router-link
+                        :to="{ path: 'expenses' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Expenses</router-link
+                      >
+                      <router-link
+                        :to="{ path: 'purchasing' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Purchasing</router-link
+                      >
+                      <router-link
+                        :to="{ path: 'sales' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Sales</router-link
+                      >
 
-              <div role="separator" class="dropdown-divider m-0"></div>
+                      <div role="separator" class="dropdown-divider m-0"></div>
 
-              <router-link
-                 to="/journals"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Journals</router-link
-              >
+                      <router-link
+                        :to="{ path: 'journals' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Journals</router-link
+                      >
 
-              <div role="separator" class="dropdown-divider m-0"></div>
+                      <div role="separator" class="dropdown-divider m-0"></div>
 
-              <router-link
-                 to="/documents"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Documents</router-link
-              >
-              <router-link
-                 to="/distribute"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Allocate</router-link
-              >
-              <router-link
-                 to="/budgets"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Budgets
-              </router-link>
-              <router-link
-                 to="/taxes"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Taxes</router-link
-              >
+                      <router-link
+                        :to="{ path: 'documents' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Documents</router-link
+                      >
+                      <router-link
+                        :to="{ path: 'budgets' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Budgets
+                      </router-link>
+                      <router-link
+                        :to="{ path: 'taxes' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Taxes</router-link
+                      >
 
-              <div role="separator" class="dropdown-divider m-0"></div>
+                      <div role="separator" class="dropdown-divider m-0"></div>
 
-              <router-link
-                 to="/accounting"
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                >Genral Ledger</router-link
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+                      <router-link
+                        :to="{ path: 'accounting' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Genral Ledger</router-link
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div> 
 
       <div>
         <Refresh></Refresh>

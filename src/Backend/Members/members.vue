@@ -1379,14 +1379,14 @@
 	// import "datatables.net-dt/css/jquery.dataTables.min.css";
 	import $ from "jquery";
 	import { mapGetters, mapActions } from "vuex";
-	// import PhoneMaskInput from "vue-phone-mask-input";
+	import PhoneMaskInput from "vue-phone-mask-input";
 
 	export default {
 		name: "MemberDetails",
 		components: {
 			financeNav,
 			headerDashboard,
-			// PhoneMaskInput,
+			PhoneMaskInput,
 		},
 
 		data() {

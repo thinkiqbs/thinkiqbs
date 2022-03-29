@@ -33,6 +33,7 @@
         "vue-chartjs": "^4.0.2",
         "vue-datatables-net": "^2.0.1",
         "vue-json-excel": "^0.3.0",
+        "vue-phone-number-input": "^1.1.12",
         "vue-popperjs": "^2.3.0",
         "vue-router": "^4.0.14",
         "vue-sweetalert": "^0.1.18",

@@ -1,7 +1,7 @@
 <template>
 
 
-     <div class="card-group">
+     <div class="card-group container-fluid">
 
   <div class="card">
 
@@ -31,7 +31,8 @@
 
                 <div class="form-links mt-2">
                     <div>
-                        <a href="app-register.html">Register Now</a>
+
+                        <router-link to="/register">Register Now</router-link>
                     </div>
                     <div><a href="app-forgot-password.html" class="text-muted">Forgot Password?</a></div>
                 </div>
@@ -45,7 +46,7 @@
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top" src="https://picsum.photos/200/300" alt="Card image cap">
+    <img class="card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
     
   </div>
 </div>

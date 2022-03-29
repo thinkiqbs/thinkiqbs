@@ -10,6 +10,9 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import VueAxios from 'vue-axios'
 
 
+// App.component('vue-phone-number-input', VuePhoneNumberInput);
+
+
 
 window.$ = window.jQuery = require('jquery');
 

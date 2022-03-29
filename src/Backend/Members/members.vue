@@ -414,19 +414,8 @@
 								/>
 
 								<label for="psw-repeat"><b>Mobile Number</b></label>
-								<phone-mask-input
-									type="tel"
-									placeholder="254723456789"
-									name="mobilenumber"
-									autoDetectCountry
-									showFlag
-									@onValidate="onValidate"
-									wrapperClass="wrraper-example"
-									inputClass="input-example"
-									flagClass="flag-example"
-									required
-									v-model="addmembers.phone_no"
-								/>
+								<vue-tel-input v-model="addmembers.phone_no"></vue-tel-input>
+									
 								<p>
 									Phone number:
 									<b>{{ addmembers.phone_no }}</b>
@@ -1379,14 +1368,17 @@
 	// import "datatables.net-dt/css/jquery.dataTables.min.css";
 	import $ from "jquery";
 	import { mapGetters, mapActions } from "vuex";
-	import PhoneMaskInput from "vue-phone-mask-input";
+	// import PhoneMaskInput from "vue-phone-mask-input";
+	// import "vue-phone-mask-input/dist/vue-phone-mask-input.min.css";
+	import VueTelInput from 'vue-tel-input';
 
 	export default {
 		name: "MemberDetails",
 		components: {
 			financeNav,
 			headerDashboard,
-			PhoneMaskInput,
+			// PhoneMaskInput,
+			VueTelInput,
 		},
 
 		data() {

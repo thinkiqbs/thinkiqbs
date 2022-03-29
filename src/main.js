@@ -9,6 +9,13 @@ import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
 
+import VueTelInput from 'vue-tel-input';
+import 'vue-tel-input/dist/vue-tel-input.css';
+
+
+
+
+
 
 // App.component('vue-phone-number-input', VuePhoneNumberInput);
 
@@ -47,4 +54,4 @@ router.beforeEach((to, from, next) => {
 
 
 
-createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).mount("#app");
+createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput).mount("#app");

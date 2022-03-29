@@ -593,23 +593,8 @@ export default {
   },
   mounted() {
     this.admincheck = this.allorg;
-    axios
-      .get("/api/private-scoped", {
-        params: { email: this.email },
-      })
-      .then((res) => {
-        this.is_member = res.data.count;
-        // $("#example").DataTable();
-      });
-    axios
-      .get("/users/api/v1/CustomUser/", {
-        params: { email: this.email },
-      })
-      .then((res) => {
-        this.is_staff = res.data.results;
-        console.log(this.is_staff);
-        // $("#example").DataTable();
-      });
+    
+   
   },
 
   methods: {

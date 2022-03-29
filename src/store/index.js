@@ -73,7 +73,7 @@ export default createStore({
         userLogout(context) {
             if (context.getters.loggedIn) {
                 context.commit("destroyToken");
-                // localStorage.removeItem("user-token"); // if the request fails, remove any possible user token if possible
+                localStorage.removeItem("user-token"); // if the request fails, remove any possible user token if possible
             }
         },
         userLogin(context, usercredentials) {

@@ -371,9 +371,9 @@ const routes = [{
         path: "/dashboards",
         name: "dashboards",
         component: dashboards,
-        // meta: {
-        //     requiresLogin: true,
-        // },
+        meta: {
+            requiresLogin: true,
+        },
     },
     {
         path: "/sysadmin",

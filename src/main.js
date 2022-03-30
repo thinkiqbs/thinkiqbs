@@ -9,8 +9,14 @@ import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
 
+
+
 import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
+
+const globalOptions = {
+    mode: 'auto',
+};
 
 
 
@@ -41,17 +47,16 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/";
 // axios.defaults.baseURL = "http://www.writingpropel.com:8000/";
 
 router.beforeEach((to, from, next) => {
-    if (to.matched.some((record) => record.meta.requiresLogin)) {
-        if (!store.getters.loggedIn) {
-            next({ name: "login" });
-        } else {
-            next();
-        }
-    } else {
-        next();
-    }
-});
+            if (to.matched.some((record) => record.meta.requiresLogin)) {
+                if (!store.getters.loggedIn) {
+                    next({ name: "login" });
+                } else {
+                    next();
+                }
+            } else {
+                next();
+            }
+            // });; // Define default global options here (optional)
 
 
-
-createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput).mount("#app");
+            createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput).use(VueTelInput, globalOptions).mount("#app");

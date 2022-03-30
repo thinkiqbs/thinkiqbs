@@ -70,7 +70,7 @@
           </router-link>
         </li>
 
-        <div class="accordion" id="accordionPanelsStayOpenExample">
+        <!-- <div class="accordion" id="accordionPanelsStayOpenExample"> -->
           <!-- <li class="nav-item" v-if="token != null">
 						<router-link :to="{ name: 'depositschedule' }" exact
 							>Deposits
@@ -133,7 +133,7 @@
               Accounting
             </router-link>
           </li>
-        </div>
+        <!-- </div> -->
 
         <li class="nav-item" v-if="token != null">
           <router-link to="/ReportArea" exact

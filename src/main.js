@@ -9,7 +9,7 @@ import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
 
-import VueTelInput from 'vue-tel- input';
+import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
 
 

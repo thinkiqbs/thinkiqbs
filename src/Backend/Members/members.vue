@@ -435,11 +435,11 @@
 
 								<div class="form-row">
 									<div class="col">
-										<label for="psw-repeat"><b>Employer</b></label>
+										<label for="psw-repeat"><b>Employer(area)</b></label>
 
-										<select class="form-control" v-model="selectedemployer">
+										<select class="form-control .choices" v-model="selectedemployer">
 											<option
-												v-for="option in employerselect"
+												v-for="option in employers"
 												v-bind:value="option.id"
 												:key="option.id"
 											>
@@ -447,7 +447,33 @@
 											</option>
 										</select>
 										<span>selected: {{ selectedemployer }}</span>
+										{{this.employers}}
 									</div>
+									<div class="col">
+										<label for="psw-repeat"><b>Department</b></label>
+										<select
+											class="form-select"
+											aria-label="Default select example"
+											v-model="addmembers.Department"
+										>
+											<option selected>Open this select menu</option>
+											<option
+												v-for="option in employers"
+												v-bind:value="option.id"
+												:key="option.id"
+											>
+												{{ option.employer_name }}
+											</option>
+										</select>
+
+										<!-- <input
+											type="text"
+											id="form6Example4"
+											class="form-control"
+											v-model="addmembers.Department"
+										/> -->
+									</div>
+
 									<div class="col">
 										<label for="psw-repeat"><b>Department</b></label>
 										<select
@@ -1283,7 +1309,7 @@
 
 										<select class="form-control" v-model="selectedemployer">
 											<option
-												v-for="option in employer"
+												v-for="option in employers"
 												v-bind:value="option.id"
 												:key="option.id"
 											>
@@ -1291,6 +1317,7 @@
 											</option>
 										</select>
 										<span>selected: {{ selectedemployer }}</span>
+										{{this.employers}}{{this.companyid3}}
 									</div>
 									<div class="col">
 										<label class="form-label" for="form6Example4"
@@ -1467,6 +1494,7 @@
 			this.fetchPaymentsmade();
 			this.fetchPaymentsreceived();
 			this.initDatatable();
+			this.fetchEmployerinfo();
 		},
 
 		mounted() {
@@ -1539,6 +1567,7 @@
 				"fetchBanktransactions",
 				"fetchPaymentsmade",
 				"fetchPaymentsreceived",
+				"fetchEmployerinfo",
 			]),
 
 			//create a dropdown menu trigger
@@ -1987,7 +2016,8 @@
 				"allUser",
 				"allBanktransactions",
 				"allPaymentsmade",
-				"allPaymentsreceived"]
+				"allPaymentsreceived",
+				"allEmployer"]
 			),
 
 			token() {
@@ -2223,6 +2253,13 @@
 				return this.$store.getters.allOrg.filter(
 					(item) => item.admin_email == this.email
 				)[0].company_id;
+			},
+
+
+			employers(){
+
+				
+				return this.$store.getters.allEmployer
 			},
 
 			members1: function() {

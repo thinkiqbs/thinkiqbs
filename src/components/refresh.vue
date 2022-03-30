@@ -24,6 +24,7 @@ export default {
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
       "fetchExpenses",
+      "fetchEmployerinfo"
     ]),
     refresh() {
       Promise.all([
@@ -39,6 +40,7 @@ export default {
         this.$store.dispatch("fetchOrg"),
         this.$store.dispatch("fetchGl"),
         this.$store.dispatch("fetchExpenses"),
+        this.$store.dispatch("fetchEmployerinfo")
       ]).finally(() => {
         // using "finally" so even if there are errors, it stops "loading"
         this.loading = false;

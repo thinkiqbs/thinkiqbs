@@ -414,6 +414,7 @@
 								/>
 
 								<label for="psw-repeat"><b>Mobile Number</b></label>
+								
 								<vue-tel-input v-model="addmembers.phone_no"></vue-tel-input>
 
 									
@@ -1378,7 +1379,8 @@
 	import { mapGetters, mapActions } from "vuex";
 	// import PhoneMaskInput from "vue-phone-mask-input";
 	// import "vue-phone-mask-input/dist/vue-phone-mask-input.min.css";
-	import VueTelInput from 'vue-tel-input';
+
+
 
 	export default {
 		name: "MemberDetails",
@@ -1386,7 +1388,7 @@
 			financeNav,
 			headerDashboard,
 			// PhoneMaskInput,
-			VueTelInput,
+
 		},
 
 		data() {

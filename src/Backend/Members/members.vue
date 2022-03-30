@@ -435,9 +435,12 @@
 
 								<div class="form-row">
 									<div class="col">
-										<label for="psw-repeat"><b>Employer(area)</b></label>
+										<label for="psw-repeat"><b>Select Employer</b></label>
 
 										<select class="form-control .choices" v-model="selectedemployer">
+
+
+											
 											<option
 												v-for="option in employers"
 												v-bind:value="option.id"
@@ -447,32 +450,9 @@
 											</option>
 										</select>
 										<span>selected: {{ selectedemployer }}</span>
-										{{this.employers}}
+										{{this.email}}
 									</div>
-									<div class="col">
-										<label for="psw-repeat"><b>Department</b></label>
-										<select
-											class="form-select"
-											aria-label="Default select example"
-											v-model="addmembers.Department"
-										>
-											<option selected>Open this select menu</option>
-											<option
-												v-for="option in employers"
-												v-bind:value="option.id"
-												:key="option.id"
-											>
-												{{ option.employer_name }}
-											</option>
-										</select>
-
-										<!-- <input
-											type="text"
-											id="form6Example4"
-											class="form-control"
-											v-model="addmembers.Department"
-										/> -->
-									</div>
+									
 
 									<div class="col">
 										<label for="psw-repeat"><b>Department</b></label>
@@ -2024,7 +2004,7 @@
 				return this.$store.state.accessToken;
 			},
 			email() {
-				return this.$store.state.username;
+				return this.$store.state.email;
 			},
 			user_id() {
 				return this.$store.state.id;
@@ -2259,7 +2239,9 @@
 			employers(){
 
 				
-				return this.$store.getters.allEmployer
+				return this.$store.getters.allEmployer.filter(
+					(item) => item.company_id == this.companyid3
+				);
 			},
 
 			members1: function() {

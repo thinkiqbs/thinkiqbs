@@ -1664,12 +1664,23 @@
 							this.fetchPaymentsmade();
 							this.fetchPaymentsreceived();
 							// this.$router.go(); // Refreshes page
+							this.$swal({
+								title: "Success",
+								text: "Member Has Been Added",
+								icon: "success",
+								button: "OK",
+							});
 
-							this.message = "New Member has been saved";
 						})
 						.catch((error) => {
-							// this.error = (e);
-							alert(JSON.stringify(error.response.data));
+
+							this.$swal({
+								title: "Error",
+								text: JSON.stringify(error.response.data),
+								icon: "error",
+								button: "OK",
+							});
+							// alert(JSON.stringify(error.response.data));
 						}),
 				]);
 			},

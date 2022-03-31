@@ -10,6 +10,36 @@
         <div class="card">
           <div class="card-header">
             <div class="form-group row">
+              <div class="col-form-label col-lg-2">Get Started </div>
+              <div class="col-lg-10">
+                <div class="row">
+                  <div class="text-center col-lg-3">
+                    <div class="imgDIV">
+                      <button class="btn btn-success" @click="getstarted">Load Inital Data </button>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 font-xs">
+                    <div class="text-muted">
+                      This logo will appear on transactions and email
+                      notifications.
+                    </div>
+                    <small class="form-text"
+                      >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
+                      of 1MB.</small
+                    >
+                    <a
+                      class="d-block"
+                      href="#"
+                      data-ember-action=""
+                      data-ember-action-1043="1043"
+                      >Remove Logo</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
               <div class="col-form-label col-lg-2">Your Logo</div>
               <div class="col-lg-10">
                 <div class="row">
@@ -687,6 +717,17 @@ export default {
   },
 
   methods: {
+
+    getstarted(){
+
+      this.loadcoa();
+
+    },
+    loadcoa(){
+
+      console.log("working")
+
+    },
     getorg(organization) {
       this.loading = true;
       axios

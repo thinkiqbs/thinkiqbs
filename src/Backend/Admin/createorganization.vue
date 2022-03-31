@@ -276,6 +276,42 @@ export default {
   methods: {
     ...mapActions(["fetchMembers", "fetchOrg", "fetchUserinfo"]),
 
+
+
+  getstarted(){
+
+    this.loadcoa();
+
+  },
+
+  loadcoa (){
+
+    let payload = {
+  product_id_list: ['pid1234', 'pid1235']
+};
+
+axios({
+  url: 'https://test.com/api/get_product',
+  method: 'post',
+  data: payload
+})
+.then(function (response) {
+    // your action after success
+    console.log(response);
+})
+.catch(function (error) {
+   // your action on error success
+    console.log(error);
+});
+
+  },
+
+
+
+
+
+
+
     onFileChange(e) {
       let files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;

@@ -725,7 +725,117 @@ export default {
     },
     loadcoa(){
 
-      console.log("working")
+      const payloadcoa = [
+        {
+            "id": 1,
+            "account_type": "1000000",
+            "accounttype_description": "ASSETS",
+            "maincode": "1112000",
+            "maincode_description": "EARNING ASSETS",
+            "parent_account": "1100000",
+            "accountname": "Medium Term Loans",
+            "description": "Medium Term Loans",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": "92002031331112000",
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        {
+            "id": 2,
+            "account_type": "2000000",
+            "accounttype_description": "LIABILITIES",
+            "maincode": "2111000",
+            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+            "parent_account": "2100000",
+            "accountname": "Members Deposits - Bosa",
+            "description": "Members Deposits - Bosa",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": "92002031332111000",
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        {
+            "id": 3,
+            "account_type": "5000000",
+            "accounttype_description": "EXPENSES",
+            "maincode": "5351000",
+            "maincode_description": "OPERATING EXPENSES",
+            "parent_account": "5300000",
+            "accountname": "Travel Expenses",
+            "description": "Travel Expenses",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": "92002031335351000",
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        {
+            "id": 4,
+            "account_type": "1000000",
+            "accounttype_description": "ASSETS",
+            "maincode": "1212000",
+            "maincode_description": "NON-EARNING ASSETS",
+            "parent_account": "1200000",
+            "accountname": "Bank Current Accounts",
+            "description": "Bank Current Accounts",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": "92002031331212000",
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        {
+            "id": 5,
+            "account_type": "4000000",
+            "accounttype_description": "INCOME",
+            "maincode": "4110000",
+            "maincode_description": "INTEREST INCOME",
+            "parent_account": "4100000",
+            "accountname": "Income from Loans",
+            "description": "Income from Loans",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": "92002031334110000",
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        }
+    ]
+
+    this.importcoa = payloadcoa;
+
+
+    for (var i = 0; i < this.importcoa.length; i++) {
+
+        axios
+          .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    
+
+
+      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     },
     getorg(organization) {

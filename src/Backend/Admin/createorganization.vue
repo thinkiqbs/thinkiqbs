@@ -36,7 +36,7 @@
                   class="form-control"
                   placeholder="PVT-XXXXXXXX"
                   v-model="org.Business_registration_no"
-                  autofill= Disabled 
+                  autocomplete="off"
                 />
               </div>
             </div>
@@ -299,12 +299,12 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
-          organization_name: this.org.business_name,
+          organization_name: this.org.name,
           industry: this.org.industry,
           business_location: this.org.business_location,
           business_address: this.org.business_address,
           Postal_address: this.org.Postal_address,
-          company_email: this.org.company_email,
+          company_email: this.email,
           business_city: this.org.business_city,
           base_currency: this.org.base_currency,
           fiscal_year: this.org.fiscal_year,
@@ -320,7 +320,7 @@ export default {
         })
         .then((response) => {
           response;
-          alert("saved");
+          this.$swal("success")
           // this.$router.push("/members");
           window.location.reload();
           window.location.replace("/members");

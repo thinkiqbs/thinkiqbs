@@ -84,21 +84,7 @@
                         type="text"
                         v-model="currentorg.industry"
                       />
-                      <i class="zf-ac-toggler">
-                        <svg
-                          version="1.1"
-                          id="Layer_1"
-                          xmlns="http://www.w3.org/2000/svg"
-                          x="0"
-                          y="0"
-                          viewBox="0 0 512 512"
-                          xml:space="preserve"
-                        >
-                          <path
-                            d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                          ></path>
-                        </svg>
-                      </i>
+                      
                     </div>
                     <!---->
                   </div>
@@ -119,21 +105,7 @@
                       }}</span
                       ><!---->
                       <div>
-                        <i class="zf-ac-toggler">
-                          <svg
-                            version="1.1"
-                            id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg"
-                            x="0"
-                            y="0"
-                            viewBox="0 0 512 512"
-                            xml:space="preserve"
-                          >
-                            <path
-                              d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                            ></path>
-                          </svg>
-                        </i>
+                        
                       </div>
                     </span>
                   </div>
@@ -309,21 +281,7 @@
                         <span data-integrity-label="">January - December</span
                         ><!---->
                         <div>
-                          <i class="zf-ac-toggler">
-                            <svg
-                              version="1.1"
-                              id="Layer_1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 512 512"
-                              xml:space="preserve"
-                            >
-                              <path
-                                d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                              ></path>
-                            </svg>
-                          </i>
+                          
                         </div>
                       </span>
                     </div>
@@ -339,21 +297,7 @@
                         <span data-integrity-label="">1</span
                         ><!---->
                         <div>
-                          <i class="zf-ac-toggler">
-                            <svg
-                              version="1.1"
-                              id="Layer_1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 512 512"
-                              xml:space="preserve"
-                            >
-                              <path
-                                d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                              ></path>
-                            </svg>
-                          </i>
+                          
                         </div>
                       </span>
                     </div>
@@ -410,19 +354,7 @@
                         ><!---->
                         <div>
                           <i class="zf-ac-toggler">
-                            <svg
-                              version="1.1"
-                              id="Layer_1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 512 512"
-                              xml:space="preserve"
-                            >
-                              <path
-                                d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                              ></path>
-                            </svg>
+                            
                           </i>
                         </div>
                       </span>
@@ -444,21 +376,7 @@
                           (Africa/Nairobi)</span
                         ><!---->
                         <div>
-                          <i class="zf-ac-toggler">
-                            <svg
-                              version="1.1"
-                              id="Layer_1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 512 512"
-                              xml:space="preserve"
-                            >
-                              <path
-                                d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                              ></path>
-                            </svg>
-                          </i>
+                          
                         </div>
                       </span>
                     </div>
@@ -476,23 +394,7 @@
                         <span data-integrity-label=""
                           >dd MMM yyyy [ 06 Nov 2021 ]</span
                         ><!---->
-                        <div>
-                          <i class="zf-ac-toggler">
-                            <svg
-                              version="1.1"
-                              id="Layer_1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              x="0"
-                              y="0"
-                              viewBox="0 0 512 512"
-                              xml:space="preserve"
-                            >
-                              <path
-                                d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                              ></path>
-                            </svg>
-                          </i>
-                        </div>
+                        
                       </span>
                     </div>
 
@@ -529,21 +431,7 @@
                                   type="text"
                                   v-model="currentorg.Business_registration_no"
                                 />
-                                <i class="zf-ac-toggler">
-                                  <svg
-                                    version="1.1"
-                                    id="Layer_1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    x="0"
-                                    y="0"
-                                    viewBox="0 0 512 512"
-                                    xml:space="preserve"
-                                  >
-                                    <path
-                                      d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                                    ></path>
-                                  </svg>
-                                </i>
+                                
                               </div>
                               <!---->
                             </div>
@@ -584,21 +472,7 @@
                                   type="text"
                                   v-model="currentorg.tax_id"
                                 />
-                                <i class="zf-ac-toggler">
-                                  <svg
-                                    version="1.1"
-                                    id="Layer_1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    x="0"
-                                    y="0"
-                                    viewBox="0 0 512 512"
-                                    xml:space="preserve"
-                                  >
-                                    <path
-                                      d="M493.9 227.8c-21.4-21-56.1-21.1-77.6-.3L256 382.9 95.7 227.6c-21.5-20.8-56.3-20.7-77.6.3-10.6 10.4-15.9 24-15.9 37.7 0 13.8 5.4 27.5 16.2 38l199 192.9c21.4 20.7 55.9 20.7 77.3 0l199-192.9c21.4-20.9 21.6-54.8.2-75.8z"
-                                    ></path>
-                                  </svg>
-                                </i>
+                               
                               </div>
                               <!---->
                             </div>

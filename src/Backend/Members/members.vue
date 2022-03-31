@@ -558,7 +558,7 @@
 						<button
 							type="button"
 							class="close"
-							data-bs-modal="modal"
+							data-bs-dismiss="modal"
 							aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>
@@ -869,7 +869,7 @@
 						<button
 							type="button"
 							class="close"
-							bs-="modal"
+							data-bs-dismiss="modal"
 							aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>
@@ -1175,7 +1175,7 @@
 						<button
 							type="button"
 							class="close"
-							bs-="modal"
+							data-bs-dismiss="modal"
 							aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>

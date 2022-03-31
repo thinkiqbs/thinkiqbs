@@ -603,10 +603,10 @@ export default {
     
 
     gotocreateorganization() {
-      this.$router.push({
-    name:"CreateOrg",
+      this.$router.push(
+        'createorganization'
 
-      });
+      );
     },
 
     countadmin: function () {

@@ -4,67 +4,8 @@
     <div class="col-2"></div>
     <div class="card-body col-6 -mt-30">
       <form>
-        <h6 class="heading-small text-muted mb-4">User information</h6>
-        <div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label class="form-control-label" for="input-username"
-                  >Organization username
-                </label>
-                <input
-                  type="email"
-                  id="input-organization-email"
-                  class="form-control"
-                  placeholder="Organization email"
-                  v-model="org.company_email"
-                />
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label class="form-control-label" for="input-email"
-                  >Email address</label
-                >
-                <input
-                  type="email"
-                  id="input-email"
-                  class="form-control"
-                  placeholder="jesse@example.com"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label class="form-control-label" for="input-first-name"
-                  >First name</label
-                >
-                <input
-                  type="text"
-                  id="input-first-name"
-                  class="form-control"
-                  placeholder="First name"
-                />
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="form-group">
-                <label class="form-control-label" for="input-last-name"
-                  >Last name</label
-                >
-                <input
-                  type="text"
-                  id="input-last-name"
-                  class="form-control"
-                  placeholder="Last name"
-                  value="Jesse"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+
+        
         <hr class="horizontal dark my-4" />
         <!-- Address -->
         <h6 class="heading-small text-muted mb-4">Organization information</h6>
@@ -77,24 +18,25 @@
                 </label>
                 <input
                   type="text"
-                  id="input-city"
+                  id="Organization_Name"
                   class="form-control"
                   placeholder="Sacco or MFI name"
-                  v-model="org.organization_name"
+                  v-model="org.name"
                 />
               </div>
             </div>
             <div class="col-lg-4">
               <div class="form-group">
                 <label class="form-control-label" for="input-country"
-                  >Business Registration Number</label
+                  >Company Registration Number</label
                 >
                 <input
                   type="text"
-                  id="Business-Registration"
+                  id="Registration-Number"
                   class="form-control"
                   placeholder="PVT-XXXXXXXX"
                   v-model="org.Business_registration_no"
+                  autofill= Disabled 
                 />
               </div>
             </div>
@@ -122,7 +64,7 @@
                 <input
                   id="input-address"
                   class="form-control"
-                  placeholder="Home Address"
+                  placeholder=" Address"
                   type="text"
                   v-model="org.business_address"
                 />
@@ -253,8 +195,9 @@
             placeholder="A few words about you ..."
             data-gramm="false"
             wt-ignore-input="true"
+            disabled
           >
-A beautiful Dashboard for Bootstrap 5.</textarea
+</textarea
           >
         </div>
 
@@ -266,8 +209,9 @@ A beautiful Dashboard for Bootstrap 5.</textarea
             placeholder="A few words about you ..."
             data-gramm="false"
             wt-ignore-input="true"
+            disabled
           >
-A beautiful Dashboard for Bootstrap 5.</textarea
+</textarea
           >
         </div>
         <div class="form-group">
@@ -278,8 +222,9 @@ A beautiful Dashboard for Bootstrap 5.</textarea
             placeholder="A few words about you ..."
             data-gramm="false"
             wt-ignore-input="true"
+            disabled
           >
-A beautiful Dashboard for Bootstrap 5.</textarea
+</textarea
           >
         </div>
       </form>
@@ -306,6 +251,7 @@ import axios from "axios";
 import { mapGetters, mapActions, mapState } from "vuex";
 
 export default {
+  
       name:"CreateOrg",
 
   data() {
@@ -353,7 +299,7 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
-          organization_name: this.org.organization_name,
+          organization_name: this.org.business_name,
           industry: this.org.industry,
           business_location: this.org.business_location,
           business_address: this.org.business_address,

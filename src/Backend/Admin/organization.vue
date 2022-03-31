@@ -701,6 +701,12 @@ export default {
       return p + this.pathid + "/";
     },
 
+    companyid3() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.admin_email == this.email
+      )[0].company_id;
+    },
+
     currentDate() {
       const current = new Date();
       // const date = `${current.getDate()}/${current.getMonth() +
@@ -721,6 +727,7 @@ export default {
     getstarted(){
 
       this.loadcoa();
+      this.loadSavingType();
 
     },
     loadcoa(){
@@ -738,7 +745,7 @@ export default {
             "currency": "KES",
             "financial_statement": "BS",
             "company_id": this.companyid3,
-            "key": "92002031331112000",
+            "key": this.companyid3 + '1112000',
             "debit": 0,
             "credit": 0,
             "balance": 0,
@@ -756,7 +763,7 @@ export default {
             "currency": "KES",
             "financial_statement": "BS",
             "company_id": this.companyid3,
-            "key": "92002031332111000",
+            "key":  this.companyid3 + '2111000',
             "debit": 0,
             "credit": 0,
             "balance": 0,
@@ -792,7 +799,7 @@ export default {
             "currency": "KES",
             "financial_statement": "BS",
             "company_id": this.companyid3,
-            "key": "92002031331212000",
+            "key": this.companyid3 + '1212000',
             "debit": 0,
             "credit": 0,
             "balance": 0,
@@ -810,7 +817,7 @@ export default {
             "currency": "KES",
             "financial_statement": "BS",
             "company_id": this.companyid3,
-            "key": "92002031334110000",
+            "key": this.companyid3 + '4110000',
             "debit": 0,
             "credit": 0,
             "balance": 0,
@@ -838,6 +845,184 @@ export default {
       // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     },
+
+    loadSavingType(){
+
+      const payloadcoa = [
+        {
+            "id": 1,
+            "email": "nmbajah@gmail.com",
+            "saving_type": "Normal Savings",
+            "saving_description": "Regular deposits towards your account in accordance with Sacco Savings and loans policies.",
+            "minimum_contribution": 2000,
+            "interest_rate": 12,
+            "maximum_saving_term": 1000,
+            "accountcode": "2111000",
+            "Account_type": "2000000",
+            "accountype_description": "LIABILITIES",
+            "maincode": "2111000",
+            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+            "accountname": "Members Deposits - Bosa",
+            "memberkey": "21110001",
+            "company_id": "9200203133",
+            "security": true,
+            "organizationprofile": 1
+        },
+        
+    ]
+
+    this.importcoa = payloadcoa;
+
+
+    for (var i = 0; i < this.importcoa.length; i++) {
+
+        axios
+          .post("/sys_config/api/v1/SavingsType/", this.importcoa[i])
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    
+
+
+      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+
+    },
+
+    loadLoanType(){
+
+      const payloadcoa = [
+        {
+            "id": 1,
+            "account_type": "1000000",
+            "accounttype_description": "ASSETS",
+            "maincode": "1112000",
+            "maincode_description": "EARNING ASSETS",
+            "parent_account": "1100000",
+            "accountname": "Medium Term Loans",
+            "description": "Medium Term Loans",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": this.companyid3 + '1112000',
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        {
+            "id": 2,
+            "account_type": "2000000",
+            "accounttype_description": "LIABILITIES",
+            "maincode": "2111000",
+            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+            "parent_account": "2100000",
+            "accountname": "Members Deposits - Bosa",
+            "description": "Members Deposits - Bosa",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key":  this.companyid3 + '2111000',
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        
+    ]
+
+    this.importcoa = payloadcoa;
+
+
+    for (var i = 0; i < this.importcoa.length; i++) {
+
+        axios
+          .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    
+
+
+      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+
+    },
+
+    loadBankType(){
+
+      const payloadcoa = [
+        {
+            "id": 1,
+            "account_type": "1000000",
+            "accounttype_description": "ASSETS",
+            "maincode": "1112000",
+            "maincode_description": "EARNING ASSETS",
+            "parent_account": "1100000",
+            "accountname": "Medium Term Loans",
+            "description": "Medium Term Loans",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": this.companyid3 + '1112000',
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        {
+            "id": 2,
+            "account_type": "2000000",
+            "accounttype_description": "LIABILITIES",
+            "maincode": "2111000",
+            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+            "parent_account": "2100000",
+            "accountname": "Members Deposits - Bosa",
+            "description": "Members Deposits - Bosa",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key":  this.companyid3 + '2111000',
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
+        },
+        
+    ]
+
+    this.importcoa = payloadcoa;
+
+
+    for (var i = 0; i < this.importcoa.length; i++) {
+
+        axios
+          .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    
+
+
+      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+
+    },
+
+
+
+
+
+
     getorg(organization) {
       this.loading = true;
       axios

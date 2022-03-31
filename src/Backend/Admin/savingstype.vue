@@ -743,7 +743,7 @@ export default {
           maincode_description: this.glchanged.maincode_description,
           parent_account: this.glchanged.parent_account,
           accountname: this.glchanged.accountname,
-          memberkey: this.sel,
+          memberkey: this.companyid3 + this.selected,
           company_id: this.companyid3,
           security: this.addsavingtype.security,
         })

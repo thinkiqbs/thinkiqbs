@@ -863,7 +863,7 @@ export default {
             "maincode": "2111000",
             "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
             "accountname": "Members Deposits - Bosa",
-            "memberkey": "21110001",
+            "memberkey": this.companyid3 +'2111000',
             "company_id": "9200203133",
             "security": true,
             "organizationprofile": 1

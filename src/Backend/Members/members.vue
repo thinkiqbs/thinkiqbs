@@ -110,8 +110,8 @@
 															<a
 																href="#"
 																class="btn btn-outline-secondary"
-																data-toggle="modal"
-																data-target="#Contribution"
+																data-bs-toggle="modal"
+																data-bs-target="#Contribution"
 																@click="newcontribution(member)"
 															>
 																<i
@@ -125,8 +125,8 @@
 																@click="change(member)"
 																type="button"
 																class="btn btn-outline-secondary"
-																data-toggle="modal"
-																data-target="#loan"
+																data-bs-toggle="modal"
+																data-bs-target="#loan"
 															>
 																<svg
 																	xmlns="http://www.w3.org/2000/svg"
@@ -147,8 +147,8 @@
 																@click="change(product)"
 																type="button"
 																class="btn btn-outline-secondary"
-																data-toggle="modal"
-																data-target="#"
+																data-bs-toggle="modal"
+																data-bs-target="#"
 																disabled
 															>
 																Inactive
@@ -160,8 +160,8 @@
 													<button
 														type="button"
 														class="btn btn-outline-secondary"
-														data-toggle="modal"
-														data-target="#MemberInfo"
+														data-bs-toggle="modal"
+														data-bs-target="#MemberInfo"
 														@click="change(member)"
 													>
 														<svg
@@ -340,7 +340,7 @@
 											style="margin-right:16px"
 											type="button"
 											class="btn btn-secondary"
-											data-dismiss="modal"
+											data-bs-dismiss="modal"
 										>
 											Cancel
 										</button>
@@ -558,7 +558,7 @@
 						<button
 							type="button"
 							class="close"
-							data-dismiss="modal"
+							data-bs-modal="modal"
 							aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>
@@ -836,7 +836,7 @@
 						<button
 							type="button"
 							class="btn btn-secondary"
-							data-dismiss="modal"
+							bs-="modal"
 						>
 							Close
 						</button>
@@ -869,7 +869,7 @@
 						<button
 							type="button"
 							class="close"
-							data-dismiss="modal"
+							bs-="modal"
 							aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>
@@ -1147,7 +1147,7 @@
 						<button
 							type="button"
 							class="btn btn-secondary"
-							data-dismiss="modal"
+							bs-="modal"
 						>
 							Close
 						</button>
@@ -1175,7 +1175,7 @@
 						<button
 							type="button"
 							class="close"
-							data-dismiss="modal"
+							bs-="modal"
 							aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>
@@ -1209,7 +1209,7 @@
 						<button
 							type="button"
 							class="btn btn-secondary"
-							data-dismiss="modal"
+							bs-="modal"
 						>
 							Close
 						</button>
@@ -1341,7 +1341,7 @@
 											style="margin-right:16px"
 											type="button"
 											class="btn btn-secondary"
-											data-dismiss="modal"
+											bs-="modal"
 										>
 											Cancel
 										</button>

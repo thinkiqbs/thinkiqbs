@@ -12,10 +12,17 @@
         </div>
         <div class="section mt-2 mb-5 p-3">
             <form v-on:submit.prevent>
+              <div class="form-group basic">
+                    <div class="input-wrapper">
+                        <label class="label" for="email1">ID Number </label>
+                        <input type="text" class="form-control" id="idnumber" placeholder="Your National ID " v-model="username">
+                        <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                    </div>
+                </div>
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label" for="email1">E-mail</label>
-                        <input type="email" class="form-control" id="email1" placeholder="Your e-mail" v-model="username">
+                        <input type="email" class="form-control" id="email1" placeholder="Your e-mail" v-model="email">
                         <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
                     </div>
                 </div>

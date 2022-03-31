@@ -33,6 +33,8 @@ export default createStore({
         // company_id: null,
         id: null,
         email: null,
+        username: null,
+
         first_name: null,
         last_name: null,
         APIData: "",
@@ -40,11 +42,12 @@ export default createStore({
     },
     mutations: {
         updateStorage(
-            state, { access, refresh, email, id, first_name, last_name }
+            state, { access, refresh, email, username, id, first_name, last_name }
         ) {
             state.accessToken = access;
             state.refreshToken = refresh;
             state.id = id;
+            state.username = username;
             state.email = email;
             state.first_name = first_name;
             state.last_name = last_name;
@@ -83,12 +86,13 @@ export default createStore({
                         username: usercredentials.username,
                         password: usercredentials.password,
                     })
-                    .then((response) => {
+                    .then((response, ) => {
                         context.commit("updateStorage", {
                             access: response.data.access_token,
                             refresh: response.data.refresh_token,
                             id: response.data.user.pk,
-                            email: usercredentials.username,
+                            username: usercredentials.username,
+                            email: response.data.user.email,
                             first_name: response.data.user.first_name,
                             last_name: response.data.user.last_name,
                         });

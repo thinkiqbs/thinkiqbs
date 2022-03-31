@@ -655,6 +655,13 @@ export default {
     email() {
       return this.$store.state.email;
     },
+     username() {
+      return this.$store.state.username;
+    },
+
+    id(){
+      return this.$store.state.id;
+    },
     first_name() {
       return this.$store.state.first_name;
     },

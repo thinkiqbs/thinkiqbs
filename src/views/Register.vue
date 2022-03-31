@@ -48,20 +48,20 @@
 
                     <div class="form-floating mb-3">
                       <input
-                        type="email"
+                        type="text"
                         class="form-control"
                         id="username"
                         placeholder="ID Number"
                         v-model="username"
                       />
-                      <label for="floatingInput">User Email</label>
+                      <label for="floatingInput">National ID</label>
                     </div>
                     <div class="form-floating mb-3">
                       <input
                         type="email"
                         class="form-control"
                         id="username"
-                        placeholder="jonathan@gmail.com"
+                        placeholder="myemail@gmail.com"
                         v-model="email"
                       />
                       <label for="floatingInput">Email</label>
@@ -188,7 +188,7 @@ export default {
     },
     userRegister() {
       axios
-        .post(`dj-rest-auth/registration/`, {
+        .post("/dj-rest-auth/registration/", {
           // names: '',
           first_name: this.first_name,
           last_name: this.last_name,

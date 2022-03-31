@@ -381,7 +381,7 @@
                 <p>Please fill in this form to create an new member account.</p>
                 <hr />
 
-				<div class="form-group row">
+                <div class="form-group row">
                   <div class="col">
                     <div class="form-group boxed">
                       <div class="input-wrapper">
@@ -440,7 +440,7 @@
                   <div class="col-2">
                     <div class="form-group boxed">
                       <div class="input-wrapper">
-                        <label class="label" for="name5">Interest </label>
+                        <label class="label" for="name5">Mobile Number </label>
                         <input
                           type="tel"
                           placeholder="254723456789"
@@ -456,45 +456,6 @@
                   </div>
                 </div>
 
-
-
-                <label for="email"><b>Email</b></label>
-                <input
-                  type="text"
-                  placeholder="Enter Email"
-                  name="email"
-                  required
-                  v-model="addmembers.email"
-                />
-
-                <label for="psw"><b>First Name</b></label>
-                <input
-                  type="text"
-                  placeholder="Enter Password"
-                  name="firstname"
-                  required
-                  v-model="addmembers.first_name"
-                />
-
-                <label for="lastname"><b>Last Name</b></label>
-                <input
-                  type="text"
-                  placeholder="Lastname"
-                  name="lastname"
-                  required
-                  v-model="addmembers.last_name"
-                />
-
-                <label for="psw-repeat"><b>Mobile Number</b></label>
-
-                <VueTelInput v-model="addmembers.phone_no"></VueTelInput>
-
-                <p>
-                  Phone number:
-                  <b>{{ addmembers.phone_no }}</b>
-                </p>
-                <p class="json">{{ valid }}</p>
-
                 <label for="address"><b>Address</b></label>
                 <input
                   type="tel"
@@ -504,69 +465,87 @@
                   v-model="addmembers.Address"
                 />
 
-                //create a select dropdown
-
-                <div class="form-row">
+                <div class="form-group row">
                   <div class="col">
-                    <label for="psw-repeat"><b>Select Employer</b></label>
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Employer </label>
+                        <select
+                          class="form-control .choices"
+                          v-model="selectedemployer"
+                        >
+                          <option
+                            v-for="option in employers"
+                            v-bind:value="option.id"
+                            :key="option.id"
+                          >
+                            {{ option.employer_name }}
+                          </option>
 
-                    <select
-                      class="form-control .choices"
-                      v-model="selectedemployer"
-                    >
-                      <option
-                        v-for="option in employers"
-                        v-bind:value="option.id"
-                        :key="option.id"
-                      >
-                        {{ option.employer_name }}
-                      </option>
-                    </select>
-                    <span>selected: {{ selectedemployer }}</span>
-                    {{ this.email }}
+                          
+                        </select>
+
+                        <span>selected: {{ selectedemployer }}</span>
+
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+					  <button
+                            class="fas fa-plus btn btn-success"
+                            @click="addNewemployer"
+                          >
+                            New
+                          </button>
+                    </div>
                   </div>
 
                   <div class="col">
-                    <label for="psw-repeat"><b>Department</b></label>
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                      v-model="addmembers.Department"
-                    >
-                      <option selected>Open this select menu</option>
-                      <option value="1">Finance</option>
-                      <option value="2">Sales</option>
-                      <option value="3">Marketing</option>
-                      <option value="3">HR</option>
-                      <option value="3">Admin</option>
-                      <option value="3">House Keeping</option>
-                    </select>
-
-                    <!-- <input
-											type="text"
-											id="form6Example4"
-											class="form-control"
-											v-model="addmembers.Department"
-										/> -->
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Department</label>
+                        <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          v-model="addmembers.Department"
+                        >
+                          <option selected>Open this select menu</option>
+                          <option value="1">Finance</option>
+                          <option value="2">Sales</option>
+                          <option value="3">Marketing</option>
+                          <option value="3">HR</option>
+                          <option value="3">Admin</option>
+                          <option value="3">House Keeping</option>
+                        </select>
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="col">
-                    <label class="form-label" for="form6Example7"
-                      ><b>County</b></label
-                    >
-                    <select
-                      class="form-control .choices"
-                      v-model="selectedcounty"
-                    >
-                      <option
-                        v-for="option in county"
-                        v-bind:value="option.county"
-                        :key="option.id"
-                      >
-                        {{ option.county }}
-                      </option>
-                    </select>
-                    <span>selected: {{ selectedcounty }}</span>
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">County </label>
+                        <select
+                          class="form-control .choices"
+                          v-model="selectedcounty"
+                        >
+                          <option
+                            v-for="option in county"
+                            v-bind:value="option.county"
+                            :key="option.id"
+                          >
+                            {{ option.county }}
+                          </option>
+                        </select>
+                        <span>selected: {{ selectedcounty }}</span>
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -1315,8 +1294,6 @@
                 <p>Please fill in this form to create an new member account.</p>
                 <hr />
 
-                
-
                 <!--  -->
                 <label for="email"><b>Email</b></label>
                 <input
@@ -1623,6 +1600,41 @@ export default {
       "fetchPaymentsreceived",
       "fetchEmployerinfo",
     ]),
+
+    addNewemployer() {
+      this.$swal({
+        title: "Add New Employer",
+        input: "text",
+        showCancelButton: true,
+        confirmButtonText: "Add",
+        showLoaderOnConfirm: true,
+        preConfirm: (email) => {
+          return axios
+            .post("/sys_config/api/v1/EmployerProfile/", {
+              company_id: this.companyid3,
+              Employer: email,
+            })
+            .then(function (response) {
+              console.log(response);
+              return response.data.results;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+        allowOutsideClick: () => !this.swal.isLoading(),
+      }).then((result) => {
+        if (result.value) {
+          this.$swal({
+            type: "success",
+            title: "Employer Added",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          this.fetchEmployerinfo();
+        }
+      });
+    },
 
     //create a dropdown menu trigger
     initDatatable() {

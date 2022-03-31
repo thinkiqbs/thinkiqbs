@@ -415,7 +415,7 @@
 
 								<label for="psw-repeat"><b>Mobile Number</b></label>
 								
-								<vue-tel-input v-model="addmembers.phone_no"></vue-tel-input>
+								<VueTelInput v-model="addmembers.phone_no"></VueTelInput>
 
 									
 								<p>
@@ -1382,11 +1382,13 @@
 
 
 
+
 	export default {
 		name: "MemberDetails",
 		components: {
 			financeNav,
 			headerDashboard,
+
 			// PhoneMaskInput,
 
 		},
@@ -1679,7 +1681,7 @@
 
 				Promise.all([
 					axios
-						.post(`dj-rest-auth/registration/`, {
+						.post("/dj-rest-auth/registration/", {
 							// names: '',
 							username: this.member.email,
 							email: this.member.email,
@@ -1698,13 +1700,7 @@
 							response;
 							this.fetchMembers(this.selected);
 
-							this.fetchDocuments();
-							this.fetchDeposits();
-							this.fetchLoans();
-							this.fetchBanktransactions();
-							this.fetchPaymentsmade();
-							this.fetchPaymentsreceived();
-							this.$router.push({ name: "members" });
+							
 						})
 						.catch((e) => {
 							alert(JSON.stringify(e.response.data));

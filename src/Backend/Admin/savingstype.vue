@@ -171,194 +171,202 @@
         </div>
 
         <div class="section full mt-1">
-            <div class="section-title">Loan Product</div>
-            <div class="wide-block pt-2 pb-2">
-                <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalBasic">Open Modal</a>
-            </div>
+          <div class="section-title">Loan Product</div>
+          <div class="wide-block pt-2 pb-2">
+            <a
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#ModalBasic"
+              >Open Modal</a
+            >
+          </div>
         </div>
 
         <!-- Modal Basic -->
-        <div class="modal fade modalbox" id="Newroles" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">New Loan Product</h5>
-                        <a href="javascript:;" data-bs-dismiss="modal">Close</a>
-                    </div>
-                    <div class="modal-body">
-<!-- New -->
+        <div
+          class="modal fade modalbox"
+          id="Newroles"
+          tabindex="-1"
+          role="dialog"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">New Loan Product</h5>
+                <a href="javascript:;" data-bs-dismiss="modal">Close</a>
+              </div>
+              <div class="modal-body">
+                <!-- New -->
 
- <form class="modal-content">
+                <form class="modal-content">
                   <div class="container">
                     <h2>Saving Product</h2>
                     <p>Please fill in this form to create an saving product.</p>
                     <hr />
 
                     <div class="form-group row">
-                      <div class=col-4-auto>
-
+                      <div class="col-4-auto">
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                              <label class="label" for="name5">Loan Product Name</label>
-                              <input
-                      type="text"
-                      class="form-control"
-                      id="inputsavingtype"
-                      v-model="addsavingtype.saving_type"
-                      autocomplete="off"
-                    />
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                          </div>
-                        </div>
-                        </div>
-                     
-                    
-
-                      <div class=col-8>
-
-                        <div class="form-group boxed">
-                          <div class="input-wrapper">
-                              <label class="label" for="name5">Description</label>
-                              <textarea
-                      type="textarea"
-                      class="form-control"
-                      id="inputEmail4"
-                      v-model="addsavingtype.saving_description"
-                    />
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                            <label class="label" for="name5"
+                              >Loan Product Name</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inputsavingtype"
+                              v-model="addsavingtype.saving_type"
+                              autocomplete="off"
+                            />
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
                           </div>
                         </div>
                       </div>
-                     
-                    </div>
-                    <div class="form-group row">
-                      <div class=col>
 
+                      <div class="col-8">
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                              <label class="label" for="name5">GL Account </label>
-                              <select
-                      v-model="selected"
-                      class="form-control"
-                      @change="glchange"
-                    >
-                      <option
-                        v-for="option in allGls1"
-                        v-bind:value="option.maincode"
-                        :key="option.id"
-                      >
-                        {{ option.accountname }}
-                        <!-- {{ option.id }}
+                            <label class="label" for="name5">Description</label>
+                            <textarea
+                              type="textarea"
+                              class="form-control"
+                              id="inputEmail4"
+                              v-model="addsavingtype.saving_description"
+                            />
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col">
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="name5">GL Account </label>
+                            <select
+                              v-model="selected"
+                              class="form-control"
+                              @change="glchange"
+                            >
+                              <option
+                                v-for="option in allGls1"
+                                v-bind:value="option.maincode"
+                                :key="option.id"
+                              >
+                                {{ option.accountname }}
+                                <!-- {{ option.id }}
 													{{option.interest_rate}} -->
-                      </option>
-                    </select>
-                    <span>Selected: {{ selected }}</span>
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                          </div>
-                        </div>
-                        </div>
-                     
-                    
-
-                      <div class=col>
-
-                        <div class="form-group boxed">
-                          <div class="input-wrapper">
-                              <label class="label" for="name5">Minimum Contribution</label>
-                               <input
-                          type="number"
-                          class="form-control"
-                          id="inputCity"
-                          v-model="addsavingtype.minimum_contribution"
-                        />
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                              </option>
+                            </select>
+                            <span>Selected: {{ selected }}</span>
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
                           </div>
                         </div>
                       </div>
 
-                      <div class=col>
-
+                      <div class="col">
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                              <label class="label" for="name5">Maximum Term</label>
-                              <input
-                          type="text"
-                          class="form-control"
-                          id="inputZip"
-                          v-model="addsavingtype.maximum_saving_term"
-                        />
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                            <label class="label" for="name5"
+                              >Minimum Contribution</label
+                            >
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="inputCity"
+                              v-model="addsavingtype.minimum_contribution"
+                            />
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
                           </div>
                         </div>
                       </div>
-                      <div class=col-2>
 
+                      <div class="col">
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                              <label class="label" for="name5">Interest </label>
-                             <input
-                          type="number"
-                          class="form-control"
-                          id="inputZip"
-                          v-model="addsavingtype.interest_rate"
-                        />
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                            <label class="label" for="name5"
+                              >Maximum Term</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inputZip"
+                              v-model="addsavingtype.maximum_saving_term"
+                            />
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
                           </div>
                         </div>
                       </div>
-                      
-                     
+                      <div class="col-2">
+                        <div class="form-group boxed">
+                          <div class="input-wrapper">
+                            <label class="label" for="name5">Interest </label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="inputZip"
+                              v-model="addsavingtype.interest_rate"
+                            />
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="form-group row">
-                       <div class=col-1>
-
+                      <div class="col-1">
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                             <label>
-                          Allow Security.
+                            <label>
+                              Allow Security.
 
-                          <input
-                            type="checkbox"
-                            id="chkbox1"
-                            runat="server"
-                            v-model="addsavingtype.security"
-                          />
-                        </label>
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                              <input
+                                type="checkbox"
+                                id="chkbox1"
+                                runat="server"
+                                v-model="addsavingtype.security"
+                              />
+                            </label>
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
                           </div>
                         </div>
                       </div>
-                      
-                     <div class=col>
 
+                      <div class="col">
                         <div class="form-group boxed">
                           <div class="input-wrapper">
-                               <div class="wide-block ">
-                <a class="btn btn-primary" @click="addrecords" >Save Product</a>
-            </div>
-                              <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                            <div class="wide-block">
+                              <a class="btn btn-primary" @click="addrecords"
+                                >Save Product</a
+                              >
+                            </div>
+                            <i class="clear-input"
+                              ><ion-icon name="close-circle"></ion-icon
+                            ></i>
                           </div>
                         </div>
                       </div>
-                     
-                      
-                     
                     </div>
-                    </div>
+                  </div>
+                </form>
 
-                    
-                    
-                    </form>
-
-
-
-
-<!-- end of  -->
-
-                      
-                    </div>
-                </div>
+                <!-- end of  -->
+              </div>
             </div>
+          </div>
         </div>
         <!-- Modal to Add new Roles  -->
         <div
@@ -676,15 +684,12 @@ export default {
         this.orgprofile1id = res.data.results[0].id;
         this.companyid = res.data.results[0].company_id;
 
-        axios
-          .get("/sys_config/api/v1/SavingsType/")
-          .then((res) => {
-            this.tableData = res.data.results.filter(
-              (orgprofile1) => orgprofile1.company_id == this.companyid3
-            );
-            this.initDatatable();
-          })
-
+        axios.get("/sys_config/api/v1/SavingsType/").then((res) => {
+          this.tableData = res.data.results.filter(
+            (orgprofile1) => orgprofile1.company_id == this.companyid3
+          );
+          this.initDatatable();
+        });
       });
     axios
       .get("/finance/api/v1/Chartofaccounts/", {

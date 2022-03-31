@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Thu Mar 31 2022 17:24:01 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/organization.vue
+* src/Backend/Admin/savingstype.vue
+
+
+Created files:
+* .autogit/logs/log-31-2-2022-16-53-49.txt
+
+
+Deleted files:
+
+
+Renamed files:

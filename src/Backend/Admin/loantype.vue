@@ -97,8 +97,8 @@
               </div>
               <div class="modal-body">
                 <form>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
+                  <div class="row">
+                    <div class="form-group col">
                       <label for="inputEmail4">Email</label>
                       <input
                         type="text"
@@ -107,7 +107,7 @@
                         id="inputEmail4"
                       />
                     </div>
-                    <div class="form-group col-md-9">
+                    <div class="form-group col">
                       <label for="inputEmail4"> Description</label>
                       <input
                         type="textarea"
@@ -117,7 +117,9 @@
                       />
                     </div>
                   </div>
-                  <div class="form-group col-md-6">
+
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
                     <label for="inputEmail4">Maximum Guarantors</label>
                     <input
                       type="text"
@@ -155,6 +157,10 @@
                         v-model="loanstype.maximum_loan_term"
                       />
                     </div>
+
+                  </div>
+
+                  
                   </div>
                 </form>
               </div>
@@ -454,7 +460,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group col-md-2">
+                  <div class="form-group col">
                     <label for="inputEmail4">X Ratio</label>
                     <select
                       class="form-control"
@@ -475,7 +481,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group col-md-fs-2">
+                  <div class="form-group col">
                     <label for="inputState">Calculation</label>
                     <select
                       id="inputState"
@@ -492,7 +498,7 @@
                     </select>
                   </div>
 
-                  <div class="form-group col-md-2">
+                  <div class="form-group col">
                     <label for="inputState">Maximum Term</label>
                     <select
                       id="inputState"

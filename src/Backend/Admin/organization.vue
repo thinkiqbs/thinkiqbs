@@ -728,6 +728,7 @@ export default {
 
       this.loadcoa();
       this.loadSavingType();
+      this.loadLoanType();
 
     },
     loadcoa(){
@@ -897,40 +898,21 @@ export default {
       const payloadcoa = [
         {
             "id": 1,
-            "account_type": "1000000",
-            "accounttype_description": "ASSETS",
-            "maincode": "1112000",
-            "maincode_description": "EARNING ASSETS",
-            "parent_account": "1100000",
-            "accountname": "Medium Term Loans",
-            "description": "Medium Term Loans",
-            "currency": "KES",
-            "financial_statement": "BS",
+            "organizationprofile": 1,
+            "email": "nmbajah@gmail.com",
+            "loan_type": "Normal Loan",
+            "loan_description": "Purpose. The Normal Loan is designed to address the development needs such as Building homes, Large scale farming, Motor vehicle purchase among others. Features.",
+            "no_of_guarantors": 6,
+            "interest_rate": 12,
+            "interest_calc_mode": "Declining Balance",
+            "maximum_loan_term": 36,
+            "gl_account": "1112000",
             "company_id": this.companyid3,
-            "key": this.companyid3 + '1112000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
-        },
-        {
-            "id": 2,
-            "account_type": "2000000",
-            "accounttype_description": "LIABILITIES",
-            "maincode": "2111000",
-            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
-            "parent_account": "2100000",
-            "accountname": "Members Deposits - Bosa",
-            "description": "Members Deposits - Bosa",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key":  this.companyid3 + '2111000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
-        },
+            "xratio": "0.50",
+            "active": true,
+            "income_account": "4110000"
+
+        }
         
     ]
 
@@ -940,7 +922,7 @@ export default {
     for (var i = 0; i < this.importcoa.length; i++) {
 
         axios
-          .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
+          .post("/sys_config/api/v1/LoanType/", this.importcoa[i])
           .then((response) => {
             console.log(response);
           })

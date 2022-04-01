@@ -79,10 +79,7 @@ export default {
   },
 
   created() {},
-  computed(){
-    return 
 
-  },
   methods: {
     login() {
       this.$store

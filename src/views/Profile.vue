@@ -2811,7 +2811,9 @@ export default {
   },
 
   mounted() {
-    this.fetchMembers();
+
+    
+
   },
 
   created() {
@@ -3204,6 +3206,21 @@ export default {
       "allLoans",
       "allGuarantors"]
     ),
+     memberdetails() {
+      var x = 1;
+      var y = 2;
+      if (this.allmember != "") {
+        return x;
+      } else {
+        return y;
+      }
+    },
+
+    allmember() {
+      return this.$store.getters.allMembers.filter(
+        (item) => item.email == this.email
+      );
+    },
 
     token() {
       return this.$store.state.accessToken;

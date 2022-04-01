@@ -1698,6 +1698,7 @@
 							first_name: this.addmembers.first_name,
 							last_name: this.addmembers.last_name,
 							phone_no: this.addmembers.phone_no,
+							national_id: this.addmembers.national_id,
 							bankname: this.addmembers.bankname,
 							email: this.addmembers.email,
 							username: this.addmembers.email,
@@ -1750,7 +1751,7 @@
 					axios
 						.post("/dj-rest-auth/registration/", {
 							// names: '',
-							username: this.member.email,
+							username: this.member.national_id,
 							email: this.member.email,
 							is_staff: "False",
 							// first
@@ -1778,6 +1779,7 @@
 							first_name: this.member.first_name,
 							last_name: this.member.last_name,
 							phone_no: this.member.phone_no,
+							national_id: this.member.national_id,
 							bankname: this.member.bankname,
 							email: this.member.email,
 							username: this.member.email,

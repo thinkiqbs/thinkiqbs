@@ -1263,8 +1263,20 @@ export default {
           .post("/members/api/v1/MemberDetails/", member)
           .then((response) => {
             console.log(response);
+            this.$swal({
+              title: "Success",
+              text: "Member added successfully",
+              icon: "success",
+              button: "Ok",
+            });
           })
           .catch((error) => {
+            this.$swal({
+              title: "Error",
+              text: "Member not added",
+              icon: "error",
+              button: "Ok",
+            });
             console.log(error);
           });
       }
@@ -1296,10 +1308,22 @@ export default {
           })
           .then((response) => {
             this.accounttype1.push(response.data);
+            this.$swal({
+              title: "Success",
+              text: "Account type added successfully",
+              icon: "success",
+              button: "Ok",
+            });
           })
           .catch((error) => {
             console.log(error);
             this.accounttype1.push("error", error.data);
+            this.$swal({
+              title: "Error",
+              text: "Account type not added",
+              icon: "error",
+              button: "Ok",
+            });
           });
 
         console.log(i, acctype);
@@ -1325,10 +1349,22 @@ export default {
           })
           .then((response) => {
             this.accounttype1.push(response.data);
+            this.$swal({
+              title: "Success",
+              text: "Member added successfully",
+              icon: "success",
+              button: "Ok",
+            });
           })
           .catch((error) => {
             console.log(error);
             this.accounttype1.push("error", error.data);
+            this.$swal({
+              title: "Error",
+              text: "Member not added",
+              icon: "error",
+              button: "Ok",
+            });
           });
 
         console.log(i, acctype);
@@ -1352,9 +1388,21 @@ export default {
           })
           .then((response) => {
             this.mainaccounts1.push(response.data);
+            this.$swal({
+              title: "Success",
+              text: "Main account added successfully",
+              icon: "success",
+              button: "Ok",
+            });
           })
           .catch((error) => {
             console.log(error);
+            this.$swal({
+              title: "Error",
+              text: "Main account not added",
+              icon: "error",
+              button: "Ok",
+            });
           });
 
         console.log(i, acctype);
@@ -1383,8 +1431,20 @@ export default {
           })
           .then((response) => {
             this.subaccounts.push(response.data);
+            this.$swal({
+              title: "Success",
+              text: "Sub account added successfully",
+              icon: "success",
+              button: "Ok",
+            });
           })
           .catch((error) => {
+            this.$swal({
+              title: "Error",
+              text: "Sub account not added",
+              icon: "error",
+              button: "Ok",
+            });
             console.log(error);
           });
 
@@ -1409,9 +1469,21 @@ export default {
           })
           .then((response) => {
             this.counties.push(response.data);
+            this.$swal({
+              title: "Success",
+              text: "County added successfully",
+              icon: "success",
+              button: "Ok",
+            });
           })
           .catch((error) => {
             console.log(error);
+            this.$swal({
+              title: "Error",
+              text: "County not added",
+              icon: "error",
+              button: "Ok",
+            });
           });
 
         console.log(i, acctype);

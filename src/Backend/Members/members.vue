@@ -363,6 +363,9 @@
           <div class="modal-body">
             <form class="modal-content" @submit.prevent="onSubmit">
               <div class="container">
+              <div class="card">
+
+
                 <h2>New Member</h2>
                 <p>Please fill in this form to create an new member account.</p>
                 <hr />
@@ -573,6 +576,7 @@
                     ></span>
                   </div>
                 </div>
+              </div>
               </div>
             </form>
           </div>

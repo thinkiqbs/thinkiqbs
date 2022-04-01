@@ -2,7 +2,7 @@
     <Navbar></Navbar>
 
   <div class="container-fluid">
-      <!-- <error /> -->
+      <error />
       <div class="">
         <router-view />
       </div>

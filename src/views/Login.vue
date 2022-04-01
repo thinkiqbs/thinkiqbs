@@ -6,11 +6,11 @@
   <div class="card">
 
     <div class="card-body">
-      <div class="section mt-2 text-center">
+      <div class="section mt-8 text-center">
             <h1>Log in</h1>
             <h4>Fill the form to log in</h4>
         </div>
-        <div class="section mt-2 mb-5 p-3">
+        <div class="section mt-5 mb-5 p-3">
             <form v-on:submit.prevent>
               <div class="form-group basic">
                     <div class="input-wrapper">
@@ -19,13 +19,13 @@
                         <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
                     </div>
                 </div>
-                <div class="form-group basic">
+                <!-- <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label" for="email1">E-mail</label>
                         <input type="email" class="form-control" id="email1" placeholder="Your e-mail" v-model="email">
                         <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group basic">
                     <div class="input-wrapper">
@@ -79,6 +79,10 @@ export default {
   },
 
   created() {},
+  computed(){
+    return 
+
+  },
   methods: {
     login() {
       this.$store
@@ -87,6 +91,7 @@ export default {
           password: this.password,
         })
         .then(() => {
+          
           this.$router.push({ name: "profile" });
         })
         .catch((err) => {

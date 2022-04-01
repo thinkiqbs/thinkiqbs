@@ -24,8 +24,8 @@
                       class="btn btn-success"
                       style="float: right"
                       type="button"
-                      data-toggle="modal"
-                      data-target="#Newpayments"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Newpayments"
                       @click="loadstore"
                     >
                       New Payment Receipts
@@ -68,8 +68,8 @@
                             class="fas fa-edit"
                             type="button"
                             @click="changepymtrcvd(item)"
-                            data-toggle="modal"
-                            data-target="#Editpayment"
+                            data-bs-toggle="modal"
+                            data-bs-target="#Editpayment"
                             style="color: MediumSeaGreen"
                           ></i>
 
@@ -78,8 +78,8 @@
                               type="button"
                               @click="changepymtrcvd(item)"
                               class="btn btn-warning"
-                              data-toggle="modal"
-                              data-target="#AllocateReceipts"
+                              data-bs-toggle="modal"
+                              data-bs-target="#AllocateReceipts"
                             >
                               Allocate
                             </button>
@@ -125,7 +125,7 @@
 
         <!-- Modal -->
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="exampleModal"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -260,7 +260,7 @@
         </div>
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Editpayment"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -275,7 +275,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -415,7 +415,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -432,7 +432,7 @@
         </div>
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="AllocateReceipts"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -447,7 +447,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -696,7 +696,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -709,7 +709,7 @@
         <!-- New Modal for employer allocations this will focus on control accounts -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="AllocateReceiptsEmployer"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -724,7 +724,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1007,7 +1007,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1020,7 +1020,7 @@
         <!--  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Newpayments"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -1037,7 +1037,7 @@
                 <button
                   type="button"
                   class="btn-close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
@@ -1430,7 +1430,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1450,7 +1450,7 @@
         <!-- /form layouts -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="postcheque"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
@@ -1466,7 +1466,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1574,7 +1574,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -2554,7 +2554,7 @@ export default {
       );
       console.log(optemployer);
 
-      this.employeremail = optemployer.employer_email;
+      // this.employeremail = optemployer.employer_email;
       // this.selecteddepositscontrol = opt.deposits_control;
       // this.selectedaccmaster = opt.gl_account;
       // this.employerid = opt.id;

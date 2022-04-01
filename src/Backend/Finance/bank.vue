@@ -308,6 +308,14 @@
                                   >Process Dividend</span
                                 >
                               </a>
+                              <a
+                                class="dropdown-item d-flex align-items-center justify-content-between"
+                                @click="gotopayments"
+                              >
+                                <span class="fs-sm fw-medium"
+                                  >View All Payments</span
+                                >
+                              </a>
                             </div>
                             <div
                               role="separator"
@@ -358,6 +366,14 @@
                               >
                                 <span class="fs-sm fw-medium"
                                   >Income Interest</span
+                                >
+                              </a>
+                               <a
+                                class="dropdown-item d-flex align-items-center justify-content-between"
+                                @click="gotoreceipts"
+                              >
+                                <span class="fs-sm fw-medium"
+                                  >View All Receipts</span
                                 >
                               </a>
                             </div>
@@ -2996,6 +3012,19 @@ export default {
       "fetchEmployerinfo",
       "fetchGl",
     ]),
+
+    gotoreceipts(){
+
+      this.$router.push('receipts')
+
+    },
+
+      gotopayments(){
+
+      this.$router.push('payments')
+
+    },
+
 
     saveExpense() {
       axios

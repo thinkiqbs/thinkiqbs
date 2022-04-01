@@ -1780,16 +1780,7 @@
 			// 		$("#walla").DataTable();
 			// 	});
 
-			axios
-				.get("/sys_config/api/v1/EmployerProfile/", {
-					params: { employer_email: this.email },
-				})
-				.then((res) => {
-					this.employerprofile = res.data.results.filter(
-						(e) => e.company_id == this.companyid
-					);
-					this.initDatatable();
-				});
+			
 
 			axios
 				.get("/loans/api/v1/loans/", {
@@ -2333,13 +2324,7 @@
 				);
 			},
 
-			employeridno: function() {
-				return this.$store.getters.allEmployer.filter(
-					(item) =>
-						item.company_id == this.companyid3 &&
-						item.employer_email == this.paymentrcvd.customer
-				)[0].id;
-			},
+	
 
 			alldeposits: function() {
 				return this.$store.getters.allDeposits.filter(
@@ -2565,7 +2550,7 @@
 				);
 				console.log(optemployer);
 
-				this.employeremail = optemployer.employer_email;
+				// this.employeremail = optemployer.employer_email;
 				// this.selecteddepositscontrol = opt.deposits_control;
 				// this.selectedaccmaster = opt.gl_account;
 				// this.employerid = opt.id;

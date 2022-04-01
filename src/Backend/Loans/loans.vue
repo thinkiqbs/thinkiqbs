@@ -106,8 +106,8 @@
                             <button
                               type="button"
                               class="btn btn-success"
-                              data-toggle="modal"
-                              data-target="#topup"
+                              data-bs-toggle="modal"
+                              data-bs-target="#topup"
                               @click="Getloanbyid(item)"
                             >
                               <i class="fas fa-shopping-basket"></i>
@@ -129,8 +129,8 @@
                                 <button
                                   type="button"
                                   class="btn btn-primary btn-sm"
-                                  data-toggle="modal"
-                                  data-target="#guarantorAdd"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#guarantorAdd"
                                   @click="Getloanbyid(item)"
                                 >
                                   Pending Gurantor
@@ -140,8 +140,8 @@
                                 <button
                                   type="button"
                                   class="btn btn-warning"
-                                  data-toggle="modal"
-                                  data-target="#ApprovalTemplate"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#ApprovalTemplate"
                                   @click="Getloanbyid(item)"
                                 >
                                   Approval {{ item.Status }} needed
@@ -191,7 +191,7 @@
                 <button
                   type="button"
                   class="btn-close"
-                  data-bs-dismiss="modal"
+                  data-bs-bs-dissmiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
@@ -207,7 +207,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dismiss="modal"
+                  data-bs-bs-dissmiss="modal"
                 >
                   Close
                 </button>
@@ -240,7 +240,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dissmiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -608,7 +608,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dissmiss="modal"
                 >
                   Close
                 </button>
@@ -645,7 +645,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dissmiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -878,8 +878,8 @@
                             <button
                               type="button"
                               class="btn btn-outline-secondary col-lg-4"
-                              data-toggle="modal"
-                              data-target="#loan"
+                              data-bs-toggle="modal"
+                              data-bs-target="#loan"
                               @click="submitapproveloan"
                             >
                               Submit Loan for Approval
@@ -1033,7 +1033,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dissmiss="modal"
                 >
                   Close
                 </button>
@@ -1064,7 +1064,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dissmiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1484,7 +1484,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dissmiss="modal"
                 >
                   Close
                 </button>

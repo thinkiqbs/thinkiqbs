@@ -30,7 +30,32 @@
                     >
                       New Payment Receipts
                     </button>
+
+                     <button
+                      class="btn btn-success"
+                      style="float: right"
+                      type="button"
+                     
+                      @click="gotobank"
+                    >
+                      View Bank Bank Transactions 
+                    </button>
+
+                    <a
+                    class="
+                      dropdown-item
+                      d-flex
+                      align-items-center
+                      justify-content-between
+                    "
+                    style="float: right"
+                    @click="gotobank"
+                  >
+                    <span class="fs-sm fw-medium">View Bank Bank Transactions </span>
+                  </a>
                   </div>
+
+                  
 
                   <table
                     class="table-bordeless table-hover table-striped walla"
@@ -135,24 +160,43 @@
             <div class="modal-content">
               <div class="modal-header">
                 <div
-                  class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
+                  class="
+                    dropdown-menu dropdown-menu-md dropdown-menu-end
+                    p-0
+                    border-0
+                  "
                   aria-labelledby="page-header-user-dropdown"
                   style=""
                 >
                   <div class="p-2">
                     <router-link
                       :to="{ path: 'expenses' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Expenses</router-link
                     >
                     <router-link
                       :to="{ path: 'purchasing' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Purchasing</router-link
                     >
                     <router-link
                       :to="{ path: 'sales' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Sales</router-link
                     >
 
@@ -160,7 +204,12 @@
 
                     <router-link
                       :to="{ path: 'journals' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Journals</router-link
                     >
 
@@ -168,17 +217,32 @@
 
                     <router-link
                       :to="{ path: 'documents' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Documents</router-link
                     >
                     <router-link
                       :to="{ path: 'budgets' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Budgets
                     </router-link>
                     <router-link
                       :to="{ path: 'taxes' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Taxes</router-link
                     >
 
@@ -186,7 +250,12 @@
 
                     <router-link
                       :to="{ path: 'accounting' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      class="
+                        dropdown-item
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                      "
                       >Genral Ledger</router-link
                     >
                   </div>
@@ -498,7 +567,13 @@
                             </div>
                             <input
                               id="ember1179"
-                              class="ember-text-field text-left ember-view form-control text-left"
+                              class="
+                                ember-text-field
+                                text-left
+                                ember-view
+                                form-control
+                                text-left
+                              "
                               type="text"
                               v-model="paymentrcvd.amount"
                               disabled
@@ -511,7 +586,13 @@
                           >
                             <div
                               id="ember1181"
-                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                              class="
+                                d-none
+                                popover
+                                bs-popover-bottom
+                                ember-view
+                                pop-over-div
+                              "
                             >
                               <!---->
                             </div>
@@ -525,7 +606,12 @@
                         <div class="col-lg-2">
                           <input
                             id="ember1182"
-                            class="ember-text-field text-left ember-view form-control"
+                            class="
+                              ember-text-field
+                              text-left
+                              ember-view
+                              form-control
+                            "
                             type="text"
                             disabled
                           />
@@ -542,7 +628,13 @@
                       <input
                         placeholder="dd MMM yyyy"
                         id="ember1183"
-                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
+                        class="
+                          ember-text-field
+                          zf-date-picker
+                          date-picker
+                          ember-view
+                          form-control
+                        "
                         type="date"
                         v-model="paymentrcvd.transactiondate"
                         disabled
@@ -771,7 +863,13 @@
                             </div>
                             <input
                               id="ember1179"
-                              class="ember-text-field text-left ember-view form-control text-left"
+                              class="
+                                ember-text-field
+                                text-left
+                                ember-view
+                                form-control
+                                text-left
+                              "
                               type="text"
                               v-model="paymentrcvd.amount"
                             />
@@ -783,7 +881,13 @@
                           >
                             <div
                               id="ember1181"
-                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                              class="
+                                d-none
+                                popover
+                                bs-popover-bottom
+                                ember-view
+                                pop-over-div
+                              "
                             >
                               <!---->
                             </div>
@@ -795,7 +899,12 @@
                         <div class="col-lg-2">
                           <input
                             id="ember1182"
-                            class="ember-text-field text-left ember-view form-control"
+                            class="
+                              ember-text-field
+                              text-left
+                              ember-view
+                              form-control
+                            "
                             type="text"
                           />
                         </div>
@@ -821,7 +930,13 @@
                       <input
                         placeholder="dd MMM yyyy"
                         id="ember1183"
-                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
+                        class="
+                          ember-text-field
+                          zf-date-picker
+                          date-picker
+                          ember-view
+                          form-control
+                        "
                         type="date"
                         v-model="paymentrcvd.transactiondate"
                       />
@@ -843,7 +958,13 @@
                           </div>
                           <input
                             id="ember1179"
-                            class="ember-text-field text-left ember-view form-control text-left"
+                            class="
+                              ember-text-field
+                              text-left
+                              ember-view
+                              form-control
+                              text-left
+                            "
                             type="text"
                             v-model="this.totalEmployerDeposits"
                           />
@@ -855,7 +976,13 @@
                         >
                           <div
                             id="ember1181"
-                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                            class="
+                              d-none
+                              popover
+                              bs-popover-bottom
+                              ember-view
+                              pop-over-div
+                            "
                           >
                             <!---->
                           </div>
@@ -899,7 +1026,13 @@
                           </div>
                           <input
                             id="ember1179"
-                            class="ember-text-field text-left ember-view form-control text-left"
+                            class="
+                              ember-text-field
+                              text-left
+                              ember-view
+                              form-control
+                              text-left
+                            "
                             type="text"
                             v-model="this.totalEmployerLoans"
                           />
@@ -911,7 +1044,13 @@
                         >
                           <div
                             id="ember1181"
-                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                            class="
+                              d-none
+                              popover
+                              bs-popover-bottom
+                              ember-view
+                              pop-over-div
+                            "
                           >
                             <!---->
                           </div>
@@ -957,7 +1096,13 @@
                           </div>
                           <input
                             id="ember1179"
-                            class="ember-text-field text-left ember-view form-control text-left"
+                            class="
+                              ember-text-field
+                              text-left
+                              ember-view
+                              form-control
+                              text-left
+                            "
                             type="text"
                             v-model="this.totalEmployerInterest"
                           />
@@ -969,7 +1114,13 @@
                         >
                           <div
                             id="ember1181"
-                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                            class="
+                              d-none
+                              popover
+                              bs-popover-bottom
+                              ember-view
+                              pop-over-div
+                            "
                           >
                             <!---->
                           </div>
@@ -1251,7 +1402,13 @@
                             </div>
                             <input
                               id="ember1179"
-                              class="ember-text-field text-left ember-view form-control text-left"
+                              class="
+                                ember-text-field
+                                text-left
+                                ember-view
+                                form-control
+                                text-left
+                              "
                               type="text"
                               v-model="Payments.amount"
                             />
@@ -1263,7 +1420,13 @@
                           >
                             <div
                               id="ember1181"
-                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                              class="
+                                d-none
+                                popover
+                                bs-popover-bottom
+                                ember-view
+                                pop-over-div
+                              "
                             >
                               <!---->
                             </div>
@@ -1275,7 +1438,12 @@
                         <div class="col-lg-2">
                           <input
                             id="ember1182"
-                            class="ember-text-field text-left ember-view form-control"
+                            class="
+                              ember-text-field
+                              text-left
+                              ember-view
+                              form-control
+                            "
                             type="text"
                           />
                         </div>
@@ -1302,7 +1470,13 @@
                       <input
                         placeholder="dd MMM yyyy"
                         id="ember1183"
-                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
+                        class="
+                          ember-text-field
+                          zf-date-picker
+                          date-picker
+                          ember-view
+                          form-control
+                        "
                         type="date"
                       />
                       <!---->
@@ -1323,7 +1497,12 @@
                     </div>
                     <i
                       id="ember1185"
-                      class="tooltip-container form-control-help text-blue ember-view"
+                      class="
+                        tooltip-container
+                        form-control-help
+                        text-blue
+                        ember-view
+                      "
                     >
                     </i>
                   </div>
@@ -1597,7 +1776,6 @@
 </template>
 
 <script>
-
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
 
@@ -2476,6 +2654,10 @@ export default {
       "fetchEmployerinfo",
       "fetchGl",
     ]),
+
+    gotobank() {
+      this.$router.push("bank");
+    },
 
     loadstore() {
       this.fetchBanks();

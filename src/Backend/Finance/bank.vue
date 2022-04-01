@@ -445,7 +445,7 @@
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Loans Available to Pay</h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -493,8 +493,8 @@
                             class="btn btn-success"
                             data-bs-dismiss="alert"
                             aria-label="Close"
-                            data-toggle="modal"
-                            data-target="#postcheque"
+                            data-bs-toggle="modal"
+                            data-bs-target="#postcheque"
                           >
                             Post Cheque
                           </button>
@@ -536,7 +536,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -854,7 +854,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -994,7 +994,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1026,7 +1026,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1275,7 +1275,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1303,7 +1303,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1586,7 +1586,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1999,7 +1999,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -2107,7 +2107,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                 data-bs-dismiss="modal"
                 >
                   Close
                 </button>

@@ -729,6 +729,7 @@ export default {
       this.loadcoa();
       this.loadSavingType();
       this.loadLoanType();
+      this.loadBankType();
 
     },
     loadcoa(){
@@ -823,6 +824,24 @@ export default {
             "credit": 0,
             "balance": 0,
             "organizationprofile": 1
+        },
+        {
+            "id": 6,
+            "account_type": "1000000",
+            "accounttype_description": "ASSETS",
+            "maincode": "1211020",
+            "maincode_description": "NON-EARNING ASSETS",
+            "parent_account": "1200000",
+            "accountname": "Petty Cash Account",
+            "description": "Petty Cash Account",
+            "currency": "KES",
+            "financial_statement": "BS",
+            "company_id": this.companyid3,
+            "key": this.companyid3 + '1211020',
+            "debit": 0,
+            "credit": 0,
+            "balance": 0,
+            "organizationprofile": 1
         }
     ]
 
@@ -834,6 +853,19 @@ export default {
         axios
           .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
           .then((response) => {
+            this.$swal({
+              title: "Success",
+              text: "Chart of Accounts Imported Successfully",
+              type: "success",
+              showCancelButton: false,
+              confirmButtonColor: "#3085d6",
+              confirmButtonText: "Ok",
+              allowOutsideClick: false,
+            }).then((result) => {
+              if (result.value) {
+                this.getorg();
+              }
+            });
             console.log(response);
           })
           .catch((error) => {
@@ -880,6 +912,12 @@ export default {
         axios
           .post("/sys_config/api/v1/SavingsType/", this.importcoa[i])
           .then((response) => {
+            this.$swal({
+              type: "success",
+              title: "Saving Type Created Successfully",
+              showConfirmButton: false,
+              timer: 2000
+            });
             console.log(response);
           })
           .catch((error) => {
@@ -924,6 +962,12 @@ export default {
         axios
           .post("/sys_config/api/v1/LoanType/", this.importcoa[i])
           .then((response) => {
+            this.$swal({
+              type: "success",
+              title: "Loan Type Created Successfully",
+              showConfirmButton: false,
+              timer: 2000
+            });
             console.log(response);
           })
           .catch((error) => {
@@ -942,41 +986,32 @@ export default {
       const payloadcoa = [
         {
             "id": 1,
-            "account_type": "1000000",
-            "accounttype_description": "ASSETS",
-            "maincode": "1112000",
-            "maincode_description": "EARNING ASSETS",
-            "parent_account": "1100000",
-            "accountname": "Medium Term Loans",
-            "description": "Medium Term Loans",
+            "accountcode": "10001",
+            "accountname": "ThinkiQ Business Limited",
+            "bankaccounttype": "Savings",
+            "bankname": "NCBA Lunga Lunga",
+            "accountnumber": "2526615516",
+            "routingnumber": "10001",
             "currency": "KES",
-            "financial_statement": "BS",
+            "description": "To be used for everything",
+            "organizationprofile": 1,
+            "gl_account": "1212000",
             "company_id": this.companyid3,
-            "key": this.companyid3 + '1112000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
         },
         {
             "id": 2,
-            "account_type": "2000000",
-            "accounttype_description": "LIABILITIES",
-            "maincode": "2111000",
-            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
-            "parent_account": "2100000",
-            "accountname": "Members Deposits - Bosa",
-            "description": "Members Deposits - Bosa",
+            "accountcode": "00000",
+            "accountname": "Petty Cash Head Office",
+            "bankaccounttype": "Current",
+            "bankname": "Petty Cash",
+            "accountnumber": "100000000001",
+            "routingnumber": "100001",
             "currency": "KES",
-            "financial_statement": "BS",
+            "description": "Head Office Petty cash",
+            "organizationprofile": 1,
+            "gl_account": "1211020",
             "company_id": this.companyid3,
-            "key":  this.companyid3 + '2111000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
-        },
-        
+        }
     ]
 
     this.importcoa = payloadcoa;
@@ -985,8 +1020,14 @@ export default {
     for (var i = 0; i < this.importcoa.length; i++) {
 
         axios
-          .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
+          .post("/finance/api/v1/Bank/", this.importcoa[i])
           .then((response) => {
+            this.$swal({
+              title: "Bank Account Created",
+              text: "Bank Account Created Successfully",
+              type: "success",
+              confirmButtonText: "OK"
+            });
             console.log(response);
           })
           .catch((error) => {

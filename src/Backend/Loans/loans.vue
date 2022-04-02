@@ -9,7 +9,6 @@
       <div class="col-10">
         <div class="mb-11" style="max-width: 98rem">
           <headerDashboard></headerDashboard>
-          
 
           <div class="row">
             <div class="col-sm-12">
@@ -17,7 +16,14 @@
                 <div class="card-header">
                   <h4 class="card-title">All Loans</h4>
 
-                  
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    style="float: right"
+                    @click="currentbalance"
+                  >
+                    Update Status
+                  </button>
                 </div>
 
                 <div class="card-body">

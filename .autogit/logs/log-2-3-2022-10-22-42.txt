@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 02 2022 10:22:42 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/banksetup.vue
+* src/Backend/Finance/bank.vue
+
+
+Created files:
+* .autogit/logs/log-2-3-2022-9-51-31.txt
+
+
+Deleted files:
+
+
+Renamed files:

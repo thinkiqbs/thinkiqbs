@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 02 2022 06:20:07 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Loans/loans.vue
+* src/assets/css/style.css
+
+
+Created files:
+* .autogit/logs/log-2-3-2022-1-59-6.txt
+
+
+Deleted files:
+
+
+Renamed files:

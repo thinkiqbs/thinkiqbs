@@ -8,40 +8,16 @@
 
       <div class="col-10">
         <div class="mb-11" style="max-width: 98rem">
-          <!-- <div class="topnav-right col-2">
-						//Search by email.
-						<input
-							type="text"
-							class="form-control"
-							id="inlineFormInputGroupUsername"
-							placeholder="Search"
-							v-model="search"
-							@keyup.enter="filterloans"
-						/>
-					</div> -->
-
-          <!-- <button @click="$store.dispatch('all_loans')">+</button> -->
+          <headerDashboard></headerDashboard>
+          
 
           <div class="row">
-            <headerDashboard></headerDashboard>
-
-            <!-- {{ this.companyid3 }} -->
-
-            <!-- //state -->
-
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title">All Loans</h4>
 
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    style="float: right"
-                    @click="currentbalance"
-                  >
-                    Update Status
-                  </button>
+                  
                 </div>
 
                 <div class="card-body">
@@ -342,7 +318,6 @@
                               type="number"
                               class="form-control"
                               id="Term"
-
                               min="0"
                               :max="this.Loans.Term"
                               v-model="loan.Term"
@@ -408,7 +383,6 @@
                               type="range"
                               class="form-range"
                               id="Term"
-
                               min="0"
                               :max="this.TermY"
                               v-model="loan.Term"
@@ -767,7 +741,6 @@
                                     class="form-control"
                                     id="amount-applied"
                                     placeholder="Loan Amount"
-
                                     min="0"
                                     :max="this.Loans.Term"
                                     v-model="loan.Term"
@@ -927,7 +900,6 @@
                                     type="range"
                                     class="form-range"
                                     id="Term"
-
                                     min="0"
                                     :max="this.maximumtoguarantee"
                                     v-model="selectedamountG"
@@ -1074,8 +1046,6 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card">
-                     
-
                       <div class="card-body">
                         <form @submit.prevent="submit">
                           <div class="form-group row">
@@ -1128,7 +1098,7 @@
                               >Loan Product</label
                             >
 
-                            <div class="col-sm-10">
+                            <div class="col">
                               <input
                                 type="text"
                                 id="select-country"
@@ -1146,27 +1116,21 @@
                               <div class="row">
                                 <div class="col-lg-3">
                                   <div class="form-group">
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
-</div>
-                                  <div class="input-group">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text">
-                                        {{ this.loan.Amount }}
-                                      </span>
+                                    <div class="input-group">
+                                      <span
+                                        class="input-group-text"
+                                        id="basic-addon1"
+                                      ></span>
+                                      <input
+                                        v-model="loan.Amount"
+                                        type="number"
+                                        class="form-control"
+                                        min="0"
+                                        :max="maxtopup"
+                                        id="customRange2"
+                                        disabled
+                                      />
                                     </div>
-
-                                    <input
-                                      v-model="loan.Amount"
-                                      type="number"
-                                      class="form-range"
-                                      min="0"
-                                      :max="maxtopup"
-                                      id="customRange2"
-                                      disabled
-                                    />
                                   </div>
                                 </div>
 
@@ -1178,7 +1142,6 @@
                                     type="range"
                                     class="form-range"
                                     id="Term"
-
                                     min="0"
                                     :max="this.loan.Term"
                                     v-model="memberloan.Term"
@@ -1449,7 +1412,6 @@
                                   type="range"
                                   class="form-range"
                                   id="Term"
-
                                   min="0"
                                   :max="this.maximumtoguarantee"
                                   v-model="selectedamountG"
@@ -1599,7 +1561,7 @@ export default {
         Interest_Monthly: "",
         Term: "",
         TotalLoans: "",
-        Monthrepayment:"" ,
+        Monthrepayment: "",
         Principle_Monthly: "",
         Total_Loan: "",
       },
@@ -2558,8 +2520,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(
-     [ "allDocuments",
+    ...mapGetters([
+      "allDocuments",
       "allDeposits",
       "allMembers",
       "allLoans",
@@ -2568,8 +2530,8 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived",
-      "allGuarantors"]
-    ),
+      "allGuarantors",
+    ]),
 
     token() {
       return this.$store.state.accessToken;

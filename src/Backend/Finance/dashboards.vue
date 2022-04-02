@@ -591,17 +591,18 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
-// import BarChart from "@/components/BarChart.vue";
-// import PieChart from "@/components/PieChart.vue";
-// import LineChart from "@/components/LineChart.vue";
+import BarChart from "@/components/BarChart.vue";
+import PieChart from "@/components/PieChart.vue";
+import LineChart from "@/components/LineChart.vue";
 
 export default {
   name: "DashBoard",
   components: {
     // LineChart,
     financeNav,
-    // BarChart,
-    // PieChart,
+    BarChart,
+    PieChart,
+    LineChart,
   },
 
   data() {

@@ -191,7 +191,7 @@
                 <button
                   type="button"
                   class="btn-close"
-                  data-bs-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
@@ -207,7 +207,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -240,7 +240,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -608,7 +608,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -645,7 +645,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -877,7 +877,7 @@
                           <div v-if="this.unsecured <= 0">
                             <button
                               type="button"
-                              class="btn btn-outline-secondary col-lg-4"
+                              class="btn btn-primary col-lg-4"
                               data-bs-toggle="modal"
                               data-bs-target="#loan"
                               @click="submitapproveloan"
@@ -887,7 +887,7 @@
                             <a href="/loans">
                               <button
                                 type="button"
-                                class="btn btn-outline-secondary col-lg-20"
+                                class="btn btn-primary col-lg-20"
                               >
                                 Back to Loans
                               </button>
@@ -1033,7 +1033,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1064,7 +1064,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1074,9 +1074,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">Guarantors</h4>
-                      </div>
+                     
 
                       <div class="card-body">
                         <form @submit.prevent="submit">
@@ -1107,7 +1105,7 @@
                               >Loan ID</label
                             >
 
-                            <div class="form-group col-md-2">
+                            <div class="form-group col">
                               <select
                                 class="form-select ."
                                 id="select-country"
@@ -1147,6 +1145,12 @@
                             <div class="col-lg-10">
                               <div class="row">
                                 <div class="col-lg-3">
+                                  <div class="form-group">
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">@</span>
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+</div>
                                   <div class="input-group">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text">
@@ -1484,7 +1488,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dissmiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>

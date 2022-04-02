@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 02 2022 01:59:06 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Members/members.vue
+* src/components/FinanceNav.vue
+
+
+Created files:
+* .autogit/logs/log-2-3-2022-1-28-41.txt
+
+
+Deleted files:
+
+
+Renamed files:

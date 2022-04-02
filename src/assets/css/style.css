@@ -31,6 +31,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+
+/* input group */
+
+
+/* end  */
+
 h1,
 h2,
 h3,
@@ -2361,7 +2367,7 @@ hr {
 }
 
 @media (prefers-reduced-motion:no-preference) {
-    :root {
+     :root {
         scroll-behavior: smooth;
     }
 }

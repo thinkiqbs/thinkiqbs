@@ -153,7 +153,7 @@
                 <div class="card mb-4">
                   <div class="card-body p-3">
                     <div
-                      class="bg-gradient-light border-radius-lg py-3 pe-1 mb-3"
+                      class="bg-gradient-grey border-radius-lg py-3 pe-1 mb-3"
                     >
                       <div class="chartjs-size-monitor">
                         <div class="chartjs-size-monitor-expand">

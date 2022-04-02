@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 02 2022 13:17:44 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* public/index.html
+* src/Backend/Finance/dashboards.vue
+* src/components/BarChart.vue
+* src/components/PieChart.vue
+
+
+Created files:
+* .autogit/logs/log-2-3-2022-11-53-29.txt
+
+
+Deleted files:
+
+
+Renamed files:

@@ -1,5 +1,21 @@
+<template>
+  //create Linw chart component
+  <Bar
+    :chartId="chartId"
+    :datasetIdKey="datasetIdKey"
+    :width="width"
+    :height="height"
+    :cssClasses="cssClasses"
+    :styles="styles"
+    :plugins="plugins"
+  />
+  
+</template>
+
+
 <script>
 import { Line } from "vue-chartjs";
+
 
 export default {
   extends: Line,

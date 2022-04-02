@@ -30,6 +30,7 @@ export default {
       type: String,
       default: 'label'
     },
+    
     width: {
       type: Number,
       default: 400
@@ -54,8 +55,8 @@ export default {
   data() {
     return {
       chartData: {
-        labels: [ 'January', 'February', 'March' ],
-        datasets: [ { data: [40, 20, 12] } ]
+        labels: [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ],
+        datasets: [ { data: [40, 20, 12,] } ]
       },
       chartOptions: {
         responsive: true

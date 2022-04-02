@@ -1,65 +1,49 @@
 <script>
-import { Line } from "vue-chartjs";
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+  import { Line } from 'vue-chartjs'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-export default {
-  extends: Line,
-  data() {
-    return {
-      chartData: {
-        labels: [
-          "Babol",
-          "Cabanatuan",
-          "Daegu",
-          "Jerusalem",
-          "Fairfield",
-          "New York",
-          "Gangtok",
-          "Buenos Aires",
-          "Hafar Al-Batin",
-          "Idlib",
-        ],
-        datasets: [
-          {
-            label: "Line Chart",
-            data: [600, 1150, 342, 6050, 2522, 3241, 1259, 157, 1545, 9841],
-            fill: false,
-            borderColor: "#2554FF",
-            backgroundColor: "#2554FF",
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          yAxes: [
+  export default {
+    extends: Line,
+    data () {
+      return {
+        datacollection: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets: [
             {
+              label: 'Data One',
+              backgroundColor: '#f87979',
+              pointBackgroundColor: 'white',
+              borderWidth: 1,
+              pointBorderColor: '#249EBF',
+              data: [60, 40, 20, 50, 90, 10, 20, 40, 50, 70, 90, 100]
+            }
+          ]
+        },
+        options: {
+          scales: {
+            yAxes: [{
               ticks: {
-                beginAtZero: true,
+                beginAtZero: true
               },
               gridLines: {
-                display: true,
-              },
-            },
-          ],
-          xAxes: [
-            {
+                display: true
+              }
+            }],
+            xAxes: [ {
               gridLines: {
-                display: false,
-              },
-            },
-          ],
-        },
-        legend: {
-          display: true,
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-      },
-    };
-  },
-  
-};
-</script>
+                display: false
+              }
+            }]
+          },
+          legend: {
+            display: true
+          },
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      }
+    },
+    mounted () {
+      this.renderChart(this.datacollection, this.options)
+    }
+  }
+</script>s

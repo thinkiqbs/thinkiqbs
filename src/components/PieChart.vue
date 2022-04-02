@@ -1,3 +1,6 @@
+<template>
+  <PieChart />
+</template>
 <script>
 import { Pie } from "vue-chartjs";
 

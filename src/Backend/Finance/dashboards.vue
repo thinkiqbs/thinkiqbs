@@ -153,11 +153,11 @@
                 <div class="card mb-4">
                   <div class="card-body p-3">
                     <div
-                      class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3"
+                      class="bg-gradient-light border-radius-lg py-3 pe-1 mb-3"
                     >
                       <div class="chartjs-size-monitor">
                         <div class="chartjs-size-monitor-expand">
-                          <div class=""></div>
+                          <div class=""><bar-chart></bar-chart></div>
                         </div>
                         <div class="chartjs-size-monitor-shrink">
                           <div class=""></div>
@@ -592,8 +592,8 @@ import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
 import BarChart from "@/components/BarChart.vue";
-import PieChart from "@/components/PieChart.vue";
-import LineChart from "@/components/LineChart.vue";
+// import PieChart from "@/components/PieChart.vue";
+// import LineChart from "@/components/LineChart.vue";
 
 export default {
   name: "DashBoard",
@@ -601,8 +601,8 @@ export default {
     // LineChart,
     financeNav,
     BarChart,
-    PieChart,
-    LineChart,
+    // PieChart,
+    // LineChart,
   },
 
   data() {
@@ -643,7 +643,7 @@ export default {
       totaldepositsMe: [],
       // totalSavings: [],
       Loans: {
-        User_id:"",
+        User_id: "",
         email: this.$store.state.email,
         Amount: this.Amount,
         loan_Type: "Development",

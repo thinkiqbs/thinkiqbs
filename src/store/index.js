@@ -82,17 +82,17 @@ export default createStore({
         userLogin(context, usercredentials) {
             return new Promise((resolve, reject) => {
                 axios
-                    .post("/dj-rest-auth/login/", {
+                    .post("/api/login/", {
                         username: usercredentials.username,
                         password: usercredentials.password,
                     })
                     .then((response, ) => {
                         context.commit("updateStorage", {
                             access: response.data.token,
-                            refresh: response.data.refresh_token,
+                            // refresh: response.data.refresh_token,
                             // id: response.data.user.pk,
-                            username: usercredentials.username,
-                            email: response.data.user.email,
+                            // username: usercredentials.username,
+                            // email: response.data.user.email,
                             // first_name: response.data.user.first_name,
                             // last_name: response.data.user.last_name,
                         });

@@ -256,22 +256,10 @@
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title">Chart of Account</h4>
-              <div
-                class="alert alert-warning alert-dismissible fade show"
-                role="alert"
-              >
-                <strong>{{ this.email }}!</strong> Go back to Sacco
-                <router-link :to="{ name: 'finance' }" exact
-                  >Finance Navigator
-                </router-link>
-                <!-- <button
-												type="button"
-												class="btn-close"
-												data-bs-dismiss="alert"
-												aria-label="Close"
-
-											></button> -->
+              <h2 class="card-title">Chart of Account</h2>
+              
+                
+                
 
                 <div class="topnav-right">
                   <button
@@ -295,7 +283,7 @@
                     Add from Master
                   </button>
                 </div>
-              </div>
+            
 
               <div class="card-body">
                 <div class="table-responsive">

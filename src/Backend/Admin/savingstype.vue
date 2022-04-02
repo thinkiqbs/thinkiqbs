@@ -10,7 +10,7 @@
       </div>
 
       <div class="col-10">
-        <div class="table-responsive">
+
           <div class="card">
             <div class="card-header">
               <h4 class="card-title">Saving Products</h4>
@@ -28,7 +28,7 @@
             </div>
 
             <div class="card-body">
-              <table class="table table-hover walla">
+              <table class="table table-striped table-borderlesstable-hover walla">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -57,8 +57,8 @@
                         type="button"
                         @click="change(item)"
                         class="btn btn-secondary"
-                        data-toggle="modal"
-                        data-target="#exampleModal"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
                       >
                         Edit
                       </button>
@@ -68,7 +68,7 @@
               </table>
             </div>
           </div>
-        </div>
+
 
         <!-- Modal -->
         <div
@@ -85,7 +85,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -158,7 +158,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -170,17 +170,7 @@
           </div>
         </div>
 
-        <div class="section full mt-1">
-          <div class="section-title">Loan Product</div>
-          <div class="wide-block pt-2 pb-2">
-            <a
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#ModalBasic"
-              >Open Modal</a
-            >
-          </div>
-        </div>
+       
 
         <!-- Modal Basic -->
         <div

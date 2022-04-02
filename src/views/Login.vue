@@ -41,6 +41,7 @@
 
                         <router-link to="/register">Register Now</router-link>
                     </div>
+                    {{access}}
                     <div><a href="app-forgot-password.html" class="text-muted">Forgot Password?</a></div>
                 </div>
 
@@ -79,6 +80,11 @@ export default {
   },
 
   created() {},
+  computed(){
+    return{
+      access: this.$store.state.access
+    }
+  },
 
   methods: {
     login() {

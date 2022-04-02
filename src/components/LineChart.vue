@@ -1,55 +1,65 @@
-<template>
-  //create Linw chart component
-  <Bar
-    :chartId="chartId"
-    :datasetIdKey="datasetIdKey"
-    :width="width"
-    :height="height"
-    :cssClasses="cssClasses"
-    :styles="styles"
-    :plugins="plugins"
-  />
-  
-</template>
-
-
 <script>
 import { Line } from "vue-chartjs";
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
   extends: Line,
-  mounted() {
-    this.renderChart(
-      {
+  data() {
+    return {
+      chartData: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
+          "Babol",
+          "Cabanatuan",
+          "Daegu",
+          "Jerusalem",
+          "Fairfield",
+          "New York",
+          "Gangtok",
+          "Buenos Aires",
+          "Hafar Al-Batin",
+          "Idlib",
         ],
         datasets: [
           {
-            label: "Data 1",
-            data: [2, 10, 5, 9, 0, 6, 20],
-            backgroundColor: "transparent",
-            borderColor: "rgba(1, 116, 188, 0.50)",
-            pointBackgroundColor: "rgba(171, 71, 188, 1)",
+            label: "Line Chart",
+            data: [600, 1150, 342, 6050, 2522, 3241, 1259, 157, 1545, 9841],
+            fill: false,
+            borderColor: "#2554FF",
+            backgroundColor: "#2554FF",
+            borderWidth: 1,
           },
         ],
       },
-      {
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+              },
+              gridLines: {
+                display: true,
+              },
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
+              },
+            },
+          ],
+        },
+        legend: {
+          display: true,
+        },
         responsive: true,
         maintainAspectRatio: false,
-        title: {
-          display: true,
-          text: "My Data",
-        },
-      }
-    );
+      },
+    };
   },
+  
 };
 </script>

@@ -520,10 +520,11 @@
                         </div>
                       </div>
                     </div>
+                    
                     <div class="col">
                       <div class="card card-blog card-plain">
                         <div class="position-relative">
-                          <LineChart />
+                          <line-chart></line-chart>
                         </div>
                         <div class="card-body px-1 pb-0">
                           <p class="text-gradient text-dark mb-2 text-sm">
@@ -593,8 +594,8 @@ import { mapGetters, mapActions } from "vuex";
 import axios from "axios";
 import BarChart from "@/components/BarChart.vue";
 // import PieChart from "@/components/PieChart.vue";
-// import LineChart from "@/components/LineChart.vue";
 import LineChart from "@/components/LineChart.vue";
+// import LineChart from "@/components/LineChart.vue";
 
 export default {
   name: "DashBoard",

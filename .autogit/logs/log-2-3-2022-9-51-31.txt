@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 02 2022 09:51:31 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/coa.vue
+* src/Backend/Admin/organization.vue
+* src/Backend/Admin/savingstype.vue
+
+
+Created files:
+* .autogit/logs/log-2-3-2022-9-21-20.txt
+
+
+Deleted files:
+
+
+Renamed files:

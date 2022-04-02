@@ -58,7 +58,7 @@
                         id="ember913"
                         class="tooltip-container ember-view over-flow font-medium text-medium direction-ltr"
                       >
-                        KES14,112,842.00
+                        {{pettycash}}
                       </div>
                     </div>
                   </div>
@@ -368,7 +368,7 @@
                                   >Income Interest</span
                                 >
                               </a>
-                               <a
+                              <a
                                 class="dropdown-item d-flex align-items-center justify-content-between"
                                 @click="gotoreceipts"
                               >
@@ -445,7 +445,9 @@
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Loans Available to Pay</h5>
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Loans Available to Pay
+                </h5>
                 <button
                   type="button"
                   class="btn-close"
@@ -536,7 +538,7 @@
                 <button
                   type="button"
                   class="close"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -854,7 +856,7 @@
                 <button
                   type="button"
                   class="close"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -994,7 +996,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1026,7 +1028,7 @@
                 <button
                   type="button"
                   class="close"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1275,7 +1277,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1303,7 +1305,7 @@
                 <button
                   type="button"
                   class="close"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1586,7 +1588,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1999,7 +2001,7 @@
                 <button
                   type="button"
                   class="close"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -2107,7 +2109,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                 data-bs-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -2147,7 +2149,7 @@ import "vue-popperjs/dist/vue-popper.css";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name:'BankingActivities',
+  name: "BankingActivities",
   components: {
     financeNav,
   },
@@ -2692,7 +2694,15 @@ export default {
     },
     cashatbank: function () {
       var sum = 0;
-      this.banktransactions.forEach((e) => {
+      this.allbanktransactions.forEach((e) => {
+        sum += e.Amount;
+      });
+      return sum;
+    },
+
+      pettycash: function () {
+      var sum = 0;
+      this.allpettycashtransactions.forEach((e) => {
         sum += e.Amount;
       });
       return sum;
@@ -2704,6 +2714,17 @@ export default {
         sum += e.Amount;
       });
       return sum;
+    },
+
+    allbanktransactions() {
+      return this.$store.getters.allBanktransactions.filter(
+        (item) => item.company_id == this.companyid
+      );
+    },
+      allpettycashtransactions() {
+      return this.$store.getters.allBanktransactions.filter(
+        (item) => item.company_id == this.companyid && item.gl_account == 1211020
+      );
     },
 
     PaymentAmount() {
@@ -3013,18 +3034,13 @@ export default {
       "fetchGl",
     ]),
 
-    gotoreceipts(){
-
-      this.$router.push('receipts')
-
+    gotoreceipts() {
+      this.$router.push("receipts");
     },
 
-      gotopayments(){
-
-      this.$router.push('payments')
-
+    gotopayments() {
+      this.$router.push("payments");
     },
-
 
     saveExpense() {
       axios

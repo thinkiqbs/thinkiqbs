@@ -594,6 +594,7 @@ import axios from "axios";
 import BarChart from "@/components/BarChart.vue";
 // import PieChart from "@/components/PieChart.vue";
 // import LineChart from "@/components/LineChart.vue";
+import LineChart from "@/components/LineChart.vue";
 
 export default {
   name: "DashBoard",
@@ -602,7 +603,7 @@ export default {
     financeNav,
     BarChart,
     // PieChart,
-    // LineChart,
+    LineChart,
   },
 
   data() {

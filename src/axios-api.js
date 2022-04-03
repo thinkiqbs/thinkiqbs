@@ -1,16 +1,21 @@
 import axios from "axios";
+// import store from "./store";
 
 // import { mapActions } from "vuex";
 // import { mapGetters } from "vuex";
 // import { mapMutations } from "vuex";
 // import { mapState } from "vuex";
 
+var Buffer = require('buffer/').Buffer;
 
 
 
 
 
+const username = "14632336";
+const password = "Starten1@";
 
+const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
 
 const getAPI = axios.create({
 
@@ -20,6 +25,7 @@ const getAPI = axios.create({
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "Authorization": `Basic ${token}`
 
     },
 

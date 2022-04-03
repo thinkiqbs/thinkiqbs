@@ -38,19 +38,18 @@ window.$ = window.jQuery = require('jquery');
 // const AUTH_TOKEN = store.state.accessToken;
 
 
-axios.config({
-        username: store.state.username,
-        password: store.state.password,
-    }
 
-)
+
+
+
+
 
 
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
 //axios.defaults.baseURL = "https://backend.iqsacco.com/";
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + store.state.accessToken;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+axios.defaults.headers.common['Authorization'] =
+    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
 

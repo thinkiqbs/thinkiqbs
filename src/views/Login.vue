@@ -83,7 +83,7 @@ export default {
   computed(){
     return{
       access: this.$store.state.access
-      
+
     }
   },
 
@@ -95,8 +95,14 @@ export default {
           password: this.password,
         })
         .then(() => {
+          this.$swal({
+            title: "Success",
+            text: "You have successfully logged in",
+            icon: "success",
+            button: "OK",
+          });
           
-          this.$router.push({ name: "profile" });
+          this.$router.push("/profile");
         })
         .catch((err) => {
           console.log(err);

@@ -89,7 +89,7 @@ export default createStore({
                     })
                     .then((response, ) => {
                         context.commit("updateStorage", {
-                            access: response.data.token,
+                            access: response.data.access_token,
                             refresh: response.data.refresh_token,
                             id: response.data.user.pk,
                             username: usercredentials.username,

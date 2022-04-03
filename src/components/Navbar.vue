@@ -61,7 +61,7 @@
                 style="width: 21px"
               />
               <span class="d-none d-sm-inline-block ms-2">{{
-                this.email
+                this.username
               }}</span>
               <i class="bi bi-chevron-double-down"></i>
             </button>

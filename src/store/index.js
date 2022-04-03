@@ -91,8 +91,9 @@ export default createStore({
                             access: response.data.token,
                             // refresh: response.data.refresh_token,
                             // id: response.data.user.pk,
-                            // username: usercredentials.username,
-                            email: response.data.user.email,
+                            username: usercredentials.username,
+                            password: usercredentials.password,
+                            // email: response.data.user.email,
                             // first_name: response.data.user.first_name,
                             // last_name: response.data.user.last_name,
                         });

@@ -2834,19 +2834,29 @@ export default {
     //create axios const to return count
 
     getinfo(){
-      axios.get('/api/user', {
-  headers: {
-    Authorization: 'Bearer ' + this.$store.state.accessToken
-  }
-})
-.then((res) => {
-  this.$swal("success")
-  console.log(res.data)
-})
-.catch((error) => {
-  console.error(error)
-})
+      var body = {
+    username: this.username,
+    password: "Starten1@",
+  };
+
+  axios.post("https:codepadding.com", body, {
+    headers: {
+      "Content-Type": "application/json",
+      'Authorizations': this.$store.state.accessToken
     },
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    },
+
+      	
+  		
+
+ 
 
     ...mapActions([
       "fetchDocuments",

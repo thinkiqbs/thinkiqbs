@@ -95,7 +95,7 @@ export default createStore({
                             id: response.data.user.pk,
                             username: usercredentials.username,
                             password: usercredentials.password,
-                            email: response.data.email,
+                            email: response.data.user.email,
                             first_name: response.data.user.first_name,
                             last_name: response.data.user.last_name,
                         });

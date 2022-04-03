@@ -1,0 +1,31 @@
+-------------------- Auto-Git Log --------------------
+		Mon Apr 04 2022 00:54:37 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/axios-api.js
+* src/store/index.js
+* src/store/modules/accounting.js
+* src/store/modules/banking.js
+* src/store/modules/budgets.js
+* src/store/modules/documents.js
+* src/store/modules/expenses.js
+* src/store/modules/gl.js
+* src/store/modules/journals.js
+* src/store/modules/loans.js
+* src/store/modules/purchases.js
+* src/store/modules/reports.js
+* src/store/modules/sys_config.js
+* src/store/modules/taxes.js
+* src/store/modules/users.js
+
+
+Created files:
+* .autogit/logs/log-4-3-2022-0-24-25.txt
+
+
+Deleted files:
+* src/store/modules/todos.js
+
+
+Renamed files:

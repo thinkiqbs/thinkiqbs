@@ -8,7 +8,7 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
-import getAPI from '@/axios-api'
+
 
 
 
@@ -38,7 +38,8 @@ window.$ = window.jQuery = require('jquery');
 // const AUTH_TOKEN = store.state.accessToken;
 
 
-
+store.getters.config
+store.state.config
 
 
 
@@ -48,8 +49,8 @@ window.$ = window.jQuery = require('jquery');
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
 //axios.defaults.baseURL = "https://backend.iqsacco.com/";
-axios.defaults.headers.common['Authorization'] =
-    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.headers.common['Authorization'] =
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 
 
@@ -71,4 +72,4 @@ router.beforeEach((to, from, next) => {
 
 
 
-createApp(App).use(router).use(store).use(VueSweetalert2).use(getAPI).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");
+createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");

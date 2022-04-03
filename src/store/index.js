@@ -34,7 +34,7 @@ export default createStore({
         id: null,
         email: null,
         username: null,
-        // password: null,
+        password: null,
         first_name: null,
         last_name: null,
         APIData: "",
@@ -42,13 +42,13 @@ export default createStore({
     },
     mutations: {
         updateStorage(
-            state, { access, refresh, email, username, id, first_name, last_name }
+            state, { access, refresh, email, password, username, id, first_name, last_name }
         ) {
             state.accessToken = access;
             state.refreshToken = refresh;
             state.id = id;
             state.username = username;
-            // state.password = password;
+            state.password = password;
             state.email = email;
             state.first_name = first_name;
             state.last_name = last_name;
@@ -93,7 +93,7 @@ export default createStore({
                             refresh: response.data.refresh_token,
                             id: response.data.user.pk,
                             username: usercredentials.username,
-                            // password: usercredentials.password,
+                            password: usercredentials.password,
                             email: response.data.email,
                             first_name: response.data.user.first_name,
                             last_name: response.data.user.last_name,

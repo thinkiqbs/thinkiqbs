@@ -2136,7 +2136,9 @@ import financeNav from "@/components/FinanceNav";
 // import headerDashboard from "@/components/headerdashboard.vue";
 
 // import financeNav from "@/components/FinanceNav";
-import axios from "axios";
+
+import { getAPI } from "@/axios-api";
+
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
@@ -2295,7 +2297,7 @@ export default {
   mounted() {
     //API Call
 
-    // axios
+    // getAPI
     // 	.get("/loans/api/v1/loans/", {
     // 		params: { email: this.email },
     // 	})
@@ -2305,7 +2307,7 @@ export default {
     // 		$("#walla").DataTable();
     // 	});
 
-    // axios
+    // getAPI
     //   .get("/sys_config/api/v1/EmployerProfile/", {
     //     params: { employer_email: this.email },
     //   })
@@ -2316,7 +2318,7 @@ export default {
     //     this.initDatatable();
     //   });
 
-    axios
+    getAPI
       .get("/loans/api/v1/loans/", {
         params: { email: this.email },
       })
@@ -2327,7 +2329,7 @@ export default {
         $("#walla").DataTable();
       });
 
-    axios
+    getAPI
       .get("/Savings/api/v1/Deposits/", { params: { email: this.email } })
       .then((res) => {
         this.mydeposits = res.data.results.filter(
@@ -2336,7 +2338,7 @@ export default {
         $("#mydeposits").DataTable();
       });
 
-    axios
+    getAPI
       .get("/loans/api/v1/loans/", {
         params: { email: this.email },
       })
@@ -2347,7 +2349,7 @@ export default {
         $("#walla").DataTable();
       });
 
-    axios
+    getAPI
       .get("/loans/api/v1/loans/", {
         params: { organizationprofile: this.orgprofileid },
       })
@@ -2357,7 +2359,7 @@ export default {
         $("#walla").DataTable();
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/loanschedule/", {
         params: { organizationprofile: this.orgprofileid },
       })
@@ -2368,7 +2370,7 @@ export default {
         $("#walla").DataTable();
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/documents/", {
         params: { organizationprofile: this.orgprofileid },
       })
@@ -2380,7 +2382,7 @@ export default {
         );
         $("#walla").DataTable();
       });
-    axios
+    getAPI
       .get("/finance/api/v1/Payments/", {
         params: { organizationprofile: this.orgprofileid },
       })
@@ -2391,14 +2393,14 @@ export default {
         $("#walla").DataTable();
       });
 
-    axios.get("/finance/api/v1/Bank_transactions/").then((res) => {
+    getAPI.get("/finance/api/v1/Bank_transactions/").then((res) => {
       this.banktransactions = res.data.results.filter(
         (banktransaction) => banktransaction.company_id == this.companyid
       );
       $("#walla").DataTable();
     });
 
-    axios
+    getAPI
       .get("/finance/api/v1/PaymentsReceived/", {
         params: { organizationprofile: this.orgprofileid },
       })
@@ -2408,7 +2410,7 @@ export default {
         );
         $("#walla").DataTable().destroy();
       });
-    axios
+    getAPI
       .get("/finance/api/v1/Customer/", {
         params: { company_id: this.companyid3 },
       })
@@ -2421,7 +2423,7 @@ export default {
         console.error(error);
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         params: { company_id: this.companyid3 },
       })
@@ -2435,7 +2437,7 @@ export default {
       .catch((error) => {
         console.error(error);
       });
-    axios
+    getAPI
       .get("/finance/api/v1/paymentmodes/", {
         params: { company_id: this.companyid3 },
       })
@@ -2448,7 +2450,7 @@ export default {
         console.error(error);
       });
 
-    axios
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: { company_id: this.companyid3 },
       })
@@ -2462,7 +2464,7 @@ export default {
       .catch((error) => {
         console.error(error);
       });
-    axios
+    getAPI
       .get("/members/api/v1/MonthDeposits/", {
         params: { company_id: this.companyid3 },
       })
@@ -2477,7 +2479,7 @@ export default {
         console.error(error);
       });
 
-    axios
+    getAPI
       .get("/Savings/api/v1/Deposits/", {
         params: { company_id: this.companyid3 },
       })
@@ -2492,7 +2494,7 @@ export default {
         console.error(error);
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         params: {},
       })
@@ -2507,7 +2509,7 @@ export default {
         console.error(error);
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Bank/", {
         params: { company_id: this.companyid3 },
       })
@@ -3007,7 +3009,7 @@ export default {
 
   // 	monthdepositsy: function() {
 
-  // 		return axios.get("/members/api/v1/MonthDeposits/").then((res)=>{this.x = res.data.results.filter(
+  // 		return getAPI.get("/members/api/v1/MonthDeposits/").then((res)=>{this.x = res.data.results.filter(
   // 				(monthdeposit) => monthdeposit.company_id == this.companyid
   // 			)
   // 		},
@@ -3043,7 +3045,7 @@ export default {
     },
 
     saveExpense() {
-      axios
+      getAPI
         .post(`/finance/api/v1/Expenses/`, {
           // names: '',
           transactiondate: this.payment.transactiondate,
@@ -3085,7 +3087,7 @@ export default {
       this.glchanged.accountname = opt.accountname;
 
       Promise.all([
-        axios
+        getAPI
           .post(`/finance/api/v1/Expenses/`, {
             // names: '',
             transactiondate: this.payment.transactiondate,
@@ -3113,7 +3115,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3158,7 +3160,7 @@ export default {
         (this.gldocs = this.$store.getters.allDocuments.filter(
           (gldocs) => gldocs.Account == this.expense.gl_account
         )),
-        axios
+        getAPI
           .post(`/finance/api/v1/Bank_transactions/`, {
             // names: '',
             user_id: this.user_Id,
@@ -3216,11 +3218,11 @@ export default {
     },
 
     reconcileBanktransactions(item) {
-      //create axios put for banktrasactions
+      //create getAPI put for banktrasactions
 
       this.bankTransaction = item;
 
-      axios
+      getAPI
         .put(
           "/finance/api/v1/Bank_transactions/" + this.bankTransaction.id + "/",
           {
@@ -3271,7 +3273,7 @@ export default {
       // this.employerid = opt.id;
 
       if (this.checkpath == 1) {
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: this.selectedemail },
           })
@@ -3281,7 +3283,7 @@ export default {
             $("#walla").DataTable();
           });
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -3294,7 +3296,7 @@ export default {
             console.error(error);
           });
       } else if (this.checkpath == 2) {
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { EmployerProfile: this.employerid },
           })
@@ -3307,7 +3309,7 @@ export default {
             console.error(error);
           });
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { employer: this.employerid },
           })
@@ -3320,7 +3322,7 @@ export default {
             console.error(error);
           });
       } else {
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { employer: this.employerid },
           })
@@ -3348,7 +3350,7 @@ export default {
       // this.employerid = opt.id;
 
       if (this.checkpath == 1) {
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: this.selectedemail },
           })
@@ -3358,7 +3360,7 @@ export default {
             $("#walla").DataTable();
           });
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -3371,7 +3373,7 @@ export default {
             console.error(error);
           });
       } else if (this.checkpath == 2) {
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { EmployerProfile: this.employerid },
           })
@@ -3384,7 +3386,7 @@ export default {
             console.error(error);
           });
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { employer: this.employerid },
           })
@@ -3397,7 +3399,7 @@ export default {
             console.error(error);
           });
       } else {
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { employer: this.employerid },
           })
@@ -3477,7 +3479,7 @@ export default {
       // alert(this.paymentrcvd.customertype);
 
       if (this.paymentrcvd.customertype == "1") {
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: this.paymentrcvd.customer },
           })
@@ -3490,7 +3492,7 @@ export default {
             console.error(error);
           });
 
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: this.paymentrcvd.customer, Status: "4" },
           })
@@ -3502,7 +3504,7 @@ export default {
       }
 
       if (this.paymentrcvd.customertype == "2") {
-        // axios
+        // getAPI
         //   .get("/sys_config/api/v1/EmployerProfile/", {
         //     params: { employer_email: this.paymentrcvd.customer },
         //   })
@@ -3514,7 +3516,7 @@ export default {
         //     console.error(error);
         //   });
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { employer: this.employerid },
           })
@@ -3556,7 +3558,7 @@ export default {
       myPopover.show();
     },
     addrecords() {
-      axios
+      getAPI
         .post(`/finance/api/v1/Vendor/`, {
           // names: '',
           // User_id: this.user_id,
@@ -3576,11 +3578,11 @@ export default {
         });
     },
 
-    //create a promise all axios function
+    //create a promise all getAPI function
 
     makepayments() {
       Promise.all([
-        axios
+        getAPI
           .post(`/finance/api/v1/PaymentsReceived/`, {
             // names: '',
             User_id: this.user_id,
@@ -3625,7 +3627,7 @@ export default {
             this.message = JSON.stringify(e.response.data);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/Bank_transactions/`, {
             // names: '',
             user_id: this.user_id,
@@ -3656,7 +3658,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3700,7 +3702,7 @@ export default {
 
     addpaymentsreceived() {
       Promise.all([
-        axios
+        getAPI
           .post(`/finance/api/v1/PaymentsReceived/`, {
             // names: '',
             User_id: this.user_id,
@@ -3733,7 +3735,7 @@ export default {
             this.message = JSON.stringify(e.response.data);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/Bank_transactions/`, {
             // names: '',
             user_id: this.User_id,
@@ -3758,7 +3760,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3788,7 +3790,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3818,7 +3820,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3849,7 +3851,7 @@ export default {
           }),
 
         // contra for control accounts
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3879,7 +3881,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -3927,7 +3929,7 @@ export default {
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.payment.source_id + "/", {
           User_id: this.loantopay[0].id,
           email: this.loantopay[0].email,
@@ -3974,7 +3976,7 @@ export default {
           alert(e);
         }),
         Promise.all([
-          axios
+          getAPI
             .post(`/finance/api/v1/Bank_transactions/`, {
               // names: '',
               user_id: this.loan.user_Id,
@@ -4003,7 +4005,7 @@ export default {
             }),
 
           // Credit the specific loan account
-          axios
+          getAPI
             .post(`/finance/api/v1/documents/`, {
               // names: '',
               user_Id: this.payment.user_id,
@@ -4044,7 +4046,7 @@ export default {
               alert(e);
             }),
 
-          axios
+          getAPI
             .post(`/finance/api/v1/documents/`, {
               // names: '',
               user_Id: this.payment.user_id,
@@ -4085,7 +4087,7 @@ export default {
               alert(e);
             }),
 
-          axios
+          getAPI
             .put(`/finance/api/v1/Payments/` + this.payment.id + "/", {
               // names: '',
               user_id: this.payment.user_id,
@@ -4139,7 +4141,7 @@ export default {
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
 
-      axios
+      getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4197,7 +4199,7 @@ export default {
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
 
-      axios
+      getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.loan.user_id,
@@ -4259,7 +4261,7 @@ export default {
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
 
-      const updateloandetails = axios
+      const updateloandetails = getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.User_id,
           email: this.loan.email,
@@ -4309,7 +4311,7 @@ export default {
           this.errors.push(e);
         });
 
-      const deductloanrepayment = axios
+      const deductloanrepayment = getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4343,7 +4345,7 @@ export default {
           this.errors.push(e);
         });
 
-      const incomeAdjustment = axios
+      const incomeAdjustment = getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4378,7 +4380,7 @@ export default {
           this.errors.push(e);
         });
 
-      const incomefromasset = axios
+      const incomefromasset = getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4433,7 +4435,7 @@ export default {
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
 
-      axios
+      getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4490,7 +4492,7 @@ export default {
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
 
-      axios
+      getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4546,7 +4548,7 @@ export default {
       this.glchanged.maincode_description = opt.maincode_description;
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
-      axios
+      getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
           user_Id: this.user_id,
@@ -4600,7 +4602,7 @@ export default {
     },
 
     getProducts(Exception) {
-      axios
+      getAPI
         .get("/members/api/v1/MemberDetails/")
         .then((res) => {
           this.tableData = res.data.results;
@@ -4610,7 +4612,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

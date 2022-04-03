@@ -1420,7 +1420,9 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import { getAPI } from "@/axios-api";
+
 import financeNav from "@/components/FinanceNav";
 import headerDashboard from "@/components/headerdashboard.vue";
 //Bootstrap and jQuery libraries
@@ -1532,7 +1534,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/sys_config/api/v1/OrganizationProfile/", {
         params: { admin_email: this.email },
       })
@@ -1542,13 +1544,13 @@ export default {
         this.companyid = this.orgprofile[0].company_id;
         this.orgprofileid = this.orgprofile[0].id;
       }),
-      axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+      getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
         this.employerselect = res.data.results.filter(
           (item) => item.company_id == this.companyid3
         );
       });
 
-    axios.get("/sys_config/api/v1/SavingsType/").then((res) => {
+    getAPI.get("/sys_config/api/v1/SavingsType/").then((res) => {
       this.savings = res.data.results.filter(
         (item) => item.company_id == this.companyid3
       );
@@ -1556,12 +1558,12 @@ export default {
       // $("#example").DataTable();
     });
 
-    axios.get("/sys_config/api/v1/county/").then((res) => {
+    getAPI.get("/sys_config/api/v1/county/").then((res) => {
       this.county = res.data.results;
       // $("#example").DataTable();
     });
 
-    axios
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: {
           company_id: this.companyid3,
@@ -1572,14 +1574,14 @@ export default {
         this.applicount = res.data.count;
       });
 
-    axios.get("/sys_config/api/v1/LoanType/").then((res) => {
+    getAPI.get("/sys_config/api/v1/LoanType/").then((res) => {
       this.options = res.data.results.filter(
         (member) => member.company_id == this.companyid3
         // $("#example").DataTable();
       );
     });
 
-    axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+    getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
       this.employer = res.data.results.filter(
         (member) => member.company_id == this.companyid3
       );
@@ -1625,7 +1627,7 @@ export default {
 
     getmembers() {
       const x = this.companyid;
-      axios
+      getAPI
         .get("/members/api/v1/MemberDetails/", {
           params: { company_id: x },
         })
@@ -1651,7 +1653,7 @@ export default {
       this.membersavings = member;
     },
     addsavings() {
-      axios
+      getAPI
         .post(`members/api/v1/MonthDeposits/`, {
           // names: '',
           User_id: this.membersavings.id,
@@ -1681,7 +1683,7 @@ export default {
 
     addnewmeber() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -1738,7 +1740,7 @@ export default {
       this.member = member;
 
       Promise.all([
-        axios
+        getAPI
           .post("/dj-rest-auth/registration/", {
             // names: '',
             username: this.member.national_id,
@@ -1762,7 +1764,7 @@ export default {
             alert(JSON.stringify(e.response.data));
           }),
 
-        axios
+        getAPI
           .put("/members/update/" + this.member.id + "/", {
             Application_Status: "True",
             invited: "True",
@@ -1790,7 +1792,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .put("users/api/v1/CustomUser/ " + this.member.id + "/", {
             // names: '',
             first_name: this.editprofile.first_name,
@@ -1813,7 +1815,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.id,
           email: this.loan.email,
@@ -1854,7 +1856,7 @@ export default {
       // alert(item.Total_Loan);
 
       Promise.all([
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: memberfilter, Status: "4" },
           })
@@ -1862,7 +1864,7 @@ export default {
             this.myapprovedloans = res.data.results;
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -1873,7 +1875,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { email: memberfilter },
           })
@@ -1883,7 +1885,7 @@ export default {
             );
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "deposits" },
           })
@@ -1894,7 +1896,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: {
               company_id: this.companyid,
@@ -1907,14 +1909,14 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "loans" },
           })
           .then((res) => {
             this.loanscheduleMe = res.data.results;
           }),
-        axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
           this.employer = res.data.results;
           // $("#example").DataTable();
         }),
@@ -1927,7 +1929,7 @@ export default {
 
     addrecords() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -1959,7 +1961,7 @@ export default {
     },
 
     saveloan() {
-      axios
+      getAPI
         .post(`/loans/api/v1/loans/`, {
           // names: '',
           User_id: this.loan.id,
@@ -2004,7 +2006,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

@@ -75,7 +75,6 @@
                   href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#PledgeCreate"
-                  
                 >
                   <div class="icon-wrapper bg-danger">
                     <svg
@@ -658,7 +657,6 @@
                               type="range"
                               class="form-range"
                               id="Term"
-
                               min="0"
                               :max="this.maxloanterm"
                               v-model="Loans.Term"
@@ -2812,11 +2810,7 @@ export default {
     };
   },
 
-  mounted() {
-
-    
-
-  },
+  mounted() {},
 
   created() {
     this.fetchMembers();
@@ -2833,30 +2827,14 @@ export default {
   methods: {
     //create axios const to return count
 
-    getinfo(){
-      var body = {
-    username: this.username,
-    password: "Starten1@",
-  };
-
-  axios.post("https:codepadding.com", body, {
-    headers: {
-      "Content-Type": "application/json",
-      'Authorizations': this.$store.state.accessToken
+    getinfo() {
+      axios({
+  method: 'post',
+  url: '/api/login/',
+  
+  headers: { Authorization : 'Token ${this.$store.state.accessToken}'},
+});
     },
-  })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    },
-
-      	
-  		
-
- 
 
     ...mapActions([
       "fetchDocuments",
@@ -3223,17 +3201,17 @@ export default {
   computed: {
     ...mapState(["org1"]),
 
-    ...mapGetters(
-     [ "allDocuments",
+    ...mapGetters([
+      "allDocuments",
       "allMembers",
       "allDeposits",
       "allOrg",
       "allEmployer",
       "allLoantype",
       "allLoans",
-      "allGuarantors"]
-    ),
-     memberdetails() {
+      "allGuarantors",
+    ]),
+    memberdetails() {
       var x = 1;
       var y = 2;
       if (this.allmember != "") {
@@ -3255,6 +3233,9 @@ export default {
 
     email() {
       return this.$store.state.email;
+    },
+    username() {
+      return this.$store.state.username;
     },
 
     first_name() {

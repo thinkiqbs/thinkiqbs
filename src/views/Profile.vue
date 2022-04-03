@@ -2839,10 +2839,11 @@ export default {
         console.log(response);
         this.email = response.data.email;
         this.$swal(response.statusText);
+        
     },
     error => {
       console.log(error);
-        this.$swal(error);
+
 
     });
     },
@@ -3563,6 +3564,8 @@ export default {
         (item) => item.email == this.email
       )[0].company_id;
     },
+
+    
 
     companyid3() {
       return this.$store.getters.allOrg.filter(

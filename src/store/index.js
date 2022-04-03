@@ -79,7 +79,7 @@ export default createStore({
                 localStorage.removeItem("user-token"); // if the request fails, remove any possible user token if possible
             }
         },
-        userLogin(context, usercredentials) {
+        userLogin(context, usercredentials, ) {
             return new Promise((resolve, reject) => {
                 axios
                     .post("/api/login/", {
@@ -93,7 +93,7 @@ export default createStore({
                             // id: response.data.user.pk,
                             username: usercredentials.username,
                             password: usercredentials.password,
-                            // email: response.data.user.email,
+                            // email: sessiondata.email,
                             // first_name: response.data.user.first_name,
                             // last_name: response.data.user.last_name,
                         });

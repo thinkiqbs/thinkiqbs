@@ -19,6 +19,7 @@ import reports from "@/store/modules/reports.js";
 import gl from "@/store/modules/gl.js";
 import accounting from "@/store/modules/accounting.js";
 import axios from "axios";
+import { getAPI } from "@/axios-api";
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -107,7 +108,7 @@ export default createStore({
         },
 
         company({ commit }) {
-            axios
+            getAPI
                 .get("/sys_config/api/v1/OrganizationProfile/", {
                     params: {},
                 })
@@ -116,7 +117,7 @@ export default createStore({
                 });
         },
         ismember({ commit }) {
-            axios
+            getAPI
                 .get("/members/api/v1/MemberDetails/", {
                     params: {},
                 })

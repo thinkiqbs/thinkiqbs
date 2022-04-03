@@ -1,4 +1,5 @@
-import axios from "axios";
+// import getAPI from "getAPI";
+import { getAPI } from "@/axios-api";
 
 const state = {
     org1: [],
@@ -18,30 +19,30 @@ const getters = {
 };
 const actions = {
     async fetchOrg({ commit }) {
-        const response = await axios.get("sys_config/api/v1/OrganizationProfile/");
+        const response = await getAPI.get("sys_config/api/v1/OrganizationProfile/");
         commit("setOrg", response.data.results);
     },
     async fetchUser({ commit }) {
-        const response = await axios.get("api/user");
+        const response = await getAPI.get("api/user");
         commit("setUser", response.data.results);
     },
 
     async fetchUserinfo({ commit }) {
-        const response = await axios.get("/members/api/v1/MemberDetails/");
+        const response = await getAPI.get("/members/api/v1/MemberDetails/");
         commit("setUserinfo", response.data.results);
     },
 
     async fetchEmployerinfo({ commit }) {
-        const response = await axios.get("/sys_config/api/v1/EmployerProfile/");
+        const response = await getAPI.get("/sys_config/api/v1/EmployerProfile/");
         commit("setEmployerinfo", response.data.results);
     },
 
     async fetchSavingtype({ commit }) {
-        const response = await axios.get("/sys_config/api/v1/SavingsType/");
+        const response = await getAPI.get("/sys_config/api/v1/SavingsType/");
         commit("setSavingtype", response.data.results);
     },
     async fetchLoantype({ commit }) {
-        const response = await axios.get("/sys_config/api/v1/LoanType/");
+        const response = await getAPI.get("/sys_config/api/v1/LoanType/");
         commit("setLoantype", response.data.results);
     },
 };

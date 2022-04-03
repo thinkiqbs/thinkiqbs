@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+import { getAPI } from "@/axios-api";
 
 const state = {
     loans: [],
@@ -8,7 +9,7 @@ const getters = {
 };
 const actions = {
     async fetchLoans({ commit }) {
-        const response = await axios.get("/loans/api/v1/loans/");
+        const response = await getAPI.get("/loans/api/v1/loans/");
         commit("setLoans", response.data.results);
     },
 };

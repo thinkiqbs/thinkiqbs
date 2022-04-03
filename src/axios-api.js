@@ -6,14 +6,16 @@ import { createApp } from 'vue'
 // import { store } from "./store";
 
 // import { mapActions } from "vuex";
-// import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 // import { mapMutations } from "vuex";
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 
 createApp(App).use(store)
 
-store.getters.config;
-store.state.config;
+mapGetters(["allOrganisations", "allMembers", "allDeposits", "allExpenses", "allJournals", "allReports", "allGL", "allAccounting"])
+mapState("username", "password", "email", "first_name", "last_name", "id")
+
+
 
 
 

@@ -1,4 +1,6 @@
 // import axios from "axios";
+// import { getAPI } from "@/axios-api";
+
 
 // const state = {
 //     document: [],

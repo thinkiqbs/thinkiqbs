@@ -1,33 +1,34 @@
-import axios from "axios";
+// import axios from "axios";
+import { getAPI } from "@/axios-api";
 
 const state = {
-  gl: [],
-  accountmaster: [],
+    gl: [],
+    accountmaster: [],
 };
 const getters = {
-  allGl: (state) => state.gl,
-  allAccountmaster: (state) => state.accountmaster,
+    allGl: (state) => state.gl,
+    allAccountmaster: (state) => state.accountmaster,
 };
 const actions = {
-  async fetchGl({ commit }) {
-    const response = await axios.get("/finance/api/v1/Chartofaccounts/");
-    commit("setGl", response.data.results);
-  },
+    async fetchGl({ commit }) {
+        const response = await getAPI.get("/finance/api/v1/Chartofaccounts/");
+        commit("setGl", response.data.results);
+    },
 
-  async fetchAccountmaster({ commit }) {
-    const response = await axios.get("/finance/api/v1/accountmaster/");
-    commit("setAccountmaster", response.data.results);
-  },
+    async fetchAccountmaster({ commit }) {
+        const response = await getAPI.get("/finance/api/v1/accountmaster/");
+        commit("setAccountmaster", response.data.results);
+    },
 };
 const mutations = {
-  setGl: (state, gl) => (state.gl = gl),
-  setAccountmaster: (state, accountmaster) =>
-    (state.accountmaster = accountmaster),
+    setGl: (state, gl) => (state.gl = gl),
+    setAccountmaster: (state, accountmaster) =>
+        (state.accountmaster = accountmaster),
 };
 
 export default {
-  state,
-  getters,
-  actions,
-  mutations,
+    state,
+    getters,
+    actions,
+    mutations,
 };

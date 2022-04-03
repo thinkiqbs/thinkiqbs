@@ -3565,11 +3565,11 @@ export default {
       )[0].company_id;
     },
 
-    
+
 
     companyid3() {
       return this.$store.getters.allOrg.filter(
-        (item) => item.admin_email == this.email
+        (item) => item.admin_id == this.user_id
       )[0].company_id;
     },
 

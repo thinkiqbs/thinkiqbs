@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Sun Apr 03 2022 13:13:30 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/store/index.js
+* src/store/modules/sys_config.js
+* src/views/Login.vue
+* src/views/Profile.vue
+
+
+Created files:
+* .autogit/logs/log-3-3-2022-7-20-46.txt
+
+
+Deleted files:
+
+
+Renamed files:

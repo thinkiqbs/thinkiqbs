@@ -22,12 +22,7 @@ const actions = {
         commit("setOrg", response.data.results);
     },
     async fetchUser({ commit }) {
-        const response = await axios.get("api/user", {
-            auth: {
-                username: this.$store.state.username,
-                password: this.$store.state.password,
-            }
-        });
+        const response = await axios.get("api/user");
         commit("setUser", response.data.results);
     },
 

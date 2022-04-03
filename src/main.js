@@ -14,6 +14,8 @@ import VueAxios from 'vue-axios'
 
 import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
+store.getters.config
+
 
 const globalOptions = {
     mode: 'auto',
@@ -38,6 +40,7 @@ window.$ = window.jQuery = require('jquery');
 
 
 
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.$store.state.accessToken;
 
 
 

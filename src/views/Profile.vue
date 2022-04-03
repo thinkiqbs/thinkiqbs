@@ -2822,30 +2822,34 @@ export default {
     this.fetchDocuments();
     this.fetchEmployerinfo();
     this.fetchGuarantors();
+    this.fetchUser();
   },
 
   methods: {
     //create axios const to return count
 
     getinfo() {
+      this.fetchUser();
       // create an axios get request that also sends username and password 
-      axios.get("/api/user/",{
-        auth: {
-          username: this.username,
-          password: "Starten1@",
-        }
-      })
-      .then (response => {
-        console.log(response);
-        this.email = response.data.email;
-        this.$swal(response.statusText);
+    //   axios.get("/api/user/",{
+    //     auth: {
+    //       username: this.username,
+    //       password: this.$store.state.password,
+    //     }
+    //   })
+    //   .then (response => {
+    //     console.log(response);
+    //     this.fetchUser();
+    //     this.email = response.data.email;
+    //     this.$swal(response.statusText);
+
         
-    },
-    error => {
-      console.log(error);
+    // },
+    // error => {
+    //   console.log(error);
 
 
-    });
+    // });
     },
 
     ...mapActions([
@@ -2858,6 +2862,7 @@ export default {
       "fetchOrg",
       "fetchEmployerinfo",
       "fetchGuarantors",
+      "fetchUser",
     ]),
 
     logout: function () {
@@ -3248,6 +3253,10 @@ export default {
     },
     username() {
       return this.$store.state.username;
+    },
+
+      password() {
+      return this.$store.state.password;
     },
 
     first_name() {

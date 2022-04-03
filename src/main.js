@@ -15,6 +15,7 @@ import VueAxios from 'vue-axios'
 import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
 store.getters.config
+store.state.config
 
 
 const globalOptions = {
@@ -32,23 +33,18 @@ const globalOptions = {
 
 window.$ = window.jQuery = require('jquery');
 
+const AUTH_TOKEN = store.state.accessToken;
 
 
 
 
 
-
-
-
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + this.$store.state.accessToken;
-
-
-
-// axios.defaults.baseURL = "https://writingpropel.com";
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
 //axios.defaults.baseURL = "https://backend.iqsacco.com/";
-// axios.defaults.baseURL = "http://167.99.43.66:8000/";
-// axios.defaults.baseURL = "http://www.writingpropel.com:8000/";
+axios.defaults.headers.common['Authorization'] = 'Bearer' + AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresLogin)) {

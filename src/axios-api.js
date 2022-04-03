@@ -1,5 +1,8 @@
 import axios from "axios";
 import store from "./store";
+import App from './App.vue'
+import { createApp } from 'vue'
+
 // import { store } from "./store";
 
 // import { mapActions } from "vuex";
@@ -7,23 +10,22 @@ import store from "./store";
 // import { mapMutations } from "vuex";
 // import { mapState } from "vuex";
 
+createApp(App).use(store)
 
-export function accessToken() {
-    return store.state.accessToken;
-}
-
-
-export function username() {
-    return store.state.username;
-
-}
-
-console.log("username", accessToken);
+store.getters.config;
+store.state.config;
 
 
-export function password() {
-    return String(store.state.password);
-}
+
+const username = "14632336";
+const password = "Starten1@";
+
+
+
+console.log("username", username);
+
+
+
 
 // var Buffer = require('buffer/').Buffer;
 
@@ -44,17 +46,17 @@ const getAPI = axios.create({
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": `Bearer + ${accessToken()}`,
+        // "Authorization": `Bearer  ${accessToken}`,
 
 
     },
 
-    // auth: {
-    //     username: username,
-    //     password: password, //store.state.password,
+    auth: {
+        username: username,
+        password: password, //store.state.password,
 
-    //     timeout: 10000,
-    // },
+        timeout: 10000,
+    },
 });
 
 export { getAPI };

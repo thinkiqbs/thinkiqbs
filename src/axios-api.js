@@ -1,12 +1,14 @@
 import axios from "axios";
-import store from "@/store";
+
 // import { mapActions } from "vuex";
 // import { mapGetters } from "vuex";
 // import { mapMutations } from "vuex";
 // import { mapState } from "vuex";
 
-const username = this.store.state.username;
-const password = this.store.state.password;
+
+
+
+
 
 
 
@@ -21,8 +23,8 @@ const getAPI = axios.create({
     //     "Authorization": "Bearer " + 'someToken',
     // },
     auth: {
-        username: username,
-        password: password
+        username: this.$store.state.username,
+        password: this.$store.state.password,
     },
     timeout: 10000,
 });

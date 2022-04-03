@@ -8,19 +8,21 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
+import getAPI from '@/axios-api'
 
 
 
 
 import VueTelInput from 'vue-tel-input';
 import 'vue-tel-input/dist/vue-tel-input.css';
-store.getters.config
-store.state.config
+
 
 
 const globalOptions = {
     mode: 'auto',
 };
+
+
 
 
 
@@ -64,4 +66,4 @@ router.beforeEach((to, from, next) => {
 
 
 
-createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");
+createApp(App).use(router).use(store).use(VueSweetalert2).use(getAPI).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");

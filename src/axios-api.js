@@ -7,12 +7,22 @@ import store from "./store";
 // import { mapMutations } from "vuex";
 // import { mapState } from "vuex";
 
-export function username() {
-    return store.state.username;
+
+export function accessToken() {
+    return store.state.accessToken;
 }
 
+
+export function username() {
+    return store.state.username;
+
+}
+
+console.log("username", accessToken);
+
+
 export function password() {
-    return store.state.password;
+    return String(store.state.password);
 }
 
 // var Buffer = require('buffer/').Buffer;
@@ -34,16 +44,17 @@ const getAPI = axios.create({
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json",
+        "Authorization": `Bearer + ${accessToken()}`,
 
 
     },
 
-    auth: {
-        username: username,
-        password: password,
+    // auth: {
+    //     username: username,
+    //     password: password, //store.state.password,
 
-        timeout: 10000,
-    },
+    //     timeout: 10000,
+    // },
 });
 
 export { getAPI };

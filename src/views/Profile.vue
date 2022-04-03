@@ -68,12 +68,14 @@
             <!-- * Balance -->
             <!-- Wallet Footer -->
             <!-- Create Pledge -->
+            <button @click="getinfo">getinfo</button>
             <div class="wallet-footer">
               <div class="item">
                 <a
                   href="#"
                   data-bs-toggle="modal"
                   data-bs-target="#PledgeCreate"
+                  
                 >
                   <div class="icon-wrapper bg-danger">
                     <svg
@@ -2830,6 +2832,21 @@ export default {
 
   methods: {
     //create axios const to return count
+
+    getinfo(){
+      axios.get('/api/user', {
+  headers: {
+    Authorization: 'Bearer ' + this.$store.state.accessToken
+  }
+})
+.then((res) => {
+  this.$swal("success")
+  console.log(res.data)
+})
+.catch((error) => {
+  console.error(error)
+})
+    },
 
     ...mapActions([
       "fetchDocuments",

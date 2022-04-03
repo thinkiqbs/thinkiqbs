@@ -1,4 +1,5 @@
-import axios from "axios";
+// import axios from "axios";
+import { getAPI } from "@/axios-api";
 
 
 const state = {
@@ -12,12 +13,12 @@ const getters = {
 };
 const actions = {
     async fetchMembers({ commit }) {
-        const response = await axios.get("/members/api/v1/MemberDetails/");
+        const response = await getAPI.get("/members/api/v1/MemberDetails/");
 
         commit("setMembers", response.data.results);
     },
     async fetchDeposits({ commit }) {
-        const response = await axios.get("/members/api/v1/MonthDeposits/");
+        const response = await getAPI.get("/members/api/v1/MonthDeposits/");
         commit("setDeposits", response.data.results);
     },
 };

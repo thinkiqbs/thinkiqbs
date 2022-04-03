@@ -2828,16 +2828,23 @@ export default {
     //create axios const to return count
 
     getinfo() {
-      axios.get(
-        "/api/user/",
-        {},
-        {
-          auth: {
-            username: this.$store.state.username,
-            password: "Starten1@",
-          },
+      // create an axios get request that also sends username and password 
+      axios.get("/api/user/",{
+        auth: {
+          username: this.username,
+          password: "Starten1@",
         }
-      );
+      })
+      .then (response => {
+        console.log(response);
+        this.email = response.data.email;
+        this.$swal(response.statusText);
+    },
+    error => {
+      console.log(error);
+        this.$swal(error);
+
+    });
     },
 
     ...mapActions([

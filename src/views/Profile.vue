@@ -2828,12 +2828,16 @@ export default {
     //create axios const to return count
 
     getinfo() {
-      axios({
-  method: 'post',
-  url: '/api/login/',
-  
-  headers: { Authorization : 'Token ${this.$store.state.accessToken}'},
-});
+      axios.get(
+        "/api/user/",
+        {},
+        {
+          auth: {
+            username: this.$store.state.username,
+            password: "Starten1@",
+          },
+        }
+      );
     },
 
     ...mapActions([

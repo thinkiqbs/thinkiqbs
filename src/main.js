@@ -41,8 +41,21 @@ const AUTH_TOKEN = store.state.accessToken;
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
 //axios.defaults.baseURL = "https://backend.iqsacco.com/";
-axios.defaults.headers.common['Authorization'] = 'Bearer' + AUTH_TOKEN;
+axios.defaults.headers.common['Auth'] = 'Basic ' + AUTH_TOKEN;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+// axios.interceptors.request.use(
+//     config => {
+
+//         if (store.state.accessToken) {
+//             config.headers.Authorization = 'Bearer ' + store.state.accessToken;
+//         }
+//         return config;
+//     },
+//     error => {
+//         return Promise.reject(error);
+//     }
+// );
 
 
 

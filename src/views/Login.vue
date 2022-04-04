@@ -56,17 +56,9 @@
 
             <div class="form-links mt-2">
               <div>
-                <div>
-                  <a
-                    href="app-forgot-password.html"
-                    class="text-muted"
-                    data-bs-toggle="modal"
-                    data-bs-target="RegisterModal"
-                    >Forgot Password?</a
-                  >
-                </div>
+               
 
-                <!-- <router-link to="/register">Register Now</router-link> -->
+                <router-link to="/register">Register Now</router-link>
               </div>
               {{ access }}
               <div>

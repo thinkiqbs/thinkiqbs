@@ -76,8 +76,7 @@
           <div
             v-if="
               token != null &&
-              this.organizationdetails == 2 &&
-              this.memberdetails == 1
+              this.organizationdetails == '2' 
             "
           >
             <button
@@ -90,6 +89,7 @@
               </span>
             </button>
           </div>
+          {{this.organizationdetails}}
           <div v-if="token != null">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
@@ -727,7 +727,7 @@
               <div class="form-links mt-2">
                 <div>
                   <a @click="gotoregister" class="text-muted"
-                    >Forgot Password?</a
+                    >Register</a
                   >
                   <!-- <router-link to="/register">Register Now</router-link> -->
                 </div>
@@ -998,7 +998,7 @@ export default {
     },
     allorg() {
       return this.$store.getters.allOrg.filter(
-        (item) => item.admin_email == this.email
+        (item) => item.admin_email === this.email
       );
     },
     allmember() {

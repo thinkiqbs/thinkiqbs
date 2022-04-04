@@ -28,16 +28,61 @@
               <a class="nav-link me-lg-3" href="#download">Download</a>
             </li>
           </ul>
-          <button
-            class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-            data-bs-toggle="modal"
-            data-bs-target="#feedbackModal"
-          >
-            <span class="d-flex align-items-center">
-              <i class="bi-chat-text-fill me-2"></i>
-              <span class="small">Send Feedback</span>
-            </span>
-          </button>
+          <div>
+            <div>
+              <button
+                class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Get Started</span>
+                </span>
+              </button>
+            </div>
+            <div>
+              <button
+                class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Get Started</span>
+                </span>
+              </button>
+            </div>
+           
+          </div>
+
+            
+           
+            <div>
+              <button
+                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Start A New SACCO</span>
+                </span>
+              </button>
+            </div>
+            <div>
+              <button
+                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Log Out</span>
+                </span>
+              </button>
+            </div>
+
         </div>
       </div>
     </nav>

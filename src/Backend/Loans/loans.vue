@@ -1484,7 +1484,6 @@ import financeNav from "@/components/FinanceNav";
 import headerDashboard from "@/components/headerdashboard.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
-// import getAPI from "getAPI";
 //Bootstrap and jQuery libraries
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";

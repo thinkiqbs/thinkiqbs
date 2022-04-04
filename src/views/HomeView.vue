@@ -86,14 +86,11 @@
           </div>
           <div v-if="token != null">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-            <li class="nav-item">
-              <a class="nav-link me-lg-3" href="/Profile">My Account</a>
-            </li>
-            
-          </ul>
-
+              <li class="nav-item">
+                <a class="nav-link me-lg-3" href="/Profile">My Account</a>
+              </li>
+            </ul>
           </div>
-          
         </div>
       </div>
     </nav>
@@ -468,222 +465,360 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form class="modal-content" @submit.prevent="onSubmit">
-              <div class="container">
-              <div class="card">
 
-
-                <h2>New Member</h2>
-                <p>Please fill in this form to create an new member account.</p>
-                <hr />
-
-                <div class="form-group row">
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Email Address </label>
-                        <input
-                          type="text"
-                          placeholder="Enter Email"
-                          name="email"
-                          required
-                          v-model="addmembers.email"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">First Name</label>
-                        <input
-                          type="text"
-                          placeholder="John"
-                          name="firstname"
-                          required
-                          v-model="addmembers.first_name"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Last Name</label>
-                        <input
-                          type="text"
-                          placeholder="Apopo"
-                          name="lastname"
-                          required
-                          v-model="addmembers.last_name"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-2">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Mobile Number </label>
-                        <input
-                          type="tel"
-                          placeholder="254723456789"
-                          name="mobilenumber"
-                          required
-                          v-model="addmembers.phone_no"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <label for="address"><b>Address</b></label>
+            <form class="row g-3">
+              <div class="col-md-4">
+                <label for="validationDefault01" class="form-label"
+                  >Select SACCO</label
+                >
+                <select
+                  class="form-control .choices"
+                  v-model="selectedemployer"
+                >
+                  <option
+                    v-for="option in employers"
+                    v-bind:value="option.id"
+                    :key="option.id"
+                  >
+                    {{ option.employer_name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="validationDefault01" class="form-label"
+                  >Select Employer</label
+                >
+                <select
+                  class="form-control .choices"
+                  v-model="selectedemployer"
+                >
+                  <option
+                    v-for="option in employers"
+                    v-bind:value="option.id"
+                    :key="option.id"
+                  >
+                    {{ option.employer_name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="validationDefault01" class="form-label"
+                  >First name</label
+                >
                 <input
-                  type="tel"
-                  placeholder="Address"
-                  name="address"
+                  type="text"
+                  class="form-control"
+                  id="validationDefault01"
+                  value="Mark"
                   required
-                  v-model="addmembers.Address"
                 />
-
-                <div class="form-group row">
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">National ID </label>
-                        <input
-                          type="Number"
-                          placeholder="14232323"
-                          name="National_Id"
-                          required
-                          v-model="addmembers.national_id"
-                        />
-
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Employer </label>
-                        <select
-                          class="form-control .choices"
-                          v-model="selectedemployer"
-                        >
-                          <option
-                            v-for="option in employers"
-                            v-bind:value="option.id"
-                            :key="option.id"
-                          >
-                            {{ option.employer_name }}
-                          </option>
-                        </select>
-
-                        <span>selected: {{ selectedemployer }}</span>
-
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Department</label>
-                        <select
-                          class="form-select"
-                          aria-label="Default select example"
-                          v-model="addmembers.Department"
-                        >
-                          <option selected>Open this select menu</option>
-                          <option value="1">Finance</option>
-                          <option value="2">Sales</option>
-                          <option value="3">Marketing</option>
-                          <option value="3">HR</option>
-                          <option value="3">Admin</option>
-                          <option value="3">House Keeping</option>
-                        </select>
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">County </label>
-                        <select
-                          class="form-control .choices"
-                          v-model="selectedcounty"
-                        >
-                          <option
-                            v-for="option in county"
-                            v-bind:value="option.county"
-                            :key="option.id"
-                          >
-                            {{ option.county }}
-                          </option>
-                        </select>
-                        <span>selected: {{ selectedcounty }}</span>
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <p>
-                  By creating an account the user has agreed to become a member
-                  <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
-                </p>
-
-                <div class="form-row">
-                  <div class="col">
-                    <button
-                      style="margin-right: 16px"
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Cancel
-                    </button>
-
-                    <button
-                      style="margin-right: 16px"
-                      type="submit"
-                      class="btn btn-secondary"
-                      @click="addnewmeber"
-                    >
-                      Add Member
-                    </button>
-                    <span style="color: green"
-                      >{{ this.message }} <i class="fas fa-check"></i
-                    ></span>
-                  </div>
+              </div>
+              <div class="col-md-4">
+                <label for="validationDefault02" class="form-label"
+                  >Last name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationDefault02"
+                  value="Otto"
+                  required
+                />
+              </div>
+              <div class="col-md-4">
+                <label for="validationDefaultUsername" class="form-label"
+                  >Email Address</label
+                >
+                <div class="input-group">
+                  <span class="input-group-text" id="inputGroupPrepend2"
+                    >@</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationDefaultUsername"
+                    aria-describedby="inputGroupPrepend2"
+                    v-model="this.emailstate"
+                    required
+                  />
                 </div>
               </div>
+              <div class="col-md-6">
+                <label for="validationDefault03" class="form-label"
+                  >National ID</label
+                >
+                <input
+                  type="Number"
+                  placeholder="14232323"
+                  name="National_Id"
+                  required
+                  v-model="this.usernamestate"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="validationDefault04" class="form-label"
+                  >County</label
+                >
+                <select class="form-control .choices" v-model="selectedcounty">
+                  <option
+                    v-for="option in county"
+                    v-bind:value="option.county"
+                    :key="option.id"
+                  >
+                    {{ option.county }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <label for="validationDefault05" class="form-label">Zip</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validationDefault05"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="invalidCheck2"
+                    required
+                  />
+                  <label class="form-check-label" for="invalidCheck2">
+                    Agree to terms and conditions
+                  </label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">
+                  Submit form
+                </button>
+              </div>
+            </form>
+            <form class="modal-content" @submit.prevent="onSubmit">
+              <div class="container">
+                <div class="card">
+                  <h2>New Member</h2>
+                  <p>
+                    Please fill in this form to create an new member account.
+                  </p>
+                  <hr />
+
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5"
+                            >Email Address
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Enter Email"
+                            name="email"
+                            required
+                            v-model="addmembers.email"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">First Name</label>
+                          <input
+                            type="text"
+                            placeholder="John"
+                            name="firstname"
+                            required
+                            v-model="addmembers.first_name"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">Last Name</label>
+                          <input
+                            type="text"
+                            placeholder="Apopo"
+                            name="lastname"
+                            required
+                            v-model="addmembers.last_name"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5"
+                            >Mobile Number
+                          </label>
+                          <input
+                            type="tel"
+                            placeholder="254723456789"
+                            name="mobilenumber"
+                            required
+                            v-model="addmembers.phone_no"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <label for="address"><b>Address</b></label>
+                  <input
+                    type="tel"
+                    placeholder="Address"
+                    name="address"
+                    required
+                    v-model="addmembers.Address"
+                  />
+
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">National ID </label>
+                          <input
+                            type="Number"
+                            placeholder="14232323"
+                            name="National_Id"
+                            required
+                            v-model="addmembers.national_id"
+                          />
+
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">Employer </label>
+                          <select
+                            class="form-control .choices"
+                            v-model="selectedemployer"
+                          >
+                            <option
+                              v-for="option in employers"
+                              v-bind:value="option.id"
+                              :key="option.id"
+                            >
+                              {{ option.employer_name }}
+                            </option>
+                          </select>
+
+                          <span>selected: {{ selectedemployer }}</span>
+
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">Department</label>
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            v-model="addmembers.Department"
+                          >
+                            <option selected>Open this select menu</option>
+                            <option value="1">Finance</option>
+                            <option value="2">Sales</option>
+                            <option value="3">Marketing</option>
+                            <option value="3">HR</option>
+                            <option value="3">Admin</option>
+                            <option value="3">House Keeping</option>
+                          </select>
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">County </label>
+                          <select
+                            class="form-control .choices"
+                            v-model="selectedcounty"
+                          >
+                            <option
+                              v-for="option in county"
+                              v-bind:value="option.county"
+                              :key="option.id"
+                            >
+                              {{ option.county }}
+                            </option>
+                          </select>
+                          <span>selected: {{ selectedcounty }}</span>
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p>
+                    By creating an account the user has agreed to become a
+                    member
+                    <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
+                  </p>
+
+                  <div class="form-row">
+                    <div class="col">
+                      <button
+                        style="margin-right: 16px"
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
+
+                      <button
+                        style="margin-right: 16px"
+                        type="submit"
+                        class="btn btn-secondary"
+                        @click="addnewmeber"
+                      >
+                        Add Member
+                      </button>
+                      <span style="color: green"
+                        >{{ this.message }} <i class="fas fa-check"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
@@ -797,7 +932,6 @@ import axios from "axios";
 import { getAPI } from "@/axios-api.js";
 import { mapGetters, mapActions, mapState } from "vuex";
 
-
 // const auth = new AuthService();
 // import { mapState } from "vuex";
 // import Profile from '../views/Profile';
@@ -830,8 +964,6 @@ export default {
           County: "",
         },
       ],
-
-    
     };
   },
   created() {
@@ -903,7 +1035,7 @@ export default {
           })
           .then((response) => {
             response;
-            
+
             // this.$router.go(); // Refreshes page
             this.$swal({
               title: "Success",
@@ -924,11 +1056,10 @@ export default {
       ]);
     },
     logout: function () {
-
       this.$store.dispatch("userLogout").then(() => {
         window.localStorage.clear();
 
-        window.location.replace('/');
+        window.location.replace("/");
       });
     },
 
@@ -945,11 +1076,9 @@ export default {
             icon: "success",
             button: "OK",
           });
-          //Dismiss Modal 
+          //Dismiss Modal
           // ("#loginModal").modal("hide");
-          window.location.reload()
-
-
+          window.location.reload();
         })
         .catch((err) => {
           console.log(err);

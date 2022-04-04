@@ -1,0 +1,21 @@
+-------------------- Auto-Git Log --------------------
+		Mon Apr 04 2022 16:45:32 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/views/HomeView.vue
+
+
+Created files:
+* .autogit/logs/log-4-3-2022-16-15-18.txt
+* src/assets/img/app-store-badge.svg
+* src/assets/img/demo-screen.mp4
+* src/assets/img/google-play-badge.svg
+* src/assets/img/portrait_black.png
+* src/assets/img/tnw-logo.svg
+
+
+Deleted files:
+
+
+Renamed files:

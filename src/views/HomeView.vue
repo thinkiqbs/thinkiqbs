@@ -466,7 +466,7 @@
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
 
-            <form class="row g-3">
+            <form class="row g-3" @submit.prevent="onsubmit">
               <div class="col-md-4">
                 <label for="validationDefault01" class="form-label"
                   >Select SACCO</label
@@ -483,7 +483,6 @@
                     {{ option.organization_name }}
                   </option>
                 </select>
-
               </div>
               <div class="col-md-4">
                 <label for="validationDefault01" class="form-label"
@@ -510,7 +509,8 @@
                   type="text"
                   class="form-control"
                   id="validationDefault01"
-                  value="Mark"
+
+                  v-model="addmembers.first_name"
                   required
                 />
               </div>
@@ -522,7 +522,8 @@
                   type="text"
                   class="form-control"
                   id="validationDefault02"
-                  value="Otto"
+
+                  v-model="addmembers.last_name"
                   required
                 />
               </div>
@@ -543,6 +544,18 @@
                     required
                   />
                 </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault03" class="form-label"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  placeholder="254XXXXXXXX"
+                  name="National_Id"
+                  required
+                  v-model="this.usernamestate"
+                />
               </div>
               <div class="col-md-6">
                 <label for="validationDefault03" class="form-label"
@@ -571,13 +584,25 @@
                 </select>
               </div>
               <div class="col-md-3">
-                <label for="validationDefault05" class="form-label">Zip</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="validationDefault05"
-                  required
-                />
+                <label for="validationDefault05" class="form-label"
+                  >Department/Industry</label
+                >
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  v-model="addmembers.Department"
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="1">Finance</option>
+                  <option value="2">Sales</option>
+                  <option value="3">Marketing</option>
+                  <option value="3">HR</option>
+                  <option value="3">Admin</option>
+                  <option value="3">House Keeping</option>
+                </select>
+                <i class="clear-input"
+                  ><ion-icon name="close-circle"></ion-icon
+                ></i>
               </div>
               <div class="col-12">
                 <div class="form-check">
@@ -594,7 +619,11 @@
                 </div>
               </div>
               <div class="col-12">
-                <button class="btn btn-primary" type="submit">
+                <button
+                  class="btn btn-primary"
+                  @click="addnewmeber"
+                  type="submit"
+                >
                   Submit form
                 </button>
               </div>
@@ -718,7 +747,7 @@ export default {
   components: {},
   data() {
     return {
-      selectedcompanyid:'',
+      selectedcompanyid: "",
       is_staff: "",
       admincheck: [],
       is_member: 0,
@@ -730,6 +759,7 @@ export default {
       email: "",
       incorrectAuth: false,
       autherror: "",
+      county: [],
       addmembers: [
         {
           first_name: "",
@@ -753,6 +783,10 @@ export default {
   },
   mounted() {
     this.admincheck = this.allorg;
+    getAPI.get("/sys_config/api/v1/county/").then((res) => {
+      this.county = res.data.results;
+      // $("#example").DataTable();
+    });
   },
 
   methods: {
@@ -804,17 +838,17 @@ export default {
             first_name: this.addmembers.first_name,
             last_name: this.addmembers.last_name,
             phone_no: this.addmembers.phone_no,
-            national_id: this.addmembers.national_id,
+            national_id: this.usernamestate,
             bankname: this.addmembers.bankname,
-            email: this.addmembers.email,
-            username: this.addmembers.email,
+            email: this.emailstate,
+            username: this.usernamestate,
             date_of_birth: this.addmembers.date_of_birth,
             Employer: this.selectedemployer,
             Department: this.addmembers.Department,
             County: this.selectedcounty,
             Address: this.addmembers.Address,
             organizationprofile: this.orgprofileid,
-            company_id: this.companyid,
+            company_id: this.companyid3,
             password1: "qxcv2010A",
             password2: "qxcv2010A",
           })
@@ -938,9 +972,8 @@ export default {
       }
     },
 
-    organizations(){
-      return this.$store.getters.allOrg
-
+    organizations() {
+      return this.$store.getters.allOrg;
     },
     allorg() {
       return this.$store.getters.allOrg.filter(

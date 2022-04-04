@@ -566,7 +566,8 @@
 <script>
 // import AuthService from "@/auth/AuthService";
 
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js"
 import { mapGetters, mapActions, mapState } from "vuex";
 
 
@@ -620,7 +621,7 @@ export default {
     },
     becomememberhide: function () {
       // async function to cont member from memberDetails
-      axios
+      getAPI
         .get("/members/api/v1/MemberDetails/", {
           params: { email: this.email },
         })

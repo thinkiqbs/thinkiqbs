@@ -17,7 +17,7 @@
 					<a
 						href="#"
 						class="headerButton"
-						data-toggle="modal"
+						data-bs-toggle="modal"
 						data-target="#sidebarPanel"
 					>
 						<ion-icon name="menu-outline"></ion-icon>
@@ -58,8 +58,8 @@
                 <a
                   href="#"
                   class="button"
-                  data-toggle="modal"
-                  data-target="#depositActionSheet"
+                  data-bs-toggle="modal"
+                  data-bs-target="#depositActionSheet"
                 >
                   <ion-icon name="add-outline"></ion-icon>
                 </a>
@@ -68,7 +68,7 @@
             <!-- * Balance -->
             <!-- Wallet Footer -->
             <!-- Create Pledge -->
-            <button @click="getinfo">getinfo</button>
+            <!-- <button @click="getinfo">getinfo</button> -->
             <div class="wallet-footer">
               <div class="item">
                 <a
@@ -2401,8 +2401,8 @@
         <a
           href="#"
           class="item"
-          data-toggle="modal"
-          data-target="#sidebarPanel"
+          data-bs-toggle="modal"
+          data-bs-target="#sidebarPanel"
         >
           <div class="col">
             <svg
@@ -2659,7 +2659,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getAPI } from "@/axios-api.js";
 // import { HTTP } from "@/siteurl";
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -2826,30 +2826,29 @@ export default {
   },
 
   methods: {
-    //create axios const to return count
+    //create getAPI const to return count
 
     getinfo() {
-      // create an axios get request that also sends username and password 
-      axios.get("/api/user/",{
-        auth: {
-          username: this.username,
-          password: this.$store.state.password,
-        }
-      })
-      .then (response => {
-        console.log(response);
-        this.fetchUser();
-        this.email = response.data.email;
-        
-        this.$swal(response.statusText);
+      // create an getAPI get request that also sends username and password
+      getAPI
+        .get("/api/user/", {
+          auth: {
+            username: this.username,
+            password: this.$store.state.password,
+          },
+        })
+        .then(
+          (response) => {
+            console.log(response);
+            this.fetchUser();
+            this.email = response.data.email;
 
-        
-    },
-    error => {
-      console.log(error);
-
-
-    });
+            this.$swal(response.statusText);
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     },
 
     ...mapActions([
@@ -2898,7 +2897,7 @@ export default {
 
     becomememberhide: function () {
       // async function to cont member from memberDetails
-      axios
+      getAPI
         .get("/members/api/v1/MemberDetails/", {
           params: { email: this.email },
         })
@@ -2914,7 +2913,7 @@ export default {
     },
 
     countadmin: function () {
-      axios
+      getAPI
         .get("/sys_config/api/v1/OrganizationProfile/", {
           params: { admin_email: this.email },
         })
@@ -2967,7 +2966,7 @@ export default {
     },
 
     updateprofile() {
-      axios
+      getAPI
         .put("users/api/v1/CustomUser/ " + this.user_id + "/", {
           // names: '',
           first_name: this.editprofile.first_name,
@@ -2986,7 +2985,7 @@ export default {
     },
 
     addsavings() {
-      axios
+      getAPI
         .post(`members/api/v1/MonthDeposits/`, {
           // names: '',
           User_id: this.user_id,
@@ -3016,7 +3015,7 @@ export default {
       }
     },
     withdrawals() {
-      axios
+      getAPI
         .post(`http://127.0.0.1:8000/Savings/api/v1/Deposits/`, {
           // names: '',
           // first_name: "",
@@ -3040,7 +3039,7 @@ export default {
         });
     },
     saveloan() {
-      axios
+      getAPI
         .post(`/loans/api/v1/loans/`, {
           // names: '',
           User_id: this.user_id,
@@ -3073,7 +3072,7 @@ export default {
         });
     },
     makepayments() {
-      axios
+      getAPI
         .post(`/finance/api/v1/PaymentsReceived/`, {
           // names: '',
           User_id: this.user_id,
@@ -3109,7 +3108,7 @@ export default {
     },
 
     createorg() {
-      axios
+      getAPI
         .post(`/sys_config/api/v1/OrganizationProfile/`, {
           // names: '',
           admin_id: this.user_id,
@@ -3147,7 +3146,7 @@ export default {
 
     saveprofile(user_id) {
       {
-        axios.put("/users/users/", user_id, {
+        getAPI.put("/users/users/", user_id, {
           headers: {
             Authorization: `Bearer ${this.$store.state.accessToken}`,
           },
@@ -3165,7 +3164,7 @@ export default {
     },
     // withdrwalrequest() {},
     getProducts(Exception) {
-      axios
+      getAPI
         .get("/finance/api/v1/Chartofaccounts/")
         .then((res) => {
           this.tableData = res.data.results;
@@ -3175,7 +3174,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {
@@ -3255,7 +3254,7 @@ export default {
       return this.$store.state.username;
     },
 
-      password() {
+    password() {
       return this.$store.state.password;
     },
 
@@ -3573,8 +3572,6 @@ export default {
         (item) => item.email == this.email
       )[0].company_id;
     },
-
-
 
     companyid3() {
       return this.$store.getters.allOrg.filter(

@@ -63,23 +63,22 @@
             <!-- Mashead text and app badges-->
             <div class="mb-5 mb-lg-0 text-center text-lg-start">
               <h1 class="display-1 lh-1 mb-3">
-                Showcase your app beautifully.
+                SACCO ERP Software Service
               </h1>
-              <p class="lead fw-normal text-muted mb-5">
-                Launch your mobile app landing page faster with this free, open
-                source theme from Start Bootstrap!
+              <p class="lead fw-normal  mb-5">
+                IQSACCO is a SACCO ERP Software Service that helps automate all the Sacco processes 
               </p>
               <div class="d-flex flex-column flex-lg-row align-items-center">
                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
                   ><img
                     class="app-badge"
-                    src="assets/img/google-play-badge.svg"
+                    src="../assets/images/svg/google-play-badge.svg"
                     alt="..."
                 /></a>
                 <a href="#!"
                   ><img
                     class="app-badge"
-                    src="assets/img/app-store-badge.svg"
+                    src="../assets/images/svg/app-store-badge.svg"
                     alt="..."
                 /></a>
               </div>
@@ -344,51 +343,11 @@
         </div>
       </div>
     </section>
-    <!-- Call to action section-->
-    <section class="cta">
-      <div class="cta-content">
-        <div class="container px-5">
-          <h2 class="text-white display-1 lh-1 mb-4">
-            Stop waiting.
-            <br />
-            Start building.
-          </h2>
-          <a
-            class="btn btn-outline-light py-3 px-4 rounded-pill"
-            href="https://startbootstrap.com/theme/new-age"
-            target="_blank"
-            >Download for free</a
-          >
-        </div>
-      </div>
-    </section>
-    <!-- App badge section-->
-    <section class="bg-gradient-primary-to-secondary" id="download">
-      <div class="container px-5">
-        <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
-        <div
-          class="d-flex flex-column flex-lg-row align-items-center justify-content-center"
-        >
-          <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
-            ><img
-              class="app-badge"
-              src="assets/img/google-play-badge.svg"
-              alt="..."
-          /></a>
-          <a href="#!"
-            ><img
-              class="app-badge"
-              src="assets/img/app-store-badge.svg"
-              alt="..."
-          /></a>
-        </div>
-      </div>
-    </section>
-    <!-- Footer-->
+   
     <footer class="bg-black text-center py-5">
       <div class="container px-5">
         <div class="text-white-50 small">
-          <div class="mb-2">© Your Website 2022. All Rights Reserved.</div>
+          <div class="mb-2">© www.thinkiqbs.com 2022. All Rights Reserved.</div>
           <a href="#!">Privacy</a>
           <span class="mx-1">·</span>
           <a href="#!">Terms</a>
@@ -536,33 +495,7 @@
     </div>
     <!-- Bootstrap core JS-->
 
-    <iframe
-      frameborder="0"
-      scrolling="no"
-      style="background-color: transparent; border: 0px; display: none"
-    ></iframe>
-    <div
-      id="GOOGLE_INPUT_CHEXT_FLAG"
-      input=""
-      input_stat='{"tlang":true,"tsbc":true,"pun":true,"mk":true,"ss":true}'
-      style="display: none"
-    ></div>
-    <span class="smp_int_img"><span>Share Image</span></span
-    ><span
-      id="buffer-extension-hover-button"
-      style="
-        display: none;
-        position: absolute;
-        z-index: 8675309;
-        width: 100px;
-        height: 25px;
-        background-image: url('chrome-extension://noojglkidnpfjbincgijbaiedldjfbhh/data/shared/img/buffer-hover-icon@2x.png');
-        background-size: 100px 25px;
-        opacity: 0.9;
-        cursor: pointer;
-      "
-    ></span
-    >
+     
   </body>
 </template>
 

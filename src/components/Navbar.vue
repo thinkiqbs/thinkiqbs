@@ -635,11 +635,11 @@ export default {
       }
     },
     logout: function() {
-      this.$router.go('/MemberDetails');
+
     this.$store.dispatch("userLogout").then(() => {
       window.localStorage.clear();
 
-      window.location.reload();
+      window.location.replace('/');
     });
     },
 

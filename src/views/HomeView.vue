@@ -46,7 +46,7 @@
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
-              data-bs-target="#feedbackModal"
+              data-bs-target="#JoinSaccoModal"
             >
               <span class="d-flex align-items-center">
                 <i class="bi-chat-text-fill me-2"></i>
@@ -442,7 +442,7 @@
     <!-- Register Modal-->
     <div
       class="modal fade"
-      id="RegisterModal"
+      id="JoinSaccoModal"
       tabindex="-1"
       aria-labelledby="feedbackModalLabel"
       aria-hidden="true"
@@ -468,135 +468,223 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form v-on:submit.prevent="submit" autocomplete="off">
-              <div class="title-text">
-                <h3>Sign Up for New Account</h3>
-              </div>
+            <form class="modal-content" @submit.prevent="onSubmit">
+              <div class="container">
+              <div class="card">
 
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="firstName"
-                  placeholder="name@example.com"
-                  v-model="first_name"
-                />
-                <label for="floatingInput">First Name</label>
-              </div>
 
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="lastname"
-                  placeholder="jonathan"
-                  v-model="last_name"
-                />
-                <label for="floatingInput">Last Name</label>
-              </div>
+                <h2>New Member</h2>
+                <p>Please fill in this form to create an new member account.</p>
+                <hr />
 
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  placeholder="ID Number"
-                  v-model="username"
-                />
-                <label for="floatingInput">National ID</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="username"
-                  placeholder="myemail@gmail.com"
-                  v-model="email"
-                />
-                <label for="floatingInput">Email</label>
-              </div>
+                <div class="form-group row">
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Email Address </label>
+                        <input
+                          type="text"
+                          placeholder="Enter Email"
+                          name="email"
+                          required
+                          v-model="addmembers.email"
+                        />
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
 
-              <div class="form-floating mb-3">
-                <phone-mask-input
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">First Name</label>
+                        <input
+                          type="text"
+                          placeholder="John"
+                          name="firstname"
+                          required
+                          v-model="addmembers.first_name"
+                        />
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Last Name</label>
+                        <input
+                          type="text"
+                          placeholder="Apopo"
+                          name="lastname"
+                          required
+                          v-model="addmembers.last_name"
+                        />
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Mobile Number </label>
+                        <input
+                          type="tel"
+                          placeholder="254723456789"
+                          name="mobilenumber"
+                          required
+                          v-model="addmembers.phone_no"
+                        />
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <label for="address"><b>Address</b></label>
+                <input
                   type="tel"
-                  placeholder="254723456789"
-                  name="mobilenumber"
-                  autoDetectCountry
-                  showFlag
-                  @onValidate="onValidate"
-                  wrapperClass="wrraper-example"
-                  inputClass="input-example"
-                  flagClass="flag-example"
+                  placeholder="Address"
+                  name="address"
                   required
-                  v-model="phone_no"
+                  v-model="addmembers.Address"
                 />
 
-                <!-- <label for="floatingInput">Phone Number</label> -->
-              </div>
+                <div class="form-group row">
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">National ID </label>
+                        <input
+                          type="Number"
+                          placeholder="14232323"
+                          name="National_Id"
+                          required
+                          v-model="addmembers.national_id"
+                        />
 
-              <div class="form-floating mb-3">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="********"
-                  v-model="password1"
-                />
-                <label for="floatingInput">Password</label>
-              </div>
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
 
-              <div class="form-floating">
-                <input
-                  type="password"
-                  class="form-control"
-                  id="floatingPassword"
-                  placeholder="Password"
-                  autocomplete="off"
-                  v-model="password2"
-                />
-                <label for="floatingPassword">Confirm Password</label>
-              </div>
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Employer </label>
+                        <select
+                          class="form-control .choices"
+                          v-model="selectedemployer"
+                        >
+                          <option
+                            v-for="option in employers"
+                            v-bind:value="option.id"
+                            :key="option.id"
+                          >
+                            {{ option.employer_name }}
+                          </option>
+                        </select>
 
-              <div class="form-group">
-                <a href="">Terms and Conditions</a>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="formCheck-1"
-                    v-model="agree"
-                  />
-                  <label class="form-check-label" for="formCheck-1">
-                    I agree to the terms and conditions
-                  </label>
+                        <span>selected: {{ selectedemployer }}</span>
+
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">Department</label>
+                        <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          v-model="addmembers.Department"
+                        >
+                          <option selected>Open this select menu</option>
+                          <option value="1">Finance</option>
+                          <option value="2">Sales</option>
+                          <option value="3">Marketing</option>
+                          <option value="3">HR</option>
+                          <option value="3">Admin</option>
+                          <option value="3">House Keeping</option>
+                        </select>
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="form-group boxed">
+                      <div class="input-wrapper">
+                        <label class="label" for="name5">County </label>
+                        <select
+                          class="form-control .choices"
+                          v-model="selectedcounty"
+                        >
+                          <option
+                            v-for="option in county"
+                            v-bind:value="option.county"
+                            :key="option.id"
+                          >
+                            {{ option.county }}
+                          </option>
+                        </select>
+                        <span>selected: {{ selectedcounty }}</span>
+                        <i class="clear-input"
+                          ><ion-icon name="close-circle"></ion-icon
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <p>
+                  By creating an account the user has agreed to become a member
+                  <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
+                </p>
+
+                <div class="form-row">
+                  <div class="col">
+                    <button
+                      style="margin-right: 16px"
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancel
+                    </button>
+
+                    <button
+                      style="margin-right: 16px"
+                      type="submit"
+                      class="btn btn-secondary"
+                      @click="addnewmeber"
+                    >
+                      Add Member
+                    </button>
+                    <span style="color: green"
+                      >{{ this.message }} <i class="fas fa-check"></i
+                    ></span>
+                  </div>
                 </div>
               </div>
-
-              <button
-                type="submit"
-                class="btn btn-primary btn-block"
-                v-if="agree"
-                @click="userRegister"
-              >
-                Register
-              </button>
-              <button
-                type="submit"
-                class="btn btn-primary btn-block"
-                v-else
-                @click="alertterms"
-              >
-                Register
-              </button>
-              <a class="small text-muted" href="#!">Forgot password?</a>
-              I already have an account?
-              <router-link
-                :to="{ name: 'login' }"
-                exact
-                class="small text-muted"
-                >click here to login
-              </router-link>
-              &nbsp;
+              </div>
             </form>
           </div>
         </div>
@@ -683,7 +771,7 @@
                   <a @click="gotoregister" class="text-muted"
                     >Forgot Password?</a
                   >
-                  <router-link to="/register">Register Now</router-link>
+                  <!-- <router-link to="/register">Register Now</router-link> -->
                 </div>
                 {{ access }}
                 <div>
@@ -709,6 +797,7 @@ import axios from "axios";
 import { getAPI } from "@/axios-api.js";
 import { mapGetters, mapActions, mapState } from "vuex";
 
+
 // const auth = new AuthService();
 // import { mapState } from "vuex";
 // import Profile from '../views/Profile';
@@ -728,6 +817,21 @@ export default {
       email: "",
       incorrectAuth: false,
       autherror: "",
+      addmembers: [
+        {
+          first_name: "",
+          last_name: "",
+          phone_no: "",
+          national_id: "",
+          email: "",
+          date_of_birth: "",
+          Employer: "",
+          Department: "",
+          County: "",
+        },
+      ],
+
+    
     };
   },
   created() {
@@ -774,12 +878,57 @@ export default {
         this.message = "";
       }
     },
+    addnewmeber() {
+      Promise.all([
+        getAPI
+          .post(`/members/api/v1/MemberDetails/`, {
+            // names: '',
+            // User_id: this.user_id,
+            first_name: this.addmembers.first_name,
+            last_name: this.addmembers.last_name,
+            phone_no: this.addmembers.phone_no,
+            national_id: this.addmembers.national_id,
+            bankname: this.addmembers.bankname,
+            email: this.addmembers.email,
+            username: this.addmembers.email,
+            date_of_birth: this.addmembers.date_of_birth,
+            Employer: this.selectedemployer,
+            Department: this.addmembers.Department,
+            County: this.selectedcounty,
+            Address: this.addmembers.Address,
+            organizationprofile: this.orgprofileid,
+            company_id: this.companyid,
+            password1: "qxcv2010A",
+            password2: "qxcv2010A",
+          })
+          .then((response) => {
+            response;
+            
+            // this.$router.go(); // Refreshes page
+            this.$swal({
+              title: "Success",
+              text: "Member Has Been Added",
+              icon: "success",
+              button: "OK",
+            });
+          })
+          .catch((error) => {
+            this.$swal({
+              title: "Error",
+              text: JSON.stringify(error.response.data),
+              icon: "error",
+              button: "OK",
+            });
+            // alert(JSON.stringify(error.response.data));
+          }),
+      ]);
+    },
     logout: function () {
-      this.$router.go("/MemberDetails");
+
       this.$store.dispatch("userLogout").then(() => {
         window.localStorage.clear();
 
-        window.location.reload();
+        window.location.replace('/');
       });
     },
 
@@ -797,8 +946,8 @@ export default {
             button: "OK",
           });
           //Dismiss Modal 
-          $("#loginModal").modal("hide");
-          // window.location.replace('/profile')
+          // ("#loginModal").modal("hide");
+          window.location.reload()
 
 
         })

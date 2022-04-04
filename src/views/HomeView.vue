@@ -444,11 +444,11 @@
       aria-labelledby="feedbackModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header bg-gradient-primary-to-secondary p-4">
             <h5 class="modal-title font-alt text-white" id="feedbackModalLabel">
-              Send feedback
+              Send Details
             </h5>
             <button
               class="btn-close btn-close-white"
@@ -473,16 +473,17 @@
                 >
                 <select
                   class="form-control .choices"
-                  v-model="selectedemployer"
+                  v-model="selectedcompanyid"
                 >
                   <option
-                    v-for="option in employers"
+                    v-for="option in organizations"
                     v-bind:value="option.id"
                     :key="option.id"
                   >
-                    {{ option.employer_name }}
+                    {{ option.organization_name }}
                   </option>
                 </select>
+
               </div>
               <div class="col-md-4">
                 <label for="validationDefault01" class="form-label"
@@ -598,229 +599,6 @@
                 </button>
               </div>
             </form>
-            <form class="modal-content" @submit.prevent="onSubmit">
-              <div class="container">
-                <div class="card">
-                  <h2>New Member</h2>
-                  <p>
-                    Please fill in this form to create an new member account.
-                  </p>
-                  <hr />
-
-                  <div class="form-group row">
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5"
-                            >Email Address
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="Enter Email"
-                            name="email"
-                            required
-                            v-model="addmembers.email"
-                          />
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5">First Name</label>
-                          <input
-                            type="text"
-                            placeholder="John"
-                            name="firstname"
-                            required
-                            v-model="addmembers.first_name"
-                          />
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5">Last Name</label>
-                          <input
-                            type="text"
-                            placeholder="Apopo"
-                            name="lastname"
-                            required
-                            v-model="addmembers.last_name"
-                          />
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5"
-                            >Mobile Number
-                          </label>
-                          <input
-                            type="tel"
-                            placeholder="254723456789"
-                            name="mobilenumber"
-                            required
-                            v-model="addmembers.phone_no"
-                          />
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <label for="address"><b>Address</b></label>
-                  <input
-                    type="tel"
-                    placeholder="Address"
-                    name="address"
-                    required
-                    v-model="addmembers.Address"
-                  />
-
-                  <div class="form-group row">
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5">National ID </label>
-                          <input
-                            type="Number"
-                            placeholder="14232323"
-                            name="National_Id"
-                            required
-                            v-model="addmembers.national_id"
-                          />
-
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5">Employer </label>
-                          <select
-                            class="form-control .choices"
-                            v-model="selectedemployer"
-                          >
-                            <option
-                              v-for="option in employers"
-                              v-bind:value="option.id"
-                              :key="option.id"
-                            >
-                              {{ option.employer_name }}
-                            </option>
-                          </select>
-
-                          <span>selected: {{ selectedemployer }}</span>
-
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5">Department</label>
-                          <select
-                            class="form-select"
-                            aria-label="Default select example"
-                            v-model="addmembers.Department"
-                          >
-                            <option selected>Open this select menu</option>
-                            <option value="1">Finance</option>
-                            <option value="2">Sales</option>
-                            <option value="3">Marketing</option>
-                            <option value="3">HR</option>
-                            <option value="3">Admin</option>
-                            <option value="3">House Keeping</option>
-                          </select>
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col">
-                      <div class="form-group boxed">
-                        <div class="input-wrapper">
-                          <label class="label" for="name5">County </label>
-                          <select
-                            class="form-control .choices"
-                            v-model="selectedcounty"
-                          >
-                            <option
-                              v-for="option in county"
-                              v-bind:value="option.county"
-                              :key="option.id"
-                            >
-                              {{ option.county }}
-                            </option>
-                          </select>
-                          <span>selected: {{ selectedcounty }}</span>
-                          <i class="clear-input"
-                            ><ion-icon name="close-circle"></ion-icon
-                          ></i>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p>
-                    By creating an account the user has agreed to become a
-                    member
-                    <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
-                  </p>
-
-                  <div class="form-row">
-                    <div class="col">
-                      <button
-                        style="margin-right: 16px"
-                        type="button"
-                        class="btn btn-secondary"
-                        data-bs-dismiss="modal"
-                      >
-                        Cancel
-                      </button>
-
-                      <button
-                        style="margin-right: 16px"
-                        type="submit"
-                        class="btn btn-secondary"
-                        @click="addnewmeber"
-                      >
-                        Add Member
-                      </button>
-                      <span style="color: green"
-                        >{{ this.message }} <i class="fas fa-check"></i
-                      ></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -930,7 +708,7 @@
 import axios from "axios";
 
 import { getAPI } from "@/axios-api.js";
-import { mapGetters, mapActions, mapState } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 // const auth = new AuthService();
 // import { mapState } from "vuex";
@@ -940,6 +718,7 @@ export default {
   components: {},
   data() {
     return {
+      selectedcompanyid:'',
       is_staff: "",
       admincheck: [],
       is_member: 0,
@@ -970,13 +749,19 @@ export default {
     // this.countadmin();
     this.becomememberhide();
     this.fetchOrg();
+    this.fetchEmployerinfo();
   },
   mounted() {
     this.admincheck = this.allorg;
   },
 
   methods: {
-    ...mapActions(["fetchMembers", "fetchOrg", "fetchUserinfo"]),
+    ...mapActions([
+      "fetchMembers",
+      "fetchOrg",
+      "fetchUserinfo",
+      "fetchEmployerinfo",
+    ]),
 
     gotocreateorganization() {
       this.$router.push("createorganization");
@@ -1105,10 +890,15 @@ export default {
   },
   computed: {
     // computed: mapState(["token"]),
-    ...mapState(["org1"]),
-    ...mapGetters(["allMembers", "allOrg", "allUser"]),
+
+    ...mapGetters(["allMembers", "allOrg", "allUser", "allEmployer"]),
     token() {
       return this.$store.state.accessToken;
+    },
+    employers() {
+      return this.$store.getters.allEmployer.filter(
+        (item) => item.company_id == this.companyid3
+      );
     },
     emailstate() {
       return this.$store.state.email;
@@ -1147,6 +937,11 @@ export default {
         return y;
       }
     },
+
+    organizations(){
+      return this.$store.getters.allOrg
+
+    },
     allorg() {
       return this.$store.getters.allOrg.filter(
         (item) => item.admin_email == this.email
@@ -1156,6 +951,11 @@ export default {
       return this.$store.getters.allMembers.filter(
         (item) => item.email == this.email
       );
+    },
+    companyid3() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.id == this.selectedcompanyid
+      )[0].company_id;
     },
   },
 };

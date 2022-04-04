@@ -334,7 +334,8 @@
 </template>
 <script>
 import SysAdminNav from "@/components/SysAdminNav";
-import axios from "axios";
+
+import { getAPI} from "@/axios-api.js"
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
@@ -403,7 +404,7 @@ export default {
   },
 
   beforeMount() {
-    axios
+    getAPI
       .get("/finance/api/v1/Accounttypes/", {
         params: { organizationprofile: this.user_id },
       })
@@ -412,7 +413,7 @@ export default {
         $("#walla").DataTable();
       });
 
-    axios
+    getAPI
       .get("/sys_config/api/v1/OrganizationProfile/", {
         params: { admin_email: this.email },
       })
@@ -421,7 +422,7 @@ export default {
         this.companyid = this.orgprofile[0].company_id;
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/")
       .then((res) => {
         this.tableData = res.data.results.filter(
@@ -433,7 +434,7 @@ export default {
         console.log(error);
       });
 
-    // axios
+    // getAPI
     // .get("/finance/api/v1/mainaccounts/", {
     // 	params: { organizationprofile: this.user_id },
     // })
@@ -508,7 +509,7 @@ export default {
       // console.log(opt.account_type)
     },
     getMainaccounts(Exception) {
-      axios
+      getAPI
         .get("/finance/api/v1/mainaccounts/", {
           params: { accounttype: this.selected },
         })
@@ -520,7 +521,7 @@ export default {
     },
 
     getAccountmaster(Exception) {
-      axios
+      getAPI
         .get("/finance/api/v1/accountmaster/", {
           params: { parent_account: this.selectedmainacc },
         })
@@ -536,7 +537,7 @@ export default {
     // },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {
@@ -577,7 +578,7 @@ export default {
     postcoa(product) {
       this.coaitem = product;
 
-      axios
+      getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: this.selected,
           accounttype_description: this.glchanged.accountype_description,
@@ -610,7 +611,7 @@ export default {
     addcoamaster(product) {
       this.coaitem = product;
       // this.message = "loading"
-      axios
+      getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: product.account_type,
           accounttype_description: product.accountype_description,

@@ -1014,7 +1014,8 @@
 </template>
 <script>
 import SysAdminNav from "@/components/SysAdminNav";
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js"
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
@@ -1102,7 +1103,7 @@ export default {
   },
 
   mounted() {
-    axios.get("/users/api/v1/CustomUser/").then((response) => {
+    getAPI.get("/users/api/v1/CustomUser/").then((response) => {
       this.users = response.data.results;
     });
   },
@@ -1251,7 +1252,7 @@ export default {
     },
 
     loadimport() {
-      axios.get("/members/api/v1/Import/").then((response) => {
+      getAPI.get("/members/api/v1/Import/").then((response) => {
         this.importmembers = response.data.results;
       });
     },
@@ -1259,7 +1260,7 @@ export default {
     processMembers() {
       for (var i = 0; i < this.importmembers.length; i++) {
         var member = this.importmembers[i];
-        axios
+        getAPI
           .post("/members/api/v1/MemberDetails/", member)
           .then((response) => {
             console.log(response);
@@ -1297,7 +1298,7 @@ export default {
     postacctypes() {
       for (let i = 1; i < this.accounttypes.length; i++) {
         let acctype = this.accounttypes[i];
-        axios
+        getAPI
           .post("/finance/api/v1/Accounttypes/", {
             accountcode: acctype[0],
             accounttype: acctype[1],
@@ -1328,7 +1329,7 @@ export default {
 
         console.log(i, acctype);
 
-        // axios
+        // getAPI
         // 	.post("/finance/api/v1/accounttypes/", accounttypes)
         // 	.then(console.log)
         // 	.catch(console.log);
@@ -1338,7 +1339,7 @@ export default {
     postmembers() {
       for (let i = 1; i < this.accounttypes.length; i++) {
         let acctype = this.accounttypes[i];
-        axios
+        getAPI
           .post("/members/api/v1/Import/", {
             MemberNo: acctype[1],
             first_name: acctype[2],
@@ -1369,7 +1370,7 @@ export default {
 
         console.log(i, acctype);
 
-        // axios
+        // getAPI
         // 	.post("/finance/api/v1/accounttypes/", accounttypes)
         // 	.then(console.log)
         // 	.catch(console.log);
@@ -1379,7 +1380,7 @@ export default {
     postmainaccounts() {
       for (let i = 1; i < this.accounttypes.length; i++) {
         let acctype = this.accounttypes[i];
-        axios
+        getAPI
           .post("/finance/api/v1/mainaccounts/", {
             accounttype: acctype[0],
             account_code: acctype[1],
@@ -1407,7 +1408,7 @@ export default {
 
         console.log(i, acctype);
 
-        // axios
+        // getAPI
         // 	.post("/finance/api/v1/accounttypes/", accounttypes)
         // 	.then(console.log)
         // 	.catch(console.log);
@@ -1417,7 +1418,7 @@ export default {
     postsubaccounts() {
       for (let i = 1; i < this.accounttypes.length; i++) {
         let acctype = this.accounttypes[i];
-        axios
+        getAPI
           .post("/finance/api/v1/accountmaster/", {
             account_type: acctype[0],
             accountype_description: acctype[1],
@@ -1450,7 +1451,7 @@ export default {
 
         console.log(i, acctype);
 
-        // axios
+        // getAPI
         // 	.post("/finance/api/v1/accounttypes/", accounttypes)
         // 	.then(console.log)
         // 	.catch(console.log);
@@ -1460,7 +1461,7 @@ export default {
     postcounties() {
       for (let i = 1; i < this.accounttypes.length; i++) {
         let acctype = this.accounttypes[i];
-        axios
+        getAPI
           .post("/sys_config/api/v1/county/", {
             code: acctype[0],
             county: acctype[1],
@@ -1488,7 +1489,7 @@ export default {
 
         console.log(i, acctype);
 
-        // axios
+        // getAPI
         // 	.post("/finance/api/v1/accounttypes/", accounttypes)
         // 	.then(console.log)
         // 	.catch(console.log);
@@ -1501,7 +1502,7 @@ export default {
       }
     },
     getProducts(Exception) {
-      axios
+      getAPI
         .get("sys_config/api/v1/Approvers/")
         .then((res) => {
           this.tableData = res.data.results;
@@ -1511,7 +1512,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {
@@ -1550,7 +1551,7 @@ export default {
       });
     },
     postapprover() {
-      axios
+      getAPI
         .post("sys_config/api/v1/Approvers/", {
           email: this.selectedemail,
           level: this.level,

@@ -191,7 +191,8 @@
 </template>
 <script>
 import SysAdminNav from "@/components/SysAdminNav";
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js"
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
@@ -256,7 +257,7 @@ export default {
   },
 
   mounted() {
-    axios.get("/users/api/v1/CustomUser/").then((response) => {
+    getAPI.get("/users/api/v1/CustomUser/").then((response) => {
       this.users = response.data.results;
     });
   },
@@ -299,7 +300,7 @@ export default {
       }
     },
     getProducts(Exception) {
-      axios
+      getAPI
         .get("sys_config/api/v1/Approvers/")
         .then((res) => {
           this.tableData = res.data.results;
@@ -309,7 +310,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {
@@ -348,7 +349,7 @@ export default {
       });
     },
     postapprover() {
-      axios
+      getAPI
         .post("sys_config/api/v1/Approvers/", {
           email: this.selectedemail,
           level: this.level,

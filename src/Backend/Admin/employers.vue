@@ -275,7 +275,8 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js"
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -453,7 +454,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/sys_config/api/v1/OrganizationProfile/", {
         params: { admin_email: this.email },
       })
@@ -463,7 +464,7 @@ export default {
         this.companyid = this.orgprofile[0].company_id;
       });
 
-    axios
+    getAPI
       .get("/sys_config/api/v1/EmployerProfile/")
       .then((res) => {
         this.tableData = res.data.results.filter(
@@ -473,7 +474,7 @@ export default {
       })
 
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         headers: {
           Authorization: `Bearer ${this.$store.state.accessToken}`,
@@ -487,7 +488,7 @@ export default {
       .catch((error) => {
         console.error(error);
       });
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         params: { parent_account: 1200000 },
       })
@@ -496,7 +497,7 @@ export default {
         // this.initDatatable();
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         params: { parent_account: 2200000 },
       })
@@ -505,7 +506,7 @@ export default {
         // this.initDatatable();
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         params: { parent_account: 1200000 },
       })
@@ -538,7 +539,7 @@ export default {
     },
 
     DepositsControlCreate() {
-      axios
+      getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: "1000000",
           maincode: "9000000",
@@ -564,7 +565,7 @@ export default {
     },
 
     LoansControlCreate() {
-      axios
+      getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: "2000000",
           maincode: "9000001",
@@ -590,7 +591,7 @@ export default {
     },
 
     InterestControlCreate() {
-      axios
+      getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: "2000000",
           maincode: "9000002",
@@ -616,7 +617,7 @@ export default {
     },
 
     CreateControls() {
-      const DepositsControlCreate = axios
+      const DepositsControlCreate = getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: "2000000",
           maincode: "9000000",
@@ -640,7 +641,7 @@ export default {
           console.log(error);
         });
 
-      const LoansControlCreate = axios
+      const LoansControlCreate = getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: "2000000",
           maincode: "9000001",
@@ -664,7 +665,7 @@ export default {
           console.log(error);
         });
 
-      const InterestControlCreate = axios
+      const InterestControlCreate = getAPI
         .post("/finance/api/v1/Chartofaccounts/", {
           account_type: "2000000",
           maincode: "9000002",
@@ -698,7 +699,7 @@ export default {
     },
 
     addrecords() {
-      axios
+      getAPI
         .post(`/sys_config/api/v1/EmployerProfile/`, {
           // names: '',
           // User_id: this.user_id,
@@ -725,7 +726,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

@@ -481,7 +481,8 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -552,7 +553,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/sys_config/api/v1/OrganizationProfile/", {
         params: { admin_email: this.email },
       })
@@ -561,7 +562,7 @@ export default {
         this.orgprofileid = this.orgprofile[0].id;
       });
 
-    axios
+    getAPI
       .get("/finance/api/v1/Bank/")
       .then((res) => {
         this.tableData = res.data.results.filter(
@@ -571,7 +572,7 @@ export default {
       })
 
 
-    axios
+    getAPI
       .get("/finance/api/v1/Chartofaccounts/", {
         params: {
           account_type: 1000000,
@@ -598,7 +599,7 @@ export default {
       // console.log(this.loanstype.loan_type);
     },
     addrecords() {
-      axios
+      getAPI
         .post(`/finance/api/v1/Bank/`, {
           // names: '',
           // User_id: this.user_id,
@@ -626,7 +627,7 @@ export default {
 
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

@@ -601,7 +601,8 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js"
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -705,7 +706,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/sys_config/api/v1/OrganizationProfile/", {
         params: { admin_email: this.email },
       })
@@ -715,7 +716,7 @@ export default {
         this.companyid = res.data.results[0].company_id;
       });
 
-    axios.get("/sys_config/api/v1/LoanType/").then((res) => {
+    getAPI.get("/sys_config/api/v1/LoanType/").then((res) => {
       this.tableData = res.data.results.filter(
         (orgprofile1) => orgprofile1.company_id == this.companyid3
       );
@@ -730,7 +731,7 @@ export default {
     },
 
     addrecords() {
-      axios
+      getAPI
         .post(`/sys_config/api/v1/LoanType/`, {
           // names: '',
           // User_id: this.user_id,
@@ -762,7 +763,7 @@ export default {
       this.loantype = item;
       const path = "/sys_config/api/v1/LoanType/`" + this.loantype.id;
       console.log("path", path);
-      axios
+      getAPI
         .put("/sys_config/api/v1/LoanType/" + this.loantype.id + "/", {
           // names: '',
           // User_id: this.user_id,
@@ -792,7 +793,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

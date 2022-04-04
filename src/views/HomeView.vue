@@ -42,7 +42,7 @@
             </button>
           </div>
 
-          <div v-if="token != null && this.memberdetails == 2">
+          <div v-if="token != null && this.memberdetails != 2">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
@@ -58,7 +58,7 @@
           <div
             v-if="
               token != null &&
-              this.organizationdetails == 2 &&
+              this.organizationdetails == 1 &&
               this.memberdetails == 2
             "
           >
@@ -70,6 +70,23 @@
               <span class="d-flex align-items-center">
                 <i class="bi-chat-text-fill me-2"></i>
                 <span class="small">Start A New SACCO</span>
+              </span>
+            </button>
+          </div>
+          <div
+            v-if="
+              token != null &&
+              this.organizationdetails == 2 &&
+              this.memberdetails == 1
+            "
+          >
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="gotoDashboard"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Back Office</span>
               </span>
             </button>
           </div>
@@ -91,6 +108,7 @@
               </li>
             </ul>
           </div>
+
         </div>
       </div>
     </nav>
@@ -509,7 +527,6 @@
                   type="text"
                   class="form-control"
                   id="validationDefault01"
-
                   v-model="addmembers.first_name"
                   required
                 />
@@ -522,7 +539,6 @@
                   type="text"
                   class="form-control"
                   id="validationDefault02"
-
                   v-model="addmembers.last_name"
                   required
                 />
@@ -554,7 +570,7 @@
                   placeholder="254XXXXXXXX"
                   name="National_Id"
                   required
-                  v-model="this.usernamestate"
+                  v-model="addmembers.phone_no"
                 />
               </div>
               <div class="col-md-6">
@@ -760,6 +776,7 @@ export default {
       incorrectAuth: false,
       autherror: "",
       county: [],
+      companynumber: "",
       addmembers: [
         {
           first_name: "",
@@ -771,6 +788,7 @@ export default {
           Employer: "",
           Department: "",
           County: "",
+
         },
       ],
     };
@@ -803,6 +821,9 @@ export default {
 
     gotoregister() {
       window.location.replace("/register");
+    },
+    gotoDashboard() {
+      window.location.replace("/DashBoards");
     },
 
     countadmin: function () {

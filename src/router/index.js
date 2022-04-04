@@ -154,17 +154,27 @@ const routes = [{
     {
         path: '/members',
         name: 'members',
-        component: members
+        component: members,
+        meta: {
+            requiresLogin: false,
+        },
+
     },
     {
         path: '/dashboards',
         name: 'DashBoards',
-        component: DashBoards
+        component: DashBoards,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/profile',
         name: 'profile',
-        component: ProfilePage
+        component: ProfilePage,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/register',
@@ -175,43 +185,65 @@ const routes = [{
     {
         path: '/LoansArea',
         name: 'LoansArea',
-        component: LoansArea
+        component: LoansArea,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/FosaPage',
         name: 'FosaPage',
-        component: FosaPage
+        component: FosaPage,
+        meta: {
+            requiresLogin: false,
+        },
+
     },
     {
 
         path: '/AccountingPage',
         name: 'AccountingPage',
-        component: AccountingPage
+        component: AccountingPage,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/ReportArea',
         name: 'ReportArea',
-        component: ReportArea
+        component: ReportArea,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/customize',
         name: 'customize',
-        component: CustomizeOrg
+        component: CustomizeOrg,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/BankingActivities',
         name: 'BankingActivities',
-        component: BankingActivities
+        component: BankingActivities,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/organization',
         name: 'organization',
-        component: CustomizeOrg
+        component: CustomizeOrg,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: '/createorganization',
         name: 'createorganization',
-        component: CreateOrg
+        component: CreateOrg,
         meta: {
             requiresLogin: false,
         },
@@ -509,6 +541,9 @@ const routes = [{
         path: "/loanschedule",
         name: "loanschedule",
         component: loanschedule,
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: "/test",

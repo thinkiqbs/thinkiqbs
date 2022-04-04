@@ -59,13 +59,13 @@
                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
                   ><img
                     class="app-badge"
-                    src="assets/img/google-play-badge.svg"
+                    src="../assets/img/google-play-badge.svg"
                     alt="..."
                 /></a>
                 <a href="#!"
                   ><img
                     class="app-badge"
-                    src="assets/img/app-store-badge.svg"
+                    src="../assets/img/app-store-badge.svg"
                     alt="..."
                 /></a>
               </div>

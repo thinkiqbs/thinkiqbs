@@ -212,6 +212,9 @@ const routes = [{
         path: '/createorganization',
         name: 'createorganization',
         component: CreateOrg
+        meta: {
+            requiresLogin: false,
+        },
     },
     {
         path: "/contacts",
@@ -223,6 +226,9 @@ const routes = [{
         path: "/logout",
         name: "logout",
         component: Logout,
+        meta: {
+            requiresLogin: false,
+        },
     },
 
     {

@@ -28,61 +28,56 @@
               <a class="nav-link me-lg-3" href="#download">Download</a>
             </li>
           </ul>
-          <div>
-            <div>
-              <button
-                class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
-                data-bs-toggle="modal"
-                data-bs-target="#feedbackModal"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Get Started</span>
-                </span>
-              </button>
-            </div>
-            <div>
-              <button
-                class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
-                data-bs-toggle="modal"
-                data-bs-target="#feedbackModal"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Get Started</span>
-                </span>
-              </button>
-            </div>
-           
+
+          <div v-if="token == null">
+            <button
+              class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
+              data-bs-toggle="modal"
+              data-bs-target="#LoginModal"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Sign in</span>
+              </span>
+            </button>
           </div>
 
-            
-           
-            <div>
-              <button
-                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                data-bs-toggle="modal"
-                data-bs-target="#feedbackModal"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Start A New SACCO</span>
-                </span>
-              </button>
-            </div>
-            <div>
-              <button
-                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                data-bs-toggle="modal"
-                data-bs-target="#feedbackModal"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Log Out</span>
-                </span>
-              </button>
-            </div>
+          <div>
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              data-bs-toggle="modal"
+              data-bs-target="#feedbackModal"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Join a Sacco</span>
+              </span>
+            </button>
+          </div>
 
+          <div>
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              data-bs-toggle="modal"
+              data-bs-target="#feedbackModal"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Start A New SACCO</span>
+              </span>
+            </button>
+          </div>
+          <div v-if="token != null">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="logout"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Log Out</span>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </nav>
@@ -559,11 +554,275 @@
         </div>
       </div>
     </div>
+    <!-- Login Modal-->
+    <div
+      class="modal fade"
+      id="LoginModal"
+      tabindex="-1"
+      aria-labelledby="feedbackModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-gradient-primary-to-secondary p-4">
+            <h5 class="modal-title font-alt text-white" id="feedbackModalLabel">
+              Access Your Account.
+            </h5>
+            <button
+              class="btn-close btn-close-white"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body border-0 p-4">
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- * * SB Forms Contact Form * *-->
+            <!-- * * * * * * * * * * * * * * *-->
+            <!-- This form is pre-integrated with SB Forms.-->
+            <!-- To make this form functional, sign up at-->
+            <!-- https://startbootstrap.com/solution/contact-forms-->
+            <!-- to get an API token!-->
+            <form v-on:submit.prevent>
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="email1">ID Number </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="idnumber"
+                    placeholder="Your National ID "
+                    v-model="username"
+                  />
+                  <i class="clear-input"
+                    ><ion-icon name="close-circle"></ion-icon
+                  ></i>
+                </div>
+              </div>
+              <!-- <div class="form-group basic">
+                    <div class="input-wrapper">
+                        <label class="label" for="email1">E-mail</label>
+                        <input type="email" class="form-control" id="email1" placeholder="Your e-mail" v-model="email">
+                        <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                    </div>
+                </div> -->
+
+              <div class="form-group basic">
+                <div class="input-wrapper">
+                  <label class="label" for="password1">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password1"
+                    placeholder="Your password"
+                    v-model="password"
+                  />
+                  <i class="clear-input"
+                    ><ion-icon name="close-circle"></ion-icon
+                  ></i>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary btn-block btn-lg"
+                @click="login"
+              >
+                Log in
+              </button>
+
+              <div class="form-links mt-2">
+                <div>
+                  <router-link to="/register">Register Now</router-link>
+                </div>
+                {{ access }}
+                <div>
+                  <a href="app-forgot-password.html" class="text-muted"
+                    >Forgot Password?</a
+                  >
+                </div>
+              </div>
+
+              <div class="form-button-group"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </template>
 
 <script>
-export default {};
+// import AuthService from "@/auth/AuthService";
+import axios from "axios";
+
+import { getAPI } from "@/axios-api.js";
+import { mapGetters, mapActions, mapState } from "vuex";
+
+// const auth = new AuthService();
+// import { mapState } from "vuex";
+// import Profile from '../views/Profile';
+export default {
+  name: "Nav-bar",
+  components: {},
+  data() {
+    return {
+      is_staff: "",
+      admincheck: [],
+      is_member: 0,
+      membercount: "",
+      authenticated: false,
+      message: "",
+      username: "",
+      password: "",
+      email: "",
+      incorrectAuth: false,
+      autherror: "",
+    };
+  },
+  created() {
+    // this.countadmin();
+    this.becomememberhide();
+    this.fetchOrg();
+  },
+  mounted() {
+    this.admincheck = this.allorg;
+  },
+
+  methods: {
+    ...mapActions(["fetchMembers", "fetchOrg", "fetchUserinfo"]),
+
+    gotocreateorganization() {
+      this.$router.push("createorganization");
+    },
+
+    countadmin: function () {
+      if (this.organizationdetails === 1) {
+        this.$router.push("/members");
+        //disable button id checkadmin
+      } else {
+        document.getElementById("checkadmin").hidden = true;
+        this.message = "You are not an admin";
+      }
+    },
+    becomememberhide: function () {
+      // async function to cont member from memberDetails
+      getAPI
+        .get("/members/api/v1/MemberDetails/", {
+          params: { email: this.email },
+        })
+        .then((res) => {
+          this.membercount = res.data.count;
+        });
+      if (this.membercount === 1) {
+        this.message = "you are already a member";
+      } else {
+        this.message = "";
+      }
+    },
+    logout: function () {
+      this.$router.go("/MemberDetails");
+      this.$store.dispatch("userLogout").then(() => {
+        window.localStorage.clear();
+
+        window.location.reload();
+      });
+    },
+
+    login() {
+      this.$store
+        .dispatch("userLogin", {
+          username: this.username,
+          password: this.password,
+        })
+        .then(() => {
+          this.$swal({
+            title: "Success",
+            text: "You have successfully logged in",
+            icon: "success",
+            button: "OK",
+          });
+
+          this.$router.push("/profile");
+        })
+        .catch((err) => {
+          console.log(err);
+          (this.autherror = err), (this.incorrectAuth = true);
+        });
+    },
+
+    forgotmyPassword() {
+      axios
+        .post("/dj-rest-auth/password/reset/ ", {
+          email: this.email,
+        })
+        .then((res) => {
+          console.log(res);
+          this.$swal({
+            title: "Success!",
+            text: "Check your email for a password reset link",
+            icon: "success",
+            button: "OK",
+          });
+          this.$router.push({ name: "login" });
+        });
+    },
+  },
+  computed: {
+    // computed: mapState(["token"]),
+    ...mapState(["org1"]),
+    ...mapGetters(["allMembers", "allOrg", "allUser"]),
+    token() {
+      return this.$store.state.accessToken;
+    },
+    emailstate() {
+      return this.$store.state.email;
+    },
+    usernamestate() {
+      return this.$store.state.username;
+    },
+
+    id() {
+      return this.$store.state.id;
+    },
+    first_name() {
+      return this.$store.state.first_name;
+    },
+    last_name() {
+      return this.$store.state.last_name;
+    },
+    staffcheck() {
+      return this.$store.state.is_staff;
+    },
+    memberdetails() {
+      var x = 1;
+      var y = 2;
+      if (this.allmember != "") {
+        return x;
+      } else {
+        return y;
+      }
+    },
+    organizationdetails() {
+      var x = 1;
+      var y = 2;
+      if (this.allorg != "") {
+        return x;
+      } else {
+        return y;
+      }
+    },
+    allorg() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.admin_email == this.email
+      );
+    },
+    allmember() {
+      return this.$store.getters.allMembers.filter(
+        (item) => item.email == this.email
+      );
+    },
+  },
+};
 </script>
 
 <style>

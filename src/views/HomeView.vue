@@ -42,7 +42,7 @@
             </button>
           </div>
 
-          <div v-if="token != null">
+          <div v-if="token != null && this.memberdetails == 2">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
@@ -55,7 +55,13 @@
             </button>
           </div>
 
-          <div v-if="token != null">
+          <div
+            v-if="
+              token != null &&
+              this.organizationdetails == 2 &&
+              this.memberdetails == 2
+            "
+          >
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
@@ -78,6 +84,16 @@
               </span>
             </button>
           </div>
+          <div v-if="token != null">
+            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link me-lg-3" href="/Profile">My Account</a>
+            </li>
+            
+          </ul>
+
+          </div>
+          
         </div>
       </div>
     </nav>
@@ -453,135 +469,135 @@
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
             <form v-on:submit.prevent="submit" autocomplete="off">
-                    <div class="title-text">
-                      <h3>Sign Up for New Account</h3>
-                    </div>
+              <div class="title-text">
+                <h3>Sign Up for New Account</h3>
+              </div>
 
-                    <div class="form-floating mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="firstName"
-                        placeholder="name@example.com"
-                        v-model="first_name"
-                      />
-                      <label for="floatingInput">First Name</label>
-                    </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstName"
+                  placeholder="name@example.com"
+                  v-model="first_name"
+                />
+                <label for="floatingInput">First Name</label>
+              </div>
 
-                    <div class="form-floating mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="lastname"
-                        placeholder="jonathan"
-                        v-model="last_name"
-                      />
-                      <label for="floatingInput">Last Name</label>
-                    </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  placeholder="jonathan"
+                  v-model="last_name"
+                />
+                <label for="floatingInput">Last Name</label>
+              </div>
 
-                    <div class="form-floating mb-3">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="username"
-                        placeholder="ID Number"
-                        v-model="username"
-                      />
-                      <label for="floatingInput">National ID</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="username"
-                        placeholder="myemail@gmail.com"
-                        v-model="email"
-                      />
-                      <label for="floatingInput">Email</label>
-                    </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  placeholder="ID Number"
+                  v-model="username"
+                />
+                <label for="floatingInput">National ID</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="username"
+                  placeholder="myemail@gmail.com"
+                  v-model="email"
+                />
+                <label for="floatingInput">Email</label>
+              </div>
 
-                    <div class="form-floating mb-3">
-                      <phone-mask-input
-                        type="tel"
-                        placeholder="254723456789"
-                        name="mobilenumber"
-                        autoDetectCountry
-                        showFlag
-                        @onValidate="onValidate"
-                        wrapperClass="wrraper-example"
-                        inputClass="input-example"
-                        flagClass="flag-example"
-                        required
-                        v-model="phone_no"
-                      />
+              <div class="form-floating mb-3">
+                <phone-mask-input
+                  type="tel"
+                  placeholder="254723456789"
+                  name="mobilenumber"
+                  autoDetectCountry
+                  showFlag
+                  @onValidate="onValidate"
+                  wrapperClass="wrraper-example"
+                  inputClass="input-example"
+                  flagClass="flag-example"
+                  required
+                  v-model="phone_no"
+                />
 
-                      <!-- <label for="floatingInput">Phone Number</label> -->
-                    </div>
+                <!-- <label for="floatingInput">Phone Number</label> -->
+              </div>
 
-                    <div class="form-floating mb-3">
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="password"
-                        placeholder="********"
-                        v-model="password1"
-                      />
-                      <label for="floatingInput">Password</label>
-                    </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="********"
+                  v-model="password1"
+                />
+                <label for="floatingInput">Password</label>
+              </div>
 
-                    <div class="form-floating">
-                      <input
-                        type="password"
-                        class="form-control"
-                        id="floatingPassword"
-                        placeholder="Password"
-                        autocomplete="off"
-                        v-model="password2"
-                      />
-                      <label for="floatingPassword">Confirm Password</label>
-                    </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="floatingPassword"
+                  placeholder="Password"
+                  autocomplete="off"
+                  v-model="password2"
+                />
+                <label for="floatingPassword">Confirm Password</label>
+              </div>
 
-                    <div class="form-group">
-                      <a href="">Terms and Conditions</a>
-                      <div class="form-check">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          id="formCheck-1"
-                          v-model="agree"
-                        />
-                        <label class="form-check-label" for="formCheck-1">
-                          I agree to the terms and conditions
-                        </label>
-                      </div>
-                    </div>
+              <div class="form-group">
+                <a href="">Terms and Conditions</a>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="formCheck-1"
+                    v-model="agree"
+                  />
+                  <label class="form-check-label" for="formCheck-1">
+                    I agree to the terms and conditions
+                  </label>
+                </div>
+              </div>
 
-                    <button
-                      type="submit"
-                      class="btn btn-primary btn-block"
-                      v-if="agree"
-                      @click="userRegister"
-                    >
-                      Register
-                    </button>
-                    <button
-                      type="submit"
-                      class="btn btn-primary btn-block"
-                      v-else
-                      @click="alertterms"
-                    >
-                      Register
-                    </button>
-                    <a class="small text-muted" href="#!">Forgot password?</a>
-                    I already have an account?
-                    <router-link
-                      :to="{ name: 'login' }"
-                      exact
-                      class="small text-muted"
-                      >click here to login
-                    </router-link>
-                    &nbsp;
-                  </form>
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                v-if="agree"
+                @click="userRegister"
+              >
+                Register
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary btn-block"
+                v-else
+                @click="alertterms"
+              >
+                Register
+              </button>
+              <a class="small text-muted" href="#!">Forgot password?</a>
+              I already have an account?
+              <router-link
+                :to="{ name: 'login' }"
+                exact
+                class="small text-muted"
+                >click here to login
+              </router-link>
+              &nbsp;
+            </form>
           </div>
         </div>
       </div>
@@ -664,10 +680,7 @@
 
               <div class="form-links mt-2">
                 <div>
-                  <a
-                    @click="gotoregister"
-                    class="text-muted"
-                    
+                  <a @click="gotoregister" class="text-muted"
                     >Forgot Password?</a
                   >
                   <router-link to="/register">Register Now</router-link>
@@ -733,10 +746,8 @@ export default {
       this.$router.push("createorganization");
     },
 
-    gotoregister(){
-
-      window.location.replace('/register')
-
+    gotoregister() {
+      window.location.replace("/register");
     },
 
     countadmin: function () {
@@ -785,8 +796,11 @@ export default {
             icon: "success",
             button: "OK",
           });
+          //Dismiss Modal 
+          $("#loginModal").modal("hide");
+          // window.location.replace('/profile')
 
-          this.$router.push("/profile");
+
         })
         .catch((err) => {
           console.log(err);

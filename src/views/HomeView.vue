@@ -1,16 +1,12 @@
 @<template>
-  <body
-    id="page-top"
-    data-new-gr-c-s-check-loaded="14.1055.0"
-    data-gr-ext-installed=""
-  >
+  <body id="page-top">
     <!-- Navigation-->
     <nav
       class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm"
       id="mainNav"
     >
       <div class="container px-5">
-        <a class="navbar-brand fw-bold" href="#page-top">IQSACCO</a>
+        <a class="navbar-brand fw-bold" href="#page-top">Start Bootstrap</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -29,7 +25,7 @@
               <a class="nav-link me-lg-3" href="#features">Features</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-lg-4" href="#download">Pricing</a>
+              <a class="nav-link me-lg-3" href="#download">Download</a>
             </li>
           </ul>
           <button
@@ -39,17 +35,7 @@
           >
             <span class="d-flex align-items-center">
               <i class="bi-chat-text-fill me-2"></i>
-              <span class="small">Join A Sacco </span>
-            </span>
-          </button>
-          <button
-            class="btn btn-primary rounded-pill px-4 mb-2 mb-lg-3"
-            data-bs-toggle="modal"
-            data-bs-target="#feedbackModal"
-          >
-            <span class="d-flex align-items-center">
-              <i class="bi-chat-text-fill me-2"></i>
-              <span class="small"> Start A Sacco </span>
+              <span class="small">Send Feedback</span>
             </span>
           </button>
         </div>
@@ -63,22 +49,23 @@
             <!-- Mashead text and app badges-->
             <div class="mb-5 mb-lg-0 text-center text-lg-start">
               <h1 class="display-1 lh-1 mb-3">
-                SACCO ERP Software Service
+                Showcase your app beautifully.
               </h1>
-              <p class="lead fw-normal  mb-5">
-                IQSACCO is a SACCO ERP Software Service that helps automate all the Sacco processes 
+              <p class="lead fw-normal text-muted mb-5">
+                Launch your mobile app landing page faster with this free, open
+                source theme from Start Bootstrap!
               </p>
               <div class="d-flex flex-column flex-lg-row align-items-center">
                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
                   ><img
                     class="app-badge"
-                    src="../assets/images/svg/google-play-badge.svg"
+                    src="assets/img/google-play-badge.svg"
                     alt="..."
                 /></a>
                 <a href="#!"
                   ><img
                     class="app-badge"
-                    src="../assets/images/svg/app-store-badge.svg"
+                    src="assets/img/app-store-badge.svg"
                     alt="..."
                 /></a>
               </div>
@@ -343,15 +330,55 @@
         </div>
       </div>
     </section>
-   
+    <!-- Call to action section-->
+    <section class="cta">
+      <div class="cta-content">
+        <div class="container px-5">
+          <h2 class="text-white display-1 lh-1 mb-4">
+            Stop waiting.
+            <br />
+            Start building.
+          </h2>
+          <a
+            class="btn btn-outline-light py-3 px-4 rounded-pill"
+            href="https://startbootstrap.com/theme/new-age"
+            target="_blank"
+            >Download for free</a
+          >
+        </div>
+      </div>
+    </section>
+    <!-- App badge section-->
+    <section class="bg-gradient-primary-to-secondary" id="download">
+      <div class="container px-5">
+        <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
+        <div
+          class="d-flex flex-column flex-lg-row align-items-center justify-content-center"
+        >
+          <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
+            ><img
+              class="app-badge"
+              src="assets/img/google-play-badge.svg"
+              alt="..."
+          /></a>
+          <a href="#!"
+            ><img
+              class="app-badge"
+              src="assets/img/app-store-badge.svg"
+              alt="..."
+          /></a>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
     <footer class="bg-black text-center py-5">
       <div class="container px-5">
         <div class="text-white-50 small">
-          <div class="mb-2">© www.thinkiqbs.com 2022. All Rights Reserved.</div>
+          <div class="mb-2">&copy; Your Website 2022. All Rights Reserved.</div>
           <a href="#!">Privacy</a>
-          <span class="mx-1">·</span>
+          <span class="mx-1">&middot;</span>
           <a href="#!">Terms</a>
-          <span class="mx-1">·</span>
+          <span class="mx-1">&middot;</span>
           <a href="#!">FAQ</a>
         </div>
       </div>
@@ -394,7 +421,6 @@
                   type="text"
                   placeholder="Enter your name..."
                   data-sb-validations="required"
-                  data-sb-can-submit="no"
                 />
                 <label for="name">Full name</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -409,7 +435,6 @@
                   type="email"
                   placeholder="name@example.com"
                   data-sb-validations="required,email"
-                  data-sb-can-submit="no"
                 />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">
@@ -427,7 +452,6 @@
                   type="tel"
                   placeholder="(123) 456-7890"
                   data-sb-validations="required"
-                  data-sb-can-submit="no"
                 />
                 <label for="phone">Phone number</label>
                 <div class="invalid-feedback" data-sb-feedback="phone:required">
@@ -443,9 +467,6 @@
                   placeholder="Enter your message here..."
                   style="height: 10rem"
                   data-sb-validations="required"
-                  data-sb-can-submit="no"
-                  data-gramm="false"
-                  wt-ignore-input="true"
                 ></textarea>
                 <label for="message">Message</label>
                 <div
@@ -493,9 +514,6 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JS-->
-
-     
   </body>
 </template>
 

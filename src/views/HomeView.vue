@@ -423,10 +423,10 @@
         </div>
       </div>
     </footer>
-    <!-- Feedback Modal-->
+    <!-- Register Modal-->
     <div
       class="modal fade"
-      id="feedbackModal"
+      id="RegisterModal"
       tabindex="-1"
       aria-labelledby="feedbackModalLabel"
       aria-hidden="true"
@@ -452,104 +452,136 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-              <!-- Name input-->
-              <div class="form-floating mb-3">
-                <input
-                  class="form-control"
-                  id="name"
-                  type="text"
-                  placeholder="Enter your name..."
-                  data-sb-validations="required"
-                />
-                <label for="name">Full name</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">
-                  A name is required.
-                </div>
-              </div>
-              <!-- Email address input-->
-              <div class="form-floating mb-3">
-                <input
-                  class="form-control"
-                  id="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  data-sb-validations="required,email"
-                />
-                <label for="email">Email address</label>
-                <div class="invalid-feedback" data-sb-feedback="email:required">
-                  An email is required.
-                </div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">
-                  Email is not valid.
-                </div>
-              </div>
-              <!-- Phone number input-->
-              <div class="form-floating mb-3">
-                <input
-                  class="form-control"
-                  id="phone"
-                  type="tel"
-                  placeholder="(123) 456-7890"
-                  data-sb-validations="required"
-                />
-                <label for="phone">Phone number</label>
-                <div class="invalid-feedback" data-sb-feedback="phone:required">
-                  A phone number is required.
-                </div>
-              </div>
-              <!-- Message input-->
-              <div class="form-floating mb-3">
-                <textarea
-                  class="form-control"
-                  id="message"
-                  type="text"
-                  placeholder="Enter your message here..."
-                  style="height: 10rem"
-                  data-sb-validations="required"
-                ></textarea>
-                <label for="message">Message</label>
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="message:required"
-                >
-                  A message is required.
-                </div>
-              </div>
-              <!-- Submit success message-->
-              <!---->
-              <!-- This is what your users will see when the form-->
-              <!-- has successfully submitted-->
-              <div class="d-none" id="submitSuccessMessage">
-                <div class="text-center mb-3">
-                  <div class="fw-bolder">Form submission successful!</div>
-                  To activate this form, sign up at
-                  <br />
-                  <a href="https://startbootstrap.com/solution/contact-forms"
-                    >https://startbootstrap.com/solution/contact-forms</a
-                  >
-                </div>
-              </div>
-              <!-- Submit error message-->
-              <!---->
-              <!-- This is what your users will see when there is-->
-              <!-- an error submitting the form-->
-              <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">
-                  Error sending message!
-                </div>
-              </div>
-              <!-- Submit Button-->
-              <div class="d-grid">
-                <button
-                  class="btn btn-primary rounded-pill btn-lg disabled"
-                  id="submitButton"
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
+            <form v-on:submit.prevent="submit" autocomplete="off">
+                    <div class="title-text">
+                      <h3>Sign Up for New Account</h3>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        placeholder="name@example.com"
+                        v-model="first_name"
+                      />
+                      <label for="floatingInput">First Name</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="lastname"
+                        placeholder="jonathan"
+                        v-model="last_name"
+                      />
+                      <label for="floatingInput">Last Name</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        placeholder="ID Number"
+                        v-model="username"
+                      />
+                      <label for="floatingInput">National ID</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="username"
+                        placeholder="myemail@gmail.com"
+                        v-model="email"
+                      />
+                      <label for="floatingInput">Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      <phone-mask-input
+                        type="tel"
+                        placeholder="254723456789"
+                        name="mobilenumber"
+                        autoDetectCountry
+                        showFlag
+                        @onValidate="onValidate"
+                        wrapperClass="wrraper-example"
+                        inputClass="input-example"
+                        flagClass="flag-example"
+                        required
+                        v-model="phone_no"
+                      />
+
+                      <!-- <label for="floatingInput">Phone Number</label> -->
+                    </div>
+
+                    <div class="form-floating mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="********"
+                        v-model="password1"
+                      />
+                      <label for="floatingInput">Password</label>
+                    </div>
+
+                    <div class="form-floating">
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="floatingPassword"
+                        placeholder="Password"
+                        autocomplete="off"
+                        v-model="password2"
+                      />
+                      <label for="floatingPassword">Confirm Password</label>
+                    </div>
+
+                    <div class="form-group">
+                      <a href="">Terms and Conditions</a>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="formCheck-1"
+                          v-model="agree"
+                        />
+                        <label class="form-check-label" for="formCheck-1">
+                          I agree to the terms and conditions
+                        </label>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block"
+                      v-if="agree"
+                      @click="userRegister"
+                    >
+                      Register
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-block"
+                      v-else
+                      @click="alertterms"
+                    >
+                      Register
+                    </button>
+                    <a class="small text-muted" href="#!">Forgot password?</a>
+                    I already have an account?
+                    <router-link
+                      :to="{ name: 'login' }"
+                      exact
+                      class="small text-muted"
+                      >click here to login
+                    </router-link>
+                    &nbsp;
+                  </form>
           </div>
         </div>
       </div>
@@ -632,7 +664,14 @@
 
               <div class="form-links mt-2">
                 <div>
-                  <router-link to="/register">Register Now</router-link>
+                  <a
+
+                    class="text-muted"
+                    data-bs-toggle="modal"
+                    data-bs-target="RegisterModal"
+                    >Register</a
+                  >
+                  <!-- <router-link to="/register">Register Now</router-link> -->
                 </div>
                 {{ access }}
                 <div>

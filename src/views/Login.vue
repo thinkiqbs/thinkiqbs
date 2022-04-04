@@ -1,25 +1,29 @@
 <template>
-
-
-     <div class="card-group container-fluid">
-
-  <div class="card">
-
-    <div class="card-body">
-      <div class="section mt-8 text-center">
-            <h1>Log in</h1>
-            <h4>Fill the form to log in</h4>
+  <div class="card-group container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <div class="section mt-8 text-center">
+          <h1>Log in</h1>
+          <h4>Fill the form to log in</h4>
         </div>
         <div class="section mt-5 mb-5 p-3">
-            <form v-on:submit.prevent>
-              <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label class="label" for="email1">ID Number </label>
-                        <input type="text" class="form-control" id="idnumber" placeholder="Your National ID " v-model="username">
-                        <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                    </div>
-                </div>
-                <!-- <div class="form-group basic">
+          <form v-on:submit.prevent>
+            <div class="form-group basic">
+              <div class="input-wrapper">
+                <label class="label" for="email1">ID Number </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="idnumber"
+                  placeholder="Your National ID "
+                  v-model="username"
+                />
+                <i class="clear-input"
+                  ><ion-icon name="close-circle"></ion-icon
+                ></i>
+              </div>
+            </div>
+            <!-- <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label" for="email1">E-mail</label>
                         <input type="email" class="form-control" id="email1" placeholder="Your e-mail" v-model="email">
@@ -27,41 +31,64 @@
                     </div>
                 </div> -->
 
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label class="label" for="password1">Password</label>
-                        <input type="password" class="form-control" id="password1" placeholder="Your password" v-model="password">
-                        <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
-                    </div>
+            <div class="form-group basic">
+              <div class="input-wrapper">
+                <label class="label" for="password1">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password1"
+                  placeholder="Your password"
+                  v-model="password"
+                />
+                <i class="clear-input"
+                  ><ion-icon name="close-circle"></ion-icon
+                ></i>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-block btn-lg"
+              @click="login"
+            >
+              Log in
+            </button>
+
+            <div class="form-links mt-2">
+              <div>
+                <div>
+                  <a
+                    href="app-forgot-password.html"
+                    class="text-muted"
+                    data-bs-toggle="modal"
+                    data-bs-target="RegisterModal"
+                    >Forgot Password?</a
+                  >
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg" @click="login">Log in</button>
 
-                <div class="form-links mt-2">
-                    <div>
+                <!-- <router-link to="/register">Register Now</router-link> -->
+              </div>
+              {{ access }}
+              <div>
+                <a href="app-forgot-password.html" class="text-muted"
+                  >Forgot Password?</a
+                >
+              </div>
+            </div>
 
-                        <router-link to="/register">Register Now</router-link>
-                    </div>
-                    {{access}}
-                    <div><a href="app-forgot-password.html" class="text-muted">Forgot Password?</a></div>
-                </div>
-
-                <div class="form-button-group">
-                    
-                </div>
-
-            </form>
+            <div class="form-button-group"></div>
+          </form>
         </div>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        class="card-img-top"
+        src="https://picsum.photos/200/200"
+        alt="Card image cap"
+      />
     </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="https://picsum.photos/200/200" alt="Card image cap">
-    
-  </div>
-</div>
-
-        
-
-
 </template>
 
 <script>
@@ -80,11 +107,10 @@ export default {
   },
 
   created() {},
-  computed(){
-    return{
-      access: this.$store.state.access
-
-    }
+  computed() {
+    return {
+      access: this.$store.state.access,
+    };
   },
 
   methods: {
@@ -101,7 +127,7 @@ export default {
             icon: "success",
             button: "OK",
           });
-          
+
           this.$router.push("/profile");
         })
         .catch((err) => {

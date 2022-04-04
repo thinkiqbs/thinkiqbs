@@ -42,7 +42,7 @@
             </button>
           </div>
 
-          <div>
+          <div v-if="token != null">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
@@ -55,7 +55,7 @@
             </button>
           </div>
 
-          <div>
+          <div v-if="token != null">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
@@ -665,13 +665,12 @@
               <div class="form-links mt-2">
                 <div>
                   <a
-
+                    @click="gotoregister"
                     class="text-muted"
-                    data-bs-toggle="modal"
-                    data-bs-target="RegisterModal"
-                    >Register</a
+                    
+                    >Forgot Password?</a
                   >
-                  <!-- <router-link to="/register">Register Now</router-link> -->
+                  <router-link to="/register">Register Now</router-link>
                 </div>
                 {{ access }}
                 <div>
@@ -732,6 +731,12 @@ export default {
 
     gotocreateorganization() {
       this.$router.push("createorganization");
+    },
+
+    gotoregister(){
+
+      window.location.replace('/register')
+
     },
 
     countadmin: function () {

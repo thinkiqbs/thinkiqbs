@@ -43,7 +43,9 @@
           </div>
 
           <div v-if="token != null">
-            <div v-if="this.organizationdetails == 2">
+            <div
+              v-if="this.organizationdetails == 2 && this.memberdetails == 2"
+            >
               <button
                 class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
                 data-bs-toggle="modal"
@@ -55,7 +57,7 @@
                 </span>
               </button>
             </div>
-            <div v-if="this.organizationdetails == 2">
+            <div v-if="this.organizationdetails == 1">
               <button
                 class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
                 @click="gotoDashboard"
@@ -68,7 +70,6 @@
             </div>
           </div>
 
-          allorg{{ this.organizationdetails }} member{{ this.memberdetails }}
           <div>
             <div v-if="token == null">
               <button
@@ -95,7 +96,7 @@
             </div>
           </div>
 
-          <div v-if="token != null && this.memberdetails == 2">
+          <div v-if="token != null && this.memberdetails == 1">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
               <li class="nav-item">
                 <a class="nav-link me-lg-3" href="/Profile">My Account</a>
@@ -239,10 +240,10 @@
                     <i
                       class="bi-phone icon-feature text-gradient d-block mb-3"
                     ></i>
-                    <h3 class="font-alt">Device Mockups</h3>
+                    <h3 class="font-alt">Member Management</h3>
                     <p class="text-muted mb-0">
-                      Ready to use HTML/CSS device mockups, no Photoshop
-                      required!
+                      Multiple ways to onboard new members,Manage Members from
+                      one place!
                     </p>
                   </div>
                 </div>
@@ -252,10 +253,10 @@
                     <i
                       class="bi-camera icon-feature text-gradient d-block mb-3"
                     ></i>
-                    <h3 class="font-alt">Flexible Use</h3>
+                    <h3 class="font-alt">Loan Managment</h3>
                     <p class="text-muted mb-0">
-                      Put an image, video, animation, or anything else in the
-                      screen!
+                      Automated Loan Apprisal with intelligent decision making
+                      engine!
                     </p>
                   </div>
                 </div>
@@ -267,10 +268,10 @@
                     <i
                       class="bi-gift icon-feature text-gradient d-block mb-3"
                     ></i>
-                    <h3 class="font-alt">Free to Use</h3>
+                    <h3 class="font-alt">Finace & Accounting</h3>
                     <p class="text-muted mb-0">
-                      As always, this theme is free to download and use for any
-                      purpose!
+                      Realtime reporting with checks and balances, All major
+                      financial statements ready from printing
                     </p>
                   </div>
                 </div>
@@ -280,10 +281,10 @@
                     <i
                       class="bi-patch-check icon-feature text-gradient d-block mb-3"
                     ></i>
-                    <h3 class="font-alt">Open Source</h3>
+                    <h3 class="font-alt">Bank Operations</h3>
                     <p class="text-muted mb-0">
-                      Since this theme is MIT licensed, you can use it
-                      commercially!
+                      Ready integrations with 3rd party organization. Real-time
+                      Transactions!
                     </p>
                   </div>
                 </div>
@@ -374,12 +375,11 @@
           class="row gx-5 align-items-center justify-content-center justify-content-lg-between"
         >
           <div class="col-12 col-lg-5">
-            <h2 class="display-4 lh-1 mb-4">Enter a new age of web design</h2>
+            <h2 class="display-4 lh-1 mb-4">New world of possibilities</h2>
             <p class="lead fw-normal text-muted mb-5 mb-lg-0">
-              This section is perfect for featuring some information about your
-              application, why it was built, the problem it solves, or anything
-              else! There's plenty of space for text here, so don't worry about
-              writing too much.
+              We build iqSACCO to help you manage your business more
+              effeciently. We are here to help you with all your day today
+              business needs. Let us grow help you grow your SACCOS.
             </p>
           </div>
           <div class="col-sm-8 col-md-6">
@@ -970,7 +970,7 @@ export default {
     memberdetails() {
       var x = 1;
       var y = 2;
-      if (this.allmember.lenght != 1) {
+      if (this.allmember != null) {
         return x;
       } else {
         return y;
@@ -979,7 +979,7 @@ export default {
     organizationdetails() {
       var x = 1;
       var y = 2;
-      if (this.allorg.lenght != 1) {
+      if (this.allorg != "") {
         return x;
       } else {
         return y;

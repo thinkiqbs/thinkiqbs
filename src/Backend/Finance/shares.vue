@@ -27,14 +27,13 @@
 
                   <button
                     type="button"
-                    style="float:right;"
+                    style="float: right"
                     class="btn btn-primary btn-sm"
                     data-bs-toggle="modal"
                     data-bs-target="#addSharesDeposits"
                   >
                     Add Shares/Deposits
                   </button>
-                  
                 </div>
 
                 <div class="card-body">
@@ -125,49 +124,119 @@
                 </button>
               </div>
               <div class="modal-body">
-               <form class="row g-3">
-  <div class="col-md-4">
-    <label for="validationDefault01" class="form-label">First name</label>
-    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-  </div>
-  <div class="col-md-4">
-    <label for="validationDefault02" class="form-label">Last name</label>
-    <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-  </div>
-  <div class="col-md-4">
-    <label for="validationDefaultUsername" class="form-label">Username</label>
-    <div class="input-group">
-      <span class="input-group-text" id="inputGroupPrepend2">@</span>
-      <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="validationDefault03" class="form-label">City</label>
-    <input type="text" class="form-control" id="validationDefault03" required>
-  </div>
-  <div class="col-md-3">
-    <label for="validationDefault04" class="form-label">State</label>
-    <select class="form-select" id="validationDefault04" required>
-      <option selected disabled value="">Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-    <label for="validationDefault05" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="validationDefault05" required>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-      <label class="form-check-label" for="invalidCheck2">
-        Agree to terms and conditions
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit form</button>
-  </div>
-</form>
+                <form class="row g-3">
+                  <!-- form row -->
+                  <div class="form-group row col-md-6">
+                    <label for="inputEmail4">Member</label>
+                    <select
+                      class="form-control"
+                      v-model="memberid"
+                      @change="getmemberdetails"
+                    >
+                      <option v-for="(item) in members" :key="item.id">
+                        {{ item.email }}
+                      </option>
+                    </select>
+                  </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="validationDefault01" class="form-label"
+                      >First name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationDefault01"
+                      value="Mark"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="validationDefault02" class="form-label"
+                      >Last name</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationDefault02"
+                      value="Otto"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="validationDefaultUsername" class="form-label"
+                      >Username</label
+                    >
+                    <div class="input-group">
+                      <span class="input-group-text" id="inputGroupPrepend2"
+                        >@</span
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="validationDefaultUsername"
+                        aria-describedby="inputGroupPrepend2"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="validationDefault03" class="form-label"
+                      >City</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationDefault03"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label for="validationDefault04" class="form-label"
+                      >State</label
+                    >
+                    <select
+                      class="form-select"
+                      id="validationDefault04"
+                      required
+                    >
+                      <option selected disabled value="">Choose...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="validationDefault05" class="form-label"
+                      >Zip</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="validationDefault05"
+                      required
+                    />
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="invalidCheck2"
+                        required
+                      />
+                      <label class="form-check-label" for="invalidCheck2">
+                        Agree to terms and conditions
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary" type="submit">
+                      Submit form
+                    </button>
+                  </div>
+                  </div>
+                </form>
               </div>
               <div class="modal-footer">
                 <button
@@ -188,14 +257,8 @@
             </div>
           </div>
         </div>
-      
-
-
-
-        
 
         <!-- Modal -->
-        
       </div>
     </div>
   </div>
@@ -270,6 +333,34 @@ export default {
       roles: [],
       path: "",
       loanschedule: [],
+      shares:[
+        {
+              DocumentID: "",
+              SourcedocID: "",
+              accountype_description: "",
+              maincode: "",
+              maincode_description:"",
+              Account:"",
+              Reporting: "",
+              user_Id: "",
+              memberemail: "",
+              Transaction_date: "",
+              Account_Code: "",
+              Accountcode_description: "",
+              Document:"",
+              Account_type:"",
+              Transaction_type:"",
+              Posting_Date:"",
+              Amount: "",
+              allocated:false,
+              company_id:"",
+              notes:"",
+              updatedgl:false,
+              paymentnumber:"",
+              organizationprofile:"",
+          }
+        
+      ],
 
       addmembers: [
         {
@@ -283,7 +374,6 @@ export default {
           County: "",
         },
       ],
-     
     };
   },
 
@@ -1143,8 +1233,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(
-      ["allDocuments",
+    ...mapGetters([
+      "allDocuments",
       "allDeposits",
       "allMembers",
       "allLoans",
@@ -1152,8 +1242,8 @@ export default {
       "allUser",
       "allBanktransactions",
       "allPaymentsmade",
-      "allPaymentsreceived"]
-    ),
+      "allPaymentsreceived",
+    ]),
 
     token() {
       return this.$store.state.accessToken;

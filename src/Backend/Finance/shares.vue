@@ -224,7 +224,7 @@
                   </div>
                   <div class="col">
                     <!-- form to addNewShares -->
-                    <form class="row g-3">
+                    <form class="row g-3" >
                       <div class="col-md-4">
                         <label for="validationDefault01" class="form-label"
                           >First name</label
@@ -278,6 +278,7 @@
                         <select
                               v-model="selectedgl"
                               class="selectpicker form-control"
+                              @change="changeSharesGl"
                             >
                               <option
                                 v-for="option in allGl1Expense"
@@ -288,47 +289,23 @@
                               </option>
                             </select>
                       </div>
-                      <div class="col-md-3">
-                        <label for="validationDefault04" class="form-label"
-                          >State</label
-                        >
-                        <select
-                          class="form-select"
-                          id="validationDefault04"
-                          required
-                        >
-                          <option selected disabled value="">Choose...</option>
-                          <option>...</option>
-                        </select>
-                      </div>
+                      
                       <div class="col-md-3">
                         <label for="validationDefault05" class="form-label"
-                          >Zip</label
+                          >Amount</label
                         >
                         <input
-                          type="text"
+                          type="number"
                           class="form-control"
                           id="validationDefault05"
+                          v-model="selectedmember.amount"
                           required
                         />
                       </div>
+                      
                       <div class="col-12">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="invalidCheck2"
-                            required
-                          />
-                          <label class="form-check-label" for="invalidCheck2">
-                            Agree to terms and conditions
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <button class="btn btn-primary" type="submit">
-                          Submit form
+                        <button class="btn btn-primary" type="submit" @click="addMemberShares">
+                          Add Share Contribution
                         </button>
                       </div>
                     </form>
@@ -628,18 +605,18 @@ export default {
 
           DocumentID: "sh" + "mem" + this.selectedmember.id,
           SourcedocID: "mem" + this.selectedmember.id,
-          accountype_description: "",
-          maincode: "",
-          maincode_description: "",
-          Account: "",
+          accountype_description: this.glchanged.accountype_description,
+          maincode: this.glchanged.maincode,
+          maincode_description: this.glchanged.maincode_description,
+          Account: this.glchanged.parent_account,
           Reporting: "bs",
           user_Id: this.user_id,
           memberemail: this.selectedmember.email,
           Transaction_date: this.currentdate,
-          Account_Code: "",
-          Accountcode_description: "",
+          Account_Code: this.glchanged.parent_account,
+          Accountcode_description: this.glchanged.accountname,
           Document: "shares",
-          Account_type: "",
+          Account_type: this.glchanged.account_type,
           Transaction_type: "CR",
           Posting_Date: this.currentdate,
           Amount: this.shares.Amount,
@@ -1724,7 +1701,12 @@ export default {
     allGl1Expense: function () {
       return this.$store.getters.allGl.filter(
         (item) =>
-          item.company_id == this.companyid3 && item.account_type == "5000000"
+          item.company_id == this.companyid3 && item.account_type == "3000000"
+      );
+    },
+     allGls1: function () {
+      return this.$store.getters.allGl.filter(
+        (item) => item.company_id == this.companyid3
       );
     },
 

@@ -730,7 +730,7 @@
                 </div>
               </div>
 
-              <div class="form-button-group"></div>
+
             </form>
           </div>
         </div>

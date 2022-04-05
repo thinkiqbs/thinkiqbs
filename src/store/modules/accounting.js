@@ -1,26 +1,25 @@
-// import axios from "axios";
-// import { getAPI } from "@/axios-api";
+import { getAPI } from "@/axios-api";
 
 
-// const state = {
-//     document: [],
-// };
-// const getters = {
-//     allDocuments: (state) => state.document,
-// };
-// const actions = {
-//     async fetchDocuments({ commit }) {
-//         const response = await axios.get("/finance/api/v1/documents/");
-//         commit("setDocuments", response.data.results);
-//     },
-// };
-// const mutations = {
-//     setDocuments: (state, document) => (state.document = document),
-// };
+const state = {
+    shares: [],
+};
+const getters = {
+    allShares: (state) => state.shares,
+};
+const actions = {
+    async fetchShares({ commit }) {
+        const response = await getAPI.get("/finance/api/v1/Shares/");
+        commit("setShares", response.data.results);
+    },
+};
+const mutations = {
+    setShares: (state, shares) => (state.shares = shares),
+};
 
-// export default {
-//     state,
-//     getters,
-//     actions,
-//     mutations,
-// };
+export default {
+    state,
+    getters,
+    actions,
+    mutations,
+};

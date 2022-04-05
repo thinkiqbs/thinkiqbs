@@ -20,8 +20,8 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h4 class="card-title">All Loans</h4>
-                  <span>Org:{{ companyid3 }}</span>
+                  <h2 class="card-title">Member Shares- <span>Org:{{ companyid3 }}</span></h2>
+                  
 
                   <!-- button to toggle modal addSharesDeposits -->
 
@@ -491,6 +491,8 @@ export default {
     this.fetchPaymentsmade();
     this.fetchPaymentsreceived();
     this.fetchGl();
+    this.fetchShares();
+
 
   },
 
@@ -505,7 +507,8 @@ export default {
       "fetchBanktransactions",
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
-      "fetchGl"
+      "fetchGl",
+      "fetchShares",
     ]),
 
     updategl(item) {
@@ -630,11 +633,22 @@ export default {
           paymentnumber: Math.floor(Math.random() * 100000000) + 1000,
         })
         .then(function () {
-          this.$
+          this.$swal({
+            title: "Shares Added",
+            text: "Shares Added Successfully",
+            icon: "success",
+            button: "OK",
+          });
           // window.location.reload();
         })
         .catch((e) => {
-          alert(e);
+          this.$wal({
+            title: "Shares Not Added",
+            text: ("Shares Not Added" + e),
+            icon: "error",
+            button: "OK",
+          });
+          // alert(e);
         });
     },
 
@@ -1297,6 +1311,7 @@ export default {
       "allPaymentsmade",
       "allPaymentsreceived",
       "allGl",
+      "allShares",
     ]),
 
     token() {
@@ -1596,7 +1611,7 @@ export default {
     },
 
     alldocuments: function () {
-      return this.$store.getters.allDocuments.filter(
+      return this.$store.getters.allShares.filter(
         (item) => item.company_id == this.companyid3
       );
     },

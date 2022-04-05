@@ -512,6 +512,7 @@ export default {
       roles: [],
       path: "",
       loanschedule: [],
+      selectedmember: [],
       shares: [
         {
           DocumentID: "",
@@ -764,47 +765,42 @@ export default {
             console.error(error);
           });
     },
-    addMemberShares(){
+    addMemberShares() {
+      axios
+        .post("/finance/api/v1/Shares/", {
+          organizationprofile: this.orgprofileid,
 
-    axios.post('/finance/api/v1/Shares/', {
-      member_id: this.member_id,
-      shares: this.shares,
-      organizationprofile: this.orgprofileid,
-      created_by: this.userid,
-      updated_by: this.userid,
-      DocumentID: "",
-          SourcedocID: "",
+          DocumentID: "sh" + "mem" + this.selectemember,
+          SourcedocID: "mem" + this.selectemember.id,
           accountype_description: "",
           maincode: "",
           maincode_description: "",
           Account: "",
-          Reporting: "",
-          user_Id: "",
-          memberemail: "",
-          Transaction_date: "",
+          Reporting: "bs",
+          user_Id: this.user_id,
+          memberemail: this.selectedmember.emeil,
+          Transaction_date: this.currentdate,
           Account_Code: "",
           Accountcode_description: "",
-          Document: "",
+          Document: "shares",
           Account_type: "",
-          Transaction_type: "",
-          Posting_Date: "",
-          Amount: "",
+          Transaction_type: "CR",
+          Posting_Date: this.currentdate,
+          Amount: this.shares.Amount,
           allocated: false,
-          company_id: "",
+          company_id: this.companyid3,
           notes: "",
           updatedgl: false,
           paymentnumber: "",
-          organizationprofile: "",
-    })
-    .then(function () {
-      // window.location.reload();
-    })
-    .catch((e) => {
-      alert(e);
-    });
+        })
+        .then(function () {
+          // window.location.reload();
+        })
+        .catch((e) => {
+          alert(e);
+        });
     },
-      
-    },
+
     updateloanschedule(item) {
       this.loan = item;
 
@@ -816,8 +812,6 @@ export default {
       } else {
         this.loan.Amount;
       }
-
-    
 
       Promise.all([
         axios
@@ -1454,7 +1448,6 @@ export default {
     },
   },
 
-  
   computed: {
     ...mapGetters([
       "allDocuments",

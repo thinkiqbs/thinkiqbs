@@ -22,6 +22,19 @@
                 <div class="card-header">
                   <h4 class="card-title">All Loans</h4>
                   <span>Org:{{ companyid3 }}</span>
+
+                  <!-- button to toggle modal addSharesDeposits -->
+
+                  <button
+                    type="button"
+                    style="float:right;"
+                    class="btn btn-primary btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#addSharesDeposits"
+                  >
+                    Add Shares/Deposits
+                  </button>
+                  
                 </div>
 
                 <div class="card-body">
@@ -87,7 +100,97 @@
           </div>
         </div>
 
-        <!-- Modal for Allocating Deposits  -->
+        <!-- Modal for Adding Shares Deposits  -->
+        <div
+          class="modal fade modalbox"
+          id="addSharesDeposits"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Add Shares Deposits
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+               <form class="row g-3">
+  <div class="col-md-4">
+    <label for="validationDefault01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefault02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefaultUsername" class="form-label">Username</label>
+    <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend2">@</span>
+      <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault03" class="form-label">City</label>
+    <input type="text" class="form-control" id="validationDefault03" required>
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault04" class="form-label">State</label>
+    <select class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault05" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="validationDefault05" required>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+      <label class="form-check-label" for="invalidCheck2">
+        Agree to terms and conditions
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="addSharesDeposits"
+                >
+                  Send message
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+
 
         
 

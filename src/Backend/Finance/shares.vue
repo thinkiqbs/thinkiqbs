@@ -204,7 +204,7 @@
                                       type="checkbox"
                                       id="checkbox"
                                       v-model="member.invited"
-                                      @click="changemembershares(item)"
+                                      @click="changemembershares(member)"
                                     />
                                   </h1>
                                   <h5 class="badge badge-pill badge-info">
@@ -233,7 +233,8 @@
                           type="text"
                           class="form-control"
                           id="validationDefault01"
-                          value="Mark"
+                          v-model="this.selectedmember.first_name"
+
                           required
                         />
                       </div>
@@ -245,7 +246,8 @@
                           type="text"
                           class="form-control"
                           id="validationDefault02"
-                          value="Otto"
+
+                          v-model="this.selectedmember.last_name"
                           required
                         />
                       </div>
@@ -253,7 +255,7 @@
                         <label
                           for="validationDefaultUsername"
                           class="form-label"
-                          >Username</label
+                          >Email Address</label
                         >
                         <div class="input-group">
                           <span class="input-group-text" id="inputGroupPrepend2"
@@ -264,20 +266,27 @@
                             class="form-control"
                             id="validationDefaultUsername"
                             aria-describedby="inputGroupPrepend2"
+                            v-model="this.selectedmember.email"
                             required
                           />
                         </div>
                       </div>
                       <div class="col-md-6">
                         <label for="validationDefault03" class="form-label"
-                          >City</label
+                          >Share Capital GL</label
                         >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="validationDefault03"
-                          required
-                        />
+                        <select
+                              v-model="selectedgl"
+                              class="selectpicker form-control"
+                            >
+                              <option
+                                v-for="option in allGl1Expense"
+                                :value="option.maincode"
+                                :key="option.id"
+                              >
+                                {{ option.accountname }}
+                              </option>
+                            </select>
                       </div>
                       <div class="col-md-3">
                         <label for="validationDefault04" class="form-label"
@@ -384,6 +393,7 @@ export default {
   data() {
     return {
       picked: "",
+      selectedgl:'',
 
       loan_id: "",
       maincodeid: [],
@@ -500,6 +510,8 @@ export default {
     this.fetchBanktransactions();
     this.fetchPaymentsmade();
     this.fetchPaymentsreceived();
+    this.fetchGl();
+
   },
 
   methods: {
@@ -513,6 +525,7 @@ export default {
       "fetchBanktransactions",
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
+      "fetchGl"
     ]),
 
     updategl(item) {
@@ -596,7 +609,17 @@ export default {
       console.log("member",this.selectedmember)
     },
 
-    changeSharesGl() {},
+    changeSharesGl() {
+      const opt = this.allGls1.find((o) => o.maincode == this.selectedgl);
+      console.log(opt);
+
+      this.glchanged.account_type = opt.account_type;
+      this.glchanged.accountype_description = opt.accounttype_description;
+      this.glchanged.maincode = opt.maincode;
+      this.glchanged.maincode_description = opt.maincode_description;
+      this.glchanged.parent_account = opt.parent_account;
+      this.glchanged.accountname = opt.accountname;
+    },
 
     addMemberShares() {
       axios
@@ -611,7 +634,7 @@ export default {
           Account: "",
           Reporting: "bs",
           user_Id: this.user_id,
-          memberemail: this.selectedmember.emeil,
+          memberemail: this.selectedmember.email,
           Transaction_date: this.currentdate,
           Account_Code: "",
           Accountcode_description: "",
@@ -622,7 +645,7 @@ export default {
           Amount: this.shares.Amount,
           allocated: false,
           company_id: this.companyid3,
-          notes: "",
+          notes: "Members Share Contribution",
           updatedgl: false,
           paymentnumber: "",
         })
@@ -1292,6 +1315,7 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived",
+      "allGl",
     ]),
 
     token() {
@@ -1696,6 +1720,12 @@ export default {
         sum += e.Amount;
       });
       return sum;
+    },
+    allGl1Expense: function () {
+      return this.$store.getters.allGl.filter(
+        (item) =>
+          item.company_id == this.companyid3 && item.account_type == "5000000"
+      );
     },
 
     // maincodeid: function() {

@@ -29,20 +29,7 @@
             </li>
           </ul>
 
-          <div v-if="token == null">
-            <button
-              class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
-              data-bs-toggle="modal"
-              data-bs-target="#LoginModal"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Sign in</span>
-              </span>
-            </button>
-          </div>
-
-          <div v-if="token != null && this.memberdetails != 2">
+          <div v-if="token != null && this.memberdetails == 2">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               data-bs-toggle="modal"
@@ -55,47 +42,62 @@
             </button>
           </div>
 
-          <div
-            v-if="
-              token != null &&
-              this.organizationdetails == 1 &&
-              this.memberdetails == 2
-            "
-          >
-            <button
-              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-              data-bs-toggle="modal"
-              data-bs-target="#feedbackModal"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Start A New SACCO</span>
-              </span>
-            </button>
+          <div v-if="this.memberdetails == 1">
+            <div v-if="token != null">
+              <div v-if="this.organizationdetails == 2">
+                <button
+                  class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                  data-bs-toggle="modal"
+                  data-bs-target="#feedbackModal"
+                >
+                  <span class="d-flex align-items-center">
+                    <i class="bi-chat-text-fill me-2"></i>
+                    <span class="small">Start A New SACCO</span>
+                  </span>
+                </button>
+              </div>
+              <div v-else>
+                <button
+                  class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                  @click="gotoDashboard"
+                >
+                  <span class="d-flex align-items-center">
+                    <i class="bi-chat-text-fill me-2"></i>
+                    <span class="small">Back Office</span>
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
-          <div v-if="token != null && this.organizationdetails == '2'">
-            <button
-              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-              @click="gotoDashboard"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Back Office</span>
-              </span>
-            </button>
+
+          allorg{{ this.organizationdetails }}
+          member{{ this.memberdetails }}
+          <div>
+            <div v-if="token == null">
+              <button
+                class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
+                data-bs-toggle="modal"
+                data-bs-target="#LoginModal"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Sign in</span>
+                </span>
+              </button>
+            </div>
+            <div v-if="token != null">
+              <button
+                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                @click="logout"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Log Out</span>
+                </span>
+              </button>
+            </div>
           </div>
-          {{ this.organizationdetails }}
-          <div v-if="token != null">
-            <button
-              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-              @click="logout"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Log Out</span>
-              </span>
-            </button>
-          </div>
+
           <div v-if="token != null">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
               <li class="nav-item">
@@ -968,7 +970,7 @@ export default {
     memberdetails() {
       var x = 1;
       var y = 2;
-      if (this.allmember != "") {
+      if (this.allmember.lenght != null) {
         return x;
       } else {
         return y;
@@ -977,7 +979,7 @@ export default {
     organizationdetails() {
       var x = 1;
       var y = 2;
-      if (this.allorg != "") {
+      if (this.allorg != null) {
         return x;
       } else {
         return y;
@@ -989,7 +991,7 @@ export default {
     },
     allorg() {
       return this.$store.getters.allOrg.filter(
-        (item) => item.admin_email === this.email
+        (item) => item.admin_email == this.email
       );
     },
     allmember() {

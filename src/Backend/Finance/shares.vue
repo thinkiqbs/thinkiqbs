@@ -124,181 +124,296 @@
                 </button>
               </div>
               <div class="modal-body">
-                 <div class="card">
-              <div class="card-header">
-                <headerDashboard></headerDashboard>
+                <div class="row">
+                <div class="col">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4 class="card-title">Members</h4>
 
-                <h4 class="card-title">Members</h4>
+                      <div class="btn-toolbar float-right align-items-center">
+                        <!---->
 
-                <div class="btn-toolbar float-right align-items-center">
-                  <!---->
-
-                  <button
-                    class="btn btn-success"
-                    style="float: right"
-                    type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#Addnewbank"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-plus-circle-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
-                      />
-                    </svg>
-
-                    New Member
-
-                    <H3 class="badge badge-pill badge-info">
-                      {{ applicount }}
-                    </H3>
-                  </button>
-
-                  <!--  -->
-
-                  <!--  -->
-
-                  <!--  -->
-                </div>
-
-                <div class="card-body table-responsive">
-                  <table
-                    class="table-borderless table-hover table-striped walla"
-                  >
-                    <thead>
-                      <tr lass="line-item-header">
-                        <th>#</th>
-                        <th>Member Names</th>
-                        <th>Phone Number</th>
-                        <th>email</th>
-                        <th>Account Number</th>
-                        <th>Approved</th>
-                        <th>Invite</th>
-                        <th>Action</th>
-                        <th>View</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="member in filterloans" :key="member.id">
-                        <td>{{ member.id }}</td>
-                        <td>{{ member.first_name }} {{ member.last_name }}</td>
-                        <td>{{ member.phone_no }}</td>
-                        <td>{{ member.email }}</td>
-                        <td>{{ member.account_no }}</td>
-
-                        <td>
-                          <span v-if="member.Application_Status">
-                            <i class="fas fa-check-circle"></i
-                          ></span>
-                          <span v-if="!member.Application_Status"
-                            ><i
-                              class="fa fa-warning text-warning"
-                              style="font-size: 24px"
-                            ></i
-                          ></span>
-                        </td>
-
-                        <td>
-                          <h1 v-if="member.invited == false">
-                            <input
-                              type="checkbox"
-                              id="checkbox"
-                              v-model="member.invited"
-                              @click="invite(member)"
-                            />
-                          </h1>
-                          <h5 v-else><label for="checkbox"></label> 👍</h5>
-                        </td>
-
-                        <td>
-                          <div class="row">
-                            <div class="col-4" v-if="member.Application_Status">
-                              <a
-                                href="#"
-                                class="btn btn-outline-secondary"
-                                data-bs-toggle="modal"
-                                data-bs-target="#Contribution"
-                                @click="newcontribution(member)"
-                              >
-                                <i
-                                  class="fas fa-piggy-bank"
-                                  style="color: green"
-                                ></i>
-                              </a>
-                            </div>
-                            <div class="col-4" v-if="member.Application_Status">
-                              <button
-                                @click="change(member)"
-                                type="button"
-                                class="btn btn-outline-secondary"
-                                data-bs-toggle="modal"
-                                data-bs-target="#loan"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  class="bi bi-book"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path
-                                    d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
-                                  />
-                                </svg>
-                              </button>
-                            </div>
-                            <div v-else>
-                              <button
-                                @click="change(product)"
-                                type="button"
-                                class="btn btn-outline-secondary"
-                                data-bs-toggle="modal"
-                                data-bs-target="#"
-                                disabled
-                              >
-                                Inactive
-                              </button>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#MemberInfo"
-                            @click="change(member)"
+                        <button
+                          class="btn btn-success"
+                          style="float: right"
+                          type="button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#Addnewbank"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-plus-circle-fill"
+                            viewBox="0 0 16 16"
                           >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              class="bi bi-eye-fill"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
-                              />
-                              <path
-                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
-                              />
-                            </svg>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                            <path
+                              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+                            />
+                          </svg>
+
+                          New Member
+
+                          <H3 class="badge badge-pill badge-info">
+                            {{ applicount }}
+                          </H3>
+                        </button>
+
+                        <!--  -->
+
+                        <!--  -->
+
+                        <!--  -->
+                      </div>
+
+                      <div class="card-body table-responsive">
+                        <table
+                          class="table-borderless table-hover table-striped walla"
+                        >
+                          <thead>
+                            <tr lass="line-item-header">
+                              <th>#</th>
+                              <th>Member Names</th>
+                              <th>Phone Number</th>
+                              <th>email</th>
+                              <th>Account Number</th>
+                              <th>Approved</th>
+                              <th>Invite</th>
+                              <th>Action</th>
+                              <th>View</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="member in filterloans" :key="member.id">
+                              <td>{{ member.id }}</td>
+                              <td>
+                                {{ member.first_name }} {{ member.last_name }}
+                              </td>
+                              <td>{{ member.phone_no }}</td>
+                              <td>{{ member.email }}</td>
+                              <td>{{ member.account_no }}</td>
+
+                              <td>
+                                <span v-if="member.Application_Status">
+                                  <i class="fas fa-check-circle"></i
+                                ></span>
+                                <span v-if="!member.Application_Status"
+                                  ><i
+                                    class="fa fa-warning text-warning"
+                                    style="font-size: 24px"
+                                  ></i
+                                ></span>
+                              </td>
+
+                              <td>
+                                <h1 v-if="member.invited == false">
+                                  <input
+                                    type="checkbox"
+                                    id="checkbox"
+                                    v-model="member.invited"
+                                    @click="invite(member)"
+                                  />
+                                </h1>
+                                <h5 v-else>
+                                  <label for="checkbox"></label> 👍
+                                </h5>
+                              </td>
+
+                              <td>
+                                <div class="row">
+                                  <div
+                                    class="col-4"
+                                    v-if="member.Application_Status"
+                                  >
+                                    <a
+                                      href="#"
+                                      class="btn btn-outline-secondary"
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#Contribution"
+                                      @click="newcontribution(member)"
+                                    >
+                                      <i
+                                        class="fas fa-piggy-bank"
+                                        style="color: green"
+                                      ></i>
+                                    </a>
+                                  </div>
+                                  <div
+                                    class="col-4"
+                                    v-if="member.Application_Status"
+                                  >
+                                    <button
+                                      @click="change(member)"
+                                      type="button"
+                                      class="btn btn-outline-secondary"
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#loan"
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="bi bi-book"
+                                        viewBox="0 0 16 16"
+                                      >
+                                        <path
+                                          d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
+                                        />
+                                      </svg>
+                                    </button>
+                                  </div>
+                                  <div v-else>
+                                    <button
+                                      @click="change(product)"
+                                      type="button"
+                                      class="btn btn-outline-secondary"
+                                      data-bs-toggle="modal"
+                                      data-bs-target="#"
+                                      disabled
+                                    >
+                                      Inactive
+                                    </button>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-secondary"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#MemberInfo"
+                                  @click="change(member)"
+                                >
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="16"
+                                    height="16"
+                                    fill="currentColor"
+                                    class="bi bi-eye-fill"
+                                    viewBox="0 0 16 16"
+                                  >
+                                    <path
+                                      d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                                    />
+                                    <path
+                                      d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                                    />
+                                  </svg>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+                  <div class="col">
+                    <!-- form to addNewShares -->
+                    <form class="row g-3">
+                      <div class="col-md-4">
+                        <label for="validationDefault01" class="form-label"
+                          >First name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="validationDefault01"
+                          value="Mark"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <label for="validationDefault02" class="form-label"
+                          >Last name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="validationDefault02"
+                          value="Otto"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <label
+                          for="validationDefaultUsername"
+                          class="form-label"
+                          >Username</label
+                        >
+                        <div class="input-group">
+                          <span class="input-group-text" id="inputGroupPrepend2"
+                            >@</span
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="validationDefaultUsername"
+                            aria-describedby="inputGroupPrepend2"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="validationDefault03" class="form-label"
+                          >City</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="validationDefault03"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-3">
+                        <label for="validationDefault04" class="form-label"
+                          >State</label
+                        >
+                        <select
+                          class="form-select"
+                          id="validationDefault04"
+                          required
+                        >
+                          <option selected disabled value="">Choose...</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="validationDefault05" class="form-label"
+                          >Zip</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="validationDefault05"
+                          required
+                        />
+                      </div>
+                      <div class="col-12">
+                        <div class="form-check">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="invalidCheck2"
+                            required
+                          />
+                          <label class="form-check-label" for="invalidCheck2">
+                            Agree to terms and conditions
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <button class="btn btn-primary" type="submit">
+                          Submit form
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button
@@ -323,7 +438,8 @@
         <!-- Modal -->
       </div>
     </div>
-  </div>
+
+
 </template>
 
 <script>
@@ -395,33 +511,32 @@ export default {
       roles: [],
       path: "",
       loanschedule: [],
-      shares:[
+      shares: [
         {
-              DocumentID: "",
-              SourcedocID: "",
-              accountype_description: "",
-              maincode: "",
-              maincode_description:"",
-              Account:"",
-              Reporting: "",
-              user_Id: "",
-              memberemail: "",
-              Transaction_date: "",
-              Account_Code: "",
-              Accountcode_description: "",
-              Document:"",
-              Account_type:"",
-              Transaction_type:"",
-              Posting_Date:"",
-              Amount: "",
-              allocated:false,
-              company_id:"",
-              notes:"",
-              updatedgl:false,
-              paymentnumber:"",
-              organizationprofile:"",
-          }
-        
+          DocumentID: "",
+          SourcedocID: "",
+          accountype_description: "",
+          maincode: "",
+          maincode_description: "",
+          Account: "",
+          Reporting: "",
+          user_Id: "",
+          memberemail: "",
+          Transaction_date: "",
+          Account_Code: "",
+          Accountcode_description: "",
+          Document: "",
+          Account_type: "",
+          Transaction_type: "",
+          Posting_Date: "",
+          Amount: "",
+          allocated: false,
+          company_id: "",
+          notes: "",
+          updatedgl: false,
+          paymentnumber: "",
+          organizationprofile: "",
+        },
       ],
 
       addmembers: [
@@ -1568,13 +1683,13 @@ export default {
       return diffDays;
     },
 
-   filterloans: function () {
+    filterloans: function () {
       return this.members1.filter((member) =>
         member.email.toLowerCase().includes(this.search.toLowerCase())
       );
     },
 
-     members1: function () {
+    members1: function () {
       return this.$store.getters.allMembers.filter(
         (item) => item.company_id == this.companyid3
       );

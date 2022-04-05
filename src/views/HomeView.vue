@@ -73,12 +73,7 @@
               </span>
             </button>
           </div>
-          <div
-            v-if="
-              token != null &&
-              this.organizationdetails == '2' 
-            "
-          >
+          <div v-if="token != null && this.organizationdetails == '2'">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
               @click="gotoDashboard"
@@ -89,7 +84,7 @@
               </span>
             </button>
           </div>
-          {{this.organizationdetails}}
+          {{ this.organizationdetails }}
           <div v-if="token != null">
             <button
               class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
@@ -108,7 +103,6 @@
               </li>
             </ul>
           </div>
-
         </div>
       </div>
     </nav>
@@ -120,11 +114,10 @@
             <!-- Mashead text and app badges-->
             <div class="mb-5 mb-lg-0 text-center text-lg-start">
               <h1 class="display-1 lh-1 mb-3">
-                Showcase your app beautifully.
+                Build your SACCO in just a few steps.
               </h1>
               <p class="lead fw-normal text-muted mb-5">
-                Launch your mobile app landing page faster with this free, open
-                source theme from Start Bootstrap!
+                Members can join a SACCO and start saving money.
               </p>
               <div class="d-flex flex-column flex-lg-row align-items-center">
                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
@@ -225,8 +218,9 @@
         <div class="row gx-5 justify-content-center">
           <div class="col-xl-8">
             <div class="h2 fs-1 text-white mb-4">
-              "An intuitive solution to a common problem that we all face,
-              wrapped up in a single app!"
+              "Easy Affordable Software that enables you to manage your
+              operations from anywhere. and grow your membership quickly. You
+              can customize to suit your your preference"
             </div>
             <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
           </div>
@@ -726,9 +720,7 @@
 
               <div class="form-links mt-2">
                 <div>
-                  <a @click="gotoregister" class="text-muted"
-                    >Register</a
-                  >
+                  <a @click="gotoregister" class="text-muted">Register</a>
                   <!-- <router-link to="/register">Register Now</router-link> -->
                 </div>
                 {{ access }}
@@ -788,7 +780,6 @@ export default {
           Employer: "",
           Department: "",
           County: "",
-
         },
       ],
     };

@@ -42,36 +42,33 @@
             </button>
           </div>
 
-          <div v-if="this.memberdetails == 1">
-            <div v-if="token != null">
-              <div v-if="this.organizationdetails == 2">
-                <button
-                  class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                  data-bs-toggle="modal"
-                  data-bs-target="#feedbackModal"
-                >
-                  <span class="d-flex align-items-center">
-                    <i class="bi-chat-text-fill me-2"></i>
-                    <span class="small">Start A New SACCO</span>
-                  </span>
-                </button>
-              </div>
-              <div v-else>
-                <button
-                  class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                  @click="gotoDashboard"
-                >
-                  <span class="d-flex align-items-center">
-                    <i class="bi-chat-text-fill me-2"></i>
-                    <span class="small">Back Office</span>
-                  </span>
-                </button>
-              </div>
+          <div v-if="token != null">
+            <div v-if="this.organizationdetails == 2">
+              <button
+                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                data-bs-toggle="modal"
+                data-bs-target="#feedbackModal"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Start A New SACCO</span>
+                </span>
+              </button>
+            </div>
+            <div v-if="this.organizationdetails == 2">
+              <button
+                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                @click="gotoDashboard"
+              >
+                <span class="d-flex align-items-center">
+                  <i class="bi-chat-text-fill me-2"></i>
+                  <span class="small">Back Office</span>
+                </span>
+              </button>
             </div>
           </div>
 
-          allorg{{ this.organizationdetails }}
-          member{{ this.memberdetails }}
+          allorg{{ this.organizationdetails }} member{{ this.memberdetails }}
           <div>
             <div v-if="token == null">
               <button
@@ -98,7 +95,7 @@
             </div>
           </div>
 
-          <div v-if="token != null">
+          <div v-if="token != null && this.memberdetails == 2">
             <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
               <li class="nav-item">
                 <a class="nav-link me-lg-3" href="/Profile">My Account</a>
@@ -790,6 +787,7 @@ export default {
     // this.countadmin();
     this.becomememberhide();
     this.fetchOrg();
+    this.fetchMembers();
     this.fetchEmployerinfo();
   },
   mounted() {
@@ -903,6 +901,8 @@ export default {
           password: this.password,
         })
         .then(() => {
+          this.fetchOrg();
+          this.fetchMembers();
           this.$swal({
             title: "Success",
             text: "You have successfully logged in",
@@ -970,7 +970,7 @@ export default {
     memberdetails() {
       var x = 1;
       var y = 2;
-      if (this.allmember.lenght != null) {
+      if (this.allmember.lenght != 1) {
         return x;
       } else {
         return y;
@@ -979,7 +979,7 @@ export default {
     organizationdetails() {
       var x = 1;
       var y = 2;
-      if (this.allorg != null) {
+      if (this.allorg.lenght != 1) {
         return x;
       } else {
         return y;
@@ -991,12 +991,12 @@ export default {
     },
     allorg() {
       return this.$store.getters.allOrg.filter(
-        (item) => item.admin_email == this.email
+        (item) => item.admin_email == this.emailstate
       );
     },
     allmember() {
       return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
+        (item) => item.email == this.emailstate
       );
     },
     companyid3() {

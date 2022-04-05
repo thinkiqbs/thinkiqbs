@@ -515,8 +515,8 @@ export default {
       selectedmember: [],
       shares: [
         {
-          DocumentID: "",
-          SourcedocID: "",
+          DocumentID: "sh" + "mem" + this.selectedmember.id,
+          SourcedocID: "mem" + this.selectemember.id,
           accountype_description: "",
           maincode: "",
           maincode_description: "",
@@ -765,12 +765,21 @@ export default {
             console.error(error);
           });
     },
+
+    changemembershares(item) {
+      this.selectedmember = item;
+    },
+
+    changeSharesGl(){
+
+    },
+
     addMemberShares() {
       axios
         .post("/finance/api/v1/Shares/", {
           organizationprofile: this.orgprofileid,
 
-          DocumentID: "sh" + "mem" + this.selectemember,
+          DocumentID: "sh" + "mem" + this.selectemember.id,
           SourcedocID: "mem" + this.selectemember.id,
           accountype_description: "",
           maincode: "",
@@ -1000,6 +1009,7 @@ export default {
 
     change(item) {
       this.loan = item;
+
 
       const memberfilter = this.loan.email;
 

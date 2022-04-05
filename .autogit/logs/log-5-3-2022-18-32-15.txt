@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Apr 05 2022 18:32:15 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Finance/shares.vue
+
+
+Created files:
+* .autogit/logs/log-5-3-2022-18-0-38.txt
+
+
+Deleted files:
+
+
+Renamed files:

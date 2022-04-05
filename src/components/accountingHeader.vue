@@ -194,6 +194,7 @@
                         class="dropdown-item d-flex align-items-center justify-content-between"
                         >Documents</router-link
                       >
+                      
                       <router-link
                         :to="{ path: 'budgets' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
@@ -210,7 +211,7 @@
                       <router-link
                         :to="{ path: 'accounting' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Genral Ledger</router-link
+                        >General Ledger</router-link
                       >
                     </div>
                   </div>

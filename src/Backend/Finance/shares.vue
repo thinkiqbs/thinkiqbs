@@ -224,7 +224,7 @@
                   </div>
                   <div class="col">
                     <!-- form to addNewShares -->
-                    <form class="row g-3" >
+                    <form class="row g-3" @submit.prevent="onSubmit">
                       <div class="col-md-4">
                         <label for="validationDefault01" class="form-label"
                           >First name</label
@@ -298,7 +298,7 @@
                           type="number"
                           class="form-control"
                           id="validationDefault05"
-                          v-model="selectedmember.amount"
+                          v-model="this.selectedmember.Amount"
                           required
                         />
                       </div>
@@ -340,6 +340,8 @@
 
 <script>
 import axios from "axios";
+import { getAPI } from "@/axios-api";
+
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
 // import financeNav from "@/components/FinanceNav";
@@ -371,6 +373,7 @@ export default {
     return {
       picked: "",
       selectedgl:'',
+      glchanged:{},
 
       loan_id: "",
       maincodeid: [],
@@ -599,7 +602,7 @@ export default {
     },
 
     addMemberShares() {
-      axios
+      getAPI
         .post("/finance/api/v1/Shares/", {
           organizationprofile: this.orgprofileid,
 
@@ -612,21 +615,22 @@ export default {
           Reporting: "bs",
           user_Id: this.user_id,
           memberemail: this.selectedmember.email,
-          Transaction_date: this.currentdate,
+          Transaction_date: this.currentDate,
           Account_Code: this.glchanged.parent_account,
           Accountcode_description: this.glchanged.accountname,
           Document: "shares",
           Account_type: this.glchanged.account_type,
           Transaction_type: "CR",
-          Posting_Date: this.currentdate,
-          Amount: this.shares.Amount,
+          Posting_Date: this.currentDate,
+          Amount: this.selectedmember.Amount,
           allocated: false,
           company_id: this.companyid3,
           notes: "Members Share Contribution",
           updatedgl: false,
-          paymentnumber: "",
+          paymentnumber: Math.floor(Math.random() * 100000000) + 1000,
         })
         .then(function () {
+          this.$
           // window.location.reload();
         })
         .catch((e) => {
@@ -1331,6 +1335,7 @@ export default {
       }
       return int;
     },
+    
 
     newinterestmonthly() {
       // let tTerm = this.Loans.Term;

@@ -69,6 +69,8 @@ import approvers from "../Backend/Admin/approvers.vue";
 import journals from "../Backend/Finance/journals.vue";
 import budgets from "../Backend/Finance/budgets.vue";
 import documents from "../Backend/Finance/documents.vue";
+import allShares from "../Backend/Finance/shares.vue";
+
 import taxes from "../Backend/Finance/taxes.vue";
 import balancesheet from "../Backend/Reports/balancesheet.vue";
 import trialbalance from "../Backend/Reports/trialbalance.vue";
@@ -345,6 +347,15 @@ const routes = [{
     },
 
     {
+        path: "/documents",
+        name: "documents",
+        component: documents,
+        meta: {
+            requiresLogin: false,
+        },
+    },
+
+    {
         path: "/budgets",
         name: "budgets",
         component: budgets,
@@ -445,6 +456,14 @@ const routes = [{
         component: savingstype,
         meta: {
             requiresLogin: true,
+        },
+    },
+    {
+        path: "/shares",
+        name: "shares",
+        component: allShares,
+        meta: {
+            requiresLogin: false,
         },
     },
 

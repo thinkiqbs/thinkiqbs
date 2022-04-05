@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Apr 05 2022 14:56:19 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/components/accountingHeader.vue
+
+
+Created files:
+* .autogit/logs/log-5-3-2022-14-26-5.txt
+
+
+Deleted files:
+
+
+Renamed files:

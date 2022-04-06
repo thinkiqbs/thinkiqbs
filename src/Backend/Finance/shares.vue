@@ -609,7 +609,7 @@ export default {
         .post("/finance/api/v1/Shares/", {
           organizationprofile: this.orgprofileid,
 
-          DocumentID: "sh" + "mem" + this.selectedmember.id,
+          DocumentID: "sh" + "mem" + this.selectedmember.paymentnumber,
           SourcedocID: "mem" + this.selectedmember.id,
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
@@ -633,21 +633,13 @@ export default {
           paymentnumber: Math.floor(Math.random() * 100000000) + 1000,
         })
         .then(function () {
-          this.$swal({
-            title: "Shares Added",
-            text: "Shares Added Successfully",
-            icon: "success",
-            button: "OK",
-          });
+    this.fetchShares();
+
+          
           // window.location.reload();
         })
         .catch((e) => {
-          this.$wal({
-            title: "Shares Not Added",
-            text: ("Shares Not Added" + e),
-            icon: "error",
-            button: "OK",
-          });
+          
           // alert(e);
         });
     },

@@ -7,6 +7,7 @@
     >
       <div class="container px-5">
         <a class="navbar-brand fw-bold" href="#page-top">Start Bootstrap</a>
+        <img src="../assets/images/logo/logo.png" width="200" height="40" alt="Image Sample">
         <button
           class="navbar-toggler"
           type="button"

@@ -245,9 +245,9 @@
         <div class="row gx-5 justify-content-center">
           <div class="col-xl-8">
             <div class="h2 fs-1 text-white mb-4">
-              "Easy Affordable Software that enables you to manage your
-              operations from anywhere. and grow your membership quickly. You
-              can customize to suit your your preference"
+              "Simple, low-cost software that allows you to manage your business
+              from anywhere. and rapidly expand your membership You have the
+              option of customizing it to your liking."
             </div>
             <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
           </div>
@@ -269,8 +269,8 @@
                     ></i>
                     <h3 class="font-alt">Member Management</h3>
                     <p class="text-muted mb-0">
-                      Multiple ways to onboard new members,Manage Members from
-                      one place!
+                      Several methods for onboarding new members, with the
+                      ability to manage them all from a single location!!
                     </p>
                   </div>
                 </div>
@@ -282,8 +282,8 @@
                     ></i>
                     <h3 class="font-alt">Loan Managment</h3>
                     <p class="text-muted mb-0">
-                      Automated Loan Apprisal with intelligent decision making
-                      engine!
+                      Loan Approval Automation Powered by an Intelligent
+                      Decision Engine!
                     </p>
                   </div>
                 </div>
@@ -297,8 +297,8 @@
                     ></i>
                     <h3 class="font-alt">Finace & Accounting</h3>
                     <p class="text-muted mb-0">
-                      Realtime reporting with checks and balances, All major
-                      financial statements ready from printing
+                      Real-time reporting with checks and balances, and all
+                      major financial statements are ready for printing.
                     </p>
                   </div>
                 </div>
@@ -310,8 +310,8 @@
                     ></i>
                     <h3 class="font-alt">Bank Operations</h3>
                     <p class="text-muted mb-0">
-                      Ready integrations with 3rd party organization. Real-time
-                      Transactions!
+                      With a REST API that is ready for integration with any
+                      third-party organization systems!
                     </p>
                   </div>
                 </div>
@@ -404,16 +404,17 @@
           <div class="col-12 col-lg-5">
             <h2 class="display-4 lh-1 mb-4">New world of possibilities</h2>
             <p class="lead fw-normal text-muted mb-5 mb-lg-0">
-              We build iqSACCO to help you manage your business more
-              effeciently. We are here to help you with all your day today
-              business needs. Let us grow help you grow your SACCOS.
+              We created IQSACCO to assist you in running your business more
+              efficiently. We are here to assist you with all of your day-to-day
+              business requirements. Allow us to assist you in growing your
+              SACCO.
             </p>
           </div>
           <div class="col-sm-8 col-md-6">
             <div class="px-5 px-sm-0">
               <img
                 class="img-fluid rounded-circle"
-                src="https://source.unsplash.com/u8Jn2rzYIps/900x900"
+                src="../asset//900x900"
                 alt="..."
               />
             </div>

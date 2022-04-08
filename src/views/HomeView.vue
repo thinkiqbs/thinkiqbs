@@ -227,7 +227,7 @@
                       style="max-width: 100%; height: 100%"
                     >
                       <source
-                        src="assets/img/demo-screen.mp4"
+                        src="../assets/img/demo-screen.mp4"
                         type="video/mp4"
                       />
                     </video>
@@ -249,7 +249,11 @@
               from anywhere. and rapidly expand your membership You have the
               option of customizing it to your liking."
             </div>
-            <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
+            <img
+              src="../assets/img/tnw-logo.svg"
+              alt="..."
+              style="height: 3rem"
+            />
           </div>
         </div>
       </div>
@@ -264,9 +268,19 @@
                 <div class="col-md-6 mb-5">
                   <!-- Feature item-->
                   <div class="text-center">
-                    <i
-                      class="bi-phone icon-feature text-gradient d-block mb-3"
-                    ></i>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      fill="currentColor"
+                      class="bi bi-phone"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
+                      />
+                      <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                    </svg>
                     <h3 class="font-alt">Member Management</h3>
                     <p class="text-muted mb-0">
                       Several methods for onboarding new members, with the
@@ -383,7 +397,7 @@
                       style="max-width: 100%; height: 100%"
                     >
                       <source
-                        src="assets/img/demo-screen.mp4"
+                        src="../assets/img/demo-screen.mp4"
                         type="video/mp4"
                       />
                     </video>
@@ -429,13 +443,13 @@
           <h2 class="text-white display-1 lh-1 mb-4">
             Stop waiting.
             <br />
-            Start building.
+            Start Growing.
           </h2>
           <a
             class="btn btn-outline-light py-3 px-4 rounded-pill"
             href="https://startbootstrap.com/theme/new-age"
             target="_blank"
-            >Download for free</a
+            >Contact US Now</a
           >
         </div>
       </div>
@@ -443,20 +457,20 @@
     <!-- App badge section-->
     <section class="bg-gradient-primary-to-secondary" id="download">
       <div class="container px-5">
-        <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
+        <h2 class="text-center text-white font-alt mb-4">Coming Soon!</h2>
         <div
           class="d-flex flex-column flex-lg-row align-items-center justify-content-center"
         >
           <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
             ><img
               class="app-badge"
-              src="assets/img/google-play-badge.svg"
+              src="../assets/img/google-play-badge.svg"
               alt="..."
           /></a>
           <a href="#!"
             ><img
               class="app-badge"
-              src="assets/img/app-store-badge.svg"
+              src="../assets/img/app-store-badge.svg"
               alt="..."
           /></a>
         </div>
@@ -466,7 +480,9 @@
     <footer class="bg-black text-center py-5">
       <div class="container px-5">
         <div class="text-white-50 small">
-          <div class="mb-2">&copy; Your Website 2022. All Rights Reserved.</div>
+          <div class="mb-2">
+            &copy; #ThinkIQDigital 2022. All Rights Reserved.
+          </div>
           <a href="#!">Privacy</a>
           <span class="mx-1">&middot;</span>
           <a href="#!">Terms</a>
@@ -1035,5 +1051,5 @@ export default {
 </script>
 
 <style>
-@import "../assets/css/style.css"
+@import "../assets/css/style.css";
 </style>

@@ -27,7 +27,7 @@ FACEBOOK: https://www.facebook.com/themefisher
 
 @import url("https://fonts.googleapis.com/css?family=Lora:400,400i|Open+Sans:300,400,600,700,800");
 body {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans extra", sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -43,7 +43,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans extra bold", sans-serif;
     color: #000;
     font-weight: 300;
 }

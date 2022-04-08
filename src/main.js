@@ -8,7 +8,7 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
-import "../src/assets/css/style.css"
+// import "@/assets/css/style.css"
 
 
 

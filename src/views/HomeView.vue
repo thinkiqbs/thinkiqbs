@@ -79,7 +79,7 @@
           <div>
             <div v-if="token == null">
               <button
-                class="btn btn-info rounded-pill px-3 mb-2 mb-lg-0"
+                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
                 data-bs-toggle="modal"
                 data-bs-target="#LoginModal"
               >
@@ -165,7 +165,6 @@
           <div class="col-lg-6">
             <!-- Masthead device mockup feature-->
             <div class="masthead-device-mockup">
-             
               <div class="device-wrapper">
                 <div
                   class="device"
@@ -208,7 +207,7 @@
               option of customizing it to your liking."
             </div>
             <img
-              src="../assets/img/tnw-logo.svg"
+              src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
               alt="..."
               style="height: 3rem"
             />
@@ -290,10 +289,9 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 order-lg-0">
+          <div class="col-lg-3 order-lg-0">
             <!-- Features section device mockup-->
             <div class="features-device-mockup">
-             
               <div class="device-wrapper">
                 <div
                   class="device"
@@ -324,6 +322,8 @@
           </div>
         </div>
       </div>
+
+      
     </section>
     <!-- Basic features section-->
     <section class="bg-light">

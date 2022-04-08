@@ -3046,6 +3046,12 @@ fieldset:disabled .btn {
     border-color: #209CEE;
 }
 
+.btn-brand {
+    color: #fff;
+    background-color: #209CEE;
+    border-color: #209CEE;
+}
+
 .btn-primary:hover {
     color: #fff;
     background-color: #232fcc;
@@ -11113,7 +11119,7 @@ html {
 }
 
 .bg-gradient-primary-to-secondary {
-    background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;
+    background: linear-gradient(45deg, #209CEE, #9f1ae2) !important;
 }
 
 .font-alt {
@@ -11179,7 +11185,7 @@ section {
  */
 
 .device-wrapper {
-    max-width: 300px;
+    max-width: 200px;
     width: 100%;
 }
 
@@ -11197,9 +11203,12 @@ section {
 }
 
 .device .screen {
+    width: 100%;
+    height: 500px;
     position: absolute;
     background-size: cover;
     pointer-events: auto;
+    background-position: 50% 50%;
 }
 
 .device .button {

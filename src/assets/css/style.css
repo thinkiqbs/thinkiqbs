@@ -3177,7 +3177,7 @@ fieldset:disabled .btn {
 
 .btn-info {
     color: #000;
-    background-color: #0dcaf0;
+    background-color: #209CEE;
     border-color: #0dcaf0;
 }
 
@@ -8230,7 +8230,7 @@ fieldset:disabled .btn {
 }
 
 .fw-normal {
-    font-weight: 500 !important;
+    font-weight: 600 !important;
 }
 
 .fw-bold {

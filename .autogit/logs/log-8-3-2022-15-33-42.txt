@@ -1,0 +1,29 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 08 2022 15:33:42 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/assets/css/style.css
+* src/views/HomeView.vue
+
+
+Created files:
+* .autogit/logs/log-8-3-2022-13-53-18.txt
+* src/assets/images/background/IQSACCO_Logo_Blue-PhotoRoom.png
+* "src/assets/images/background/World of possibilities.zip"
+* "src/assets/images/background/World of possibilities/1.png"
+* "src/assets/images/background/World of possibilities/2.png"
+* "src/assets/images/background/World of possibilities/3.png"
+* "src/assets/images/background/World of possibilities/4.png"
+* "src/assets/images/background/World of possibilities/5.png"
+* "src/assets/images/background/World of possibilities/6.png"
+* "src/assets/images/background/World of possibilities/7.png"
+* "src/assets/images/background/World of possibilities/8.png"
+* "src/assets/images/background/World of possibilities/9.png"
+* src/assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png
+
+
+Deleted files:
+
+
+Renamed files:

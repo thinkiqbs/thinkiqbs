@@ -84,11 +84,9 @@
                 data-bs-target="#LoginModal"
               >
                 <span class="d-flex align-items-center">
-                 
-                  <b class="bold">Sign in  </b>
-                  &nbsp;
-                  &nbsp;
-                   <svg
+                  <b class="bold">Sign in </b>
+                  &nbsp; &nbsp;
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -142,7 +140,10 @@
                 Get started in just a few steps.
               </h1>
               <p class="lead fw-normal text-muted mb-5">
-                Members can join a SACCO and start saving money.
+                It's simple to manage your SACCO's day-to-day operations with
+                IQSACCO. The dashboards allow you to monitor your SACCO
+                activities in real time, and reporting for your annual audit has
+                never been easier.
               </p>
               <div class="d-flex flex-column flex-lg-row align-items-center">
                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
@@ -150,8 +151,9 @@
                     class="app-badge"
                     src="../assets/img/google-play-badge.svg"
                     alt="..."
-                /></a>
-                <a href="#!"
+                  />
+                </a>
+                <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
                   ><img
                     class="app-badge"
                     src="../assets/img/app-store-badge.svg"

@@ -414,7 +414,7 @@
             <div class="px-5 px-sm-0">
               <img
                 class="img-fluid rounded-circle"
-                src="../asset//900x900"
+                src="../assets/images/cta/iqsacco-CTA.jpeg"
                 alt="..."
               />
             </div>

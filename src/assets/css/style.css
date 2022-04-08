@@ -11234,7 +11234,7 @@ section {
 section.cta {
     position: relative;
     padding: 15rem 0;
-    background-image: url("https://source.unsplash.com/5g41N3uRPf8/1500x800");
+    background-image: url("../images/cta/cta_background_iqsacco.jpeg");
     background-position: center;
     background-size: cover;
 }
@@ -11476,3 +11476,5 @@ footer a:focus {
         max-width: 17rem;
     }
 }
+
+t

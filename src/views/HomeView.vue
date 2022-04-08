@@ -8,8 +8,8 @@
       <div class="container px-5">
         <!-- <a class="navbar-brand fw-bold" href="#page-top">Start Bootstrap</a> -->
         <img
-          src="../assets/images/logo/Iqsaccologo.png"
-          width="200"
+          src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
+          width="150"
           height="150"
           alt="Sacco ERP Software"
         />
@@ -79,7 +79,7 @@
           <div>
             <div v-if="token == null">
               <button
-                class="btn btn-success rounded-pill px-3 mb-2 mb-lg-0"
+                class="btn btn-info rounded-pill px-3 mb-2 mb-lg-0"
                 data-bs-toggle="modal"
                 data-bs-target="#LoginModal"
               >

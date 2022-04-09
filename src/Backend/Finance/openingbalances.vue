@@ -119,97 +119,7 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="col">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">Members</h4>
-
-                        <div class="btn-toolbar float-right align-items-center">
-                          <!---->
-
-                          <button
-                            class="btn btn-success"
-                            style="float: right"
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#Addnewbank"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              class="bi bi-plus-circle-fill"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
-                              />
-                            </svg>
-
-                            New Member
-
-                            <H3 class="badge badge-pill badge-info">
-                              {{ applicount }}
-                            </H3>
-                          </button>
-
-                          <!--  -->
-
-                          <!--  -->
-
-                          <!--  -->
-                        </div>
-
-                        <div class="card-body table-responsive">
-                          <table
-                            class="table-borderless table-hover table-striped walla"
-                          >
-                            <thead>
-                              <tr lass="line-item-header">
-                                <th>#</th>
-                                <th>Member Names</th>
-                                <th>Phone Number</th>
-                                <th>email</th>
-                                <th>Account Number</th>
-
-                                <th>Invite</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr
-                                v-for="member in filterloans"
-                                :key="member.id"
-                              >
-                                <td>{{ member.id }}</td>
-                                <td>
-                                  {{ member.first_name }} {{ member.last_name }}
-                                </td>
-                                <td>{{ member.phone_no }}</td>
-                                <td>{{ member.email }}</td>
-                                <td>{{ member.account_no }}</td>
-
-                                <td>
-                                  <h1>
-                                    <input
-                                      type="checkbox"
-                                      id="checkbox"
-                                      v-model="member.invited"
-                                      @click="changemembershares(member)"
-                                    />
-                                  </h1>
-                                  <h5 class="badge badge-pill badge-info">
-                                    {{ member.invited }}
-                                    <label for="checkbox"></label> 👍
-                                  </h5>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                   <div class="col">
                     <!-- form to addNewShares -->
                     <form class="row g-3" @submit.prevent="onSubmit">
@@ -284,11 +194,26 @@
                           type="number"
                           class="form-control"
                           id="validationDefault05"
-                          v-model="this.debitpositingt"
+                          v-model="this.debit"
                           required
                         />
 
                         {{ this.debitpositing }}
+                      </div>
+
+                      <div class="col-md-3">
+                        <label for="validationDefault05" class="form-label"
+                          >Credit
+                        </label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="validationDefault05"
+                          v-model="this.credit"
+                          required
+                        />
+
+                        {{ this.credit }}
                       </div>
 
                       <div class="col-md-3">
@@ -575,6 +500,8 @@ export default {
           Transaction_type: "CR",
           Posting_Date: this.currentDate,
           Amount: this.ob.Amount,
+          Credit: this.credit,
+          Debit: this.debit,
           allocated: false,
           company_id: this.companyid3,
           notes: "Members Share Contribution",
@@ -682,23 +609,30 @@ export default {
       return x;
     },
 
-    debit() {
-     var amount = this.ob.Amount
-
-     return this.drcr*amount;
-
-    },
-
-    drcr() {
+    credit() {
       var val = this.debitpositing;
+      var amount = this.ob.Amount;
 
       var x = "";
 
-      if (val == 1) {
+      if (val == "2") {
         x = 1;
-      } else x * -1;
 
-      return x;
+        return x * amount;
+      } else return 0;
+    },
+
+    debit() {
+      var val = this.debitpositing;
+      var amount = this.ob.Amount;
+
+      var x = "";
+
+      if (val == "1") {
+        x = 1;
+
+        return x * amount;
+      } else return 0;
     },
 
     debitpositing() {

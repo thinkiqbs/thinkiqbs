@@ -276,11 +276,10 @@
                         </div>
                       </div>
 
-
                       <div class="col-md-3">
                         <label for="validationDefault05" class="form-label"
-                          >Debit </label
-                        >
+                          >Debit
+                        </label>
                         <input
                           type="number"
                           class="form-control"
@@ -289,7 +288,7 @@
                           required
                         />
 
-                        {{this.debitpositing}}
+                        {{ this.debitpositing }}
                       </div>
 
                       <div class="col-md-3">
@@ -683,10 +682,28 @@ export default {
       return x;
     },
 
-    debitpositing() {
-      var val = this.glchanged.account_type
-      var debit = "";
+    debit() {
+     var amount = this.ob.Amount
 
+     return this.drcr*amount;
+
+    },
+
+    drcr() {
+      var val = this.debitpositing;
+
+      var x = "";
+
+      if (val == 1) {
+        x = 1;
+      } else x * -1;
+
+      return x;
+    },
+
+    debitpositing() {
+      var val = this.glchanged.account_type;
+      var debit = "";
 
       // Only change code below this line
       switch (val) {
@@ -696,18 +713,17 @@ export default {
           console.log(debit);
           break;
         case "2000000":
-          debit = "1";
+          debit = "2";
           break;
         case "3000000":
-          debit = "1";
+          debit = "2";
           break;
         case "4000000":
           debit = "1";
           break;
         case "5000000":
-          debit = "1"
-          break
-
+          debit = "2";
+          break;
       }
 
       // Only change code above this line
@@ -1102,8 +1118,7 @@ export default {
     },
     allGl1Expense: function () {
       return this.$store.getters.allGl.filter(
-        (item) =>
-          item.company_id == this.companyid3 
+        (item) => item.company_id == this.companyid3
       );
     },
     allGls1: function () {

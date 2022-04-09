@@ -1,0 +1,22 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 08 2022 23:19:48 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* public/index.html
+* src/assets/css/bootstrap.css
+* src/assets/css/style.css
+* src/assets/css/style.css.map
+* src/assets/js/script.js
+* src/main.js
+* src/views/HomeView.vue
+
+
+Created files:
+* .autogit/logs/log-8-3-2022-20-48-46.txt
+
+
+Deleted files:
+
+
+Renamed files:

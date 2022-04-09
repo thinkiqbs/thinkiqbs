@@ -200,6 +200,12 @@
               >
 
               <router-link
+                :to="{ path: 'openingbalances' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Opening Balances</router-link
+              >
+
+              <router-link
                 :to="{ path: 'budgets' }"
                 class="dropdown-item d-flex align-items-center justify-content-between"
                 >Budgets

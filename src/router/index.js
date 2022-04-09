@@ -70,6 +70,8 @@ import journals from "../Backend/Finance/journals.vue";
 import budgets from "../Backend/Finance/budgets.vue";
 import documents from "../Backend/Finance/documents.vue";
 import allShares from "../Backend/Finance/shares.vue";
+import openingBalances from "../Backend/Finance/openingbalances.vue";
+
 
 import taxes from "../Backend/Finance/taxes.vue";
 import balancesheet from "../Backend/Reports/balancesheet.vue";
@@ -462,6 +464,15 @@ const routes = [{
         path: "/shares",
         name: "shares",
         component: allShares,
+        meta: {
+            requiresLogin: false,
+        },
+    },
+
+    {
+        path: "/openingbalances",
+        name: "openingbalances",
+        component: openingBalances,
         meta: {
             requiresLogin: false,
         },

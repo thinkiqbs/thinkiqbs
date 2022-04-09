@@ -276,6 +276,22 @@
                         </div>
                       </div>
 
+
+                      <div class="col-md-3">
+                        <label for="validationDefault05" class="form-label"
+                          >Debit </label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="validationDefault05"
+                          v-model="this.debitpositingt"
+                          required
+                        />
+
+                        {{this.debitpositing}}
+                      </div>
+
                       <div class="col-md-3">
                         <label for="validationDefault05" class="form-label"
                           >Amount</label
@@ -667,31 +683,35 @@ export default {
       return x;
     },
 
-    DrCRposting(val) {
+    debitpositing() {
+      var val = this.glchanged.account_type
       var debit = "";
-      var credit = "";
+
 
       // Only change code below this line
       switch (val) {
-        case 1000000:
-          debit = "alpha";
-          credit = "alpha";
+        case "1000000":
+          debit = "1";
 
-          console.log(answer);
+          console.log(debit);
           break;
-        case 2000000:
-          answer = "beta";
+        case "2000000":
+          debit = "1";
           break;
-        case 3000000:
-          answer = "gamma";
+        case "3000000":
+          debit = "1";
           break;
-        case 4000000:
-          answer = "delta";
+        case "4000000":
+          debit = "1";
           break;
+        case "5000000":
+          debit = "1"
+          break
+
       }
 
       // Only change code above this line
-      return answer;
+      return debit;
     },
 
     interestmonthly() {
@@ -1083,7 +1103,7 @@ export default {
     allGl1Expense: function () {
       return this.$store.getters.allGl.filter(
         (item) =>
-          item.company_id == this.companyid3 && item.account_type == "3000000"
+          item.company_id == this.companyid3 
       );
     },
     allGls1: function () {

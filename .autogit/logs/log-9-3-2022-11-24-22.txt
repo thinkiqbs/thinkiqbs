@@ -1,0 +1,22 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 09 2022 11:24:22 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* public/index.html
+* src/assets/css/style.css
+* src/components/accountingHeader.vue
+* src/router/index.js
+* src/store/modules/accounting.js
+* src/views/HomeView.vue
+
+
+Created files:
+* .autogit/logs/log-8-3-2022-23-19-48.txt
+* src/Backend/Finance/openingbalances.vue
+
+
+Deleted files:
+
+
+Renamed files:

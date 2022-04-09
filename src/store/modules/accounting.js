@@ -21,7 +21,7 @@ const actions = {
 };
 const mutations = {
     setShares: (state, shares) => (state.shares = shares),
-    setOb: (state, openingbalance) => (state.openingbalance = openingbalance),
+    setOb: (state, openingbalances) => (state.openingbalances = openingbalances),
 
 };
 

@@ -33,6 +33,8 @@ import employers from "../Backend/Admin/employers.vue";
 import organization from "../Backend/Admin/organization.vue";
 import users from "../Backend/Admin/users.vue";
 import imports from "../Backend/Admin/imports.vue";
+import obimports from "../Backend/Admin/obimports.vue";
+
 
 import backend from "../Backend/backend.vue";
 
@@ -552,6 +554,15 @@ const routes = [{
         path: "/imports",
         name: "imports",
         component: imports,
+        meta: {
+            requiresLogin: true,
+        },
+    },
+
+    {
+        path: "/obimports",
+        name: "obimports",
+        component: obimports,
         meta: {
             requiresLogin: true,
         },

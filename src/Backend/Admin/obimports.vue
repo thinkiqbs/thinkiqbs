@@ -57,9 +57,9 @@
                     </a>
 
                     <vue-excel-xlsx
-                      :data="data"
+                      :data="this.selectedledger"
                       :columns="columns"
-                      :file-name="'filename'"
+                      :file-name="'expense'"
                       :file-type="'xlsx'"
                       :sheet-name="'sheetname'"
                     >
@@ -578,11 +578,7 @@
                   <input type="file" @change="onFileChange" />
                 </div>
 
-                <download-excel :data="shares_data" class="col-sm-">
-                  <button type="button" class="btn btn-success">
-                    Download Template
-                  </button>
-                </download-excel>
+                
 
                 <button
                   type="button"
@@ -1077,6 +1073,7 @@ export default {
 
       importmembers: [],
       memberxp: [],
+      selectedledger:expense",
       columns: [
         {
           label: "Product",
@@ -1100,6 +1097,45 @@ export default {
           field: "address.city",
         },
       ],
+      expense: [
+        {
+          product: "chabati",
+          price: 10,
+          quantity: 2,
+          address: {
+            country: "Armenia",
+            city: "Yerevan",
+          },
+        },
+        {
+          product: "Snack",
+          price: 12,
+          quantity: 6,
+          address: {
+            country: "Armenia",
+            city: "Yerevan",
+          },
+        },
+        {
+          product: "Beverage",
+          price: 10,
+          quantity: 5,
+          address: {
+            country: "Armenia",
+            city: "Yerevan",
+          },
+        },
+        {
+          product: "Snack",
+          price: 12,
+          quantity: 3,
+          address: {
+            country: "Armenia",
+            city: "Yerevan",
+          },
+        },
+      ],
+
       data: [
         {
           product: "Beverage",

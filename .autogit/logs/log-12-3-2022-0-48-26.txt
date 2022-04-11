@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Tue Apr 12 2022 00:48:26 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* package-lock.json
+* package.json
+* src/Backend/Admin/obimports.vue
+* src/main.js
+
+
+Created files:
+* .autogit/logs/log-12-3-2022-0-18-15.txt
+
+
+Deleted files:
+
+
+Renamed files:

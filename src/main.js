@@ -8,6 +8,7 @@ import axios from 'axios'
 import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
+import VueExcelXlsx from "vue-excel-xlsx";
 // import "@/assets/css/style.css"
 
 
@@ -73,4 +74,4 @@ router.beforeEach((to, from, next) => {
 
 
 
-createApp(App).use(router).use(store).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");
+createApp(App).use(router).use(store).use(VueExcelXlsx).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");

@@ -33,6 +33,7 @@
         "vue-axios": "^3.4.1",
         "vue-chartjs": "^4.0.4",
         "vue-datatables-net": "^2.0.1",
+        "vue-excel-xlsx": "^1.2.2",
         "vue-json-excel": "^0.3.0",
         "vue-phone-number-input": "^1.1.12",
         "vue-popperjs": "^2.3.0",

@@ -57,11 +57,12 @@
                     </a>
 
                     <vue-excel-xlsx
-                      :data="this.selectedledger"
+                      :data= "data1"
                       :columns="columns"
-                      :file-name="'expense'"
+                      :file-name="'expense'"  
                       :file-type="'xlsx'"
                       :sheet-name="'sheetname'"
+                      @click="pickdata"
                     >
                       Download
                     </vue-excel-xlsx>
@@ -1073,7 +1074,7 @@ export default {
 
       importmembers: [],
       memberxp: [],
-      selectedledger:expense",
+      data1:'',
       columns: [
         {
           label: "Product",
@@ -1333,6 +1334,10 @@ export default {
     ]),
 
     // When passing `data` for each cell.
+
+    pickdata(){
+      this.data1 = this.expense;
+    },
 
     exportexpense() {
       this.$swal("Update Expense sheet and upload to import opening balance");

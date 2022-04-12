@@ -1135,7 +1135,7 @@ export default {
         },
       ],
 
-      data: [
+      datax: [
         {
           product: "Beverage",
           price: 10,
@@ -1334,22 +1334,27 @@ export default {
     // When passing `data` for each cell.
 
     pickdata() {
-      //map
+      //add properties to data1
 
-      this.data1 = this.expense.map((item) => {
-        return {
-          id: item.id,
-          name: item.name,
-          amount: item.amount,
-          date: item.date,
-          description: item.description,
-          category: item.category,
-          company_id: item.company_id,
-          user_id: item.user_id,
-          created_at: item.created_at,
-          updated_at: item.updated_at,
-        };
-      });
+      const data = [
+        {
+          transactiondate: this.currentDate,
+          organizationprofile: 1,
+          company_id: this.companyid3,
+          description: "Total Expenses as at" + this.currentDate,
+          gl_account: "",
+          gl_account_description: "",
+          amount: '',
+          tax_Amount: '',
+          tax_gl_account: '',
+          tax_gl_account_description: "",
+          expensebye: "",
+          chequeNo: "",
+          posted: false,
+        },
+      ];
+
+      this.data1 = data;
     },
 
     exportexpense() {

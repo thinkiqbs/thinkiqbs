@@ -1306,8 +1306,78 @@ export default {
         },
       ];
 
+      const loans = [
+        {
+          id: 1,
+
+
+          
+          Account: "2111000",
+          user_Id: "1",
+          memberemail: "karash@gmail.com",
+          Transaction_date: "2022-04-09",
+          last_updated: "2022-04-09T09:50:47.002923Z",
+          Account_Code: "2111000",
+          Accountcode_description: "Members Deposits - Bosa",
+          Debit: 0,
+          Credit: 1000,
+          Amount: 1000,
+          Document: "Deposits",
+          created: "2022-04-09T09:50:47.002971Z",
+          Transaction_type: "CR",
+          Posting_Date: "2022-04-09",
+          allocated: false,
+          company_id: this.companyid3,
+          notes: "Members Deposits Opening Balances",
+          updatedgl: false,
+          organizationprofile: this.organizationprofile,
+        },
+      ];
+      const expenses = [
+        {
+          id: 1,
+
+
+          
+          Account: "2111000",
+          user_Id: "1",
+          memberemail: "karash@gmail.com",
+          Transaction_date: "2022-04-09",
+          last_updated: "2022-04-09T09:50:47.002923Z",
+          Account_Code: "2111000",
+          Accountcode_description: "Members Deposits - Bosa",
+          Debit: 0,
+          Credit: 1000,
+          Amount: 1000,
+          Document: "Deposits",
+          created: "2022-04-09T09:50:47.002971Z",
+          Transaction_type: "CR",
+          Posting_Date: "2022-04-09",
+          allocated: false,
+          company_id: this.companyid3,
+          notes: "Members Deposits Opening Balances",
+          updatedgl: false,
+          organizationprofile: this.organizationprofile,
+        },
+      ];
+
+
+      // if selected is deposits then 
+      if (this.selected == "deposits") {
+
       this.data1 = deposits;
+
+      } 
+      if (){
+
+      }
+      }
+
+
+
     },
+
+
 
     exportexpense() {
       this.$swal("Update Expense sheet and upload to import opening balance");

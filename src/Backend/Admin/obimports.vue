@@ -17,115 +17,7 @@
             <h4 class="card-title">Opening Balances Import Section</h4>
 
             <div class="row">
-              <div class="dropdown d-inline-block ms-2">
-                <button
-                  type="button"
-                  class="btn btn-sm btn-alt-secondary d-flex align-items-center"
-                  id="page-header-user-dropdown"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  style="float: right"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    class="bi bi-menu-down"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M7.646.146a.5.5 0 0 1 .708 0L10.207 2H14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h3.793L7.646.146zM1 7v3h14V7H1zm14-1V4a1 1 0 0 0-1-1h-3.793a1 1 0 0 1-.707-.293L8 1.207l-1.5 1.5A1 1 0 0 1 5.793 3H2a1 1 0 0 0-1 1v2h14zm0 5H1v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zM2 4.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"
-                    />
-                  </svg>
-                  <span class="d-none d-sm-inline-block ms-2"
-                    >Export Template Xls</span
-                  >
-                  <i
-                    class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
-                  ></i>
-                </button>
-                <div
-                  class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
-                  aria-labelledby="page-header-user-dropdown"
-                  style=""
-                >
-                  <div class="p-2">
-                    <a class="" typr="button" @click="exportexpense">
-                      Export Expenses
-                    </a>
-
-                    <vue-excel-xlsx
-                      :data="data1"
-                      :columns="columns"
-                      :file-name="'expense'"
-                      :file-type="'xlsx'"
-                      :sheet-name="'sheetname'"
-                      @click="pickdata"
-                    >
-                      Download
-                    </vue-excel-xlsx>
-                    <router-link
-                      :to="{ path: 'purchasing' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Purchasing</router-link
-                    >
-                    <router-link
-                      :to="{ path: 'sales' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Sales</router-link
-                    >
-
-                    <div role="separator" class="dropdown-divider m-0"></div>
-
-                    <router-link
-                      :to="{ path: 'journals' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Journals</router-link
-                    >
-
-                    <div role="separator" class="dropdown-divider m-0"></div>
-
-                    <router-link
-                      :to="{ path: 'documents' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Documents</router-link
-                    >
-
-                    <router-link
-                      :to="{ path: 'shares' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Member Shares</router-link
-                    >
-
-                    <router-link
-                      :to="{ path: 'openingbalances' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Opening Balances</router-link
-                    >
-
-                    <router-link
-                      :to="{ path: 'budgets' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Budgets
-                    </router-link>
-                    <router-link
-                      :to="{ path: 'taxes' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >Taxes</router-link
-                    >
-
-                    <div role="separator" class="dropdown-divider m-0"></div>
-
-                    <router-link
-                      :to="{ path: 'accounting' }"
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      >General Ledger</router-link
-                    >
-                  </div>
-                </div>
-              </div>
+              
 
               <div class="col-sm-3 my-1">
                 <input type="file" @change="onFileChange" />
@@ -141,11 +33,17 @@
                 </button>
               </div>
               <div class="col-sm-3 my-1">
-                <download-excel :data="pledge_data" type="link">
-                  <button type="button" class="btn btn-success">
-                    Download Expense Template
-                  </button>
-                </download-excel>
+                <vue-excel-xlsx
+                  class="btn btn-success"
+                  :data="data1"
+                  :columns="columns"
+                  :file-name="'expense'"
+                  :file-type="'xlsx'"
+                  :sheet-name="'sheetname'"
+                  @click="pickdata"
+                >
+                  Download xlsx template
+                </vue-excel-xlsx>
               </div>
             </div>
 
@@ -1074,24 +972,6 @@ export default {
       memberxp: [],
       data1: "",
       columns: [
-        
-        {
-          label: "SourcedocID",
-          field: "SourcedocID",
-        },
-        {
-          label: "accountype_description",
-          field: "accountype_description",
-
-        },
-        {
-          label: "maincode",
-          field: "maincode",
-        },
-        {
-          label: "maincode_description",
-          field: "address.maincode_description",
-        },
         {
           label: "Account",
           field: "Account",
@@ -1101,16 +981,9 @@ export default {
           label: "Account_Description",
           field: "Account_Description",
         },
+
         {
-          label: "Account_Type",
-          field: "Account_Type",
-        },
-        {
-          label: "Reporting",
-          field: "Reporting",
-        },
-        {
-          label: "user_Id",
+          label: "user_Id(Dont Change)",
           field: "user_Id",
         },
         {
@@ -1121,14 +994,7 @@ export default {
           label: "Transaction_date",
           field: "Transaction_date",
         },
-        {
-          label: "Account_Code",
-          field: "Account_Code",
-        },
-        {
-          label: "Accountcode_description",
-          field: "Accountcode_description",
-        },
+
         {
           label: "Debit",
           field: "Debit",
@@ -1142,13 +1008,10 @@ export default {
           field: "Amount",
         },
         {
-          label: "Document",
+          label: "Document(Dont Change)",
           field: "Document",
         },
-        {
-          label: "Account_type",
-          field: "Account_type",
-        },
+
         {
           label: "Posting_Date",
           field: "Posting_Date",
@@ -1158,27 +1021,22 @@ export default {
           field: "allocated",
         },
         {
-          label: "company_id",
+          label: "company_id(Dont Change)",
           field: "company_id",
         },
         {
           label: "notes",
           field: "notes",
         },
-          {
-          label: "updatedgl",
+        {
+          label: "updatedgl(Dont Change)",
           field: "updatedgl",
         },
-          {
-          label: "paymentnumber",
-          field: "paymentnumber",
-        },
-          {
-          label: "organizationprofile",
+
+        {
+          label: "organizationprofile(Dont Change)",
           field: "organizationprofile",
         },
-
-        
       ],
       expense: [
         {
@@ -1420,40 +1278,35 @@ export default {
     pickdata() {
       //add properties to data1
 
-      const data = [
-       
+      const deposits = [
         {
-            id: 1,
-            SourcedocID: "memundefined",
-            accountype_description: "LIABILITIES",
-            maincode: "2111000",
-            maincode_description: "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
-            Account: "2100000",
-            Reporting: "bs",
-            user_Id: "1",
-            memberemail: "karash@gmail.com",
-            Transaction_date: "2022-04-09",
-            last_updated: "2022-04-09T09:50:47.002923Z",
-            Account_Code: "2100000",
-            Accountcode_description: "Members Deposits - Bosa",
-            Debit: 0,
-            Credit: 1000,
-            Amount: 1000,
-            Document: "shares",
-            Account_type: "2000000",
-            created: "2022-04-09T09:50:47.002971Z",
-            Transaction_type: "CR",
-            Posting_Date: "2022-04-09",
-            allocated: false,
-            company_id: "6253131427",
-            notes: "Members Share Contribution",
-            updatedgl: false,
-            paymentnumber: 1217120,
-            organizationprofile: 1,
+          id: 1,
+
+
+          
+          Account: "2111000",
+          user_Id: "1",
+          memberemail: "karash@gmail.com",
+          Transaction_date: "2022-04-09",
+          last_updated: "2022-04-09T09:50:47.002923Z",
+          Account_Code: "2111000",
+          Accountcode_description: "Members Deposits - Bosa",
+          Debit: 0,
+          Credit: 1000,
+          Amount: 1000,
+          Document: "Deposits",
+          created: "2022-04-09T09:50:47.002971Z",
+          Transaction_type: "CR",
+          Posting_Date: "2022-04-09",
+          allocated: false,
+          company_id: this.companyid3,
+          notes: "Members Deposits Opening Balances",
+          updatedgl: false,
+          organizationprofile: this.organizationprofile,
         },
       ];
 
-      this.data1 = data;
+      this.data1 = deposits;
     },
 
     exportexpense() {

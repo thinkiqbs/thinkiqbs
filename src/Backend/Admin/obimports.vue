@@ -57,9 +57,9 @@
                     </a>
 
                     <vue-excel-xlsx
-                      :data= "data1"
+                      :data="data1"
                       :columns="columns"
-                      :file-name="'expense'"  
+                      :file-name="'expense'"
                       :file-type="'xlsx'"
                       :sheet-name="'sheetname'"
                       @click="pickdata"
@@ -579,8 +579,6 @@
                   <input type="file" @change="onFileChange" />
                 </div>
 
-                
-
                 <button
                   type="button"
                   class="btn-close"
@@ -1063,7 +1061,6 @@ export default {
       loan_data: [],
       shares_data: [],
       gldata_data: [],
-     
 
       accounttypes: [],
       pledgetype: [],
@@ -1075,7 +1072,7 @@ export default {
 
       importmembers: [],
       memberxp: [],
-      data1:'',
+      data1: "",
       columns: [
         {
           label: "Product",
@@ -1185,7 +1182,7 @@ export default {
       level: "",
       add_product: false,
       editing: false,
-      selected: "expense",
+      selected: "",
       users: [],
       options: [
         { id: 0, code: 0, text: "Control" },
@@ -1336,32 +1333,22 @@ export default {
 
     // When passing `data` for each cell.
 
-    pickdata(){
+    pickdata() {
+      //map
 
-      //create a swith case for the data
-      switch (this.selected) {
-        case "expense":
-          this.tableData = this.selected;
-          break;
-        case "loans":
-          this.tableData = this.shares;
-          break;
-        case "members":
-          this.tableData = this.loans;
-          break;
-        case "shares":
-          this.tableData = this.deposits;
-          break;
-        default:
-          this.data1 = this.Ledgers;
-          break;
-      }
-      this.data1 = this.tableData;
-      this.$swal({
-        title: "Data Selected",
-        text: "You have selected " + this.selected,
-        icon: "success",
-        button: "OK",
+      this.data1 = this.expense.map((item) => {
+        return {
+          id: item.id,
+          name: item.name,
+          amount: item.amount,
+          date: item.date,
+          description: item.description,
+          category: item.category,
+          company_id: item.company_id,
+          user_id: item.user_id,
+          created_at: item.created_at,
+          updated_at: item.updated_at,
+        };
       });
     },
 

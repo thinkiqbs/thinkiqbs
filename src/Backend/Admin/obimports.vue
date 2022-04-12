@@ -17,8 +17,6 @@
             <h4 class="card-title">Opening Balances Import Section</h4>
 
             <div class="row">
-              
-
               <div class="col-sm-3 my-1">
                 <input type="file" @change="onFileChange" />
               </div>
@@ -31,6 +29,18 @@
                 >
                   Import
                 </button>
+              </div>
+              <div class="col-sm-3 my-1">
+                <!-- boostrap select  -->
+                <select
+                  class="form-select form-select-sm"
+                  aria-label=".form-select-sm example"
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
               </div>
               <div class="col-sm-3 my-1">
                 <vue-excel-xlsx
@@ -1282,8 +1292,6 @@ export default {
         {
           id: 1,
 
-
-          
           Account: "2111000",
           user_Id: "1",
           memberemail: "karash@gmail.com",
@@ -1310,8 +1318,6 @@ export default {
         {
           id: 1,
 
-
-          
           Account: "2111000",
           user_Id: "1",
           memberemail: "karash@gmail.com",
@@ -1337,8 +1343,6 @@ export default {
         {
           id: 1,
 
-
-          
           Account: "2111000",
           user_Id: "1",
           memberemail: "karash@gmail.com",
@@ -1361,27 +1365,17 @@ export default {
         },
       ];
 
-
-      // if selected is deposits then 
+      // if selected is deposits then
       if (this.selected == "deposits") {
-
-      this.data1 = deposits;
-
-      } 
+        this.data1 = deposits;
+      }
       if (this.selected == "loans") {
         this.data1 = loans;
-
       }
       if (this.selected == "expenses") {
         this.data1 = expenses;
-
       }
-
-
-
     },
-
-
 
     exportexpense() {
       this.$swal("Update Expense sheet and upload to import opening balance");

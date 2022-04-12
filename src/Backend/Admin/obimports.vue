@@ -1368,9 +1368,13 @@ export default {
       this.data1 = deposits;
 
       } 
-      if (){
+      if (this.selected == "loans") {
+        this.data1 = loans;
 
       }
+      if (this.selected == "expenses") {
+        this.data1 = expenses;
+
       }
 
 

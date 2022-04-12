@@ -1074,27 +1074,111 @@ export default {
       memberxp: [],
       data1: "",
       columns: [
+        
         {
-          label: "Product",
-          field: "product",
+          label: "SourcedocID",
+          field: "SourcedocID",
         },
         {
-          label: "Price",
-          field: "price",
-          dataFormat: this.priceFormat,
+          label: "accountype_description",
+          field: "accountype_description",
+
         },
         {
-          label: "Quantity",
-          field: "quantity",
+          label: "maincode",
+          field: "maincode",
         },
         {
-          label: "Country",
-          field: "address.country",
+          label: "maincode_description",
+          field: "address.maincode_description",
         },
         {
-          label: "City",
-          field: "address.city",
+          label: "Account",
+          field: "Account",
         },
+
+        {
+          label: "Account_Description",
+          field: "Account_Description",
+        },
+        {
+          label: "Account_Type",
+          field: "Account_Type",
+        },
+        {
+          label: "Reporting",
+          field: "Reporting",
+        },
+        {
+          label: "user_Id",
+          field: "user_Id",
+        },
+        {
+          label: "memberemail",
+          field: "memberemail",
+        },
+        {
+          label: "Transaction_date",
+          field: "Transaction_date",
+        },
+        {
+          label: "Account_Code",
+          field: "Account_Code",
+        },
+        {
+          label: "Accountcode_description",
+          field: "Accountcode_description",
+        },
+        {
+          label: "Debit",
+          field: "Debit",
+        },
+        {
+          label: "Credit",
+          field: "Credit",
+        },
+        {
+          label: "Amount",
+          field: "Amount",
+        },
+        {
+          label: "Document",
+          field: "Document",
+        },
+        {
+          label: "Account_type",
+          field: "Account_type",
+        },
+        {
+          label: "Posting_Date",
+          field: "Posting_Date",
+        },
+        {
+          label: "allocated",
+          field: "allocated",
+        },
+        {
+          label: "company_id",
+          field: "company_id",
+        },
+        {
+          label: "notes",
+          field: "notes",
+        },
+          {
+          label: "updatedgl",
+          field: "updatedgl",
+        },
+          {
+          label: "paymentnumber",
+          field: "paymentnumber",
+        },
+          {
+          label: "organizationprofile",
+          field: "organizationprofile",
+        },
+
+        
       ],
       expense: [
         {
@@ -1337,20 +1421,35 @@ export default {
       //add properties to data1
 
       const data = [
+       
         {
-          transactiondate: this.currentDate,
-          organizationprofile: 1,
-          company_id: this.companyid3,
-          description: "Total Expenses as at" + this.currentDate,
-          gl_account: "",
-          gl_account_description: "",
-          amount: '',
-          tax_Amount: '',
-          tax_gl_account: '',
-          tax_gl_account_description: "",
-          expensebye: "",
-          chequeNo: "",
-          posted: false,
+            id: 1,
+            SourcedocID: "memundefined",
+            accountype_description: "LIABILITIES",
+            maincode: "2111000",
+            maincode_description: "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+            Account: "2100000",
+            Reporting: "bs",
+            user_Id: "1",
+            memberemail: "karash@gmail.com",
+            Transaction_date: "2022-04-09",
+            last_updated: "2022-04-09T09:50:47.002923Z",
+            Account_Code: "2100000",
+            Accountcode_description: "Members Deposits - Bosa",
+            Debit: 0,
+            Credit: 1000,
+            Amount: 1000,
+            Document: "shares",
+            Account_type: "2000000",
+            created: "2022-04-09T09:50:47.002971Z",
+            Transaction_type: "CR",
+            Posting_Date: "2022-04-09",
+            allocated: false,
+            company_id: "6253131427",
+            notes: "Members Share Contribution",
+            updatedgl: false,
+            paymentnumber: 1217120,
+            organizationprofile: 1,
         },
       ];
 

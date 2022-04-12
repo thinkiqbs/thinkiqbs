@@ -1063,6 +1063,7 @@ export default {
       loan_data: [],
       shares_data: [],
       gldata_data: [],
+     
 
       accounttypes: [],
       pledgetype: [],
@@ -1184,7 +1185,7 @@ export default {
       level: "",
       add_product: false,
       editing: false,
-      selected: "",
+      selected: "expense",
       users: [],
       options: [
         { id: 0, code: 0, text: "Control" },
@@ -1336,7 +1337,32 @@ export default {
     // When passing `data` for each cell.
 
     pickdata(){
-      this.data1 = this.expense;
+
+      //create a swith case for the data
+      switch (this.selected) {
+        case "expense":
+          this.tableData = this.selected;
+          break;
+        case "loans":
+          this.tableData = this.shares;
+          break;
+        case "members":
+          this.tableData = this.loans;
+          break;
+        case "shares":
+          this.tableData = this.deposits;
+          break;
+        default:
+          this.data1 = this.Ledgers;
+          break;
+      }
+      this.data1 = this.tableData;
+      this.$swal({
+        title: "Data Selected",
+        text: "You have selected " + this.selected,
+        icon: "success",
+        button: "OK",
+      });
     },
 
     exportexpense() {

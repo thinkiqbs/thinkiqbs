@@ -37,9 +37,9 @@
                   aria-label=".form-select-sm example"
                 >
                   <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                  <option value="deposits">deposits</option>
+                  <option value="loans">loans</option>
+                  <option value="expenses">expenses</option>
                 </select>
               </div>
               <div class="col-sm-3 my-1">
@@ -1326,8 +1326,8 @@ export default {
           Account_Code: "2111000",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 0,
-          Credit: 1000,
-          Amount: 1000,
+          Credit: 5000,
+          Amount: 5000,
           Document: "Deposits",
           created: "2022-04-09T09:50:47.002971Z",
           Transaction_type: "CR",

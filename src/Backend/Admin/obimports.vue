@@ -35,6 +35,9 @@
                 <select
                   class="form-select form-select-sm"
                   aria-label=".form-select-sm example"
+                    @change="pickdata"
+                    v-model="selected"
+
                 >
                   <option selected>Open this select menu</option>
                   <option value="deposits">deposits</option>
@@ -47,7 +50,7 @@
                   class="btn btn-success"
                   :data="data1"
                   :columns="columns"
-                  :file-name="'expense'"
+                  :file-name="this.selected"
                   :file-type="'xlsx'"
                   :sheet-name="'sheetname'"
                   @click="pickdata"
@@ -1288,6 +1291,7 @@ export default {
     pickdata() {
       //add properties to data1
 
+
       const deposits = [
         {
           id: 1,
@@ -1368,7 +1372,6 @@ export default {
       // if selected is deposits then
       if (this.selected == "deposits") {
         this.data1 = deposits;
-        console.log(this.data1);
       }
       if (this.selected == "loans") {
         this.data1 = loans;
@@ -1376,6 +1379,9 @@ export default {
       if (this.selected == "expenses") {
         this.data1 = expenses;
       }
+      console.log(this.selected);
+        console.log(this.data1);
+
     },
 
     exportexpense() {

@@ -1368,6 +1368,7 @@ export default {
       // if selected is deposits then
       if (this.selected == "deposits") {
         this.data1 = deposits;
+        console.log(this.data1);
       }
       if (this.selected == "loans") {
         this.data1 = loans;

@@ -52,7 +52,7 @@
                   :columns="columns"
                   :file-name="this.selected"
                   :file-type="'xlsx'"
-                  :sheet-name="'sheetname'"
+                  :sheet-name="this.selected"
                   @click="pickdata"
                 >
                   Download xlsx template
@@ -1307,7 +1307,6 @@ export default {
           Credit: 1000,
           Amount: 1000,
           Document: "Deposits",
-          created: "2022-04-09T09:50:47.002971Z",
           Transaction_type: "CR",
           Posting_Date: "2022-04-09",
           allocated: false,
@@ -1333,7 +1332,6 @@ export default {
           Credit: 0,
           Amount: 5000,
           Document: "loans",
-          created: "2022-04-09T09:50:47.002971Z",
           Transaction_type: "CR",
           Posting_Date: "2022-04-09",
           allocated: false,
@@ -1354,12 +1352,11 @@ export default {
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
           Accountcode_description: "Members Deposits - Bosa",
-          Debit: 0,
-          Credit: 1000,
+          Debit: 1000,
+          Credit: 0,
           Amount: 1000,
-          Document: "Deposits",
-          created: "2022-04-09T09:50:47.002971Z",
-          Transaction_type: "CR",
+          Document: "expense",
+          Transaction_type: "DR",
           Posting_Date: "2022-04-09",
           allocated: false,
           company_id: this.companyid3,

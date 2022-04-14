@@ -119,13 +119,13 @@
         <!-- Modal for Approvals  -->
 
         <div
-          class="modal fade                                                                                                             "
-          id="Newexpense"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
+          class="modal fade modalbox"
+      id="Newexpense"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
         >
-          <div class="modal-dialog ">
+          <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
                 <h3 class="modal-title" id="exampleModalLabel">Expense Form</h3>
@@ -425,7 +425,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -591,7 +591,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
                 >
                   Close
                 </button>
@@ -634,7 +634,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1055,7 +1055,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1082,7 +1082,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -1116,7 +1116,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-bs-dismiss="modal"
+                  data-dismiss="modal"
                 >
                   Close
                 </button>
@@ -1133,12 +1133,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getAPI } from "@/axios-api";
+
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
-// import axios from "axios";
+// import getAPI from "getAPI";
 //Bootstrap and jQuery libraries
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -1283,7 +1284,7 @@ export default {
       const x = this.loan.id;
       console.table(x);
 
-      axios
+      getAPI
         .get("/loans/api/v1/guarantors/", {
           params: { Loan_id: x },
         })
@@ -1291,7 +1292,7 @@ export default {
           this.guarantors = res.data.results;
           $("#walla").DataTable();
         }),
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: this.loan.email, Document: "loans" },
           })
@@ -1299,7 +1300,7 @@ export default {
             this.loanscheduleMe = res.data.results;
             $("#walla").DataTable();
           }),
-        axios
+        getAPI
           .get("sys_config/api/v1/LoanType/", {
             params: {},
           })
@@ -1311,7 +1312,7 @@ export default {
             //   console.log("loans", this.loans)
             $("#walla").DataTable();
           }),
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: this.loan.email, Document: "deposits" },
           })
@@ -1336,7 +1337,7 @@ export default {
       }
 
       Promise.all([
-        axios
+        getAPI
           .post(`/finance/api/v1/loanschedule/`, {
             // names: '',
             user_id: item.User_id,
@@ -1361,7 +1362,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .post(`http://127.0.0.1:8000/finance/api/v1/Payments/`, {
             // names: '',
             user_id: item.User_id,
@@ -1388,7 +1389,7 @@ export default {
             this.errors.push(e);
             alert(e);
           }),
-        axios
+        getAPI
           .put("/loans/api/v1/loans/" + this.loan.id + "/", {
             User_id: this.loan.id,
             email: this.loan.email,
@@ -1438,7 +1439,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.id,
           email: this.loan.email,
@@ -1483,7 +1484,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.id,
           email: this.loan.email,
@@ -1528,7 +1529,7 @@ export default {
       // alert(item.Total_Loan);
 
       Promise.all([
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: memberfilter, Status: "4" },
           })
@@ -1538,7 +1539,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -1550,7 +1551,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { email: memberfilter },
           })
@@ -1562,7 +1563,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { id: this.loan.id, Document: "deposits" },
           })
@@ -1574,7 +1575,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: {
               company_id: this.companyid3,
@@ -1588,7 +1589,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "loans" },
           })
@@ -1596,7 +1597,7 @@ export default {
             this.loanscheduleMe = res.data.results;
             $("#walla").DataTable();
           }),
-        axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
           this.employer = res.data.results;
           // $("#example").DataTable();
         }),
@@ -1606,7 +1607,7 @@ export default {
     // Save the Expense
 
     saveExpense() {
-      axios
+      getAPI
         .post(`/finance/api/v1/Expenses/`, {
           // names: '',
           transactiondate: this.payment.transactiondate,
@@ -1652,7 +1653,7 @@ export default {
       this.glchanged.accountname = opt.accountname;
 
       Promise.all([
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -1697,7 +1698,7 @@ export default {
         (this.gldocs = this.$store.getters.allDocuments.filter(
           (gldocs) => gldocs.Account == this.expense.gl_account
         )),
-        axios
+        getAPI
           .put("/finance/api/v1/Chartofaccounts/" + this.glid + "/", {
             account_type: this.glaccountype,
             maincode: this.glmaincode,
@@ -1722,7 +1723,7 @@ export default {
             alert(e);
           }),
 
-        axios
+        getAPI
           .put(`/finance/api/v1/Expenses/` + this.expense.id + "/", {
             // names: '',
             transactiondate: this.expense.transactiondate,
@@ -1775,7 +1776,7 @@ export default {
       (this.gldocs = this.$store.getters.allDocuments.filter(
         (gldocs) => gldocs.Account == this.expense.gl_account
       )),
-        axios
+        getAPI
           .put("/finance/api/v1/Chartofaccounts/" + this.glid + "/", {
             account_type: this.glaccountype,
             maincode: this.glmaincode,
@@ -1807,7 +1808,7 @@ export default {
     },
 
     saveloan() {
-      axios
+      getAPI
         .post(`/loans/api/v1/loans/`, {
           // names: '',
           User_id: this.loan.id,
@@ -1842,7 +1843,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.id,
           email: this.loan.email,
@@ -1885,7 +1886,7 @@ export default {
     },
 
     AddGuarantor() {
-      axios
+      getAPI
         .post("/loans/api/v1/guarantors/", {
           uuidguarantor: this.memberloan.id + this.memberloan.email,
           User_id: this.user_id,
@@ -1923,7 +1924,7 @@ export default {
     },
 
     changeGuarantor() {
-      axios
+      getAPI
         .get("/finance/api/v1/documents/", {
           params: { Document: "deposits" },
         })
@@ -1952,7 +1953,7 @@ export default {
       // alert(item.Total_Loan);
 
       Promise.all([
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -1965,7 +1966,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { email: memberfilter },
           })
@@ -1977,7 +1978,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/loanschedule/", {
             params: { email: memberfilter },
           })
@@ -1997,12 +1998,12 @@ export default {
       const memberfilter = this.memberloan.email;
 
       Promise.all([
-        axios.get("/loans/api/v1/guarantors/").then((res) => {
+        getAPI.get("/loans/api/v1/guarantors/").then((res) => {
           this.guarantors = res.data.results.filter(
             (item) => item.Loan_id == this.loan.id
           );
         }),
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: {
               email: memberfilter,
@@ -2014,7 +2015,7 @@ export default {
             this.optionloans = res.data.results;
             $("#walla").DataTable();
           }),
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: memberfilter, Status: "4" },
           })
@@ -2024,7 +2025,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -2037,7 +2038,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { email: memberfilter },
           })
@@ -2049,7 +2050,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "deposits" },
           })
@@ -2062,7 +2063,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { organizationprofile: this.orgprofileid },
           })
@@ -2075,7 +2076,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "loans" },
           })
@@ -2084,7 +2085,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
           this.employer = res.data.results;
           // $("#example").DataTable();
         }),
@@ -2093,7 +2094,7 @@ export default {
       // console.log(this.loanstype.loan_type);
     },
     addrecords() {
-      axios
+      getAPI
         .post(`/members/api/v1/MemberDetails/`, {
           // names: '',
           // User_id: this.user_id,
@@ -2117,7 +2118,7 @@ export default {
         });
     },
     getProducts(Exception) {
-      axios
+      getAPI
         .get("/loans/api/v1/loans/", {
           params: { organizationprofile: this.orgprofileid },
         })
@@ -2131,7 +2132,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

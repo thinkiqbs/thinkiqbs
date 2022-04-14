@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 15 2022 00:42:14 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/obimports.vue
+* src/Backend/Finance/expenses.vue
+
+
+Created files:
+* .autogit/logs/log-15-3-2022-0-11-30.txt
+
+
+Deleted files:
+
+
+Renamed files:

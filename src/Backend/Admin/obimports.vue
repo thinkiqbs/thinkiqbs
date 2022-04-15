@@ -1503,6 +1503,7 @@ export default {
           notes: "Expenses Opening Balances",
           updatedgl: false,
           organizationprofile: this.organizationprofile,
+          keyvalue:acctype[4] + acctype[0],
           })
           .then((response) => {
             this.accounttype1.push(response.data);

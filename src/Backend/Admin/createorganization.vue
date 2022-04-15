@@ -241,7 +241,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import { getAPI } from "@/axios-api.js";
+
 import { mapGetters, mapActions, mapState } from "vuex";
 
 export default {
@@ -281,7 +282,7 @@ export default {
         product_id_list: ["pid1234", "pid1235"],
       };
 
-      axios({
+      getAPI({
         url: "https://test.com/api/get_product",
         method: "post",
         data: payload,
@@ -314,7 +315,7 @@ export default {
     },
 
     createorg() {
-      axios
+      getAPI
         .post(`/sys_config/api/v1/OrganizationProfile/`, {
           // names: '',
           admin_id: this.user_id,

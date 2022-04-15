@@ -639,7 +639,8 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import { getAPI } from "@/axios-api.js";
 import financeNav from "@/components/SysAdminNav";
 
 export default {
@@ -668,7 +669,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/sys_config/api/v1/OrganizationProfile/", {
         params: {
           admin_id: this.user_id,
@@ -904,7 +905,7 @@ export default {
 
     for (var i = 0; i < this.importcoa.length; i++) {
 
-        axios
+        getAPI
           .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
           .then((response) => {
             this.$swal({
@@ -929,7 +930,7 @@ export default {
     
 
 
-      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+      // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     },
 
@@ -963,7 +964,7 @@ export default {
 
     for (var i = 0; i < this.importcoa.length; i++) {
 
-        axios
+        getAPI
           .post("/sys_config/api/v1/SavingsType/", this.importcoa[i])
           .then((response) => {
             this.$swal({
@@ -981,7 +982,7 @@ export default {
     
 
 
-      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+      // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     },
 
@@ -1013,7 +1014,7 @@ export default {
 
     for (var i = 0; i < this.importcoa.length; i++) {
 
-        axios
+        getAPI
           .post("/sys_config/api/v1/LoanType/", this.importcoa[i])
           .then((response) => {
             this.$swal({
@@ -1031,7 +1032,7 @@ export default {
     
 
 
-      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+      // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     },
 
@@ -1073,7 +1074,7 @@ export default {
 
     for (var i = 0; i < this.importcoa.length; i++) {
 
-        axios
+        getAPI
           .post("/finance/api/v1/Bank/", this.importcoa[i])
           .then((response) => {
             this.$swal({
@@ -1091,7 +1092,7 @@ export default {
     
 
 
-      // axios.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
+      // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     },
 
@@ -1102,7 +1103,7 @@ export default {
 
     getorg(organization) {
       this.loading = true;
-      axios
+      getAPI
         .get(this.path)
         .then((res) => {
           this.currentorg = res.data;
@@ -1124,7 +1125,7 @@ export default {
 
     updateorg(item) {
       this.loading = true;
-      axios
+      getAPI
         .put(this.path, item)
         .then(() => {
           this.loading = false;

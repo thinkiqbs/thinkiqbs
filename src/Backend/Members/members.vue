@@ -60,7 +60,7 @@
                     style="float: right"
                     type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#Addnewbank"
+                    data-bs-target="#ImportMember"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -634,50 +634,49 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Import Members</h5>
             <a href="javascript:;" data-dismiss="modal">Close</a>
-            <div class="row">
-              <div class="col-sm-3 my-1">
-                <input type="file" @change="onFileChange" />
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3 my-1">
+              <input type="file" @change="onFileChange" />
+            </div>
 
-              <div class="col-sm-3 my-1">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  @click="postOpeningbalance"
-                >
-                  Import
-                </button>
-              </div>
-              <div class="col-sm-3 my-1">
-                <!-- boostrap select  -->
-                <select
-                  class="form-select form-select-sm"
-                  aria-label=".form-select-sm example"
-                    @change="pickdata"
-                    v-model="selected"
-
-                >
-                  <option selected>Open this select menu</option>
-                  <option value="deposits">deposits</option>
-                  <option value="loans">loans</option>
-                  <option value="expenses">expenses</option>
-                </select>
-              </div>
-              <div class="col-sm-3 my-1">
-                <vue-excel-xlsx
-                  class="btn btn-success"
-                  :data="ExcelData"
-                  :columns="columns"
-                  :file-name="this.selected"
-                  :file-type="'xlsx'"
-                  :sheet-name="this.selected"
-                  @click="pickdata"
-                >
-                  Download xlsx template
-                </vue-excel-xlsx>
-              </div>
+            <div class="col-sm-3 my-1">
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="postOpeningbalance"
+              >
+                Import
+              </button>
+            </div>
+            <div class="col-sm-3 my-1">
+              <!-- boostrap select  -->
+              <select
+                class="form-select form-select-sm"
+                aria-label=".form-select-sm example"
+                @change="pickdata"
+                v-model="selected"
+              >
+                <option selected>Open this select menu</option>
+                <option value="deposits">deposits</option>
+                <option value="loans">loans</option>
+                <option value="expenses">expenses</option>
+              </select>
+            </div>
+            <div class="col-sm-3 my-1">
+              <vue-excel-xlsx
+                class="btn btn-success"
+                :data="ExcelData"
+                :columns="columns"
+                :file-name="this.selected"
+                :file-type="'xlsx'"
+                :sheet-name="this.selected"
+                @click="pickdata"
+              >
+                Download xlsx template
+              </vue-excel-xlsx>
             </div>
           </div>
           <div class="modal-body"></div>
@@ -1488,6 +1487,10 @@
 
 <script>
 import { getAPI } from "@/axios-api";
+import readXlsxFile from "read-excel-file";
+// import writeXlsxFile from "write-excel-file";
+
+
 
 import financeNav from "@/components/FinanceNav";
 import headerDashboard from "@/components/headerdashboard.vue";
@@ -1523,7 +1526,6 @@ export default {
       orgprofileid: [],
       selectedmember: [],
       ExcelData: [],
-
 
       orgprofile1: {},
       companyid1: "",
@@ -1573,6 +1575,82 @@ export default {
       role: [],
       roles: [],
       mymonthlydeposits: "",
+      columns: [
+        {
+          label: "first_name",
+          field: "first_name",
+        },
+
+        {
+          label: "last_name",
+          field: "last_name",
+        },
+
+        {
+          label: "national_id",
+          field: "national_id",
+        },
+
+        {
+          label: "phone_no",
+          field: "phone_no",
+        },
+        {
+          label: "email",
+          field: "email",
+        },
+        {
+          label: "date_of_birth",
+          field: "date_of_birth",
+        },
+
+        {
+          label: "Bank_Account",
+          field: "Bank_Account",
+        },
+        {
+          label: "Bank_Branch",
+          field: "Bank_Branch",
+        },
+        {
+          label: "Department",
+          field: "Department",
+        },
+        {
+          label: "business",
+          field: "business",
+        },
+
+        {
+          label: "town",
+          field: "town",
+        },
+        {
+          label: "National",
+          field: "National",
+        },
+        {
+          label: "County",
+          field: "County",
+        },
+        {
+          label: "Ward",
+          field: "Ward",
+        },
+        {
+          label: "updatedgl(Dont Change)",
+          field: "updatedgl",
+        },
+
+        {
+          label: "company_id(Dont Change)",
+          field: "company_id",
+        },
+        {
+          label: "organizationprofile(Dont Change)",
+          field: "organizationprofile",
+        },
+      ],
       addmembers: [
         {
           first_name: "",
@@ -1671,58 +1749,62 @@ export default {
       "fetchEmployerinfo",
     ]),
 
+      onFileChange(event) {
+      let xlsxfile = event.target.files ? event.target.files[0] : null;
+      readXlsxFile(xlsxfile).then((rows) => {
+        this.accounttypes = rows;
+        console.log("rows:", rows);
+        this.obimports.push(rows);
+      });
+    },
+
     pickdata() {
       //add properties to data1
 
-
       const members = [
         {
-           id: 1,
-            first_name": "Karash",
-            last_name: "Karash",
-            national_id: 14632337,
-            phone_no: "+254723457182",
-            email: "karash@gmail.com",
-            date_of_birth: null,
-            account_no: "6687947570",
-            invited: true,
-            Bank_Account: null,
-            Bank_Branch: null,
-            Department: "3",
-            Application_Status: true,
-            Terms_of_Service: null,
-            business: null,
-            town: null,
-            National": false,
-            County: "Nairobi (County)",
-            Ward: null,
-            otp: null,
-            otp_expiry_date: null,
-            phone_imei: null,
-            phone_imeil: null,
-            login_count: 0,
-            created_by: null,
-            company_id: "7277524274",
-            is_staff: false,
-            is_Admin: false,
-            deposits: 0,
-            loans: 0,
-            interest: 0,
-            Employer: 1,
-            organizationprofile": 1
+          //  id: 1,
+          first_name: "Karash",
+          last_name: "Karash",
+          national_id: 14632337,
+          phone_no: "+254723457182",
+          email: "karash@gmail.com",
+          date_of_birth: null,
+          // account_no: "6687947570",
+          // invited: true,
+          Bank_Account: null,
+          Bank_Branch: null,
+          Department: "Finance",
+          // Application_Status: true,
+          // Terms_of_Service: null,
+          business: null,
+          town: null,
+          National: false,
+          County: "Nairobi (County)",
+          Ward: null,
+          // otp: null,
+          // otp_expiry_date: null,
+          // phone_imei: null,
+          // phone_imeil: null,
+          // login_count: 0,
+          created_by: this.user_id,
+          company_id: this.companyid3,
+          // is_staff: false,
+          // is_Admin: false,
+          // deposits: 0,
+          // loans: 0,
+          // interest: 0,
+          Employer: 1,
+          organizationprofile: this.orgprofileid,
         },
       ];
-
-      
-     
 
       this.ExcelData = members;
 
       // if selected is deposits then
-      
-      console.log(this.selected);
-        console.log(this.data1);
 
+      console.log(this.selected);
+      console.log(this.data1);
     },
 
     //create a dropdown menu trigger

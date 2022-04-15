@@ -662,7 +662,6 @@
                 <option selected>Open this select menu</option>
                 <option value="Members">Members</option>
                 <option value="Pledges">MemberP Ledges</option>
-
               </select>
             </div>
             <div class="col-sm-3 my-1">
@@ -679,7 +678,136 @@
               </vue-excel-xlsx>
             </div>
           </div>
-          <div class="modal-body"></div>
+          <div class="modal-body">
+            <div class="card-body table-responsive">
+              <table class="table-borderless table-hover table-striped walla">
+                <thead>
+                  <tr lass="line-item-header">
+                    <th>#</th>
+                    <th>Member Names</th>
+                    <th>Phone Number</th>
+                    <th>email</th>
+                    <th>Account Number</th>
+                    <th>Approved</th>
+                    <th>Invite</th>
+                    <th>Action</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="member in filterloans" :key="member.id">
+                    <td>{{ member.id }}</td>
+                    <td>{{ member.first_name }} {{ member.last_name }}</td>
+                    <td>{{ member.phone_no }}</td>
+                    <td>{{ member.email }}</td>
+                    <td>{{ member.account_no }}</td>
+
+                    <td>
+                      <span v-if="member.Application_Status">
+                        <i class="fas fa-check-circle"></i
+                      ></span>
+                      <span v-if="!member.Application_Status"
+                        ><i
+                          class="fa fa-warning text-warning"
+                          style="font-size: 24px"
+                        ></i
+                      ></span>
+                    </td>
+
+                    <td>
+                      <h1 v-if="member.invited == false">
+                        <input
+                          type="checkbox"
+                          id="checkbox"
+                          v-model="member.invited"
+                          @click="invite(member)"
+                        />
+                      </h1>
+                      <h5 v-else><label for="checkbox"></label> 👍</h5>
+                    </td>
+
+                    <td>
+                      <div class="row">
+                        <div class="col-4" v-if="member.Application_Status">
+                          <a
+                            href="#"
+                            class="btn btn-outline-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#Contribution"
+                            @click="newcontribution(member)"
+                          >
+                            <i
+                              class="fas fa-piggy-bank"
+                              style="color: green"
+                            ></i>
+                          </a>
+                        </div>
+                        <div class="col-4" v-if="member.Application_Status">
+                          <button
+                            @click="change(member)"
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#loan"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              fill="currentColor"
+                              class="bi bi-book"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                        <div v-else>
+                          <button
+                            @click="change(product)"
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#"
+                            disabled
+                          >
+                            Inactive
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#MemberInfo"
+                        @click="change(member)"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-eye-fill"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"
+                          />
+                          <path
+                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                          />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1675,6 +1803,7 @@ export default {
     this.fetchPaymentsreceived();
     this.initDatatable();
     this.fetchEmployerinfo();
+    this.fetchMemberImports();
   },
 
   mounted() {
@@ -1745,6 +1874,7 @@ export default {
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
       "fetchEmployerinfo",
+      "fetchMemberImports",
     ]),
 
     onFileChange(event) {
@@ -2293,6 +2423,7 @@ export default {
       "allPaymentsmade",
       "allPaymentsreceived",
       "allEmployer",
+      "allMemberImports",
     ]),
 
     token() {
@@ -2522,6 +2653,12 @@ export default {
       );
     },
 
+    filterimports: function () {
+      return this.memberImports.filter((member) =>
+        member.email.toLowerCase().includes(this.search.toLowerCase())
+      );
+    },
+
     companyid3() {
       return this.$store.getters.allOrg.filter(
         (item) => item.admin_email == this.email
@@ -2536,6 +2673,11 @@ export default {
 
     members1: function () {
       return this.$store.getters.allMembers.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+     memberImports: function () {
+      return this.$store.getters.allMemberImports.filter(
         (item) => item.company_id == this.companyid3
       );
     },

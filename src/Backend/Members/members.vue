@@ -635,7 +635,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Import Members</h5>
-            <a href="javascript:;" data-dismiss="modal">Close</a>
+            <a href="javascript:;" data-bs-dismiss="modal">Close</a>
           </div>
           <div class="row">
             <div class="col-sm-3 my-1">
@@ -660,9 +660,9 @@
                 v-model="selected"
               >
                 <option selected>Open this select menu</option>
-                <option value="deposits">deposits</option>
-                <option value="loans">loans</option>
-                <option value="expenses">expenses</option>
+                <option value="Members">Members</option>
+                <option value="Pledges">MemberP Ledges</option>
+
               </select>
             </div>
             <div class="col-sm-3 my-1">

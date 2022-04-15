@@ -646,7 +646,7 @@
               <button
                 type="button"
                 class="btn btn-primary"
-                @click="postOpeningbalance"
+                @click="postMembers"
               >
                 Import
               </button>
@@ -670,9 +670,9 @@
                 class="btn btn-success"
                 :data="ExcelData"
                 :columns="columns"
-                :file-name="this.selected"
+                :file-name="'member_details'"
                 :file-type="'xlsx'"
-                :sheet-name="this.selected"
+                :sheet-name="'member_details'"
                 @click="pickdata"
               >
                 Download xlsx template
@@ -1490,8 +1490,6 @@ import { getAPI } from "@/axios-api";
 import readXlsxFile from "read-excel-file";
 // import writeXlsxFile from "write-excel-file";
 
-
-
 import financeNav from "@/components/FinanceNav";
 import headerDashboard from "@/components/headerdashboard.vue";
 //Bootstrap and jQuery libraries
@@ -1526,7 +1524,7 @@ export default {
       orgprofileid: [],
       selectedmember: [],
       ExcelData: [],
-
+      accounttypes: [],
       orgprofile1: {},
       companyid1: "",
       members: [],
@@ -1749,12 +1747,57 @@ export default {
       "fetchEmployerinfo",
     ]),
 
-      onFileChange(event) {
+    onFileChange(event) {
       let xlsxfile = event.target.files ? event.target.files[0] : null;
       readXlsxFile(xlsxfile).then((rows) => {
         this.accounttypes = rows;
         console.log("rows:", rows);
-        this.obimports.push(rows);
+      });
+    },
+
+    postMembers() {
+      for (let i = 1; i < this.accounttypes.length; i++) {
+        let acctype = this.accounttypes[i];
+        getAPI
+          .post("/members/api/v1/Import/", {
+            first_name: acctype[0],
+            last_name: acctype[1],
+            national_id: acctype[2],
+            phone_no: acctype[3],
+            email: acctype[4],
+            date_of_birth: acctype[5],
+
+            Bank_Account: acctype[6],
+            Bank_Branch: acctype[7],
+            Department: acctype[8],
+
+            business: acctype[9],
+            town: acctype[10],
+            National: false,
+            County: acctype[12],
+            Ward: acctype[13],
+
+            created_by: this.user_id,
+            company_id: this.companyid3,
+
+            Employer: 1,
+            organizationprofile: this.orgprofileid,
+          })
+          .then((response) => {
+            this.accounttype1.push(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.accounttype1.push("error", error.data);
+          });
+
+        console.log(i, acctype);
+      }
+      this.$swal({
+        title: "Success",
+        text: "Opening Balance added successfully",
+        icon: "success",
+        button: "Ok",
       });
     },
 

@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 15 2022 07:46:30 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/obimports.vue
+
+
+Created files:
+* .autogit/logs/log-15-3-2022-7-16-8.txt
+
+
+Deleted files:
+
+
+Renamed files:

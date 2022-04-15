@@ -990,9 +990,14 @@ export default {
           field: "Account",
         },
 
+         {
+          label: "Accountcode_description",
+          field: "Accountcode_description",
+        },
+
         {
-          label: "Account_Description",
-          field: "Account_Description",
+          label: "accountype_description",
+          field: "accountype_description",
         },
 
         {
@@ -1302,6 +1307,7 @@ export default {
           Transaction_date: "2022-04-09",
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
+          accountype_description:"LIABILITIES",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 0,
           Credit: 1000,
@@ -1327,6 +1333,7 @@ export default {
           Transaction_date: "2022-04-09",
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
+          accountype_description:"ASSETS",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 5000,
           Credit: 0,
@@ -1351,6 +1358,7 @@ export default {
           Transaction_date: "2022-04-09",
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
+          accountype_description:"Expenses",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 1000,
           Credit: 0,
@@ -1477,16 +1485,17 @@ export default {
         getAPI
           .post("/finance/api/v1/openingbalance/", {
           Account: acctype[0],
-          user_Id: acctype[2],
-          memberemail: acctype[3],
-          Transaction_date: acctype[4],
+          user_Id: acctype[3],
+          memberemail: acctype[4],
+          Transaction_date: acctype[5],
           Account_Code: acctype[0],
           maincode: acctype[0],
-          Accountcode_description: "Members Deposits - Bosa",
-          Debit: acctype[5],
-          Credit: acctype[6],
-          Amount: acctype[7],
-          Document: acctype[8],
+          Accountcode_description: acctype[1],
+          accountype_description:acctype[2],
+          Debit: acctype[6],
+          Credit: acctype[7],
+          Amount: acctype[8],
+          Document: acctype[9],
           Transaction_type: "CR",
           Posting_Date: this.currentDate,
           allocated: false,
@@ -1505,6 +1514,12 @@ export default {
 
         console.log(i, acctype);
       }
+      this.$swal({
+        title: "Success",
+        text: "Opening Balance added successfully",
+        icon: "success",
+        button: "Ok",
+      });
     },
 
     postExpenses() {

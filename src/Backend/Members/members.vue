@@ -651,6 +651,17 @@
                 Import
               </button>
             </div>
+
+            <div class="col-sm-3 my-1">
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="processMembers"
+              >
+                Process Imports
+              </button>
+            </div>
+
             <div class="col-sm-3 my-1">
               <!-- boostrap select  -->
               <select
@@ -1979,6 +1990,13 @@ export default {
       console.log(this.selected);
       console.log(this.data1);
     },
+    processMembers() {
+      //Post a memberImports to Members
+      this.fetchMemberImports();
+      const members = this.memberImports.push;
+      getAPI.post("/members/api/v1/Import/", members);
+      console.log(members)
+    },
 
     //create a dropdown menu trigger
     initDatatable() {
@@ -2676,7 +2694,7 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
-     memberImports: function () {
+    memberImports: function () {
       return this.$store.getters.allMemberImports.filter(
         (item) => item.company_id == this.companyid3
       );

@@ -1993,9 +1993,20 @@ export default {
     processMembers() {
       //Post a memberImports to Members
       this.fetchMemberImports();
-      const members = this.memberImports.push;
-      getAPI.post("/members/api/v1/Import/", members);
-      console.log(members)
+      
+      for (var i = 0; i < this.memberImports.length; i++) {
+        var member = this.memberImports[i];
+        getAPI
+          .post("/members/api/v1/MemberDetails/", member)
+          .then((response) => {
+            console.log(response);
+            
+          })
+          .catch((error) => {
+            
+            console.log(error);
+          });
+      }
     },
 
     //create a dropdown menu trigger

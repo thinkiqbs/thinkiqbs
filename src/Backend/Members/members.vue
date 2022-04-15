@@ -52,6 +52,40 @@
 
                   <!--  -->
                 </div>
+                <div class="btn-toolbar float-right align-items-center">
+                  <!---->
+
+                  <button
+                    class="btn btn-success"
+                    style="float: right"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#Addnewbank"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-file-excel-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5.884 4.68 8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 1 1 .768-.64z"
+                      />
+                    </svg>
+
+                    Import
+
+                    <H3 class="badge badge-pill badge-info"> </H3>
+                  </button>
+
+                  <!--  -->
+
+                  <!--  -->
+
+                  <!--  -->
+                </div>
 
                 <div class="card-body table-responsive">
                   <table
@@ -363,223 +397,290 @@
           <div class="modal-body">
             <form class="modal-content" @submit.prevent="onSubmit">
               <div class="container">
-              <div class="card">
+                <div class="card">
+                  <h2>New Member</h2>
+                  <p>
+                    Please fill in this form to create an new member account.
+                  </p>
+                  <hr />
 
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5"
+                            >Email Address
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Enter Email"
+                            name="email"
+                            required
+                            v-model="addmembers.email"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
 
-                <h2>New Member</h2>
-                <p>Please fill in this form to create an new member account.</p>
-                <hr />
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">First Name</label>
+                          <input
+                            type="text"
+                            placeholder="John"
+                            name="firstname"
+                            required
+                            v-model="addmembers.first_name"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
 
-                <div class="form-group row">
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Email Address </label>
-                        <input
-                          type="text"
-                          placeholder="Enter Email"
-                          name="email"
-                          required
-                          v-model="addmembers.email"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">Last Name</label>
+                          <input
+                            type="text"
+                            placeholder="Apopo"
+                            name="lastname"
+                            required
+                            v-model="addmembers.last_name"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5"
+                            >Mobile Number
+                          </label>
+                          <input
+                            type="tel"
+                            placeholder="254723456789"
+                            name="mobilenumber"
+                            required
+                            v-model="addmembers.phone_no"
+                          />
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">First Name</label>
-                        <input
-                          type="text"
-                          placeholder="John"
-                          name="firstname"
-                          required
-                          v-model="addmembers.first_name"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
+                  <label for="address"><b>Address</b></label>
+                  <input
+                    type="tel"
+                    placeholder="Address"
+                    name="address"
+                    required
+                    v-model="addmembers.Address"
+                  />
+
+                  <div class="form-group row">
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">National ID </label>
+                          <input
+                            type="Number"
+                            placeholder="14232323"
+                            name="National_Id"
+                            required
+                            v-model="addmembers.national_id"
+                          />
+
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Last Name</label>
-                        <input
-                          type="text"
-                          placeholder="Apopo"
-                          name="lastname"
-                          required
-                          v-model="addmembers.last_name"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-2">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Mobile Number </label>
-                        <input
-                          type="tel"
-                          placeholder="254723456789"
-                          name="mobilenumber"
-                          required
-                          v-model="addmembers.phone_no"
-                        />
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <label for="address"><b>Address</b></label>
-                <input
-                  type="tel"
-                  placeholder="Address"
-                  name="address"
-                  required
-                  v-model="addmembers.Address"
-                />
-
-                <div class="form-group row">
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">National ID </label>
-                        <input
-                          type="Number"
-                          placeholder="14232323"
-                          name="National_Id"
-                          required
-                          v-model="addmembers.national_id"
-                        />
-
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Employer </label>
-                        <select
-                          class="form-control .choices"
-                          v-model="selectedemployer"
-                        >
-                          <option
-                            v-for="option in employers"
-                            v-bind:value="option.id"
-                            :key="option.id"
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">Employer </label>
+                          <select
+                            class="form-control .choices"
+                            v-model="selectedemployer"
                           >
-                            {{ option.employer_name }}
-                          </option>
-                        </select>
+                            <option
+                              v-for="option in employers"
+                              v-bind:value="option.id"
+                              :key="option.id"
+                            >
+                              {{ option.employer_name }}
+                            </option>
+                          </select>
 
-                        <span>selected: {{ selectedemployer }}</span>
+                          <span>selected: {{ selectedemployer }}</span>
 
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">Department</label>
-                        <select
-                          class="form-select"
-                          aria-label="Default select example"
-                          v-model="addmembers.Department"
-                        >
-                          <option selected>Open this select menu</option>
-                          <option value="1">Finance</option>
-                          <option value="2">Sales</option>
-                          <option value="3">Marketing</option>
-                          <option value="3">HR</option>
-                          <option value="3">Admin</option>
-                          <option value="3">House Keeping</option>
-                        </select>
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col">
-                    <div class="form-group boxed">
-                      <div class="input-wrapper">
-                        <label class="label" for="name5">County </label>
-                        <select
-                          class="form-control .choices"
-                          v-model="selectedcounty"
-                        >
-                          <option
-                            v-for="option in county"
-                            v-bind:value="option.county"
-                            :key="option.id"
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">Department</label>
+                          <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            v-model="addmembers.Department"
                           >
-                            {{ option.county }}
-                          </option>
-                        </select>
-                        <span>selected: {{ selectedcounty }}</span>
-                        <i class="clear-input"
-                          ><ion-icon name="close-circle"></ion-icon
-                        ></i>
+                            <option selected>Open this select menu</option>
+                            <option value="1">Finance</option>
+                            <option value="2">Sales</option>
+                            <option value="3">Marketing</option>
+                            <option value="3">HR</option>
+                            <option value="3">Admin</option>
+                            <option value="3">House Keeping</option>
+                          </select>
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col">
+                      <div class="form-group boxed">
+                        <div class="input-wrapper">
+                          <label class="label" for="name5">County </label>
+                          <select
+                            class="form-control .choices"
+                            v-model="selectedcounty"
+                          >
+                            <option
+                              v-for="option in county"
+                              v-bind:value="option.county"
+                              :key="option.id"
+                            >
+                              {{ option.county }}
+                            </option>
+                          </select>
+                          <span>selected: {{ selectedcounty }}</span>
+                          <i class="clear-input"
+                            ><ion-icon name="close-circle"></ion-icon
+                          ></i>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <p>
-                  By creating an account the user has agreed to become a member
-                  <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
-                </p>
+                  <p>
+                    By creating an account the user has agreed to become a
+                    member
+                    <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
+                  </p>
 
-                <div class="form-row">
-                  <div class="col">
-                    <button
-                      style="margin-right: 16px"
-                      type="button"
-                      class="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Cancel
-                    </button>
+                  <div class="form-row">
+                    <div class="col">
+                      <button
+                        style="margin-right: 16px"
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancel
+                      </button>
 
-                    <button
-                      style="margin-right: 16px"
-                      type="submit"
-                      class="btn btn-secondary"
-                      @click="addnewmeber"
-                    >
-                      Add Member
-                    </button>
-                    <span style="color: green"
-                      >{{ this.message }} <i class="fas fa-check"></i
-                    ></span>
+                      <button
+                        style="margin-right: 16px"
+                        type="submit"
+                        class="btn btn-secondary"
+                        @click="addnewmeber"
+                      >
+                        Add Member
+                      </button>
+                      <span style="color: green"
+                        >{{ this.message }} <i class="fas fa-check"></i
+                      ></span>
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
             </form>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Import  -->
+
+    <div
+      class="modal fade modalbox"
+      id="ImportMember"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <a href="javascript:;" data-dismiss="modal">Close</a>
+            <div class="row">
+              <div class="col-sm-3 my-1">
+                <input type="file" @change="onFileChange" />
+              </div>
+
+              <div class="col-sm-3 my-1">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="postOpeningbalance"
+                >
+                  Import
+                </button>
+              </div>
+              <div class="col-sm-3 my-1">
+                <!-- boostrap select  -->
+                <select
+                  class="form-select form-select-sm"
+                  aria-label=".form-select-sm example"
+                    @change="pickdata"
+                    v-model="selected"
+
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="deposits">deposits</option>
+                  <option value="loans">loans</option>
+                  <option value="expenses">expenses</option>
+                </select>
+              </div>
+              <div class="col-sm-3 my-1">
+                <vue-excel-xlsx
+                  class="btn btn-success"
+                  :data="ExcelData"
+                  :columns="columns"
+                  :file-name="this.selected"
+                  :file-type="'xlsx'"
+                  :sheet-name="this.selected"
+                  @click="pickdata"
+                >
+                  Download xlsx template
+                </vue-excel-xlsx>
+              </div>
+            </div>
+          </div>
+          <div class="modal-body"></div>
         </div>
       </div>
     </div>
@@ -741,13 +842,7 @@
                         >
                           <div
                             id="ember1179"
-                            class="
-                              d-none
-                              popover
-                              bs-popover-bottom
-                              ember-view
-                              pop-over-div
-                            "
+                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
                           >
                             <!---->
                           </div>
@@ -793,13 +888,7 @@
                     <input
                       placeholder="dd MMM yyyy"
                       id="ember1181"
-                      class="
-                        ember-text-field
-                        zf-date-picker
-                        date-picker
-                        ember-view
-                        form-control
-                      "
+                      class="ember-text-field zf-date-picker date-picker ember-view form-control"
                       type="date"
                       v-model="this.Loans.ApplicationDate"
                     />
@@ -833,12 +922,7 @@
 
               <div>
                 <table
-                  class="
-                    table
-                    line-item-table
-                    table-borderless table-hover table-striped
-                    walla
-                  "
+                  class="table line-item-table table-borderless table-hover table-striped walla"
                 >
                   <thead>
                     <tr class="line-item-header">
@@ -1058,13 +1142,7 @@
                         >
                           <div
                             id="ember1179"
-                            class="
-                              d-none
-                              popover
-                              bs-popover-bottom
-                              ember-view
-                              pop-over-div
-                            "
+                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
                           >
                             <!---->
                           </div>
@@ -1110,13 +1188,7 @@
                     <input
                       placeholder="dd MMM yyyy"
                       id="ember1181"
-                      class="
-                        ember-text-field
-                        zf-date-picker
-                        date-picker
-                        ember-view
-                        form-control
-                      "
+                      class="ember-text-field zf-date-picker date-picker ember-view form-control"
                       type="date"
                       v-model="this.Loans.ApplicationDate"
                     />
@@ -1150,12 +1222,7 @@
 
               <div>
                 <table
-                  class="
-                    table
-                    line-item-table
-                    table-borderless table-hover table-striped
-                    walla
-                  "
+                  class="table line-item-table table-borderless table-hover table-striped walla"
                 >
                   <thead>
                     <tr class="line-item-header">
@@ -1420,7 +1487,6 @@
 </template>
 
 <script>
-
 import { getAPI } from "@/axios-api";
 
 import financeNav from "@/components/FinanceNav";
@@ -1456,6 +1522,8 @@ export default {
       orgprofile: [],
       orgprofileid: [],
       selectedmember: [],
+      ExcelData: [],
+
 
       orgprofile1: {},
       companyid1: "",
@@ -1602,6 +1670,60 @@ export default {
       "fetchPaymentsreceived",
       "fetchEmployerinfo",
     ]),
+
+    pickdata() {
+      //add properties to data1
+
+
+      const members = [
+        {
+           id: 1,
+            first_name": "Karash",
+            last_name: "Karash",
+            national_id: 14632337,
+            phone_no: "+254723457182",
+            email: "karash@gmail.com",
+            date_of_birth: null,
+            account_no: "6687947570",
+            invited: true,
+            Bank_Account: null,
+            Bank_Branch: null,
+            Department: "3",
+            Application_Status: true,
+            Terms_of_Service: null,
+            business: null,
+            town: null,
+            National": false,
+            County: "Nairobi (County)",
+            Ward: null,
+            otp: null,
+            otp_expiry_date: null,
+            phone_imei: null,
+            phone_imeil: null,
+            login_count: 0,
+            created_by: null,
+            company_id: "7277524274",
+            is_staff: false,
+            is_Admin: false,
+            deposits: 0,
+            loans: 0,
+            interest: 0,
+            Employer: 1,
+            organizationprofile": 1
+        },
+      ];
+
+      
+     
+
+      this.ExcelData = members;
+
+      // if selected is deposits then
+      
+      console.log(this.selected);
+        console.log(this.data1);
+
+    },
 
     //create a dropdown menu trigger
     initDatatable() {
@@ -2320,9 +2442,6 @@ export default {
 </script>
 
 <style>
-
-
-
 /*the container must be positioned relative:*/
 .custom-select {
   position: relative;

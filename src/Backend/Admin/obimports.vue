@@ -25,7 +25,7 @@
                 <button
                   type="button"
                   class="btn btn-primary"
-                  @click="postmembers"
+                  @click="postOpeningbalance"
                 >
                   Import
                 </button>
@@ -85,7 +85,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(item, index) in allob" :key="item.id">
+                  <tr v-for="(item, index) in acctype" :key="item.id">
                     <th scope="row">{{ index + 1 }}</th>
                     <td></td>
                     <td>{{ item.maincode }}</td>
@@ -1469,6 +1469,42 @@ export default {
         console.log("rows:", rows);
         this.obimports.push(rows);
       });
+    },
+
+    postOpeningbalance() {
+      for (let i = 1; i < this.accounttypes.length; i++) {
+        let acctype = this.accounttypes[i];
+        getAPI
+          .post("/finance/api/v1/openingbalance/", {
+          Account: acctype[0],
+          user_Id: acctype[2],
+          memberemail: acctype[3],
+          Transaction_date: acctype[4],
+          Account_Code: acctype[0],
+          maincode: acctype[0],
+          Accountcode_description: "Members Deposits - Bosa",
+          Debit: acctype[5],
+          Credit: acctype[6],
+          Amount: acctype[7],
+          Document: acctype[8],
+          Transaction_type: "CR",
+          Posting_Date: this.currentDate,
+          allocated: false,
+          company_id: this.companyid3,
+          notes: "Expenses Opening Balances",
+          updatedgl: false,
+          organizationprofile: this.organizationprofile,
+          })
+          .then((response) => {
+            this.accounttype1.push(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.accounttype1.push("error", error.data);
+          });
+
+        console.log(i, acctype);
+      }
     },
 
     postExpenses() {

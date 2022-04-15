@@ -1264,12 +1264,7 @@ export default {
           .post("/members/api/v1/MemberDetails/", member)
           .then((response) => {
             console.log(response);
-            this.$swal({
-              title: "Success",
-              text: "Member added successfully",
-              icon: "success",
-              button: "Ok",
-            });
+            
           })
           .catch((error) => {
             this.$swal({

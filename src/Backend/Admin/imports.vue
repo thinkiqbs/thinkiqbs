@@ -1524,7 +1524,7 @@ export default {
             Interest_Monthly: acctype[12],
             date_disbursed: acctype[13],
             current_balance: acctype[14],
-            noofmonthspaid: acctype[6],
+            noofmonthspaid: acctype[15],
             noofmonthspaidvar: acctype[8],
             Status: 4,
             Arreas_Status: acctype[10],

@@ -1510,31 +1510,31 @@ export default {
         let acctype = this.accounttypes[i];
         getAPI
           .post("/loans/api/v1/loansImport/", {
-            email: acctype[0],
+            email: acctype[4],
 
             loan_Type: acctype[0],
             Amount: acctype[0],
-            Term: acctype[0],
+            Term: acctype[6],
             Monthrepayment: acctype[0],
             Total_Loan: acctype[0],
             Principle_Monthly: acctype[0],
             interest: acctype[0],
-            Interest_Monthly: acctype[0],
-            date_disbursed: acctype[0],
-            current_balance: acctype[0],
-            noofmonthspaid: acctype[0],
-            noofmonthspaidvar: acctype[0],
-            Status: acctype[0],
-            Arreas_Status: acctype[0],
-            Disbursed: false,
+            Interest_Monthly: acctype[3],
+            date_disbursed: acctype[5],
+            current_balance: acctype[6],
+            noofmonthspaid: acctype[7],
+            noofmonthspaidvar: acctype[8],
+            Status: acctype[9],
+            Arreas_Status: acctype[10],
+            Disbursed: true,
             User_id: null,
-            gl_account: acctype[0],
-            income_account: acctype[0],
+            gl_account: acctype[11],
+            income_account: acctype[12],
 
             company_id: this.companyid3,
 
             organizationprofile: this.organizationprofile,
-            keyvalue: acctype[4] + acctype[0],
+            keyvalue: acctype[4] + acctype[5],
           })
           .then((response) => {
             this.accounttype1.push(response.data);

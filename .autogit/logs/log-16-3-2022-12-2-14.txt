@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 16 2022 12:02:14 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/imports.vue
+* src/Backend/Members/members.vue
+* src/store/modules/loans.js
+
+
+Created files:
+* .autogit/logs/log-15-3-2022-16-3-37.txt
+
+
+Deleted files:
+
+
+Renamed files:

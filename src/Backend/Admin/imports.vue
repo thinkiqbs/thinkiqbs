@@ -631,29 +631,6 @@
               <h5 class="modal-title" id="staticBackdropLabel">
                 Import Loans Opening Balances
               </h5>
-              <div class="col-sm-2">
-                <select
-                  class="form-select"
-                  aria-label="Default select example"
-                  v-model="pledgetype"
-                >
-                  <option
-                    v-for="item in depositsPledges"
-                    :value="item.val"
-                    :Key="item.id"
-                  >
-                    {{ item.saving_type }}
-                  </option>
-                </select>
-              </div>
-
-              <input type="file" @change="onFileChange" />
-
-              <download-excel :data="loan_data">
-                <button type="button" class="btn btn-success">
-                  Download Template
-                </button>
-              </download-excel>
 
               <button
                 type="button"
@@ -663,26 +640,214 @@
               ></button>
             </div>
             <div class="modal-body">
-              {{ this.level }}
+              <div class="row">
+                <div class=".custom-select" style="width: 200px">
+                  <select
+                    class="form-select"
+                    id="select-country"
+                    data-live-search="true"
+                    v-model="selectedloantype"
+                    @change="loantypechange"
+                    style="color=green"
+                  >
+                    <option
+                      v-for="option in loantypes"
+                      v-bind:value="option.loan_type"
+                      :key="option.id"
+                    >
+                      {{ option.loan_type }}
+                    </option>
+                  </select>
+                  {{ this.selectedloantype }}
+                  {{ this.loantypes.gl_account }}
+                </div>
+
+                <div class="col">
+                  <ul>
+                    <ol>
+                      <h3>
+                        Step 1:
+                        <button class="btn btn-primary" @click="copyMembers">
+                          process members
+                        </button>
+                      </h3>
+                    </ol>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul>
+                    <ol>
+                      <h3>
+                        Step 1:
+                        <button class="btn btn-primary" @click="clearData">
+                          Clear Import Data members
+                        </button>
+                      </h3>
+                    </ol>
+                  </ul>
+                </div>
+
+                <div class="col">
+                  <!-- boostrap select  -->
+                  <select
+                    class="form-select form-select-sm"
+                    aria-label=".form-select-sm example"
+                    @change="pickdata"
+                    v-model="selected"
+                  >
+                    <option selected>Open this select menu</option>
+                    <option value="openingbalances">Opening Balances</option>
+                    <option value="loanschedule">Loan Schedule</option>
+                  </select>
+                  {{ this.loanSchedule }}
+                </div>
+                <div class="col">
+                  <vue-excel-xlsx
+                    class="btn btn-success"
+                    :data="data1"
+                    :columns="columns"
+                    :file-name="this.selected"
+                    :file-type="'xlsx'"
+                    :sheet-name="this.selected"
+                    @click="pickdata"
+                  >
+                    Download xlsx template
+                  </vue-excel-xlsx>
+                </div>
+                <div class="col">
+                  <input type="file" @change="onFileChange" />
+                </div>
+
+                <div class="col">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    @click="postOpeningbalance"
+                  >
+                    Import
+                  </button>
+                </div>
+              </div>
 
               <!-- {{this.datatable.columns}} -->
-              {{ this.accounttype1 }}
+
               <div class="table-responsive">
-                <table class="table table-unbordered walla">
+                <table class="table-borderless table-hover table-striped walla">
                   <thead>
-                    <tr>
+                    <tr class="line-item-header">
                       <th>#</th>
 
-                      <th>Account Type</th>
+                      <th>Date Disbirsed</th>
+                      <th>Loan ID</th>
+                      <th>Member</th>
 
-                      <th>Account Code</th>
+                      <!---->
+                      <th class="text-left">Loan Type</th>
+                      <th class="text-left">Loan Term</th>
+                      <th class="text-left">Loan Amount</th>
+                      <th class="text-left">Amount Paid</th>
+                      <th class="text-left">Current Balance</th>
+
+                      <th class="text-left">Status</th>
+                      <th class="text-left">View</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="product in accounttype1" :key="product.id">
-                      <td>{{ product.id }}</td>
-                      <td>{{ product.accounttype }}</td>
-                      <td>{{ product.accountcode }}</td>
+                    <tr
+                      v-for="(item, index) in loansExportsStore"
+                      :key="item.id"
+                    >
+                      <th scope="row">{{ index + 1 }}</th>
+                      <td>{{ item.date_disbursed }}</td>
+                      <td>{{ item.id }}</td>
+                      <td>{{ item.email }}</td>
+                      <td>{{ item.loan_Type }}</td>
+                      <td>{{ item.Term }}</td>
+                      <td>{{ item.Amount }}</td>
+                      <td>
+                        <div
+                          v-if="item.variation_amount <= 0"
+                          style="color: red"
+                        >
+                          {{ item.variation_amount }}
+                          <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div v-else style="color: green">
+                          {{ item.variation_amount }}
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                      </td>
+                      <td>{{ item.current_balance }}</td>
+
+                      <td>
+                        <div v-if="item.Disbursed == 1">
+                          <button
+                            type="button"
+                            class="btn btn-success"
+                            @click="updateloanschedule(item)"
+                            Disabled
+                          >
+                            <i for="Disbursed" class="fas fa-check"></i>
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-success"
+                            data-bs-toggle="modal"
+                            data-bs-target="#topup"
+                            @click="Getloanbyid(item)"
+                          >
+                            <i class="fas fa-shopping-basket"></i>
+                          </button>
+                        </div>
+                        <div v-else>
+                          <div v-if="item.Status == 4">
+                            <button
+                              type="button"
+                              class="btn btn-success"
+                              @click="updateloanschedule(item)"
+                            >
+                              Disburse
+                            </button>
+                          </div>
+
+                          <div v-else>
+                            <div v-if="item.Status == 0">
+                              <button
+                                type="button"
+                                class="btn btn-primary btn-sm"
+                                data-bs-toggle="modal"
+                                data-bs-target="#guarantorAdd"
+                                @click="Getloanbyid(item)"
+                              >
+                                Pending Gurantor
+                              </button>
+                            </div>
+                            <div v-else>
+                              <button
+                                type="button"
+                                class="btn btn-warning"
+                                data-bs-toggle="modal"
+                                data-bs-target="#ApprovalTemplate"
+                                @click="Getloanbyid(item)"
+                              >
+                                Approval {{ item.Status }} needed
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                          @click="Getloanbyid(item)"
+                        >
+                          <i class="fas fa-eye"></i>
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -1015,7 +1180,7 @@
 <script>
 import SysAdminNav from "@/components/SysAdminNav";
 
-import {getAPI} from "@/axios-api.js"
+import { getAPI } from "@/axios-api.js";
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
@@ -1043,6 +1208,104 @@ export default {
       loan_data: [],
       shares_data: [],
       gldata_data: [],
+      selectedloantype: [],
+      data1: [],
+      columns: [
+        {
+          label: "first_name",
+          field: "first_name",
+        },
+
+        {
+          label: "last_name",
+          field: "last_name",
+        },
+
+        {
+          label: "national_id",
+          field: "national_id",
+        },
+
+        {
+          label: "phone_no",
+          field: "phone_no",
+        },
+        {
+          label: "email",
+          field: "email",
+        },
+        {
+          label: "loan_Type",
+          field: "loan_Type",
+        },
+
+        {
+          label: "Amount",
+          field: "Amount",
+        },
+        {
+          label: "Term",
+          field: "Term",
+        },
+        {
+          label: "Monthrepayment",
+          field: "Monthrepayment",
+        },
+        {
+          label: "Total_Loan",
+          field: "Total_Loan",
+        },
+
+        {
+          label: "Principle_Monthly",
+          field: "Principle_Monthly",
+        },
+        {
+          label: "interest",
+          field: "interest",
+        },
+        {
+          label: "Interest_Monthly",
+          field: "Interest_Monthly",
+        },
+        {
+          label: "date_disbursed",
+          field: "date_disbursed",
+        },
+        {
+          label: "current_balance",
+          field: "current_balance",
+        },
+        {
+          label: "noofmonthspaid",
+          field: "noofmonthspaid",
+        },
+        {
+          label: "Disbursed",
+          field: "Disbursed",
+        },
+        {
+          label: "date_disbursed",
+          field: "date_disbursed",
+        },
+        {
+          label: "User_id(Dont Change)",
+          field: "User_id",
+        },
+        {
+          label: "gl_account(Dont Change)",
+          field: "gl_account",
+        },
+        {
+          label: "income_account(Dont Change)",
+          field: "income_account",
+        },
+
+        {
+          label: "company_id(Dont Change)",
+          field: "company_id",
+        },
+      ],
 
       accounttypes: [],
       pledgetype: [],
@@ -1052,6 +1315,20 @@ export default {
       accounttype1: [],
       importmembers: [],
       memberxp: [],
+      allmembers: [],
+      Loans: {
+        User_id: "",
+        email: this.$store.state.email,
+        Amount: this.Amount,
+        loan_Type: "Development",
+        interest: "",
+        Interest_Monthly: "",
+        Term: "",
+        TotalLoans: "",
+        Monthrepayment: "",
+        Principle_Monthly: "",
+        Total_Loan: "",
+      },
 
       approvalLevelsselect: [],
       tableData: [],
@@ -1100,6 +1377,8 @@ export default {
     this.fetchSavingtype();
     this.loadimport();
     this.updatemeberxp();
+    this.fetchLoantype();
+    this.fetchLoansExport();
   },
 
   mounted() {
@@ -1108,8 +1387,8 @@ export default {
     });
   },
   computed: {
-    ...mapGetters(
-     [ "allDocuments",
+    ...mapGetters([
+      "allDocuments",
       "allDeposits",
       "allMembers",
       "allLoans",
@@ -1117,8 +1396,10 @@ export default {
       "allUser",
       "allBanktransactions",
       "allPaymentsmade",
-      "allPaymentsreceived"]
-    ),
+      "allPaymentsreceived",
+      "allLoantype",
+      "allLoansExports",
+    ]),
 
     token() {
       return this.$store.state.accessToken;
@@ -1131,6 +1412,12 @@ export default {
     },
     firstname() {
       return this.$store.state.firstname;
+    },
+
+    loansExportsStore: function () {
+      return this.$store.getters.allLoansExports.filter(
+        (item) => item.company_id == this.companyid3
+      );
     },
 
     //create current date function
@@ -1194,6 +1481,12 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
+
+    loantypes() {
+      return this.$store.getters.allLoantype.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
   },
 
   methods: {
@@ -1208,7 +1501,160 @@ export default {
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
       "fetchSavingtype",
+      "fetchLoantype",
+      "fetchLoansExport",
     ]),
+
+    postOpeningbalance() {
+      for (let i = 1; i < this.accounttypes.length; i++) {
+        let acctype = this.accounttypes[i];
+        getAPI
+          .post("/loans/api/v1/loansImport/", {
+            email: acctype[0],
+
+            loan_Type: acctype[0],
+            Amount: acctype[0],
+            Term: acctype[0],
+            Monthrepayment: acctype[0],
+            Total_Loan: acctype[0],
+            Principle_Monthly: acctype[0],
+            interest: acctype[0],
+            Interest_Monthly: acctype[0],
+            date_disbursed: acctype[0],
+            current_balance: acctype[0],
+            noofmonthspaid: acctype[0],
+            noofmonthspaidvar: acctype[0],
+            Status: acctype[0],
+            Arreas_Status: acctype[0],
+            Disbursed: false,
+            User_id: null,
+            gl_account: acctype[0],
+            income_account: acctype[0],
+
+            company_id: this.companyid3,
+
+            organizationprofile: this.organizationprofile,
+            keyvalue: acctype[4] + acctype[0],
+          })
+          .then((response) => {
+            this.accounttype1.push(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.accounttype1.push("error", error.data);
+          });
+
+        console.log(i, acctype);
+      }
+      this.$swal({
+        title: "Success",
+        text: "Opening Balance added successfully",
+        icon: "success",
+        button: "Ok",
+      });
+    },
+
+    pickdata() {
+      //add properties to data1
+
+      const loansOpeningBalance = [
+        {
+          id: 1,
+
+          Account: "2111000",
+          user_Id: "1",
+          memberemail: "karash@gmail.com",
+          Transaction_date: "2022-04-09",
+          last_updated: "2022-04-09T09:50:47.002923Z",
+          Account_Code: "2111000",
+          accountype_description: "ASSETS",
+          Accountcode_description: "Members Deposits - Bosa",
+          Debit: 5000,
+          Credit: 0,
+          Amount: 5000,
+          Document: "loans",
+          Transaction_type: "CR",
+          Posting_Date: this.currentDate,
+          allocated: false,
+          company_id: this.companyid3,
+          notes: "Members Loans Opening Balances",
+          updatedgl: false,
+          organizationprofile: this.organizationprofile,
+        },
+      ];
+
+      const loanSchedule = this.loansExportsStore;
+
+      // if selected is deposits then
+      if (this.selected == "loanschedule") {
+        this.data1 = loanSchedule;
+      }
+      if (this.selected == "openingbalances") {
+        this.data1 = loansOpeningBalance;
+      }
+
+      console.log(this.selected);
+      console.log(this.data1);
+    },
+
+    clearData() {
+      for (var i = 0; i < this.loansExportsStore.length; i++) {
+        getAPI
+          .delete(
+            "loans/api/v1/loansExport/" + this.loansExportsStore[i].id + "/"
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+    },
+
+    loantypechange() {
+      const opt = this.loantypes.find(
+        (o) => o.loan_type == this.selectedloantype
+      );
+      console.log(opt);
+
+      this.Loans.interest = opt.interest_rate;
+      this.Loans.Term = opt.maximum_loan_term;
+      this.Loans.gl_account = opt.gl_account;
+      this.Loans.income_account = opt.income_account;
+    },
+
+    copyMembers() {
+      this.allmembers = this.memberson;
+      // console.log(allmembers);
+
+      for (var i = 0; i < this.allmembers.length; i++) {
+        var member = this.allmembers[i];
+        getAPI
+          .post("/loans/api/v1/loansExport/", {
+            email: member.email,
+            first_name: member.first_name,
+            last_name: member.last_name,
+            national_id: member.national_id,
+            phone_no: member.phone_no,
+            interest: this.Loans.interest,
+            Term: this.Loans.Term,
+
+            User_id: this.user_id,
+            gl_account: this.Loans.gl_account,
+            income_account: this.Loans.income_account,
+            loan_Type: this.selectedloantype,
+
+            company_id: this.companyid3,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+    },
 
     //get all members
     updatemeberxp() {
@@ -1246,7 +1692,7 @@ export default {
       });
 
       // await writeXlsxFile(objects, {
-      // 	schema,
+      // chema,
       // 	fileName: "file.xlsx",
       // });
     },
@@ -1264,7 +1710,6 @@ export default {
           .post("/members/api/v1/MemberDetails/", member)
           .then((response) => {
             console.log(response);
-            
           })
           .catch((error) => {
             this.$swal({

@@ -128,7 +128,6 @@
                   </div>
                   <div role="separator" class="dropdown-divider m-0"></div>
                   <div class="p-2">
-                   
                     <a
                       class="dropdown-item d-flex align-items-center justify-content-between"
                       data-bs-toggle="modal"
@@ -136,7 +135,6 @@
                     >
                       <span class="fs-sm fw-medium">Loan Balances</span>
                     </a>
-                    
                   </div>
                 </div>
               </div>
@@ -631,8 +629,6 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-4">
-                  
-                  
                   <div class="card">
                     <div class="card-body">
                       <ul>
@@ -647,7 +643,7 @@
                       </ul>
                     </div>
                   </div>
-                  <hr/>
+                  <hr />
 
                   <div class="card">
                     <div class="card-body">
@@ -671,7 +667,6 @@
                     </div>
                   </div>
 
-
                   <div class="card">
                     <div class="card-body">
                       <ul>
@@ -689,9 +684,8 @@
                       </ul>
                     </div>
                   </div>
-                  <hr/>
+                  <hr />
 
-                 
                   <div class="card">
                     <div class="card-body">
                       Export Excel Template?
@@ -754,14 +748,14 @@
                       </vue-excel-xlsx>
                     </div>
                   </div>
-                  <hr>
-                   <div class="card">
+                  <hr />
+                  <div class="card">
                     <div class="card-body">
                       Select file to Import
                       <input type="file" @change="onFileChange" />
                     </div>
                   </div>
-                  <hr>
+                  <hr />
                   <div class="card">
                     <div class="card-body">
                       <button
@@ -803,7 +797,6 @@
                         <!---->
                         <th class="text-left">Loan Type</th>
                         <th class="text-left">Loan Term</th>
-                        
                       </tr>
                     </thead>
                     <tbody>
@@ -818,10 +811,6 @@
                         <td>{{ item.loan_Type }}</td>
                         <td>{{ item.Term }}</td>
                         <td>{{ item.Amount }}</td>
-                        
-
-
-                       
                       </tr>
                     </tbody>
                   </table>
@@ -1354,6 +1343,7 @@ export default {
     this.updatemeberxp();
     this.fetchLoantype();
     this.fetchLoansExport();
+    this.fetchLoansImport();
   },
 
   mounted() {
@@ -1374,6 +1364,7 @@ export default {
       "allPaymentsreceived",
       "allLoantype",
       "allLoansExports",
+      "allLoansImports",
     ]),
 
     token() {
@@ -1391,6 +1382,12 @@ export default {
 
     loansExportsStore: function () {
       return this.$store.getters.allLoansExports.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
+    loansImportsStore: function () {
+      return this.$store.getters.allLoansImports.filter(
         (item) => item.company_id == this.companyid3
       );
     },
@@ -1478,35 +1475,30 @@ export default {
       "fetchSavingtype",
       "fetchLoantype",
       "fetchLoansExport",
+      "fetchLoansImport",
     ]),
 
     processLoans() {
-
-  
       //Post a memberImports to Members
-      this.fetchMemberImports();
-      
-      for (var i = 0; i < this.memberImports.length; i++) {
-        var member = this.memberImports[i];
+      this.fetchLoansImport();
+
+      for (var i = 0; i < this.loansImportsStore.length; i++) {
+        var loan = this.loansImportsStore[i];
         getAPI
-          .post("/members/api/v1/MemberDetails/", member)
+          .post("/loans/api/v1/loans/", loan)
           .then((response) => {
             console.log(response);
-            
           })
           .catch((error) => {
-            
             console.log(error.response.data);
             this.$swal({
               title: "Error",
-              text: (error),
+              text: error,
               icon: "error",
               button: "Ok",
             });
           });
       }
-  
-
     },
 
     postOpeningbalance() {

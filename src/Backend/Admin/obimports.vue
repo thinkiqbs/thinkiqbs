@@ -18,19 +18,6 @@
 
             <div class="row">
               <div class="col-sm-3 my-1">
-                <input type="file" @change="onFileChange" />
-              </div>
-
-              <div class="col-sm-3 my-1">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  @click="postOpeningbalance"
-                >
-                  Import
-                </button>
-              </div>
-              <div class="col-sm-3 my-1">
                 <!-- boostrap select  -->
                 <select
                   class="form-select form-select-sm"
@@ -58,6 +45,20 @@
                   Download xlsx template
                 </vue-excel-xlsx>
               </div>
+              <div class="col-sm-3 my-1">
+                <input type="file" @change="onFileChange" />
+              </div>
+
+              <div class="col-sm-3 my-1">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  @click="postOpeningbalance"
+                >
+                  Import
+                </button>
+              </div>
+              
             </div>
 
             <!-- {{this.datatable.columns}} -->

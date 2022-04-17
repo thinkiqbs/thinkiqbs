@@ -418,7 +418,9 @@
                           <option value="importMonthDeposits">
                             Monthly Deposits
                           </option>
-                          <option value="ImportDepositsSchedule">Deposits Schedule</option>
+                          <option value="ImportDepositsSchedule">
+                            Deposits Schedule
+                          </option>
                         </select>
                       </div>
                     </div>
@@ -427,7 +429,7 @@
                         Download xlsx template
                         <vue-excel-xlsx
                           class="btn btn-success"
-                          :data="data1"
+                          :data="data2"
                           :columns="columns"
                           :file-name="this.selected"
                           :file-type="'xlsx'"
@@ -1440,7 +1442,7 @@ export default {
         Principle_Monthly: "",
         Total_Loan: "",
       },
-      contribution: {},
+      contribution: [],
 
       approvalLevelsselect: [],
       tableData: [],
@@ -1738,8 +1740,6 @@ export default {
         },
       ];
 
-
-
       const loanSchedule = this.loansExportsStore;
 
       // if selected is deposits then
@@ -1750,12 +1750,13 @@ export default {
         this.data1 = loansOpeningBalance;
       }
 
-      if (this.selected == "importMonthDeposits"){
-        this.data1 = this.memberPledgesImportStore
+      if (this.selected == "importMonthDeposits") {
+        this.data2 = this.memberPledgesImportStore;
       }
 
       console.log(this.selected);
       console.log(this.data1);
+      console.log(this.data2);
     },
 
     clearData() {
@@ -1777,8 +1778,8 @@ export default {
       for (var i = 0; i < this.memberPledgesImportStore.length; i++) {
         getAPI
           .delete(
-            "loans/api/v1/members/api/v1/ImportMonthDeposits/" +
-              this.loansExportsStore[i].id +
+            "members/api/v1/ImportMonthDeposits/" +
+              this.memberPledgesImportStore[i].id +
               "/"
           )
           .then((response) => {
@@ -1860,7 +1861,7 @@ export default {
 
       for (var i = 0; i < this.allmembers.length; i++) {
         var member = this.allmembers[i];
-        console.log(member)
+        console.log(member);
         getAPI
           .post("/members/api/v1/ImportMonthDeposits/", {
             email: member.email,
@@ -1868,7 +1869,8 @@ export default {
 
             SavingsType: this.contribution.saving_type,
             accountcode: this.contribution.accountcode,
-            uidsavintype: this.companyid3 +  this.contribution.accountcode + member.id,
+            uidsavintype:
+              this.companyid3 + this.contribution.accountcode + member.id,
 
             employer: 1,
             organizationprofile: this.contribution.organizationprofile,

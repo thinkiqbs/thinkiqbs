@@ -1757,6 +1757,21 @@ export default {
       }
     },
 
+     clearDataPledges() {
+      for (var i = 0; i < this.loansExportsStore.length; i++) {
+        getAPI
+          .delete(
+            "loans/api/v1/members/api/v1/ImportMonthDeposits/" + this.loansExportsStore[i].id + "/"
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+    },
+
     loantypechange() {
       const opt = this.loantypes.find(
         (o) => o.loan_type == this.selectedloantype

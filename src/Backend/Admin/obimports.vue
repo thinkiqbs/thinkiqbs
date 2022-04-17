@@ -1377,6 +1377,46 @@ export default {
 
       // if selected is deposits then
       if (this.selected == "deposits") {
+        this.allmembers = this.memberson;
+      // console.log(allmembers);
+
+      for (var i = 0; i < this.allmembers.length; i++) {
+        var member = this.allmembers[i];
+        console.log(member);
+        getAPI
+          .post("/members/api/v1/DepositsOB/", {
+            email: member.email,
+            User_id: member.id,
+
+            id: 1,
+
+          Account: "2111000",
+          user_Id:  member.id,
+          memberemail:member.email,
+          Transaction_date: "2022-04-09",
+          last_updated: "",
+          Account_Code: "2111000",
+          accountype_description:"LIABILITIES",
+          Accountcode_description: "Members Deposits - Bosa",
+          Debit: 0,
+          Credit: 1000,
+          Amount: 1000,
+          Document: "Deposits",
+          Transaction_type: "CR",
+          Posting_Date: this.currentDate,
+          allocated: false,
+          company_id: this.companyid3,
+          notes: "Members Deposits Opening Balances",
+          updatedgl: false,
+          organizationprofile: this.organizationprofile,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
         this.data1 = deposits;
       }
       if (this.selected == "loans") {

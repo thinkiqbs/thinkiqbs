@@ -394,7 +394,7 @@
                               Step 2:
                               <button
                                 class="btn btn-primary"
-                                @click="copyMembers"
+                                @click="copyMembersPledges"
                               >
                                 process members
                               </button>
@@ -415,10 +415,10 @@
                           v-model="selected"
                         >
                           <option selected>Open this select menu</option>
-                          <option value="openingbalances">
-                            Opening Balances
+                          <option value="importMonthDeposits">
+                            Monthly Deposits
                           </option>
-                          <option value="loanschedule">Loan Schedule</option>
+                          <option value="ImportDepositsSchedule">Deposits Schedule</option>
                         </select>
                       </div>
                     </div>
@@ -1738,6 +1738,8 @@ export default {
         },
       ];
 
+
+
       const loanSchedule = this.loansExportsStore;
 
       // if selected is deposits then
@@ -1746,6 +1748,10 @@ export default {
       }
       if (this.selected == "openingbalances") {
         this.data1 = loansOpeningBalance;
+      }
+
+      if (this.selected == "importMonthDeposits"){
+        this.data1 = this.memberPledgesImportStore
       }
 
       console.log(this.selected);
@@ -1854,17 +1860,18 @@ export default {
 
       for (var i = 0; i < this.allmembers.length; i++) {
         var member = this.allmembers[i];
+        console.log(member)
         getAPI
-          .post("/loans/api/v1/loansExport/", {
+          .post("/members/api/v1/ImportMonthDeposits/", {
             email: member.email,
-            User_id: null,
+            User_id: member.id,
 
             SavingsType: this.contribution.saving_type,
             accountcode: this.contribution.accountcode,
-            uidsavintype: this.companyid3 + ,
+            uidsavintype: this.companyid3 +  this.contribution.accountcode + member.id,
 
-            employer: null,
-            organizationprofile: null,
+            employer: 1,
+            organizationprofile: this.contribution.organizationprofile,
 
             company_id: this.companyid3,
           })

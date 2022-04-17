@@ -332,7 +332,6 @@
                 <h5 class="modal-title" id="staticBackdropLabel">
                   Import Member Pledges
                 </h5>
-                
 
                 <button
                   type="button"
@@ -347,194 +346,195 @@
                 <!-- {{this.datatable.columns}} -->
                 {{ this.accounttype1 }}
                 <div class="row">
-                <div class="col-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <ul>
-                        <ol>
-                          <h3>
-                            Step 1:
-                            <button class="btn btn-primary" @click="clearData">
-                              Clear Import Data
-                            </button>
-                          </h3>
-                        </ol>
-                      </ul>
+                  <div class="col-4">
+                    <div class="card">
+                      <div class="card-body">
+                        <ul>
+                          <ol>
+                            <h3>
+                              Step 1:
+                              <button
+                                class="btn btn-primary"
+                                @click="clearDataPledges"
+                              >
+                                Clear Import Data
+                              </button>
+                            </h3>
+                          </ol>
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                  <hr />
+                    <hr />
 
-                  <div class="card">
-                    <div class="card-body">
-                      Select your Loan Type?
-                      <select
-                        class="form-select"
-                        id="select-country"
-                        data-live-search="true"
-                        v-model="selectedloantype"
-                        @change="loantypechange"
-                        style="color=green"
-                      >
-                        <option
-                          v-for="option in loantypes"
-                          v-bind:value="option.loan_type"
-                          :key="option.id"
+                    <div class="card">
+                      <div class="card-body">
+                        Select your Pledge?
+                        <select
+                          class="form-select"
+                          aria-label="Default select example"
+                          v-model="selected"
+                          @change="savingtypechange"
                         >
-                          {{ option.loan_type }}
-                        </option>
-                      </select>
+                          <option
+                            v-for="option in depositsPledges"
+                            v-bind:value="option.saving_type"
+                            :key="option.id"
+                          >
+                            {{ option.saving_type }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-body">
+                        <ul>
+                          <ol>
+                            <h3>
+                              Step 2:
+                              <button
+                                class="btn btn-primary"
+                                @click="copyMembers"
+                              >
+                                process members
+                              </button>
+                            </h3>
+                          </ol>
+                        </ul>
+                      </div>
+                    </div>
+                    <hr />
+
+                    <div class="card">
+                      <div class="card-body">
+                        Export Excel Template?
+                        <select
+                          class="form-select form-select-sm"
+                          aria-label=".form-select-sm example"
+                          @change="pickdata"
+                          v-model="selected"
+                        >
+                          <option selected>Open this select menu</option>
+                          <option value="openingbalances">
+                            Opening Balances
+                          </option>
+                          <option value="loanschedule">Loan Schedule</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        Download xlsx template
+                        <vue-excel-xlsx
+                          class="btn btn-success"
+                          :data="data1"
+                          :columns="columns"
+                          :file-name="this.selected"
+                          :file-type="'xlsx'"
+                          :sheet-name="this.selected"
+                          @click="pickdata"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="currentColor"
+                            class="bi bi-download"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                            />
+                            <path
+                              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                            />
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="currentColor"
+                            class="bi bi-file-excel"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M5.18 4.616a.5.5 0 0 1 .704.064L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 0 1 .064-.704z"
+                            />
+                            <path
+                              d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"
+                            />
+                          </svg>
+                        </vue-excel-xlsx>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="card">
+                      <div class="card-body">
+                        Select file to Import
+                        <input type="file" @change="onFileChange" />
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="card">
+                      <div class="card-body">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          @click="postOpeningbalance"
+                        >
+                          Import
+                        </button>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          @click="processLoans"
+                        >
+                          Process Loans
+                        </button>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="card">
-                    <div class="card-body">
-                      <ul>
-                        <ol>
-                          <h3>
-                            Step 2:
-                            <button
-                              class="btn btn-primary"
-                              @click="copyMembers"
-                            >
-                              process members
-                            </button>
-                          </h3>
-                        </ol>
-                      </ul>
-                    </div>
-                  </div>
-                  <hr />
+                  <!-- {{this.datatable.columns}} -->
 
-                  <div class="card">
-                    <div class="card-body">
-                      Export Excel Template?
-                      <select
-                        class="form-select form-select-sm"
-                        aria-label=".form-select-sm example"
-                        @change="pickdata"
-                        v-model="selected"
-                      >
-                        <option selected>Open this select menu</option>
-                        <option value="openingbalances">
-                          Opening Balances
-                        </option>
-                        <option value="loanschedule">Loan Schedule</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      Download xlsx template
-                      <vue-excel-xlsx
-                        class="btn btn-success"
-                        :data="data1"
-                        :columns="columns"
-                        :file-name="this.selected"
-                        :file-type="'xlsx'"
-                        :sheet-name="this.selected"
-                        @click="pickdata"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="currentColor"
-                          class="bi bi-download"
-                          viewBox="0 0 16 16"
+                  <div class="table-responsive col">
+                    <table
+                      class="table-borderless table-hover table-striped walla"
+                    >
+                      <thead>
+                        <tr class="line-item-header">
+                          <th>#</th>
+
+                          <th>Date Disbirsed</th>
+                          <th>Loan ID</th>
+                          <th>Member</th>
+
+                          <!---->
+                          <th class="text-left">Loan Type</th>
+                          <th class="text-left">Loan Term</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          v-for="(item, index) in loansExportsStore"
+                          :key="item.id"
                         >
-                          <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
-                          />
-                          <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
-                          />
-                        </svg>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="currentColor"
-                          class="bi bi-file-excel"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            d="M5.18 4.616a.5.5 0 0 1 .704.064L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 0 1 .064-.704z"
-                          />
-                          <path
-                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"
-                          />
-                        </svg>
-                      </vue-excel-xlsx>
-                    </div>
-                  </div>
-                  <hr />
-                  <div class="card">
-                    <div class="card-body">
-                      Select file to Import
-                      <input type="file" @change="onFileChange" />
-                    </div>
-                  </div>
-                  <hr />
-                  <div class="card">
-                    <div class="card-body">
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        @click="postOpeningbalance"
-                      >
-                        Import
-                      </button>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        @click="processLoans"
-                      >
-                        Process Loans
-                      </button>
-                    </div>
+                          <th scope="row">{{ index + 1 }}</th>
+                          <td>{{ item.date_disbursed }}</td>
+                          <td>{{ item.id }}</td>
+                          <td>{{ item.email }}</td>
+                          <td>{{ item.loan_Type }}</td>
+                          <td>{{ item.Term }}</td>
+                          <td>{{ item.Amount }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-
-                <!-- {{this.datatable.columns}} -->
-
-                <div class="table-responsive col">
-                  <table
-                    class="table-borderless table-hover table-striped walla"
-                  >
-                    <thead>
-                      <tr class="line-item-header">
-                        <th>#</th>
-
-                        <th>Date Disbirsed</th>
-                        <th>Loan ID</th>
-                        <th>Member</th>
-
-                        <!---->
-                        <th class="text-left">Loan Type</th>
-                        <th class="text-left">Loan Term</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        v-for="(item, index) in loansExportsStore"
-                        :key="item.id"
-                      >
-                        <th scope="row">{{ index + 1 }}</th>
-                        <td>{{ item.date_disbursed }}</td>
-                        <td>{{ item.id }}</td>
-                        <td>{{ item.email }}</td>
-                        <td>{{ item.loan_Type }}</td>
-                        <td>{{ item.Term }}</td>
-                        <td>{{ item.Amount }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
               </div>
               <div class="modal-footer">
                 <button
@@ -1440,6 +1440,7 @@ export default {
         Principle_Monthly: "",
         Total_Loan: "",
       },
+      contribution: {},
 
       approvalLevelsselect: [],
       tableData: [],
@@ -1491,6 +1492,7 @@ export default {
     this.fetchLoantype();
     this.fetchLoansExport();
     this.fetchLoansImport();
+    this.fetchMemberPledgesImports();
   },
 
   mounted() {
@@ -1512,6 +1514,7 @@ export default {
       "allLoantype",
       "allLoansExports",
       "allLoansImports",
+      "allMemberPledgesImports",
     ]),
 
     token() {
@@ -1525,6 +1528,12 @@ export default {
     },
     firstname() {
       return this.$store.state.firstname;
+    },
+
+    memberPledgesImportStore: function () {
+      return this.$store.getters.allMemberPledgesImports.filter(
+        (item) => item.company_id == this.companyid3
+      );
     },
 
     loansExportsStore: function () {
@@ -1623,6 +1632,7 @@ export default {
       "fetchLoantype",
       "fetchLoansExport",
       "fetchLoansImport",
+      "fetchMemberPledgesImports",
     ]),
 
     processLoans() {
@@ -1757,11 +1767,13 @@ export default {
       }
     },
 
-     clearDataPledges() {
-      for (var i = 0; i < this.loansExportsStore.length; i++) {
+    clearDataPledges() {
+      for (var i = 0; i < this.memberPledgesImportStore.length; i++) {
         getAPI
           .delete(
-            "loans/api/v1/members/api/v1/ImportMonthDeposits/" + this.loansExportsStore[i].id + "/"
+            "loans/api/v1/members/api/v1/ImportMonthDeposits/" +
+              this.loansExportsStore[i].id +
+              "/"
           )
           .then((response) => {
             console.log(response);
@@ -1770,6 +1782,26 @@ export default {
             console.log(error.response.data);
           });
       }
+    },
+
+    savingtypechange() {
+      const opt = this.depositsPledges.find(
+        (o) => o.saving_type === this.selected
+      );
+      console.log(opt);
+      this.contribution.saving_type = opt.saving_type;
+      this.contribution.minimum_contribution = opt.minimum_contribution;
+      this.contribution.interest_rate = opt.interest_rate;
+      this.contribution.maximum_saving_term = opt.maximum_saving_term;
+      this.contribution.accountcode = opt.accountcode;
+      this.contribution.Account_type = opt.Account_type;
+      this.contribution.accountype_description = opt.accountype_description;
+      this.contribution.maincode = opt.maincode;
+      this.contribution.maincode_description = opt.maincode_description;
+      this.contribution.accountname = opt.accountname;
+      this.contribution.company_id = opt.company_id;
+      this.contribution.security = opt.security;
+      this.contribution.organizationprofile = opt.organizationprofile;
     },
 
     loantypechange() {
@@ -1804,6 +1836,35 @@ export default {
             gl_account: this.Loans.gl_account,
             income_account: this.Loans.income_account,
             loan_Type: this.selectedloantype,
+
+            company_id: this.companyid3,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+    },
+
+    copyMembersPledges() {
+      this.allmembers = this.memberson;
+      // console.log(allmembers);
+
+      for (var i = 0; i < this.allmembers.length; i++) {
+        var member = this.allmembers[i];
+        getAPI
+          .post("/loans/api/v1/loansExport/", {
+            email: member.email,
+            User_id: null,
+
+            SavingsType: this.contribution.saving_type,
+            accountcode: this.contribution.accountcode,
+            uidsavintype: this.companyid3 + ,
+
+            employer: null,
+            organizationprofile: null,
 
             company_id: this.companyid3,
           })

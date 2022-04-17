@@ -2256,9 +2256,21 @@ export default {
     },
 
     savingtypechange() {
-      const opt = this.savings.find((o) => o.saving_type === this.selected);
+      const opt = this.savingType.find((o) => o.saving_type === this.selected);
       // console.log(opt)
+      this.contribution.saving_type = opt.saving_type;
+      this.contribution.minimum_contribution = opt.minimum_contribution;
+      this.contribution.interest_rate = opt.interest_rate;
+      this.contribution.maximum_saving_term = opt.maximum_saving_term;
       this.contribution.accountcode = opt.accountcode;
+      this.contribution.Account_type = opt.Account_type;
+      this.contribution.accountype_description = opt.accountype_description;
+      this.contribution.maincode = opt.maincode;
+      this.contribution.maincode_description = opt.maincode_description;
+      this.contribution.accountname = opt.accountname;
+      this.contribution.company_id = opt.company_id;
+      this.contribution.security = opt.security;
+      this.contribution.organizationprofile = opt.organizationprofile;
     },
 
     change(item) {
@@ -2708,6 +2720,12 @@ export default {
 
     members1: function () {
       return this.$store.getters.allMembers.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
+        savingType: function () {
+      return this.$store.getters.allSavinttype.filter(
         (item) => item.company_id == this.companyid3
       );
     },

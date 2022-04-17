@@ -44,7 +44,6 @@ export default {
     refresh() {
       Promise.all([
         this.$store.dispatch("fetchDeposits"),
-        this.$store.dispatch("fetchDeposits"),
         this.$store.dispatch("fetchBanktransactions"),
         this.$store.dispatch("fetchMembers"),
         this.$store.dispatch("fetchLoans"),

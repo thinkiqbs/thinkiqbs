@@ -482,7 +482,7 @@
                         <button
                           type="button"
                           class="btn btn-primary"
-                          @click="postOpeningbalance"
+                          @click="postMemberPledges"
                         >
                           Import
                         </button>
@@ -1462,7 +1462,6 @@ export default {
           label: "organizationprofile",
           field: "organizationprofile",
         },
-        
       ],
 
       accounttypes: [],
@@ -1737,6 +1736,39 @@ export default {
 
             organizationprofile: this.organizationprofile,
             keyvalue: acctype[4] + acctype[5],
+          })
+          .then((response) => {
+            this.accounttype1.push(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            this.accounttype1.push("error", error.data);
+          });
+
+        console.log(i, acctype);
+      }
+      this.$swal({
+        title: "Success",
+        text: "Opening Balance added successfully",
+        icon: "success",
+        button: "Ok",
+      });
+    },
+
+    postMemberPledges() {
+      for (let i = 1; i < this.accounttypes.length; i++) {
+        let acctype = this.accounttypes[i];
+        getAPI
+          .post("/members/api/v1/MonthDeposits/", {
+            email: acctype[2],
+            Amount: acctype[0],
+            User_id: acctype[1],
+            SavingsType: acctype[3],
+            accountcode: acctype[4],
+            uidsavintype: acctype[5],
+            company_id: this.companyid3,
+            employer: acctype[7],
+            organizationprofile: acctype[8],
           })
           .then((response) => {
             this.accounttype1.push(response.data);

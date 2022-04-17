@@ -14,7 +14,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Document Imports Section</h4>
+            <h4 class="card-title">Data Migration Section</h4>
 
             <div class="d-flex align-items-center">
               <div class="dropdown d-inline-block ms-2">
@@ -128,13 +128,7 @@
                   </div>
                   <div role="separator" class="dropdown-divider m-0"></div>
                   <div class="p-2">
-                    <a
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      data-bs-toggle="modal"
-                      data-bs-target="#LoansActive"
-                    >
-                      <span class="fs-sm fw-medium">Loans Schedule</span>
-                    </a>
+                   
                     <a
                       class="dropdown-item d-flex align-items-center justify-content-between"
                       data-bs-toggle="modal"
@@ -142,12 +136,7 @@
                     >
                       <span class="fs-sm fw-medium">Loan Balances</span>
                     </a>
-                    <a
-                      class="dropdown-item d-flex align-items-center justify-content-between"
-                      href="op_auth_signin.html"
-                    >
-                      <span class="fs-sm fw-medium">General Ledgers</span>
-                    </a>
+                    
                   </div>
                 </div>
               </div>
@@ -642,126 +631,148 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-4">
-                  <div class="">
-                    <ul>
-                      <ol>
-                        <h3>
-                          Step 1:
-                          <button class="btn btn-primary" @click="clearData">
-                            Clear Import Data members
-                          </button>
-                        </h3>
-                      </ol>
-                    </ul>
+                  
+                  
+                  <div class="card">
+                    <div class="card-body">
+                      <ul>
+                        <ol>
+                          <h3>
+                            Step 1:
+                            <button class="btn btn-primary" @click="clearData">
+                              Clear Import Data
+                            </button>
+                          </h3>
+                        </ol>
+                      </ul>
+                    </div>
                   </div>
-                  <div class=".custom-select" style="width: 200px">
-                    Select your Loan Type?
-                    <select
-                      class="form-select"
-                      id="select-country"
-                      data-live-search="true"
-                      v-model="selectedloantype"
-                      @change="loantypechange"
-                      style="color=green"
-                    >
-                      <option
-                        v-for="option in loantypes"
-                        v-bind:value="option.loan_type"
-                        :key="option.id"
+                  <hr/>
+
+                  <div class="card">
+                    <div class="card-body">
+                      Select your Loan Type?
+                      <select
+                        class="form-select"
+                        id="select-country"
+                        data-live-search="true"
+                        v-model="selectedloantype"
+                        @change="loantypechange"
+                        style="color=green"
                       >
-                        {{ option.loan_type }}
-                      </option>
-                    </select>
-                    {{ this.selectedloantype }}
-                    {{ this.loantypes.gl_account }}
+                        <option
+                          v-for="option in loantypes"
+                          v-bind:value="option.loan_type"
+                          :key="option.id"
+                        >
+                          {{ option.loan_type }}
+                        </option>
+                      </select>
+                    </div>
                   </div>
-               
 
-                <div class="">
-                  <ul>
-                    <ol>
-                      <h3>
-                        Step 2:
-                        <button class="btn btn-primary" @click="copyMembers">
-                          process members
-                        </button>
-                      </h3>
-                    </ol>
-                  </ul>
-                </div>
 
-                <div class="">
-                  <!-- boostrap select  -->
-                  Export Excel Template?
-                  <select
-                    class="form-select form-select-sm"
-                    aria-label=".form-select-sm example"
-                    @change="pickdata"
-                    v-model="selected"
-                  >
-                    <option selected>Open this select menu</option>
-                    <option value="openingbalances">Opening Balances</option>
-                    <option value="loanschedule">Loan Schedule</option>
-                  </select>
-                  {{ this.loanSchedule }}
-                </div>
-                <div class="">
-                  Download xlsx template
-                  <vue-excel-xlsx
-                    class="btn btn-success"
-                    :data="data1"
-                    :columns="columns"
-                    :file-name="this.selected"
-                    :file-type="'xlsx'"
-                    :sheet-name="this.selected"
-                    @click="pickdata"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="currentColor"
-                      class="bi bi-download"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
-                      />
-                      <path
-                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
-                      />
-                    </svg>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="currentColor"
-                      class="bi bi-file-excel"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M5.18 4.616a.5.5 0 0 1 .704.064L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 0 1 .064-.704z"
-                      />
-                      <path
-                        d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"
-                      />
-                    </svg>
-                  </vue-excel-xlsx>
-                </div>
-                <div class="">
-                  Select file to Import
-                  <input type="file" @change="onFileChange" />
-                </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <ul>
+                        <ol>
+                          <h3>
+                            Step 2:
+                            <button
+                              class="btn btn-primary"
+                              @click="copyMembers"
+                            >
+                              process members
+                            </button>
+                          </h3>
+                        </ol>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr/>
 
-                <div class="">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    @click="postOpeningbalance"
-                  >
-                    Import
-                  </button>
-                </div>
+                 
+                  <div class="card">
+                    <div class="card-body">
+                      Export Excel Template?
+                      <select
+                        class="form-select form-select-sm"
+                        aria-label=".form-select-sm example"
+                        @change="pickdata"
+                        v-model="selected"
+                      >
+                        <option selected>Open this select menu</option>
+                        <option value="openingbalances">
+                          Opening Balances
+                        </option>
+                        <option value="loanschedule">Loan Schedule</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      Download xlsx template
+                      <vue-excel-xlsx
+                        class="btn btn-success"
+                        :data="data1"
+                        :columns="columns"
+                        :file-name="this.selected"
+                        :file-type="'xlsx'"
+                        :sheet-name="this.selected"
+                        @click="pickdata"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="currentColor"
+                          class="bi bi-download"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                          />
+                          <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="currentColor"
+                          class="bi bi-file-excel"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M5.18 4.616a.5.5 0 0 1 .704.064L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 0 1 .064-.704z"
+                          />
+                          <path
+                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"
+                          />
+                        </svg>
+                      </vue-excel-xlsx>
+                    </div>
+                  </div>
+                  <hr>
+                   <div class="card">
+                    <div class="card-body">
+                      Select file to Import
+                      <input type="file" @change="onFileChange" />
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="card">
+                    <div class="card-body">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        @click="postOpeningbalance"
+                      >
+                        Import
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- {{this.datatable.columns}} -->
@@ -781,12 +792,7 @@
                         <!---->
                         <th class="text-left">Loan Type</th>
                         <th class="text-left">Loan Term</th>
-                        <th class="text-left">Loan Amount</th>
-                        <th class="text-left">Amount Paid</th>
-                        <th class="text-left">Current Balance</th>
-
-                        <th class="text-left">Status</th>
-                        <th class="text-left">View</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
@@ -801,90 +807,10 @@
                         <td>{{ item.loan_Type }}</td>
                         <td>{{ item.Term }}</td>
                         <td>{{ item.Amount }}</td>
-                        <td>
-                          <div
-                            v-if="item.variation_amount <= 0"
-                            style="color: red"
-                          >
-                            {{ item.variation_amount }}
-                            <i class="fas fa-exclamation-circle"></i>
-                          </div>
-                          <div v-else style="color: green">
-                            {{ item.variation_amount }}
-                            <i class="fas fa-check-circle"></i>
-                          </div>
-                        </td>
-                        <td>{{ item.current_balance }}</td>
+                        
 
-                        <td>
-                          <div v-if="item.Disbursed == 1">
-                            <button
-                              type="button"
-                              class="btn btn-success"
-                              @click="updateloanschedule(item)"
-                              Disabled
-                            >
-                              <i for="Disbursed" class="fas fa-check"></i>
-                            </button>
-                            <button
-                              type="button"
-                              class="btn btn-success"
-                              data-bs-toggle="modal"
-                              data-bs-target="#topup"
-                              @click="Getloanbyid(item)"
-                            >
-                              <i class="fas fa-shopping-basket"></i>
-                            </button>
-                          </div>
-                          <div v-else>
-                            <div v-if="item.Status == 4">
-                              <button
-                                type="button"
-                                class="btn btn-success"
-                                @click="updateloanschedule(item)"
-                              >
-                                Disburse
-                              </button>
-                            </div>
 
-                            <div v-else>
-                              <div v-if="item.Status == 0">
-                                <button
-                                  type="button"
-                                  class="btn btn-primary btn-sm"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#guarantorAdd"
-                                  @click="Getloanbyid(item)"
-                                >
-                                  Pending Gurantor
-                                </button>
-                              </div>
-                              <div v-else>
-                                <button
-                                  type="button"
-                                  class="btn btn-warning"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#ApprovalTemplate"
-                                  @click="Getloanbyid(item)"
-                                >
-                                  Approval {{ item.Status }} needed
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          <button
-                            type="button"
-                            class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                            @click="Getloanbyid(item)"
-                          >
-                            <i class="fas fa-eye"></i>
-                          </button>
-                        </td>
+                       
                       </tr>
                     </tbody>
                   </table>

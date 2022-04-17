@@ -641,7 +641,19 @@
             </div>
             <div class="modal-body">
               <div class="row">
-                <div class=".custom-select" style="width: 200px">
+                 <div class="col">
+                  <ul>
+                    <ol>
+                      <h3>
+                        Step 1:
+                        <button class="btn btn-primary" @click="clearData">
+                          Clear Import Data members
+                        </button>
+                      </h3>
+                    </ol>
+                  </ul>
+                </div>
+                <div class=".custom-select col" style="width: 200px">
                   <select
                     class="form-select"
                     id="select-country"
@@ -661,12 +673,13 @@
                   {{ this.selectedloantype }}
                   {{ this.loantypes.gl_account }}
                 </div>
+                
 
                 <div class="col">
                   <ul>
                     <ol>
                       <h3>
-                        Step 1:
+                        Step 2:
                         <button class="btn btn-primary" @click="copyMembers">
                           process members
                         </button>
@@ -674,18 +687,7 @@
                     </ol>
                   </ul>
                 </div>
-                <div class="col">
-                  <ul>
-                    <ol>
-                      <h3>
-                        Step 1:
-                        <button class="btn btn-primary" @click="clearData">
-                          Clear Import Data members
-                        </button>
-                      </h3>
-                    </ol>
-                  </ul>
-                </div>
+               
 
                 <div class="col">
                   <!-- boostrap select  -->

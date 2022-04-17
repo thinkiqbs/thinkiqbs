@@ -332,29 +332,7 @@
                 <h5 class="modal-title" id="staticBackdropLabel">
                   Import Member Pledges
                 </h5>
-                <div class="col-sm-2">
-                  <select
-                    class="form-select"
-                    aria-label="Default select example"
-                    v-model="pledgetype"
-                  >
-                    <option
-                      v-for="item in depositsPledges"
-                      :value="item.val"
-                      :Key="item.id"
-                    >
-                      {{ item.saving_type }}
-                    </option>
-                  </select>
-                </div>
-
-                <input type="file" @change="onFileChange" />
-
-                <download-excel :data="pledge_data">
-                  <button type="button" class="btn btn-success">
-                    Download Template
-                  </button>
-                </download-excel>
+                
 
                 <button
                   type="button"
@@ -368,26 +346,195 @@
 
                 <!-- {{this.datatable.columns}} -->
                 {{ this.accounttype1 }}
-                <div class="table-responsive">
-                  <table class="table table-unbordered walla">
+                <div class="row">
+                <div class="col-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <ul>
+                        <ol>
+                          <h3>
+                            Step 1:
+                            <button class="btn btn-primary" @click="clearData">
+                              Clear Import Data
+                            </button>
+                          </h3>
+                        </ol>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr />
+
+                  <div class="card">
+                    <div class="card-body">
+                      Select your Loan Type?
+                      <select
+                        class="form-select"
+                        id="select-country"
+                        data-live-search="true"
+                        v-model="selectedloantype"
+                        @change="loantypechange"
+                        style="color=green"
+                      >
+                        <option
+                          v-for="option in loantypes"
+                          v-bind:value="option.loan_type"
+                          :key="option.id"
+                        >
+                          {{ option.loan_type }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                    <div class="card-body">
+                      <ul>
+                        <ol>
+                          <h3>
+                            Step 2:
+                            <button
+                              class="btn btn-primary"
+                              @click="copyMembers"
+                            >
+                              process members
+                            </button>
+                          </h3>
+                        </ol>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr />
+
+                  <div class="card">
+                    <div class="card-body">
+                      Export Excel Template?
+                      <select
+                        class="form-select form-select-sm"
+                        aria-label=".form-select-sm example"
+                        @change="pickdata"
+                        v-model="selected"
+                      >
+                        <option selected>Open this select menu</option>
+                        <option value="openingbalances">
+                          Opening Balances
+                        </option>
+                        <option value="loanschedule">Loan Schedule</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      Download xlsx template
+                      <vue-excel-xlsx
+                        class="btn btn-success"
+                        :data="data1"
+                        :columns="columns"
+                        :file-name="this.selected"
+                        :file-type="'xlsx'"
+                        :sheet-name="this.selected"
+                        @click="pickdata"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="currentColor"
+                          class="bi bi-download"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                          />
+                          <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                          />
+                        </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          fill="currentColor"
+                          class="bi bi-file-excel"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M5.18 4.616a.5.5 0 0 1 .704.064L8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 0 1 .064-.704z"
+                          />
+                          <path
+                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"
+                          />
+                        </svg>
+                      </vue-excel-xlsx>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="card">
+                    <div class="card-body">
+                      Select file to Import
+                      <input type="file" @change="onFileChange" />
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="card">
+                    <div class="card-body">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        @click="postOpeningbalance"
+                      >
+                        Import
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        @click="processLoans"
+                      >
+                        Process Loans
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- {{this.datatable.columns}} -->
+
+                <div class="table-responsive col">
+                  <table
+                    class="table-borderless table-hover table-striped walla"
+                  >
                     <thead>
-                      <tr>
+                      <tr class="line-item-header">
                         <th>#</th>
 
-                        <th>Account Type</th>
+                        <th>Date Disbirsed</th>
+                        <th>Loan ID</th>
+                        <th>Member</th>
 
-                        <th>Account Code</th>
+                        <!---->
+                        <th class="text-left">Loan Type</th>
+                        <th class="text-left">Loan Term</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="product in accounttype1" :key="product.id">
-                        <td>{{ product.id }}</td>
-                        <td>{{ product.accounttype }}</td>
-                        <td>{{ product.accountcode }}</td>
+                      <tr
+                        v-for="(item, index) in loansExportsStore"
+                        :key="item.id"
+                      >
+                        <th scope="row">{{ index + 1 }}</th>
+                        <td>{{ item.date_disbursed }}</td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.loan_Type }}</td>
+                        <td>{{ item.Term }}</td>
+                        <td>{{ item.Amount }}</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
+              </div>
               </div>
               <div class="modal-footer">
                 <button

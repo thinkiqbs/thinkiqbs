@@ -1,133 +1,111 @@
 @
 <template>
   <div class="row">
-    <div class="row removable">
-      <div class="col-xl-3 col-sm-6">
-        <div class="card mb-4">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                    Total Assets
-                  </p>
-                  <h5 class="font-weight-bolder mb-0">
-                    {{ this.totalAssets }}
-                    <span class="text-success text-sm font-weight-bolder"
-                      >+55%</span
-                    >
-                  </h5>
-                </div>
-              </div>
-              <div class="col-4 text-end">
-                <div
-                  class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md"
-                >
-                  <i
-                    class="ni ni-money-coins text-lg opacity-10"
-                    aria-hidden="true"
-                  ></i>
-                </div>
-              </div>
+    <div class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex">
+      <div class="d-flex align-items-center">
+        <div class="dropdown d-inline-block ms-2">
+          <button
+            type="button"
+            class="btn btn-sm btn-alt-secondary d-flex align-items-center"
+            id="page-header-user-dropdown"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              class="bi bi-menu-down"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M7.646.146a.5.5 0 0 1 .708 0L10.207 2H14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h3.793L7.646.146zM1 7v3h14V7H1zm14-1V4a1 1 0 0 0-1-1h-3.793a1 1 0 0 1-.707-.293L8 1.207l-1.5 1.5A1 1 0 0 1 5.793 3H2a1 1 0 0 0-1 1v2h14zm0 5H1v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2zM2 4.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+            <span class="d-none d-sm-inline-block ms-2">Sub Ledgers</span>
+            <i
+              class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
+            ></i>
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
+            aria-labelledby="page-header-user-dropdown"
+            style=""
+          >
+            <div class="p-2">
+              <router-link
+                :to="{ path: 'expenses' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Expenses</router-link
+              >
+              <router-link
+                :to="{ path: 'purchasing' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Purchasing</router-link
+              >
+              <router-link
+                :to="{ path: 'sales' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Sales</router-link
+              >
+
+              <div role="separator" class="dropdown-divider m-0"></div>
+
+              <router-link
+                :to="{ path: 'journals' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Journals</router-link
+              >
+
+              <div role="separator" class="dropdown-divider m-0"></div>
+
+              <router-link
+                :to="{ path: 'documents' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Documents</router-link
+              >
+
+              <router-link
+                :to="{ path: 'shares' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Member Shares</router-link
+              >
+
+              <router-link
+                :to="{ path: 'openingbalances' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Opening Balances</router-link
+              >
+
+              <router-link
+                :to="{ path: 'budgets' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Budgets
+              </router-link>
+              <router-link
+                :to="{ path: 'taxes' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >Taxes</router-link
+              >
+
+              <div role="separator" class="dropdown-divider m-0"></div>
+
+              <router-link
+                :to="{ path: 'accounting' }"
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                >General Ledger</router-link
+              >
             </div>
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card mb-4">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                    Total Liabilities
-                  </p>
-                  <h5 class="font-weight-bolder mb-0">
-                    {{ this.totalLiabilities }}
-                    <span class="text-success text-sm font-weight-bolder"
-                      >+3%</span
-                    >
-                  </h5>
-                </div>
-              </div>
-              <div class="col-4 text-end">
-                <div
-                  class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md"
-                >
-                  <i
-                    class="ni ni-world text-lg opacity-10"
-                    aria-hidden="true"
-                  ></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card mb-4">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                    Total Expenses
-                  </p>
-                  <h5 class="font-weight-bolder mb-0">
-                    {{ totalExpenses }}
-                    <span class="text-danger text-sm font-weight-bolder"
-                      >-2%</span
-                    >
-                  </h5>
-                </div>
-              </div>
-              <div class="col-4 text-end">
-                <div
-                  class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md"
-                >
-                  <i
-                    class="ni ni-paper-diploma text-lg opacity-10"
-                    aria-hidden="true"
-                  ></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-sm-6">
-        <div class="card mb-4">
-          <div class="card-body p-3">
-            <div class="row">
-              <div class="col-8">
-                <div class="numbers">
-                  <p class="text-sm mb-0 text-capitalize font-weight-bold">
-                    Total Income
-                  </p>
-                  <h5 class="font-weight-bolder mb-0">
-                    {{ this.totalIncome }}
-                    <span class="text-success text-sm font-weight-bolder"
-                      >+5%</span
-                    >
-                  </h5>
-                </div>
-              </div>
-              <div class="col-4 text-end">
-                <div
-                  class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md"
-                >
-                  <i
-                    class="ni ni-cart text-lg opacity-10"
-                    aria-hidden="true"
-                  ></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
+      <div>
+        <Refresh></Refresh>
       </div>
     </div>
-    
   </div>
 
   <!-- ÷ -->
@@ -151,17 +129,17 @@ import $ from "jquery";
 // import Popper from "vue-popperjs";
 // import Tab from "@/components/Tab.vue";
 // import Tabs from "@/components/Tabs.vue";
-
+import Refresh from "@/components/refresh.vue";
 
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
-
+    Refresh,
     // DropdownMenu,
   },
 
-  name: "headerDashboard",
+  name: "AccountingMenu",
 
   data() {
     return {

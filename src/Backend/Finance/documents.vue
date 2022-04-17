@@ -24,6 +24,8 @@
                   <span>Org:{{ companyid3 }}</span>
                 </div>
 
+                <AccountingMenu></AccountingMenu>
+
                 <div class="card-body">
                   <!--  -->
 
@@ -102,6 +104,7 @@
 import axios from "axios";
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
+import AccountingMenu from "@/components/AccountingMenu.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
 // import axios from "axios";
@@ -125,6 +128,7 @@ export default {
   components: {
     financeNav,
     accountingHeader,
+    AccountingMenu,
   },
 
   data() {

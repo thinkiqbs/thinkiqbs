@@ -21,7 +21,7 @@
               <div class="card">
                 <div class="card-header">
                   <h2 class="card-title">
-                    Member Shares- <span>Org:{{ companyid3 }}</span>
+                    Opening Balance- <span>Org:{{ companyid3 }}</span>
                   </h2>
 
                   <!-- button to toggle modal addSharesDeposits -->
@@ -54,6 +54,8 @@
                     </div>
                   </div>
                 </div>
+
+                <AccountingMenu></AccountingMenu>
 
                 <div class="card-body">
                   <!--  -->
@@ -291,6 +293,7 @@ import { getAPI } from "@/axios-api";
 
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
+import AccountingMenu from "@/components/AccountingMenu.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
 // import getAPI from "getAPI";
@@ -314,6 +317,7 @@ export default {
   components: {
     financeNav,
     accountingHeader,
+    AccountingMenu,
   },
 
   data() {

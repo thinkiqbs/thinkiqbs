@@ -522,7 +522,7 @@
                       </thead>
                       <tbody>
                         <tr
-                          v-for="(item, index) in loansExportsStore"
+                          v-for="(item, index) in level"
                           :key="item.id"
                         >
                           <th scope="row">{{ index + 1 }}</th>

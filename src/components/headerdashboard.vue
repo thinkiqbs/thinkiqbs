@@ -461,6 +461,7 @@ export default {
     this.fetchPaymentsmade();
     this.fetchPaymentsreceived();
     this.fetchExpenses();
+    console.log(this.monthdeposits);
   },
 
   mounted() {

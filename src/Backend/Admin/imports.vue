@@ -430,7 +430,7 @@
                         <vue-excel-xlsx
                           class="btn btn-success"
                           :data="data2"
-                          :columns="columns"
+                          :columns="columns2"
                           :file-name="this.selected"
                           :file-type="'xlsx'"
                           :sheet-name="this.selected"
@@ -1323,6 +1323,7 @@ export default {
       gldata_data: [],
       selectedloantype: [],
       data1: [],
+      data2: [],
       columns: [
         {
           label: "first_name",
@@ -1418,6 +1419,50 @@ export default {
           label: "company_id(Dont Change)",
           field: "company_id",
         },
+      ],
+
+      columns2: [
+        {
+          label: "Amount",
+          field: "Amount",
+        },
+
+        {
+          label: "User_id",
+          field: "User_id",
+        },
+
+        {
+          label: "email",
+          field: "email",
+        },
+
+        {
+          label: "SavingsType",
+          field: "SavingsType",
+        },
+        {
+          label: "accountcode",
+          field: "accountcode",
+        },
+        {
+          label: "uidsavintype",
+          field: "uidsavintype",
+        },
+
+        {
+          label: "company_id",
+          field: "company_id",
+        },
+        {
+          label: "employer",
+          field: "employer",
+        },
+        {
+          label: "organizationprofile",
+          field: "organizationprofile",
+        },
+        
       ],
 
       accounttypes: [],

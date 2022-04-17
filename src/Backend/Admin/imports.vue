@@ -773,6 +773,17 @@
                       </button>
                     </div>
                   </div>
+                  <div class="card">
+                    <div class="card-body">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        @click="processLoans"
+                      >
+                        Process Loans
+                      </button>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- {{this.datatable.columns}} -->
@@ -1468,6 +1479,35 @@ export default {
       "fetchLoantype",
       "fetchLoansExport",
     ]),
+
+    processLoans() {
+
+  
+      //Post a memberImports to Members
+      this.fetchMemberImports();
+      
+      for (var i = 0; i < this.memberImports.length; i++) {
+        var member = this.memberImports[i];
+        getAPI
+          .post("/members/api/v1/MemberDetails/", member)
+          .then((response) => {
+            console.log(response);
+            
+          })
+          .catch((error) => {
+            
+            console.log(error.response.data);
+            this.$swal({
+              title: "Error",
+              text: (error),
+              icon: "error",
+              button: "Ok",
+            });
+          });
+      }
+  
+
+    },
 
     postOpeningbalance() {
       for (let i = 1; i < this.accounttypes.length; i++) {

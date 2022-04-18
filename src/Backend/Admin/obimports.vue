@@ -89,6 +89,7 @@
                   :file-name="this.selected"
                   :file-type="'xlsx'"
                   :sheet-name="this.selected"
+                  @click = "dataassign"
                   
 
                 >
@@ -1328,7 +1329,7 @@ export default {
     },
 
     obloansexport() {
-      return this.$store.getters.allObdeposits.filter(
+      return this.$store.getters.allObloans.filter(
         (item) => item.company_id == this.companyid3
       );
     },
@@ -1600,20 +1601,17 @@ export default {
 
 
     dataassign(){
-      if (this.selected == deposits) {
+      if (this.selected == "deposits") {
         this.data1 = this.obdepositsexport;
       }
-      if (this.selected == loans) {
+      if (this.selected == "loans") {
         this.data1 = this.obloansexport;
       }
-      if (this.selected == shares) {
+      if (this.selected == "shares") {
         this.data1 = this.expenseson;
       }
+    },
       
-      ){
-
-      }
-    }
 
     exportexpense() {
       this.$swal("Update Expense sheet and upload to import opening balance");

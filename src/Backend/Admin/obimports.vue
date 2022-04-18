@@ -23,7 +23,7 @@
                 <select
                   class="form-select form-select-sm"
                   aria-label=".form-select-sm example"
-                  @change="pickdata"
+
                   v-model="selected"
                 >
                   <option selected>Open this select menu</option>
@@ -89,7 +89,8 @@
                   :file-name="this.selected"
                   :file-type="'xlsx'"
                   :sheet-name="this.selected"
-                  @click="pickdata"
+                  
+
                 >
                   Download xlsx template
                 </vue-excel-xlsx>
@@ -1387,31 +1388,7 @@ export default {
     pickdata() {
       //add properties to data1
 
-      const loans = [
-        {
-          id: 1,
-
-          Account: "2111000",
-          user_Id: "1",
-          memberemail: "karash@gmail.com",
-          Transaction_date: "2022-04-09",
-          last_updated: "2022-04-09T09:50:47.002923Z",
-          Account_Code: "2111000",
-          accountype_description: "ASSETS",
-          Accountcode_description: "Members Deposits - Bosa",
-          Debit: 5000,
-          Credit: 0,
-          Amount: 5000,
-          Document: "loans",
-          Transaction_type: "CR",
-          Posting_Date: this.currentDate,
-          allocated: false,
-          company_id: this.companyid3,
-          notes: "Members Loans Opening Balances",
-          updatedgl: false,
-          organizationprofile: this.organizationprofile,
-        },
-      ];
+      
       const expenses = [
         {
           id: 1,
@@ -1440,9 +1417,7 @@ export default {
 
       // if selected is deposits then
 
-      if (this.selected == "loans") {
-        this.data1 = loans;
-      }
+     
       if (this.selected == "expenses") {
         this.data1 = expenses;
       }
@@ -1546,17 +1521,18 @@ export default {
 
         for (var j = 0; j < this.allmembers.length; j++) {
           var loanob = this.allmembers[j];
-          console.log("hello", this.allmembers);
+          console.log("hello", this.loanob);
           getAPI
             .post("/finance/api/v1/loansopeningbalance/", {
               Account: this.glchanged.maincode,
-              // user_Id: loanob.id,
+              user_Id: this.user_id,
               memberemail: loanob.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
               Account_Code: this.glchanged.maincode,
               accountype_description: this.glchanged.accountype_description,
               Accountcode_description: this.glchanged.maincode_description,
+              maincode: this.glchanged.maincode,
               Debit: 5000,
               Credit: 0,
               Amount: 5000,
@@ -1569,7 +1545,7 @@ export default {
               updatedgl: false,
               organizationprofile: this.organizationprofile,
               keyvalue:
-                this.companyid3 + this.contribution.accountcode + member.id,
+                this.companyid3 + this.contribution.accountcode + loanob.id,
             })
             .then((response) => {
               console.log(response);
@@ -1621,6 +1597,23 @@ export default {
         this.data1 = this.expenseson;
       }
     },
+
+
+    dataassign(){
+      if (this.selected == deposits) {
+        this.data1 = this.obdepositsexport;
+      }
+      if (this.selected == loans) {
+        this.data1 = this.obloansexport;
+      }
+      if (this.selected == shares) {
+        this.data1 = this.expenseson;
+      }
+      
+      ){
+
+      }
+    }
 
     exportexpense() {
       this.$swal("Update Expense sheet and upload to import opening balance");

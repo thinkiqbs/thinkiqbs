@@ -1021,6 +1021,7 @@ export default {
       loan_data: [],
       shares_data: [],
       gldata_data: [],
+      glchanged: [],
 
       accounttypes: [],
       pledgetype: [],
@@ -1029,6 +1030,7 @@ export default {
       mainaccounts1: [],
       accounttype1: [],
       obimports: [],
+      Loantypes: [],
 
       importmembers: [],
       memberxp: [],
@@ -1235,6 +1237,10 @@ export default {
     this.loadimport();
     this.updatemeberxp();
     this.fetchObdeposits();
+    this.fetchLoantype();
+    this.fetchObloans();
+    this.fetchGl();
+
   },
 
   mounted() {
@@ -1255,6 +1261,10 @@ export default {
       "allPaymentsreceived",
       "allSavinttype",
       "allObdeposits",
+      "allLoantype",
+      "allObloans",
+      "allGl",
+
     ]),
 
     token() {
@@ -1312,12 +1322,23 @@ export default {
     },
 
     obdepositsexport() {
+      return this.$store.getters.allObloans.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
+     obloansexport() {
       return this.$store.getters.allObdeposits.filter(
         (item) => item.company_id == this.companyid3
       );
     },
     pledgeson() {
       return this.$store.getters.allDeposits.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+    loantypes() {
+      return this.$store.getters.allLoantype.filter(
         (item) => item.company_id == this.companyid3
       );
     },
@@ -1337,6 +1358,11 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
+    allGls1: function () {
+      return this.$store.getters.allGl.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
   },
 
   methods: {
@@ -1352,6 +1378,9 @@ export default {
       "fetchPaymentsreceived",
       "fetchSavingtype",
       "fetchObdeposits",
+      "fetchLoantype",
+      "fetchObloans",
+      "fetchGl",
     ]),
 
     // When passing `data` for each cell.
@@ -1448,10 +1477,21 @@ export default {
       );
       console.log(opt);
 
-      this.Loans.interest = opt.interest_rate;
-      this.Loans.Term = opt.maximum_loan_term;
-      this.Loans.gl_account = opt.gl_account;
-      this.Loans.income_account = opt.income_account;
+      this.Loantypes.interest = opt.interest_rate;
+      this.Loantypes.Term = opt.maximum_loan_term;
+      this.Loantypes.gl_account = opt.gl_account;
+      this.Loantypes.income_account = opt.income_account;
+
+      const optgl = this.allGls1.find((o) => o.maincode == this.Loantypes.gl_account);
+      console.log("gl", optgl);
+
+      console.log(optgl);
+      this.glchanged.account_type = optgl.account_type;
+      this.glchanged.accountype_description = optgl.accounttype_description;
+      this.glchanged.maincode = optgl.maincode;
+      this.glchanged.maincode_description = optgl.maincode_description;
+      this.glchanged.parent_account = optgl.parent_account;
+      this.glchanged.accountname = optgl.accountname;
     },
 
     Prepdata() {
@@ -1497,9 +1537,10 @@ export default {
               console.log(error.response.data);
             });
         }
+        this.data1 = this.obdepositsexport;
       }
 
-      this.data1 = this.obdepositsexport;
+      
 
       if (this.selected == "loans") {
         for (var j = 0; j < this.allmembers.length; j++) {
@@ -1507,19 +1548,18 @@ export default {
           console.log(loan);
           getAPI
             .post("/finance/api/v1/loansopeningbalance/", {
-              email: member.email,
-              User_id: member.id,
+             
 
-              id: 1,
 
-              Account: "2111000",
-              user_Id: member.id,
-              memberemail: member.email,
+
+              Account: this.glchanged.maincode,
+              user_Id: this.user_id,
+              memberemail: loan.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
-              Account_Code: "2111000",
-              accountype_description: "ASSETS",
-              Accountcode_description: "Members Deposits - Bosa",
+              Account_Code: this.glchanged.maincode,
+              accountype_description: this.glchanged.accountype_description,
+              Accountcode_description: this.glchanged.maincode_description,
               Debit: 5000,
               Credit: 0,
               Amount: 5000,
@@ -1539,7 +1579,7 @@ export default {
               console.log(error.response.data);
             });
         }
-        this.data1 = this.loanson;
+        this.data1 = this.obloansexport;
       }
       if (this.selected == "shares") {
         for (var k = 0; k < this.allmembers.length; k++) {

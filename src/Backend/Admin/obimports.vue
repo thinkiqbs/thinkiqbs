@@ -55,16 +55,18 @@
                   Select Loans type?
                   <select
                     class="form-select"
-                    aria-label="Default select example"
-                    v-model="selected"
-                    @change="savingtypechange"
+                    id="select-country"
+                    data-live-search="true"
+                    v-model="selectedloantype"
+                    @change="loantypechange"
+                    style="color=green"
                   >
                     <option
-                      v-for="option in depositsPledges"
-                      v-bind:value="option.saving_type"
+                      v-for="option in loantypes"
+                      v-bind:value="option.loan_type"
                       :key="option.id"
                     >
-                      {{ option.saving_type }}
+                      {{ option.loan_type }}
                     </option>
                   </select>
                 </div>
@@ -1033,6 +1035,7 @@ export default {
       data1: "",
       contribution: [],
       selectedsavingtype: "",
+      selectedloantype: "",
       allmembers: [],
       columns: [
         {
@@ -1439,8 +1442,19 @@ export default {
       this.contribution.organizationprofile = opt.organizationprofile;
     },
 
-    Prepdata() {
+    loantypechange() {
+      const opt = this.loantypes.find(
+        (o) => o.loan_type == this.selectedloantype
+      );
+      console.log(opt);
 
+      this.Loans.interest = opt.interest_rate;
+      this.Loans.Term = opt.maximum_loan_term;
+      this.Loans.gl_account = opt.gl_account;
+      this.Loans.income_account = opt.income_account;
+    },
+
+    Prepdata() {
       this.allmembers = this.memberson;
       if (this.selected == "deposits") {
         for (var i = 0; i < this.allmembers.length; i++) {
@@ -1492,7 +1506,7 @@ export default {
           var loan = this.allmembers[i];
           console.log(loan);
           getAPI
-            .post("/finance/api/v1/loansopentingbalance/", {
+            .post("/finance/api/v1/loansopeningbalance/", {
               email: member.email,
               User_id: member.id,
 

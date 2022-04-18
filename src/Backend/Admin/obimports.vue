@@ -17,14 +17,14 @@
             <h4 class="card-title">Opening Balances Import Section</h4>
 
             <div class="row">
-              <div class="col-sm-3 my-1">
+              <div class="col">
                 <!-- boostrap select  -->
+                Select Export type?
                 <select
                   class="form-select form-select-sm"
                   aria-label=".form-select-sm example"
-                    @change="pickdata"
-                    v-model="selected"
-
+                  @change="pickdata"
+                  v-model="selected"
                 >
                   <option selected>Open this select menu</option>
                   <option value="deposits">deposits</option>
@@ -32,7 +32,27 @@
                   <option value="expenses">expenses</option>
                 </select>
               </div>
-              <div class="col-sm-3 my-1">
+              <div class="col">
+              <div v-if="this.selected == 'deposits'">
+                Select Pledge type?
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  v-model="selected"
+                  @change="savingtypechange"
+                >
+                  <option
+                    v-for="option in depositsPledges"
+                    v-bind:value="option.saving_type"
+                    :key="option.id"
+                  >
+                    {{ option.saving_type }}
+                  </option>
+                </select>
+              </div>
+              </div>
+              
+              <div class="col">
                 <vue-excel-xlsx
                   class="btn btn-success"
                   :data="data1"
@@ -49,7 +69,7 @@
                 <input type="file" @change="onFileChange" />
               </div>
 
-              <div class="col-sm-3 my-1">
+              <div class="col">
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -58,7 +78,6 @@
                   Import
                 </button>
               </div>
-              
             </div>
 
             <!-- {{this.datatable.columns}} -->
@@ -985,13 +1004,14 @@ export default {
       importmembers: [],
       memberxp: [],
       data1: "",
+      contribution: [],
       columns: [
         {
           label: "Account",
           field: "Account",
         },
 
-         {
+        {
           label: "Accountcode_description",
           field: "Accountcode_description",
         },
@@ -1297,7 +1317,6 @@ export default {
     pickdata() {
       //add properties to data1
 
-
       const deposits = [
         {
           id: 1,
@@ -1308,7 +1327,7 @@ export default {
           Transaction_date: "2022-04-09",
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
-          accountype_description:"LIABILITIES",
+          accountype_description: "LIABILITIES",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 0,
           Credit: 1000,
@@ -1334,7 +1353,7 @@ export default {
           Transaction_date: "2022-04-09",
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
-          accountype_description:"ASSETS",
+          accountype_description: "ASSETS",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 5000,
           Credit: 0,
@@ -1359,7 +1378,7 @@ export default {
           Transaction_date: "2022-04-09",
           last_updated: "2022-04-09T09:50:47.002923Z",
           Account_Code: "2111000",
-          accountype_description:"Expenses",
+          accountype_description: "Expenses",
           Accountcode_description: "Members Deposits - Bosa",
           Debit: 1000,
           Credit: 0,
@@ -1378,45 +1397,45 @@ export default {
       // if selected is deposits then
       if (this.selected == "deposits") {
         this.allmembers = this.memberson;
-      // console.log(allmembers);
+        // console.log(allmembers);
 
-      for (var i = 0; i < this.allmembers.length; i++) {
-        var member = this.allmembers[i];
-        console.log(member);
-        getAPI
-          .post("/members/api/v1/DepositsOB/", {
-            email: member.email,
-            User_id: member.id,
+        for (var i = 0; i < this.allmembers.length; i++) {
+          var member = this.allmembers[i];
+          console.log(member);
+          getAPI
+            .post("/finance/api/v1/depositsopentingbalance/", {
+              email: member.email,
+              User_id: member.id,
 
-            id: 1,
+              id: 1,
 
-          Account: "2111000",
-          user_Id:  member.id,
-          memberemail:member.email,
-          Transaction_date: "2022-04-09",
-          last_updated: "",
-          Account_Code: "2111000",
-          accountype_description:"LIABILITIES",
-          Accountcode_description: "Members Deposits - Bosa",
-          Debit: 0,
-          Credit: 1000,
-          Amount: 1000,
-          Document: "Deposits",
-          Transaction_type: "CR",
-          Posting_Date: this.currentDate,
-          allocated: false,
-          company_id: this.companyid3,
-          notes: "Members Deposits Opening Balances",
-          updatedgl: false,
-          organizationprofile: this.organizationprofile,
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error.response.data);
-          });
-      }
+              Account: "2111000",
+              user_Id: member.id,
+              memberemail: member.email,
+              Transaction_date: "2022-04-09",
+              last_updated: "",
+              Account_Code: "2111000",
+              accountype_description: "LIABILITIES",
+              Accountcode_description: "Members Deposits - Bosa",
+              Debit: 0,
+              Credit: 1000,
+              Amount: 1000,
+              Document: "Deposits",
+              Transaction_type: "CR",
+              Posting_Date: this.currentDate,
+              allocated: false,
+              company_id: this.companyid3,
+              notes: "Members Deposits Opening Balances",
+              updatedgl: false,
+              organizationprofile: this.organizationprofile,
+            })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error.response.data);
+            });
+        }
         this.data1 = deposits;
       }
       if (this.selected == "loans") {
@@ -1426,8 +1445,27 @@ export default {
         this.data1 = expenses;
       }
       console.log(this.selected);
-        console.log(this.data1);
+      console.log(this.data1);
+    },
 
+    savingtypechange() {
+      const opt = this.depositsPledges.find(
+        (o) => o.saving_type === this.selected
+      );
+      console.log(opt);
+      this.contribution.saving_type = opt.saving_type;
+      this.contribution.minimum_contribution = opt.minimum_contribution;
+      this.contribution.interest_rate = opt.interest_rate;
+      this.contribution.maximum_saving_term = opt.maximum_saving_term;
+      this.contribution.accountcode = opt.accountcode;
+      this.contribution.Account_type = opt.Account_type;
+      this.contribution.accountype_description = opt.accountype_description;
+      this.contribution.maincode = opt.maincode;
+      this.contribution.maincode_description = opt.maincode_description;
+      this.contribution.accountname = opt.accountname;
+      this.contribution.company_id = opt.company_id;
+      this.contribution.security = opt.security;
+      this.contribution.organizationprofile = opt.organizationprofile;
     },
 
     exportexpense() {
@@ -1525,26 +1563,26 @@ export default {
         let acctype = this.accounttypes[i];
         getAPI
           .post("/finance/api/v1/openingbalance/", {
-          Account: acctype[0],
-          user_Id: acctype[3],
-          memberemail: acctype[4],
-          Transaction_date: acctype[5],
-          Account_Code: acctype[0],
-          maincode: acctype[0],
-          Accountcode_description: acctype[1],
-          accountype_description:acctype[2],
-          Debit: acctype[6],
-          Credit: acctype[7],
-          Amount: acctype[8],
-          Document: acctype[9],
-          Transaction_type: "CR",
-          Posting_Date: this.currentDate,
-          allocated: false,
-          company_id: this.companyid3,
-          notes: "Expenses Opening Balances",
-          updatedgl: false,
-          organizationprofile: this.organizationprofile,
-          keyvalue:acctype[4] + acctype[0],
+            Account: acctype[0],
+            user_Id: acctype[3],
+            memberemail: acctype[4],
+            Transaction_date: acctype[5],
+            Account_Code: acctype[0],
+            maincode: acctype[0],
+            Accountcode_description: acctype[1],
+            accountype_description: acctype[2],
+            Debit: acctype[6],
+            Credit: acctype[7],
+            Amount: acctype[8],
+            Document: acctype[9],
+            Transaction_type: "CR",
+            Posting_Date: this.currentDate,
+            allocated: false,
+            company_id: this.companyid3,
+            notes: "Expenses Opening Balances",
+            updatedgl: false,
+            organizationprofile: this.organizationprofile,
+            keyvalue: acctype[4] + acctype[0],
           })
           .then((response) => {
             this.accounttype1.push(response.data);

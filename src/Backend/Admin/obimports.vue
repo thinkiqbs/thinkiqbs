@@ -1558,35 +1558,35 @@ export default {
         this.data1 = this.obloansexport;
       }
       if (this.selected == "shares") {
+        this.allmembers = this.memberson;
+
         for (var k = 0; k < this.allmembers.length; k++) {
-          var share = this.allmembers[i];
-          console.log(share);
+          var sharesob = this.allmembers[k];
+          console.log("hello",sharesob);
           getAPI
-            .post("/finance/api/v1/expensesopentingbalance/", {
-              email: share.email,
-              User_id: share.id,
-
-              id: 1,
-
-              Account: "2111000",
-              user_Id: member.id,
-              memberemail: member.email,
+            .post("/finance/api/v1/loansopeningbalance/", {
+              Account: this.glchanged.maincode,
+              user_Id: this.user_id,
+              memberemail: loanob.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
-              Account_Code: "2111000",
-              accountype_description: "Expenses",
-              Accountcode_description: "Members Deposits - Bosa",
-              Debit: 1000,
+              Account_Code: this.glchanged.maincode,
+              accountype_description: this.glchanged.accountype_description,
+              Accountcode_description: this.glchanged.maincode_description,
+              maincode: this.glchanged.maincode,
+              Debit: 5000,
               Credit: 0,
-              Amount: 1000,
-              Document: "expense",
-              Transaction_type: "DR",
+              Amount: 5000,
+              Document: "loans",
+              Transaction_type: "CR",
               Posting_Date: this.currentDate,
               allocated: false,
               company_id: this.companyid3,
-              notes: "Expenses Opening Balances",
+              notes: "Members Loans Opening Balances",
               updatedgl: false,
               organizationprofile: this.organizationprofile,
+              keyvalue:
+                this.companyid3 + this.contribution.accountcode + loanob.id,
             })
             .then((response) => {
               console.log(response);
@@ -1595,7 +1595,7 @@ export default {
               console.log(error.response.data);
             });
         }
-        this.data1 = this.expenseson;
+        this.data1 = this.obloansexport;
       }
     },
 

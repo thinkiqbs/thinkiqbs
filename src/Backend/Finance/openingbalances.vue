@@ -24,38 +24,67 @@
                     Opening Balance- <span>Org:{{ companyid3 }}</span>
                   </h2>
 
+                  <div class="row">
+                    <div class="col">
+                      Select Loans type?
+                      <select
+                        class="form-select"
+                        id="select-country"
+                        data-live-search="true"
+                        v-model="selectedEquityAccount"
+                        @change="gltypechange"
+                        style="color=green"
+                      >
+                        <option
+                          v-for="option in allGls1Capital"
+                          v-bind:value="option.maincode"
+                          :key="option.id"
+                        >
+                          {{ option.accountname }}
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="col">
+                      <button
+                        type="button"
+                        style="float: right"
+                        class="btn btn-primary btn-sm"
+                        data-bs-toggle="modal"
+                        data-bs-target="#addSharesDeposits"
+                      >
+                        Add Opening Balance
+                      </button>
+                    </div>
+                    <div class="col">
+                      <button
+                        type="button"
+                        style="float: right"
+                        class="btn btn-primary btn-sm"
+                        @click="importexpences"
+                      >
+                        Go to Import
+                      </button>
+                    </div>
+                    <div class="col" style="float: right">
+                      <Refresh></Refresh>
+                    </div>
+                    <div class="col" style="float: right">
+                      <AccountingMenu></AccountingMenu>
+                    </div>
+                  </div>
+
                   <!-- button to toggle modal addSharesDeposits -->
-                  <button
-                    type="button"
-                    style="float: right"
-                    class="btn btn-primary btn-sm"
-                    @click="importexpences"
-                  >
-                    Import
-                  </button>
 
                   &nbsp;
 
-                  <button
-                    type="button"
-                    style="float: right"
-                    class="btn btn-primary btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addSharesDeposits"
-                  >
-                    Add Opening Balance
-                  </button>
                   <div
                     class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex"
                     style="float: right"
                   >
-                    <div>
-                      <Refresh></Refresh>
-                    </div>
+                    <div></div>
                   </div>
                 </div>
-
-                <AccountingMenu></AccountingMenu>
 
                 <div class="card-body">
                   <!--  -->
@@ -77,6 +106,7 @@
                         <th class="text-left">Amount</th>
                         <th class="text-left">Notes</th>
                         <th class="text-left">Status</th>
+                        <th class="text-left">Actions</th>
 
                         <!---->
 
@@ -86,7 +116,7 @@
                     <tbody>
                       <tr v-for="(item, index) in allob" :key="item.id">
                         <th scope="row">{{ index + 1 }}</th>
-                        <td></td>
+                        <td>{{item.Transaction_date}}</td>
                         <td>{{ item.maincode }}</td>
                         <td>{{ item.accountype_description }}</td>
                         <td>{{ item.memberemail }}</td>
@@ -96,12 +126,13 @@
                         <td>{{ item.Amount }}</td>
                         <td>{{ item.notes }}</td>
 
+                        
                         <td>
                           <button
                             class="btn btn-success"
                             @click="updategl(item)"
                           >
-                            updategl
+                            Edit
                           </button>
                         </td>
                       </tr>
@@ -325,6 +356,7 @@ export default {
       picked: "",
       selectedgl: "",
       glchanged: {},
+      selectedEquityAccount: "",
 
       loan_id: "",
       maincodeid: [],
@@ -969,7 +1001,8 @@ export default {
 
     allob: function () {
       return this.$store.getters.allOb.filter(
-        (item) => item.company_id == this.companyid3
+        (item) =>
+          item.company_id == this.companyid3
       );
     },
 
@@ -1081,6 +1114,12 @@ export default {
       );
     },
     allGls1: function () {
+      return this.$store.getters.allGl.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
+    allGls1Capital: function () {
       return this.$store.getters.allGl.filter(
         (item) => item.company_id == this.companyid3
       );

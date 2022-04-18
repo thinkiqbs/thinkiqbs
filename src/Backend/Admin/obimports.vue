@@ -29,29 +29,56 @@
                   <option selected>Open this select menu</option>
                   <option value="deposits">deposits</option>
                   <option value="loans">loans</option>
+                  <option value="shares">Member Shares</option>
                   <option value="expenses">expenses</option>
                 </select>
               </div>
               <div class="col">
-              <div v-if="this.selected == 'deposits'">
-                Select Pledge type?
-                <select
-                  class="form-select"
-                  aria-label="Default select example"
-                  v-model="selected"
-                  @change="savingtypechange"
-                >
-                  <option
-                    v-for="option in depositsPledges"
-                    v-bind:value="option.saving_type"
-                    :key="option.id"
+                <div v-if="this.selected == 'deposits'">
+                  Select Pledge type?
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    v-model="selectedsavingtype"
+                    @change="savingtypechange"
                   >
-                    {{ option.saving_type }}
-                  </option>
-                </select>
+                    <option
+                      v-for="option in depositsPledges"
+                      v-bind:value="option.saving_type"
+                      :key="option.id"
+                    >
+                      {{ option.saving_type }}
+                    </option>
+                  </select>
+                </div>
+                <div v-if="this.selected == 'loans'">
+                  Select Loans type?
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    v-model="selected"
+                    @change="savingtypechange"
+                  >
+                    <option
+                      v-for="option in depositsPledges"
+                      v-bind:value="option.saving_type"
+                      :key="option.id"
+                    >
+                      {{ option.saving_type }}
+                    </option>
+                  </select>
+                </div>
               </div>
+              <div class="col">
+                <button
+                  class="btn btn-primary"
+                  @click="importdata"
+                  v-if="this.selected != ''"
+                >
+                  Prepare Data
+                </button>
               </div>
-              
+
               <div class="col">
                 <vue-excel-xlsx
                   class="btn btn-success"
@@ -1005,6 +1032,7 @@ export default {
       memberxp: [],
       data1: "",
       contribution: [],
+      selectedsavingtype:"",
       columns: [
         {
           label: "Account",
@@ -1399,43 +1427,6 @@ export default {
         this.allmembers = this.memberson;
         // console.log(allmembers);
 
-        for (var i = 0; i < this.allmembers.length; i++) {
-          var member = this.allmembers[i];
-          console.log(member);
-          getAPI
-            .post("/finance/api/v1/depositsopentingbalance/", {
-              email: member.email,
-              User_id: member.id,
-
-              id: 1,
-
-              Account: "2111000",
-              user_Id: member.id,
-              memberemail: member.email,
-              Transaction_date: "2022-04-09",
-              last_updated: "",
-              Account_Code: "2111000",
-              accountype_description: "LIABILITIES",
-              Accountcode_description: "Members Deposits - Bosa",
-              Debit: 0,
-              Credit: 1000,
-              Amount: 1000,
-              Document: "Deposits",
-              Transaction_type: "CR",
-              Posting_Date: this.currentDate,
-              allocated: false,
-              company_id: this.companyid3,
-              notes: "Members Deposits Opening Balances",
-              updatedgl: false,
-              organizationprofile: this.organizationprofile,
-            })
-            .then((response) => {
-              console.log(response);
-            })
-            .catch((error) => {
-              console.log(error.response.data);
-            });
-        }
         this.data1 = deposits;
       }
       if (this.selected == "loans") {
@@ -1466,6 +1457,132 @@ export default {
       this.contribution.company_id = opt.company_id;
       this.contribution.security = opt.security;
       this.contribution.organizationprofile = opt.organizationprofile;
+
+      
+    },
+
+    Prepdata(){
+      if(this.selected == "deposits"){
+        for (var i = 0; i < this.allmembers.length; i++) {
+        var member = this.allmembers[i];
+        console.log(member);
+        getAPI
+          .post("/finance/api/v1/depositsopentingbalance/", {
+            email: member.email,
+            User_id: member.id,
+
+            id: 1,
+
+            Account: "2111000",
+            user_Id: member.id,
+            memberemail: member.email,
+            Transaction_date: "2022-04-09",
+            last_updated: "",
+            Account_Code: "2111000",
+            accountype_description: "LIABILITIES",
+            Accountcode_description: "Members Deposits - Bosa",
+            Debit: 0,
+            Credit: 1000,
+            Amount: 1000,
+            Document: "Deposits",
+            Transaction_type: "CR",
+            Posting_Date: this.currentDate,
+            allocated: false,
+            company_id: this.companyid3,
+            notes: "Members Deposits Opening Balances",
+            updatedgl: false,
+            organizationprofile: this.organizationprofile,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+        this.data1 = this.depositson;
+      }
+      if(this.selected == "loans"){
+        for (var j = 0; j < this.allmembers.length; j++) {
+        var loan = this.allmembers[i];
+        console.log(loan);
+        getAPI
+          .post("/finance/api/v1/loansopentingbalance/", {
+            email: member.email,
+            User_id: member.id,
+
+            id: 1,
+
+            Account: "2111000",
+            user_Id: member.id,
+            memberemail: member.email,
+            Transaction_date: "2022-04-09",
+            last_updated: "",
+            Account_Code: "2111000",
+            accountype_description: "ASSETS",
+            Accountcode_description: "Members Deposits - Bosa",
+            Debit: 5000,
+            Credit: 0,
+            Amount: 5000,
+            Document: "loans",
+            Transaction_type: "CR",
+            Posting_Date: this.currentDate,
+            allocated: false,
+            company_id: this.companyid3,
+            notes: "Members Loans Opening Balances",
+            updatedgl: false,
+            organizationprofile: this.organizationprofile,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+        this.data1 = this.loanson;
+      }
+      if(this.selected == "shares"){
+        for (var k = 0; k < this.allmembers.length; k++) {
+        var share = this.allmembers[i];
+        console.log(share);
+        getAPI
+          .post("/finance/api/v1/expensesopentingbalance/", {
+            email: share.email,
+            User_id: share.id,
+
+            id: 1,
+
+            Account: "2111000",
+            user_Id: member.id,
+            memberemail: member.email,
+            Transaction_date: "2022-04-09",
+            last_updated: "",
+            Account_Code: "2111000",
+            accountype_description: "Expenses",
+            Accountcode_description: "Members Deposits - Bosa",
+            Debit: 1000,
+            Credit: 0,
+            Amount: 1000,
+            Document: "expense",
+            Transaction_type: "DR",
+            Posting_Date: this.currentDate,
+            allocated: false,
+            company_id: this.companyid3,
+            notes: "Expenses Opening Balances",
+            updatedgl: false,
+            organizationprofile: this.organizationprofile,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+        this.data1 = this.expenseson;
+      }
+      
     },
 
     exportexpense() {

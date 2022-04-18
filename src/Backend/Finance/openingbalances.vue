@@ -66,6 +66,16 @@
                         Go to Import
                       </button>
                     </div>
+                    <div class="col">
+                      <button
+                        type="button"
+                        style="float: right"
+                        class="btn btn-primary btn-sm"
+                        @click="post2GL"
+                      >
+                        Post to GL
+                      </button>
+                    </div>
                     <div class="col" style="float: right">
                       <Refresh></Refresh>
                     </div>
@@ -116,7 +126,7 @@
                     <tbody>
                       <tr v-for="(item, index) in allob" :key="item.id">
                         <th scope="row">{{ index + 1 }}</th>
-                        <td>{{item.Transaction_date}}</td>
+                        <td>{{ item.Transaction_date }}</td>
                         <td>{{ item.maincode }}</td>
                         <td>{{ item.accountype_description }}</td>
                         <td>{{ item.memberemail }}</td>
@@ -126,7 +136,6 @@
                         <td>{{ item.Amount }}</td>
                         <td>{{ item.notes }}</td>
 
-                        
                         <td>
                           <button
                             class="btn btn-success"
@@ -484,6 +493,77 @@ export default {
       "fetchShares",
       "fetchOb",
     ]),
+
+    post2GL() {
+      for (var i = 0; i < this.allob.length; i++) {
+        var allOB = this.allob[i];
+        console.log(allOB);
+        getAPI
+          .post("/finance/api/v1/documents/", {
+            email: allOB.email,
+            User_id: allOB.id,
+
+
+            DocumentID: "PYMTRCT3536635DRr",
+            SourcedocID: "NA",
+            accountype_description: "ASSETS",
+            maincode: "1212000",
+            maincode_description: "NON-EARNING ASSETS",
+            Account: "1212000",
+            Reporting: "Balance Sheet",
+            user_Id: "1",
+            memberemail: "karash@gmail.com",
+            Transaction_date: "2022-04-15",
+            last_updated: "2022-04-15T08:15:27.010389Z",
+            Account_Code: "1212000",
+            Accountcode_description: "Bank Current Accounts",
+            Debit: 20000,
+            Credit: 0,
+            Amount: 20000,
+            Document: "bank",
+            Account_type: "1000000",
+            created: "2022-04-15T08:15:27.010435Z",
+            Transaction_type: "DR",
+            Posting_Date: "2022-04-15",
+            allocated: false,
+            company_id: "7277524274",
+            notes: "this is a receipt for Loans and Deposits",
+            updatedgl: false,
+            paymentnumber: null,
+            organizationprofile: 1,
+
+
+
+            Account: allOB.Account,
+            user_Id: allOB.id,
+            memberemail: allOB.email,
+            Transaction_date: "2021-12-31",
+
+            Account_Code:allOB.Account_Code,
+            accountype_description: allOB.accountype_description,
+            Accountcode_description: allOB.Accountcode_description,
+            maincode: allOB.maincode,
+            Debit: allOB.Debit,
+            Credit: allOB,
+            Amount: allOB,
+            Document:allOB,
+            Transaction_type: allOB,
+            Posting_Date: allOB,
+            allocated: allOB,
+            company_id: allOB.company_id,
+            notes: allOB.notes,
+            updatedgl: allOB.updatedgl,
+            organizationprofile: allOB.organizationprofile,
+            
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
+    },
 
     importexpences() {
       this.$router.push("/obimports");
@@ -1001,8 +1081,7 @@ export default {
 
     allob: function () {
       return this.$store.getters.allOb.filter(
-        (item) =>
-          item.company_id == this.companyid3
+        (item) => item.company_id == this.companyid3
       );
     },
 

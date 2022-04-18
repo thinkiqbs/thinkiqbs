@@ -1575,7 +1575,7 @@ export default {
           getAPI
             .post("/finance/api/v1/loansopeningbalance/", {
               Account: this.glchanged.maincode,
-              user_Id: this.user_id,
+              user_Id: loanob.id,
               memberemail: loanob.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
@@ -1615,7 +1615,7 @@ export default {
           getAPI
             .post("/finance/api/v1/sharesopeningbalance/", {
               Account: this.glchanged.maincode,
-              user_Id: this.user_id,
+              user_Id: sharesob.id,
               memberemail: sharesob.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
@@ -1626,16 +1626,16 @@ export default {
               Debit: 0,
               Credit: 5000,
               Amount: 5000,
-              Document: "loans",
+              Document: "shares",
               Transaction_type: "CR",
               Posting_Date: this.currentDate,
               allocated: false,
               company_id: this.companyid3,
-              notes: "Members Loans Opening Balances",
+              notes: "Members Shares Opening Balances",
               updatedgl: false,
               organizationprofile: this.organizationprofile,
               keyvalue:
-                this.companyid3 + this.contribution.accountcode + sharesob.id,
+                this.companyid3 + this.glchanged.maincode + sharesob.id,
             })
             .then((response) => {
               console.log(response);
@@ -1776,7 +1776,7 @@ export default {
             notes: "Expenses Opening Balances",
             updatedgl: false,
             organizationprofile: this.organizationprofile,
-            keyvalue: acctype[4] + acctype[0],
+            keyvalue: this.companyid3 + acctype[0] + acctype[3],
           })
           .then((response) => {
             this.accounttype1.push(response.data);

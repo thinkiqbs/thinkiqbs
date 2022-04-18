@@ -70,6 +70,25 @@
                     </option>
                   </select>
                 </div>
+                <div v-if="this.selected == 'shares'">
+                  Select Loans type?
+                  <select
+                    class="form-select"
+                    id="select-country"
+                    data-live-search="true"
+                    v-model="selectedEquityAccount"
+                    @change="gltypechange"
+                    style="color=green"
+                  >
+                    <option
+                      v-for="option in allGls1Capital"
+                      v-bind:value="option.maincode"
+                      :key="option.id"
+                    >
+                      {{ option.maincode_description }}
+                    </option>
+                  </select>
+                </div>
               </div>
               <div class="col">
                 <button
@@ -1040,6 +1059,7 @@ export default {
       contribution: [],
       selectedsavingtype: "",
       selectedloantype: "",
+      selectedEquityAccount: "",
       allmembers: [],
       loanob: [],
       columns: [
@@ -1364,6 +1384,12 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
+
+    allGls1Capital: function () {
+      return this.$store.getters.allGl.filter(
+        (item) => item.company_id == this.companyid3 && item.account_type == 3000000
+      );
+    },
   },
 
   methods: {
@@ -1471,6 +1497,20 @@ export default {
       this.glchanged.accountname = optgl.accountname;
     },
 
+    gltypechange(){
+
+      const opt = this.allGls1.find((o) => o.maincode == this.selectedEquityAccount);
+      console.log(opt);
+
+      this.glchanged.account_type = opt.account_type;
+      this.glchanged.accountype_description = opt.accounttype_description;
+      this.glchanged.maincode = opt.maincode;
+      this.glchanged.maincode_description = opt.maincode_description;
+      this.glchanged.parent_account = opt.parent_account;
+      this.glchanged.accountname = opt.accountname;
+
+    },
+
     Prepdata() {
       this.allmembers = this.memberson;
       if (this.selected == "deposits") {
@@ -1564,7 +1604,7 @@ export default {
           var sharesob = this.allmembers[k];
           console.log("hello",sharesob);
           getAPI
-            .post("/finance/api/v1/loansopeningbalance/", {
+            .post("/finance/api/v1/sharesopeningbalance/", {
               Account: this.glchanged.maincode,
               user_Id: this.user_id,
               memberemail: loanob.email,

@@ -85,7 +85,7 @@
                       v-bind:value="option.maincode"
                       :key="option.id"
                     >
-                      {{ option.maincode_description }}
+                      {{ option.accountname }}
                     </option>
                   </select>
                 </div>
@@ -1263,6 +1263,7 @@ export default {
     this.fetchLoantype();
     this.fetchObloans();
     this.fetchGl();
+    this.fetchObshares();
   },
 
   mounted() {
@@ -1286,6 +1287,7 @@ export default {
       "allLoantype",
       "allObloans",
       "allGl",
+      "allObshares",
     ]),
 
     token() {
@@ -1353,6 +1355,12 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
+
+      oblsharesexport() {
+      return this.$store.getters.allObshares.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
     pledgeson() {
       return this.$store.getters.allDeposits.filter(
         (item) => item.company_id == this.companyid3
@@ -1408,6 +1416,7 @@ export default {
       "fetchLoantype",
       "fetchObloans",
       "fetchGl",
+      "fetchObshares",
     ]),
 
     // When passing `data` for each cell.
@@ -1607,15 +1616,15 @@ export default {
             .post("/finance/api/v1/sharesopeningbalance/", {
               Account: this.glchanged.maincode,
               user_Id: this.user_id,
-              memberemail: loanob.email,
+              memberemail: sharesob.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
               Account_Code: this.glchanged.maincode,
               accountype_description: this.glchanged.accountype_description,
               Accountcode_description: this.glchanged.maincode_description,
               maincode: this.glchanged.maincode,
-              Debit: 5000,
-              Credit: 0,
+              Debit: 0,
+              Credit: 5000,
               Amount: 5000,
               Document: "loans",
               Transaction_type: "CR",
@@ -1626,7 +1635,7 @@ export default {
               updatedgl: false,
               organizationprofile: this.organizationprofile,
               keyvalue:
-                this.companyid3 + this.contribution.accountcode + loanob.id,
+                this.companyid3 + this.contribution.accountcode + sharesob.id,
             })
             .then((response) => {
               console.log(response);
@@ -1635,7 +1644,7 @@ export default {
               console.log(error.response.data);
             });
         }
-        this.data1 = this.obloansexport;
+        this.data1 = this.oblsharesexport;
       }
     },
 
@@ -1648,7 +1657,7 @@ export default {
         this.data1 = this.obloansexport;
       }
       if (this.selected == "shares") {
-        this.data1 = this.expenseson;
+        this.data1 = this.oblsharesexport;
       }
     },
       

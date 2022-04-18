@@ -1039,6 +1039,7 @@ export default {
       selectedsavingtype: "",
       selectedloantype: "",
       allmembers: [],
+      loanob: [],
       columns: [
         {
           label: "Account",
@@ -1240,7 +1241,6 @@ export default {
     this.fetchLoantype();
     this.fetchObloans();
     this.fetchGl();
-
   },
 
   mounted() {
@@ -1264,7 +1264,6 @@ export default {
       "allLoantype",
       "allObloans",
       "allGl",
-
     ]),
 
     token() {
@@ -1327,7 +1326,7 @@ export default {
       );
     },
 
-     obloansexport() {
+    obloansexport() {
       return this.$store.getters.allObdeposits.filter(
         (item) => item.company_id == this.companyid3
       );
@@ -1482,7 +1481,9 @@ export default {
       this.Loantypes.gl_account = opt.gl_account;
       this.Loantypes.income_account = opt.income_account;
 
-      const optgl = this.allGls1.find((o) => o.maincode == this.Loantypes.gl_account);
+      const optgl = this.allGls1.find(
+        (o) => o.maincode == this.Loantypes.gl_account
+      );
       console.log("gl", optgl);
 
       console.log(optgl);
@@ -1540,21 +1541,17 @@ export default {
         this.data1 = this.obdepositsexport;
       }
 
-      
-
       if (this.selected == "loans") {
+        this.allmembers = this.memberson;
+
         for (var j = 0; j < this.allmembers.length; j++) {
-          var loan = this.allmembers[i];
-          console.log(loan);
+          var loanob = this.allmembers[j];
+          console.log("hello", this.allmembers);
           getAPI
             .post("/finance/api/v1/loansopeningbalance/", {
-             
-
-
-
               Account: this.glchanged.maincode,
-              user_Id: this.user_id,
-              memberemail: loan.email,
+              // user_Id: loanob.id,
+              memberemail: loanob.email,
               Transaction_date: "2022-04-09",
               last_updated: "",
               Account_Code: this.glchanged.maincode,
@@ -1571,6 +1568,8 @@ export default {
               notes: "Members Loans Opening Balances",
               updatedgl: false,
               organizationprofile: this.organizationprofile,
+              keyvalue:
+                this.companyid3 + this.contribution.accountcode + member.id,
             })
             .then((response) => {
               console.log(response);

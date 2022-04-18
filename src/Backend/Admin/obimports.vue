@@ -1033,6 +1033,7 @@ export default {
       data1: "",
       contribution: [],
       selectedsavingtype: "",
+      allmembers: [],
       columns: [
         {
           label: "Account",
@@ -1230,6 +1231,7 @@ export default {
     this.fetchSavingtype();
     this.loadimport();
     this.updatemeberxp();
+    this.fetchObdeposits();
   },
 
   mounted() {
@@ -1248,7 +1250,8 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived",
-      "allSavinttype"
+      "allSavinttype",
+      "allObdeposits",
     ]),
 
     token() {
@@ -1264,7 +1267,7 @@ export default {
       return this.$store.state.firstname;
     },
 
-     depositsPledges() {
+    depositsPledges() {
       return this.$store.getters.allSavinttype.filter(
         (item) => item.company_id == this.companyid3
       );
@@ -1293,9 +1296,6 @@ export default {
       )[0].company_id;
     },
 
-   
- 
-
     organization() {
       return this.$store.getters.allOrg.filter(
         (item) => item.company_id == this.companyid3
@@ -1304,6 +1304,12 @@ export default {
 
     memberson() {
       return this.$store.getters.allMembers.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
+    obdepositsexport() {
+      return this.$store.getters.allObdeposits.filter(
         (item) => item.company_id == this.companyid3
       );
     },
@@ -1342,14 +1348,13 @@ export default {
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
       "fetchSavingtype",
+      "fetchObdeposits",
     ]),
 
     // When passing `data` for each cell.
 
     pickdata() {
       //add properties to data1
-
-
 
       const loans = [
         {
@@ -1403,7 +1408,7 @@ export default {
       ];
 
       // if selected is deposits then
-      
+
       if (this.selected == "loans") {
         this.data1 = loans;
       }
@@ -1435,6 +1440,8 @@ export default {
     },
 
     Prepdata() {
+
+      this.allmembers = this.memberson;
       if (this.selected == "deposits") {
         for (var i = 0; i < this.allmembers.length; i++) {
           var member = this.allmembers[i];
@@ -1466,7 +1473,8 @@ export default {
               notes: "Members Deposits Opening Balances",
               updatedgl: false,
               organizationprofile: this.contribution.organizationprofile,
-              keyvalue:this.companyid3 + this.contribution.accountcode + member.id,
+              keyvalue:
+                this.companyid3 + this.contribution.accountcode + member.id,
             })
             .then((response) => {
               console.log(response);
@@ -1475,13 +1483,10 @@ export default {
               console.log(error.response.data);
             });
         }
-       
       }
-    
-        
 
-        this.data1 = deposits;
-      
+      this.data1 = this.obdepositsexport;
+
       if (this.selected == "loans") {
         for (var j = 0; j < this.allmembers.length; j++) {
           var loan = this.allmembers[i];

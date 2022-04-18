@@ -500,61 +500,38 @@ export default {
         console.log(allOB);
         getAPI
           .post("/finance/api/v1/documents/", {
-            email: allOB.email,
-            User_id: allOB.id,
 
 
-            DocumentID: "PYMTRCT3536635DRr",
-            SourcedocID: "NA",
-            accountype_description: "ASSETS",
-            maincode: "1212000",
-            maincode_description: "NON-EARNING ASSETS",
-            Account: "1212000",
+            DocumentID: allOB.keyvalue,
+            SourcedocID: "OB" + allOB.keyvalue,
+
             Reporting: "Balance Sheet",
-            user_Id: "1",
-            memberemail: "karash@gmail.com",
-            Transaction_date: "2022-04-15",
-            last_updated: "2022-04-15T08:15:27.010389Z",
-            Account_Code: "1212000",
-            Accountcode_description: "Bank Current Accounts",
-            Debit: 20000,
-            Credit: 0,
-            Amount: 20000,
-            Document: "bank",
+
             Account_type: "1000000",
             created: "2022-04-15T08:15:27.010435Z",
-            Transaction_type: "DR",
-            Posting_Date: "2022-04-15",
-            allocated: false,
-            company_id: "7277524274",
-            notes: "this is a receipt for Loans and Deposits",
-            updatedgl: false,
+
             paymentnumber: null,
-            organizationprofile: 1,
-
-
 
             Account: allOB.Account,
             user_Id: allOB.id,
-            memberemail: allOB.email,
+            memberemail: allOB.memberemail,
             Transaction_date: "2021-12-31",
-
-            Account_Code:allOB.Account_Code,
+            maincode_description:allOB.maincode_description,
+            Account_Code: allOB.Account_Code,
             accountype_description: allOB.accountype_description,
             Accountcode_description: allOB.Accountcode_description,
             maincode: allOB.maincode,
             Debit: allOB.Debit,
-            Credit: allOB,
-            Amount: allOB,
-            Document:allOB,
-            Transaction_type: allOB,
-            Posting_Date: allOB,
-            allocated: allOB,
+            Credit: allOB.Credit,
+            Amount: allOB.Amount,
+            Document: allOB.Document,
+            Transaction_type: allOB.Transaction_type,
+            Posting_Date: allOB.Posting_Date,
+            allocated: allOB.allocated,
             company_id: allOB.company_id,
             notes: allOB.notes,
             updatedgl: allOB.updatedgl,
             organizationprofile: allOB.organizationprofile,
-            
           })
           .then((response) => {
             console.log(response);

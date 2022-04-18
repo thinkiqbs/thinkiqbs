@@ -72,7 +72,7 @@
               <div class="col">
                 <button
                   class="btn btn-primary"
-                  @click="importdata"
+                  @click="Prepdata"
                   v-if="this.selected != ''"
                 >
                   Prepare Data
@@ -1032,7 +1032,7 @@ export default {
       memberxp: [],
       data1: "",
       contribution: [],
-      selectedsavingtype:"",
+      selectedsavingtype: "",
       columns: [
         {
           label: "Account",
@@ -1248,6 +1248,7 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived",
+      "allSavinttype"
     ]),
 
     token() {
@@ -1261,6 +1262,12 @@ export default {
     },
     firstname() {
       return this.$store.state.firstname;
+    },
+
+     depositsPledges() {
+      return this.$store.getters.allSavinttype.filter(
+        (item) => item.company_id == this.companyid3
+      );
     },
 
     //create current date function
@@ -1286,11 +1293,8 @@ export default {
       )[0].company_id;
     },
 
-    depositsPledges() {
-      return this.$store.getters.allSavinttype.filter(
-        (item) => item.company_id == this.companyid3
-      );
-    },
+   
+ 
 
     organization() {
       return this.$store.getters.allOrg.filter(
@@ -1345,31 +1349,7 @@ export default {
     pickdata() {
       //add properties to data1
 
-      const deposits = [
-        {
-          id: 1,
 
-          Account: "2111000",
-          user_Id: "1",
-          memberemail: "karash@gmail.com",
-          Transaction_date: "2022-04-09",
-          last_updated: "2022-04-09T09:50:47.002923Z",
-          Account_Code: "2111000",
-          accountype_description: "LIABILITIES",
-          Accountcode_description: "Members Deposits - Bosa",
-          Debit: 0,
-          Credit: 1000,
-          Amount: 1000,
-          Document: "Deposits",
-          Transaction_type: "CR",
-          Posting_Date: this.currentDate,
-          allocated: false,
-          company_id: this.companyid3,
-          notes: "Members Deposits Opening Balances",
-          updatedgl: false,
-          organizationprofile: this.organizationprofile,
-        },
-      ];
 
       const loans = [
         {
@@ -1423,12 +1403,7 @@ export default {
       ];
 
       // if selected is deposits then
-      if (this.selected == "deposits") {
-        this.allmembers = this.memberson;
-        // console.log(allmembers);
-
-        this.data1 = deposits;
-      }
+      
       if (this.selected == "loans") {
         this.data1 = loans;
       }
@@ -1441,7 +1416,7 @@ export default {
 
     savingtypechange() {
       const opt = this.depositsPledges.find(
-        (o) => o.saving_type === this.selected
+        (o) => o.saving_type === this.selectedsavingtype
       );
       console.log(opt);
       this.contribution.saving_type = opt.saving_type;
@@ -1457,132 +1432,136 @@ export default {
       this.contribution.company_id = opt.company_id;
       this.contribution.security = opt.security;
       this.contribution.organizationprofile = opt.organizationprofile;
-
-      
     },
 
-    Prepdata(){
-      if(this.selected == "deposits"){
+    Prepdata() {
+      if (this.selected == "deposits") {
         for (var i = 0; i < this.allmembers.length; i++) {
-        var member = this.allmembers[i];
-        console.log(member);
-        getAPI
-          .post("/finance/api/v1/depositsopentingbalance/", {
-            email: member.email,
-            User_id: member.id,
+          var member = this.allmembers[i];
+          console.log(member);
+          getAPI
+            .post("/finance/api/v1/depositsopentingbalance/", {
+              email: member.email,
+              User_id: member.id,
 
-            id: 1,
+              id: 1,
 
-            Account: "2111000",
-            user_Id: member.id,
-            memberemail: member.email,
-            Transaction_date: "2022-04-09",
-            last_updated: "",
-            Account_Code: "2111000",
-            accountype_description: "LIABILITIES",
-            Accountcode_description: "Members Deposits - Bosa",
-            Debit: 0,
-            Credit: 1000,
-            Amount: 1000,
-            Document: "Deposits",
-            Transaction_type: "CR",
-            Posting_Date: this.currentDate,
-            allocated: false,
-            company_id: this.companyid3,
-            notes: "Members Deposits Opening Balances",
-            updatedgl: false,
-            organizationprofile: this.organizationprofile,
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error.response.data);
-          });
+              Account: "2111000",
+              user_Id: member.id,
+              memberemail: member.email,
+              Transaction_date: "2022-04-09",
+              last_updated: "",
+              Account_Code: this.contribution.accountcode,
+              accountype_description: "LIABILITIES",
+              Accountcode_description: this.contribution.accountname,
+              maincode: this.contribution.Account_type,
+              Debit: 0,
+              Credit: 1000,
+              Amount: 1000,
+              Document: "Deposits",
+              Transaction_type: "CR",
+              Posting_Date: this.currentDate,
+              allocated: false,
+              company_id: this.companyid3,
+              notes: "Members Deposits Opening Balances",
+              updatedgl: false,
+              organizationprofile: this.contribution.organizationprofile,
+              keyvalue:this.companyid3 + this.contribution.accountcode + member.id,
+            })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error.response.data);
+            });
+        }
+       
       }
-        this.data1 = this.depositson;
-      }
-      if(this.selected == "loans"){
+    
+        
+
+        this.data1 = deposits;
+      
+      if (this.selected == "loans") {
         for (var j = 0; j < this.allmembers.length; j++) {
-        var loan = this.allmembers[i];
-        console.log(loan);
-        getAPI
-          .post("/finance/api/v1/loansopentingbalance/", {
-            email: member.email,
-            User_id: member.id,
+          var loan = this.allmembers[i];
+          console.log(loan);
+          getAPI
+            .post("/finance/api/v1/loansopentingbalance/", {
+              email: member.email,
+              User_id: member.id,
 
-            id: 1,
+              id: 1,
 
-            Account: "2111000",
-            user_Id: member.id,
-            memberemail: member.email,
-            Transaction_date: "2022-04-09",
-            last_updated: "",
-            Account_Code: "2111000",
-            accountype_description: "ASSETS",
-            Accountcode_description: "Members Deposits - Bosa",
-            Debit: 5000,
-            Credit: 0,
-            Amount: 5000,
-            Document: "loans",
-            Transaction_type: "CR",
-            Posting_Date: this.currentDate,
-            allocated: false,
-            company_id: this.companyid3,
-            notes: "Members Loans Opening Balances",
-            updatedgl: false,
-            organizationprofile: this.organizationprofile,
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error.response.data);
-          });
-      }
+              Account: "2111000",
+              user_Id: member.id,
+              memberemail: member.email,
+              Transaction_date: "2022-04-09",
+              last_updated: "",
+              Account_Code: "2111000",
+              accountype_description: "ASSETS",
+              Accountcode_description: "Members Deposits - Bosa",
+              Debit: 5000,
+              Credit: 0,
+              Amount: 5000,
+              Document: "loans",
+              Transaction_type: "CR",
+              Posting_Date: this.currentDate,
+              allocated: false,
+              company_id: this.companyid3,
+              notes: "Members Loans Opening Balances",
+              updatedgl: false,
+              organizationprofile: this.organizationprofile,
+            })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error.response.data);
+            });
+        }
         this.data1 = this.loanson;
       }
-      if(this.selected == "shares"){
+      if (this.selected == "shares") {
         for (var k = 0; k < this.allmembers.length; k++) {
-        var share = this.allmembers[i];
-        console.log(share);
-        getAPI
-          .post("/finance/api/v1/expensesopentingbalance/", {
-            email: share.email,
-            User_id: share.id,
+          var share = this.allmembers[i];
+          console.log(share);
+          getAPI
+            .post("/finance/api/v1/expensesopentingbalance/", {
+              email: share.email,
+              User_id: share.id,
 
-            id: 1,
+              id: 1,
 
-            Account: "2111000",
-            user_Id: member.id,
-            memberemail: member.email,
-            Transaction_date: "2022-04-09",
-            last_updated: "",
-            Account_Code: "2111000",
-            accountype_description: "Expenses",
-            Accountcode_description: "Members Deposits - Bosa",
-            Debit: 1000,
-            Credit: 0,
-            Amount: 1000,
-            Document: "expense",
-            Transaction_type: "DR",
-            Posting_Date: this.currentDate,
-            allocated: false,
-            company_id: this.companyid3,
-            notes: "Expenses Opening Balances",
-            updatedgl: false,
-            organizationprofile: this.organizationprofile,
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error.response.data);
-          });
-      }
+              Account: "2111000",
+              user_Id: member.id,
+              memberemail: member.email,
+              Transaction_date: "2022-04-09",
+              last_updated: "",
+              Account_Code: "2111000",
+              accountype_description: "Expenses",
+              Accountcode_description: "Members Deposits - Bosa",
+              Debit: 1000,
+              Credit: 0,
+              Amount: 1000,
+              Document: "expense",
+              Transaction_type: "DR",
+              Posting_Date: this.currentDate,
+              allocated: false,
+              company_id: this.companyid3,
+              notes: "Expenses Opening Balances",
+              updatedgl: false,
+              organizationprofile: this.organizationprofile,
+            })
+            .then((response) => {
+              console.log(response);
+            })
+            .catch((error) => {
+              console.log(error.response.data);
+            });
+        }
         this.data1 = this.expenseson;
       }
-      
     },
 
     exportexpense() {

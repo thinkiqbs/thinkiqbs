@@ -4,6 +4,8 @@ import { getAPI } from "@/axios-api";
 const state = {
     shares: [],
     openingbalances: [],
+    openingbalances: [],
+
 };
 const getters = {
     allShares: (state) => state.shares,

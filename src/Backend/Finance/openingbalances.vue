@@ -499,9 +499,7 @@ export default {
         var allOB = this.allob[i];
         console.log(allOB);
         getAPI
-          .post("/finance/api/v1/documents/", {
-
-
+          .put("/finance/api/v1/documents/", +this.allob[i].id + "/", {
             DocumentID: allOB.keyvalue,
             SourcedocID: "OB" + allOB.keyvalue,
 
@@ -516,7 +514,7 @@ export default {
             user_Id: allOB.id,
             memberemail: allOB.memberemail,
             Transaction_date: "2021-12-31",
-            maincode_description:allOB.maincode_description,
+            maincode_description: allOB.Accountcode_description,
             Account_Code: allOB.Account_Code,
             accountype_description: allOB.accountype_description,
             Accountcode_description: allOB.Accountcode_description,
@@ -524,7 +522,7 @@ export default {
             Debit: allOB.Debit,
             Credit: allOB.Credit,
             Amount: allOB.Amount,
-            Document: allOB.Document,
+            Document: "deposits",
             Transaction_type: allOB.Transaction_type,
             Posting_Date: allOB.Posting_Date,
             allocated: allOB.allocated,
@@ -1058,7 +1056,8 @@ export default {
 
     allob: function () {
       return this.$store.getters.allOb.filter(
-        (item) => item.company_id == this.companyid3
+        (item) =>
+          item.company_id == this.companyid3 && item.Document == "Deposits"
       );
     },
 

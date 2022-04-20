@@ -366,11 +366,13 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import { getAPI } from "@/axios-api.js";
+
 
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
-// import axios from "axios";
+// import getAPI from "getAPI";
 //Bootstrap and jQuery libraries
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -465,7 +467,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: {
           organizationprofile: this.orgprofileid,
@@ -476,8 +478,8 @@ export default {
         this.applicount = res.data.count;
       });
 
-    //count records based on axios filter  for MemberDetails
-    axios
+    //count records based on getAPI filter  for MemberDetails
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: {
           company_id: this.companyid3,
@@ -502,198 +504,14 @@ export default {
       "fetchExpenses",
     ]),
 
-    addnewmeber() {
-      Promise.all([
-        axios
-          .post(`/members/api/v1/MemberDetails/`, {
-            // names: '',
-            // User_id: this.user_id,
-            first_name: this.addmembers.first_name,
-            last_name: this.addmembers.last_name,
-            phone_no: this.addmembers.phone_no,
-            bankname: this.addmembers.bankname,
-            email: this.addmembers.email,
-            username: this.addmembers.email,
-            date_of_birth: this.addmembers.date_of_birth,
-            Employer: this.selectedemployer,
-            Department: this.addmembers.Department,
-            County: this.selectedcounty,
-            Address: this.addmembers.Address,
-            organizationprofile: this.orgprofileid,
-            company_id: this.companyid,
-            password1: "qxcv2010A",
-            password2: "qxcv2010A",
-          })
-          .then((response) => {
-            response;
-            // window.location.reload();
-            confirm("We have received your application");
-          })
-          .catch((error) => {
-            // this.error = (e);
-            alert(JSON.stringify(error.response.data));
-          }),
-      ]);
-    },
-    invite(member) {
-      // let random = Math.random();
-      // item.label = random;
+    
+   
 
-      this.member = member;
+      
 
-      Promise.all([
-        axios
-          .post(`dj-rest-auth/registration/`, {
-            // names: '',
-            username: this.member.email,
-            email: this.member.email,
-            is_staff: "False",
-            // first
-            // phone_no:this.member.phone_no,
-            // County:this.member.County,
-            // Employer:this.member.Employer,
-            first_name: this.member.first_name,
-            last_name: this.member.last_name,
-            company_id: this.companyid,
-            password1: "Qwerty2021",
-            password2: "Qwerty2021",
-          })
-          .then((response) => {
-            response;
-            this.$router.push({ name: "members" });
-          })
-          .catch((e) => {
-            alert(JSON.stringify(e.response.data));
-          }),
+    
 
-        axios
-          .put("/members/update/" + this.member.id + "/", {
-            Application_Status: "True",
-            invited: "True",
-            first_name: this.member.first_name,
-            last_name: this.member.last_name,
-            phone_no: this.member.phone_no,
-            bankname: this.member.bankname,
-            email: this.member.email,
-            username: this.member.email,
-            date_of_birth: this.member.date_of_birth,
-            Employer: this.member.Employer,
-            Department: this.member.Department,
-            County: this.member.County,
-            Address: this.member.Address,
-            organizationprofile: this.orgprofileid,
-            company_id: this.companyid,
-          })
-          .then((response) => {
-            response;
-            // confirm("We have received your application");
-            this.$router.push({ name: "operations" });
-          })
-          .catch((e) => {
-            alert(e);
-          }),
-      ]);
-    },
-
-    approveloan() {
-      // let random = Math.random();
-      // item.label = random;
-
-      axios
-        .put("/loans/api/v1/loans/" + this.loan.id + "/", {
-          User_id: this.loan.id,
-          email: this.loan.email,
-          Amount: this.loan.Amount,
-          loan_Type: "Development",
-          interest: this.loan.interest,
-          Interest_Monthly: this.loan.Interest_Monthly,
-          Term: this.loan.Term,
-          Status: this.loan.Status * 1 + 1,
-          TotalLoans: this.loan.TotalLoans,
-          Monthrepayment: this.loan.Monthrepayment,
-          Principle_Monthly: this.loan.Principle_Monthly,
-          Total_Loan: this.loan.Total_Loan,
-          organizationprofile: this.loan.organizationprofile,
-          EmployerProfile: this.loan.EmployerProfile,
-        })
-        .then((response) => {
-          response;
-          window.location.reload();
-          // confirm("We have received your application");
-        })
-        .catch((e) => {
-          this.errors.push(e);
-          alert(e);
-        });
-    },
-
-    change(item) {
-      this.loan = item;
-
-      const memberfilter = this.loan.email;
-      // alert(item.Total_Loan);
-
-      Promise.all([
-        axios
-          .get("/loans/api/v1/loans/", {
-            params: { email: memberfilter, Status: "4" },
-          })
-          .then((res) => {
-            this.myapprovedloans = res.data.results;
-
-            $("#walla").DataTable();
-          }),
-
-        axios
-          .get("/members/api/v1/MonthDeposits/", {
-            params: { email: memberfilter },
-          })
-          .then((res) => {
-            this.monthdepositsme = res.data.results;
-            $("#walla").DataTable();
-          })
-          .catch((error) => {
-            console.error(error);
-          }),
-
-        axios
-          .get("/finance/api/v1/documents/", {
-            params: { email: memberfilter },
-          })
-          .then((res) => {
-            this.depositstotal = res.data.results.filter((depositstotal) =>
-              depositstotal.Account.includes("deposits")
-            );
-
-            $("#walla").DataTable();
-          }),
-
-        axios
-          .get("/finance/api/v1/documents/", {
-            params: { memberemail: memberfilter, Document: "deposits" },
-          })
-          .then((res) => {
-            this.totaldepositsMe = res.data.results;
-            $("#monthdeposits").DataTable();
-          })
-          .catch((error) => {
-            console.error(error);
-          }),
-
-        axios
-          .get("/finance/api/v1/documents/", {
-            params: { memberemail: memberfilter, Document: "loans" },
-          })
-          .then((res) => {
-            this.loanscheduleMe = res.data.results;
-            $("#walla").DataTable();
-          }),
-        axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
-          this.employer = res.data.results;
-          // $("#example").DataTable();
-        }),
-      ]);
-    },
+    
 
     onChange() {
       this.$router.push(this.path);
@@ -704,7 +522,7 @@ export default {
     },
     addrecords() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -736,7 +554,7 @@ export default {
     },
 
     saveloan() {
-      axios
+      getAPI
         .post(`/loans/api/v1/loans/`, {
           // names: '',
           User_id: this.loan.id,
@@ -768,7 +586,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

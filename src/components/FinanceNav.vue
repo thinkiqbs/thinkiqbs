@@ -3,8 +3,6 @@
   <div>
     <hr />
 
-    
-    
     <ul class="list-group">
       <div class="sidebar">
         <li class="nav-item" v-if="token != null">
@@ -184,13 +182,14 @@
         </li>
       </div>
     </ul>
-    
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import axios from "axios";
+
+import { getAPI } from "@/axios-api.js";
+
 export default {
   data() {
     return {
@@ -199,7 +198,7 @@ export default {
   },
 
   mounted() {
-    axios
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: {
           organizationprofile: this.user_id,

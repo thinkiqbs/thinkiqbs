@@ -113,7 +113,8 @@
                         <td>{{ member.phone_no }}</td>
                         <td>{{ member.email }} </td>
                         <td>{{ member.account_no }}</td>
-@click                        
+                        <!-- <td onClick="window.location.href='mailto:username@example.com?subject=Subject&body=message%20goes%20here;">click</td>  -->
+                        
 
                         <!-- createa clickable table detail -->
 

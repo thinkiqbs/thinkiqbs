@@ -10,12 +10,14 @@
         <div class="card">
           <div class="card-header">
             <div class="form-group row">
-              <div class="col-form-label col-lg-2">Get Started </div>
+              <div class="col-form-label col-lg-2">Get Started</div>
               <div class="col-lg-10">
                 <div class="row">
                   <div class="text-center col-lg-3">
                     <div class="imgDIV">
-                      <button class="btn btn-success" @click="getstarted">Load Inital Data </button>
+                      <button class="btn btn-success" @click="getstarted">
+                        Load Inital Data
+                      </button>
                     </div>
                   </div>
                   <div class="col-lg-5 font-xs">
@@ -114,7 +116,6 @@
                         type="text"
                         v-model="currentorg.industry"
                       />
-                      
                     </div>
                     <!---->
                   </div>
@@ -134,9 +135,7 @@
                         currentorg.business_location
                       }}</span
                       ><!---->
-                      <div>
-                        
-                      </div>
+                      <div></div>
                     </span>
                   </div>
 
@@ -310,9 +309,7 @@
                       <span class="ac-selected form-control" tabindex="0">
                         <span data-integrity-label="">January - December</span
                         ><!---->
-                        <div>
-                          
-                        </div>
+                        <div></div>
                       </span>
                     </div>
 
@@ -326,9 +323,7 @@
                       <span class="ac-selected form-control" tabindex="0">
                         <span data-integrity-label="">1</span
                         ><!---->
-                        <div>
-                          
-                        </div>
+                        <div></div>
                       </span>
                     </div>
 
@@ -383,9 +378,7 @@
                         <span data-integrity-label="">English</span
                         ><!---->
                         <div>
-                          <i class="zf-ac-toggler">
-                            
-                          </i>
+                          <i class="zf-ac-toggler"> </i>
                         </div>
                       </span>
                     </div>
@@ -405,9 +398,7 @@
                           >(GMT 3:00) Eastern African Time
                           (Africa/Nairobi)</span
                         ><!---->
-                        <div>
-                          
-                        </div>
+                        <div></div>
                       </span>
                     </div>
 
@@ -424,7 +415,6 @@
                         <span data-integrity-label=""
                           >dd MMM yyyy [ 06 Nov 2021 ]</span
                         ><!---->
-                        
                       </span>
                     </div>
 
@@ -461,7 +451,6 @@
                                   type="text"
                                   v-model="currentorg.Business_registration_no"
                                 />
-                                
                               </div>
                               <!---->
                             </div>
@@ -502,7 +491,6 @@
                                   type="text"
                                   v-model="currentorg.tax_id"
                                 />
-                               
                               </div>
                               <!---->
                             </div>
@@ -639,7 +627,6 @@
 </template>
 
 <script>
-
 import { getAPI } from "@/axios-api.js";
 import financeNav from "@/components/SysAdminNav";
 
@@ -724,187 +711,185 @@ export default {
   },
 
   methods: {
-
-    getstarted(){
-
+    getstarted() {
       this.loadcoa();
       this.loadSavingType();
       this.loadLoanType();
       this.loadBankType();
-
     },
-    loadcoa(){
-
+    loadcoa() {
       const payloadcoa = [
         {
-            "id": 1,
-            "account_type": "1000000",
-            "accounttype_description": "ASSETS",
-            "maincode": "1112000",
-            "maincode_description": "EARNING ASSETS",
-            "parent_account": "1100000",
-            "accountname": "Medium Term Loans",
-            "description": "Medium Term Loans",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": this.companyid3 + '1112000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 1,
+          account_type: "1000000",
+          accounttype_description: "ASSETS",
+          maincode: "1112000",
+          maincode_description: "EARNING ASSETS",
+          parent_account: "1100000",
+          accountname: "Medium Term Loans",
+          description: "Medium Term Loans",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "1112000",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 2,
-            "account_type": "2000000",
-            "accounttype_description": "LIABILITIES",
-            "maincode": "2111000",
-            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
-            "parent_account": "2100000",
-            "accountname": "Members Deposits - Bosa",
-            "description": "Members Deposits - Bosa",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key":  this.companyid3 + '2111000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 2,
+          account_type: "2000000",
+          accounttype_description: "LIABILITIES",
+          maincode: "2111000",
+          maincode_description:
+            "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+          parent_account: "2100000",
+          accountname: "Members Deposits - Bosa",
+          description: "Members Deposits - Bosa",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "2111000",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 3,
-            "account_type": "5000000",
-            "accounttype_description": "EXPENSES",
-            "maincode": "5351000",
-            "maincode_description": "OPERATING EXPENSES",
-            "parent_account": "5300000",
-            "accountname": "Travel Expenses",
-            "description": "Travel Expenses",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": "92002031335351000",
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 3,
+          account_type: "5000000",
+          accounttype_description: "EXPENSES",
+          maincode: "5351000",
+          maincode_description: "OPERATING EXPENSES",
+          parent_account: "5300000",
+          accountname: "Travel Expenses",
+          description: "Travel Expenses",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: "92002031335351000",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 4,
-            "account_type": "1000000",
-            "accounttype_description": "ASSETS",
-            "maincode": "1212000",
-            "maincode_description": "NON-EARNING ASSETS",
-            "parent_account": "1200000",
-            "accountname": "Bank Current Accounts",
-            "description": "Bank Current Accounts",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": this.companyid3 + '1212000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 4,
+          account_type: "1000000",
+          accounttype_description: "ASSETS",
+          maincode: "1212000",
+          maincode_description: "NON-EARNING ASSETS",
+          parent_account: "1200000",
+          accountname: "Bank Current Accounts",
+          description: "Bank Current Accounts",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "1212000",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 5,
-            "account_type": "4000000",
-            "accounttype_description": "INCOME",
-            "maincode": "4110000",
-            "maincode_description": "INTEREST INCOME",
-            "parent_account": "4100000",
-            "accountname": "Income from Loans",
-            "description": "Income from Loans",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": this.companyid3 + '4110000',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 5,
+          account_type: "4000000",
+          accounttype_description: "INCOME",
+          maincode: "4110000",
+          maincode_description: "INTEREST INCOME",
+          parent_account: "4100000",
+          accountname: "Income from Loans",
+          description: "Income from Loans",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "4110000",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 6,
-            "account_type": "1000000",
-            "accounttype_description": "ASSETS",
-            "maincode": "1211020",
-            "maincode_description": "NON-EARNING ASSETS",
-            "parent_account": "1200000",
-            "accountname": "Petty Cash Account",
-            "description": "Petty Cash Account",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": this.companyid3 + '1211020',
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
-        },
-            {
-            "id": 15,
-            "account_type": "2000000",
-            "accounttype_description": "Liabilities",
-            "maincode": "9000000",
-            "maincode_description": "Non Interest Bearing",
-            "parent_account": "2200000",
-            "accountname": "Interest Control",
-            "description": "This account is used to hold a balance before Allocations to member account",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id":this.companyid3,
-            "key": this.companyid3 + "9000000",
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 6,
+          account_type: "1000000",
+          accounttype_description: "ASSETS",
+          maincode: "1211020",
+          maincode_description: "NON-EARNING ASSETS",
+          parent_account: "1200000",
+          accountname: "Petty Cash Account",
+          description: "Petty Cash Account",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "1211020",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 16,
-            "account_type": "2000000",
-            "accounttype_description": "Liabilities",
-            "maincode": "9000002",
-            "maincode_description": "Non Interest Bearing",
-            "parent_account": "2200000",
-            "accountname": "Interest Control",
-            "description": "This account is used to hold a balance before Allocations to member account",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": this.companyid3 + "9000002",
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
+          id: 15,
+          account_type: "2000000",
+          accounttype_description: "Liabilities",
+          maincode: "9000000",
+          maincode_description: "Non Interest Bearing",
+          parent_account: "2200000",
+          accountname: "Interest Control",
+          description:
+            "This account is used to hold a balance before Allocations to member account",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "9000000",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
         },
         {
-            "id": 17,
-            "account_type": "2000000",
-            "accounttype_description": "Liabilities",
-            "maincode": "9000001",
-            "maincode_description": "Non Interest Bearing",
-            "parent_account": "2200000",
-            "accountname": "Loans Control",
-            "description": "This account is used to hold a balance before Allocations to member account",
-            "currency": "KES",
-            "financial_statement": "BS",
-            "company_id": this.companyid3,
-            "key": this.companyid3 + "9000001",
-            "debit": 0,
-            "credit": 0,
-            "balance": 0,
-            "organizationprofile": 1
-        }
-    ]
+          id: 16,
+          account_type: "2000000",
+          accounttype_description: "Liabilities",
+          maincode: "9000002",
+          maincode_description: "Non Interest Bearing",
+          parent_account: "2200000",
+          accountname: "Interest Control",
+          description:
+            "This account is used to hold a balance before Allocations to member account",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "9000002",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
+        },
+        {
+          id: 17,
+          account_type: "2000000",
+          accounttype_description: "Liabilities",
+          maincode: "9000001",
+          maincode_description: "Non Interest Bearing",
+          parent_account: "2200000",
+          accountname: "Loans Control",
+          description:
+            "This account is used to hold a balance before Allocations to member account",
+          currency: "KES",
+          financial_statement: "BS",
+          company_id: this.companyid3,
+          key: this.companyid3 + "9000001",
+          debit: 0,
+          credit: 0,
+          balance: 0,
+          organizationprofile: 1,
+        },
+      ];
 
-    this.importcoa = payloadcoa;
+      this.importcoa = payloadcoa;
 
-
-    for (var i = 0; i < this.importcoa.length; i++) {
-
+      for (var i = 0; i < this.importcoa.length; i++) {
         getAPI
           .post("/finance/api/v1/Chartofaccounts/", this.importcoa[i])
           .then((response) => {
@@ -927,43 +912,38 @@ export default {
             console.log(error);
           });
       }
-    
-
 
       // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
-
     },
 
-    loadSavingType(){
-
+    loadSavingType() {
       const payloadcoa = [
         {
-            "id": 1,
-            "email": "nmbajah@gmail.com",
-            "saving_type": "Normal Savings",
-            "saving_description": "Regular deposits towards your account in accordance with Sacco Savings and loans policies.",
-            "minimum_contribution": 2000,
-            "interest_rate": 12,
-            "maximum_saving_term": 1000,
-            "accountcode": "2111000",
-            "Account_type": "2000000",
-            "accountype_description": "LIABILITIES",
-            "maincode": "2111000",
-            "maincode_description": "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
-            "accountname": "Members Deposits - Bosa",
-            "memberkey": this.companyid3 +'2111000',
-            "company_id":  this.companyid3,
-            "security": true,
-            "organizationprofile": 1
+          id: 1,
+          email: "nmbajah@gmail.com",
+          saving_type: "Normal Savings",
+          saving_description:
+            "Regular deposits towards your account in accordance with Sacco Savings and loans policies.",
+          minimum_contribution: 2000,
+          interest_rate: 12,
+          maximum_saving_term: 1000,
+          accountcode: "2111000",
+          Account_type: "2000000",
+          accountype_description: "LIABILITIES",
+          maincode: "2111000",
+          maincode_description:
+            "INTEREST BEARING LIABILITIES OR LIABILITY WITH COSTS",
+          accountname: "Members Deposits - Bosa",
+          memberkey: this.companyid3 + "2111000",
+          company_id: this.companyid3,
+          security: true,
+          organizationprofile: 1,
         },
-        
-    ]
+      ];
 
-    this.importcoa = payloadcoa;
+      this.importcoa = payloadcoa;
 
-
-    for (var i = 0; i < this.importcoa.length; i++) {
-
+      for (var i = 0; i < this.importcoa.length; i++) {
         getAPI
           .post("/sys_config/api/v1/SavingsType/", this.importcoa[i])
           .then((response) => {
@@ -971,7 +951,7 @@ export default {
               type: "success",
               title: "Saving Type Created Successfully",
               showConfirmButton: false,
-              timer: 2000
+              timer: 2000,
             });
             console.log(response);
           })
@@ -979,41 +959,34 @@ export default {
             console.log(error);
           });
       }
-    
-
 
       // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
-
     },
 
-    loadLoanType(){
-
+    loadLoanType() {
       const payloadcoa = [
         {
-            "id": 1,
-            "organizationprofile": 1,
-            "email": "nmbajah@gmail.com",
-            "loan_type": "Normal Loan",
-            "loan_description": "Purpose. The Normal Loan is designed to address the development needs such as Building homes, Large scale farming, Motor vehicle purchase among others. Features.",
-            "no_of_guarantors": 6,
-            "interest_rate": 12,
-            "interest_calc_mode": "Declining Balance",
-            "maximum_loan_term": 36,
-            "gl_account": "1112000",
-            "company_id": this.companyid3,
-            "xratio": "0.50",
-            "active": true,
-            "income_account": "4110000"
+          id: 1,
+          organizationprofile: 1,
+          email: "nmbajah@gmail.com",
+          loan_type: "Normal Loan",
+          loan_description:
+            "Purpose. The Normal Loan is designed to address the development needs such as Building homes, Large scale farming, Motor vehicle purchase among others. Features.",
+          no_of_guarantors: 6,
+          interest_rate: 12,
+          interest_calc_mode: "Declining Balance",
+          maximum_loan_term: 36,
+          gl_account: "1112000",
+          company_id: this.companyid3,
+          xratio: "0.50",
+          active: true,
+          income_account: "4110000",
+        },
+      ];
 
-        }
-        
-    ]
+      this.importcoa = payloadcoa;
 
-    this.importcoa = payloadcoa;
-
-
-    for (var i = 0; i < this.importcoa.length; i++) {
-
+      for (var i = 0; i < this.importcoa.length; i++) {
         getAPI
           .post("/sys_config/api/v1/LoanType/", this.importcoa[i])
           .then((response) => {
@@ -1021,7 +994,7 @@ export default {
               type: "success",
               title: "Loan Type Created Successfully",
               showConfirmButton: false,
-              timer: 2000
+              timer: 2000,
             });
             console.log(response);
           })
@@ -1029,51 +1002,45 @@ export default {
             console.log(error);
           });
       }
-    
-
 
       // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
-
     },
 
-    loadBankType(){
-
+    loadBankType() {
       const payloadcoa = [
         {
-            "id": 1,
-            "accountcode": "10001",
-            "accountname": "ThinkiQ Business Limited",
-            "bankaccounttype": "Savings",
-            "bankname": "NCBA Lunga Lunga",
-            "accountnumber": "2526615516",
-            "routingnumber": "10001",
-            "currency": "KES",
-            "description": "To be used for everything",
-            "organizationprofile": 1,
-            "gl_account": "1212000",
-            "company_id": this.companyid3,
+          id: 1,
+          accountcode: "10001",
+          accountname: "ThinkiQ Business Limited",
+          bankaccounttype: "Savings",
+          bankname: "NCBA Lunga Lunga",
+          accountnumber: "2526615516",
+          routingnumber: "10001",
+          currency: "KES",
+          description: "To be used for everything",
+          organizationprofile: 1,
+          gl_account: "1212000",
+          company_id: this.companyid3,
         },
         {
-            "id": 2,
-            "accountcode": "00000",
-            "accountname": "Petty Cash Head Office",
-            "bankaccounttype": "Current",
-            "bankname": "Petty Cash",
-            "accountnumber": "100000000001",
-            "routingnumber": "100001",
-            "currency": "KES",
-            "description": "Head Office Petty cash",
-            "organizationprofile": 1,
-            "gl_account": "1211020",
-            "company_id": this.companyid3,
-        }
-    ]
+          id: 2,
+          accountcode: "00000",
+          accountname: "Petty Cash Head Office",
+          bankaccounttype: "Current",
+          bankname: "Petty Cash",
+          accountnumber: "100000000001",
+          routingnumber: "100001",
+          currency: "KES",
+          description: "Head Office Petty cash",
+          organizationprofile: 1,
+          gl_account: "1211020",
+          company_id: this.companyid3,
+        },
+      ];
 
-    this.importcoa = payloadcoa;
+      this.importcoa = payloadcoa;
 
-
-    for (var i = 0; i < this.importcoa.length; i++) {
-
+      for (var i = 0; i < this.importcoa.length; i++) {
         getAPI
           .post("/finance/api/v1/Bank/", this.importcoa[i])
           .then((response) => {
@@ -1081,7 +1048,7 @@ export default {
               title: "Bank Account Created",
               text: "Bank Account Created Successfully",
               type: "success",
-              confirmButtonText: "OK"
+              confirmButtonText: "OK",
             });
             console.log(response);
           })
@@ -1089,17 +1056,26 @@ export default {
             console.log(error);
           });
       }
-    
-
-
-      // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
-
     },
 
+    loadEmployer() {
+      const payloadcoa = [
+        {
+          organizationprofile: "1",
+          employer_name: "Self Employed",
+          employer_pin: "PVTSELF01",
+          employer_email: "self@email.com",
+          loan_control: "9000001",
+          deposits_control: "9000002",
+          company_id: this.companyid3,
+          interest_control: "9000003",
+        },
+      ];
 
+      this.importcoa = payloadcoa;
+    },
 
-
-
+    // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)
 
     getorg(organization) {
       this.loading = true;

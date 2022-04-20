@@ -520,70 +520,9 @@ export default {
     showModal() {
       $(".ApplyLoan").modal("show");
     },
-    addrecords() {
-      Promise.all([
-        getAPI
-          .post(`/members/api/v1/MemberDetails/`, {
-            // names: '',
-            // User_id: this.user_id,
-            first_name: this.addmembers.first_name,
-            last_name: this.addmembers.last_name,
-            phone_no: this.addmembers.phone_no,
-            bankname: this.addmembers.bankname,
-            email: this.addmembers.email,
-            username: this.addmembers.email,
-            date_of_birth: this.addmembers.date_of_birth,
-            Employer: this.selectedemployer,
-            Department: this.addmembers.Department,
-            County: this.selectedcounty,
-            Address: this.addmembers.Address,
-            organizationprofile: this.orgprofileid,
-            password1: "qxcv2010A",
-            password2: "qxcv2010A",
-          })
-          .then((response) => {
-            response;
-            window.location.reload();
-            confirm("We have received your application");
-          })
-          .catch((error) => {
-            // this.error = (e);
-            alert(JSON.stringify(error.response.data));
-          }),
-      ]);
-    },
+    
 
-    saveloan() {
-      getAPI
-        .post(`/loans/api/v1/loans/`, {
-          // names: '',
-          User_id: this.loan.id,
-          email: this.loan.email,
-          Amount: this.Loans.Amount,
-          loan_Type: "Development",
-          interest: this.Loans.interest,
-          Interest_Monthly: this.interestmonthly,
-          Term: this.Loans.Term,
-          Status: "1",
-          TotalLoans: this.tLoans,
-          Monthrepayment: this.monthlyRepayment,
-          Principle_Monthly: this.PrincipleMonthly,
-          Total_Loan: this.tLoans,
-          organizationprofile: this.orgprofileid,
-          gl_account: this.Loans.gl_account,
-          EmployerProfile: this.loan.Employer,
-          company_id: this.loan.company_id,
-        })
-        .then((response) => {
-          response;
-          window.location.reload();
-          confirm("We have received your application");
-          this.$router.push({ name: "operations" });
-        })
-        .catch((e) => {
-          alert(e);
-        });
-    },
+    
 
     deleteProduct(id) {
       getAPI

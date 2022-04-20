@@ -111,8 +111,12 @@
                         <td>{{ member.first_name }} {{ member.last_name }}</td>
                         <td>{{member.national_id}}</td>
                         <td>{{ member.phone_no }}</td>
-                        <td><a :href="entry[key]">${ entry[key] }</a></td>
+                        <td>{{ member.email }} </td>
                         <td>{{ member.account_no }}</td>
+@click                        
+
+                        <!-- createa clickable table detail -->
+
 
                         <td>
                           <span v-if="member.Application_Status">

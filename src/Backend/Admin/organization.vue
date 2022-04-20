@@ -716,6 +716,7 @@ export default {
       this.loadSavingType();
       this.loadLoanType();
       this.loadBankType();
+      this.loadEmployer();
     },
     loadcoa() {
       const payloadcoa = [
@@ -854,7 +855,7 @@ export default {
           maincode: "9000002",
           maincode_description: "Non Interest Bearing",
           parent_account: "2200000",
-          accountname: "Interest Control",
+          accountname: "Deposits Control",
           description:
             "This account is used to hold a balance before Allocations to member account",
           currency: "KES",
@@ -1073,6 +1074,20 @@ export default {
       ];
 
       this.importcoa = payloadcoa;
+      getAPI
+        .post("/sys_config/api/v1/EmployerProfile/", this.importcoa[0])
+        .then((response) => {
+          this.$swal({
+            title: "Employer Created",
+            text: "Employer Created Successfully",
+            type: "success",
+            confirmButtonText: "OK",
+          });
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
     // getAPI.post("/finance/api/v1/Chartofaccounts/",payloadcoa)

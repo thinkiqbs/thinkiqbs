@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Wed Apr 20 2022 17:26:27 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/organization.vue
+* src/components/headerdashboard.vue
+
+
+Created files:
+* .autogit/logs/log-20-3-2022-16-56-15.txt
+
+
+Deleted files:
+
+
+Renamed files:

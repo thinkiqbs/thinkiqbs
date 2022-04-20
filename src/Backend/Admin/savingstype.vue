@@ -346,7 +346,7 @@
                               >
                             </div>
                             <i class="clear-input"
-                              ><ion-icon name="close-circle"></ion-icon
+
                             ></i>
                           </div>
                         </div>
@@ -747,12 +747,22 @@ export default {
         .then((response) => {
           response;
           window.location.reload();
-          confirm("We have received your application");
+         this.$swal({
+            title: "Success",
+            text: "Saving Type Added Successfully",
+            type: "success",
+            confirmButtonText: "OK",
+          });
         })
         .catch((e) => {
           this.errors.push(e);
           alert(e);
-          this
+          this.$swal({
+            type: "error",
+            title: this.errors,
+            text: "Something went wrong!",
+            footer: "Please try again later.",
+          });
         });
     },
 

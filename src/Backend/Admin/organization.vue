@@ -712,15 +712,15 @@ export default {
     },
 
     uploadLogo() {
-      getAPI
-        .post("sys_config/api/v1/logoFile/" + "logo/", this.selectedFile
-        )
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      const formData = new FormData();
+      formData.append("logo", this.selectedFile,this.selectedFile.name);
+      formData.append("company_id", this.companyid3);
+      
+      getAPI.post("/sys_config/api/v1/logoFile/", formData 
+      ).then((response) => {
+        console.log(response);
+      });
+     
     },
     loadcoa() {
       const payloadcoa = [

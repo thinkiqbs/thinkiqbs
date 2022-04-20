@@ -1812,6 +1812,8 @@ export default {
   },
 
   created() {
+    this.fetchLoantype();
+    this.fetchSavingtype();
     this.fetchDocuments();
     this.fetchDeposits();
     this.fetchMembers();
@@ -1893,6 +1895,8 @@ export default {
       "fetchPaymentsreceived",
       "fetchEmployerinfo",
       "fetchMemberImports",
+      "fetchSavingtype",
+      "fetchLoantype"
     ]),
 
     onFileChange(event) {
@@ -2478,6 +2482,9 @@ export default {
       "allPaymentsreceived",
       "allEmployer",
       "allMemberImports",
+      "allLoantype",
+      "allSavinttype",
+
     ]),
 
     token() {

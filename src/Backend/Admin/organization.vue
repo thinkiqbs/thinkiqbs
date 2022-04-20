@@ -656,7 +656,22 @@ export default {
         this.pathid = this.organizations[0].id;
         this.updateorganization = this.currentorg;
       });
+
+
+      getAPI
+      .get("sys_config/api/v1/logoFile/", {
+        params: {
+          company_id: this.companyid3,
+        },
+      })
+      .then((response) => {
+        this.logoinfo = response.data.results;
+        this.logo = this.logoinfo[0].logo;
+        
+      });
   },
+
+    
 
   computed: {
     token() {
@@ -712,15 +727,15 @@ export default {
     },
 
     uploadLogo() {
+      var xid = this.companyid3;
       const formData = new FormData();
-      formData.append("logo", this.selectedFile,this.selectedFile.name);
-      formData.append("company_id", this.companyid3);
-      
-      getAPI.post("/sys_config/api/v1/logoFile/", formData 
-      ).then((response) => {
+      formData.append("logo", this.selectedFile, this.selectedFile.name);
+      formData.append("company_id", xid);
+
+      getAPI.post("/sys_config/api/v1/logoFile/", formData).then((response) => {
         console.log(response);
+        console.log("companyid", xid);
       });
-     
     },
     loadcoa() {
       const payloadcoa = [

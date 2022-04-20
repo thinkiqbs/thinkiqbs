@@ -32,7 +32,7 @@
                     <div class="imgDIV">
                       <img
                         class="logo-display img-fluid"
-                        src="/InvoiceLogo.zbfs"
+                        :src= "this.logo"
                         title="Your organization's logo"
                       />
                     </div>
@@ -46,6 +46,7 @@
                     <button class="btn btn-success" @click="uploadLogo">
                       Upload Logo
                     </button>
+                    {{this.logo}}
                     <small class="form-text"
                       >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
                       of 1MB.</small
@@ -625,6 +626,7 @@ export default {
   data() {
     return {
       pathid: "",
+      logo: "",
       loading: false,
       currentorg: {},
       organizations: [],

@@ -20,23 +20,6 @@
                       </button>
                     </div>
                   </div>
-                  <div class="col-lg-5 font-xs">
-                    <div class="text-muted">
-                      This logo will appear on transactions and email
-                      notifications.
-                    </div>
-                    <small class="form-text"
-                      >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
-                      of 1MB.</small
-                    >
-                    <a
-                      class="d-block"
-                      href="#"
-                      data-ember-action=""
-                      data-ember-action-1043="1043"
-                      >Remove Logo</a
-                    >
-                  </div>
                 </div>
               </div>
             </div>
@@ -59,6 +42,9 @@
                       This logo will appear on transactions and email
                       notifications.
                     </div>
+                    <input type="file" @change="onfileSelected" />
+                    <button class="btn btn-success" @click="uploadLogo">
+                      Upload Logo
                     <small class="form-text"
                       >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
                       of 1MB.</small
@@ -641,6 +627,7 @@ export default {
       loading: false,
       currentorg: {},
       organizations: [],
+      selectedFile: null,
       updateorganization: [
         {
           id: "",
@@ -717,6 +704,25 @@ export default {
       this.loadLoanType();
       this.loadBankType();
       this.loadEmployer();
+    },
+
+    onfileSelected(e) {
+      this.selectedFile = e.target.files[0];
+    },
+
+    uploadLogo() {
+      const formData = new FormData();
+      formData.append("logo", this.selectedFile);
+      getAPI
+        .post(this.path + "logo/", formData
+          
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     loadcoa() {
       const payloadcoa = [

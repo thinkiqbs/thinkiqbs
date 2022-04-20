@@ -5,9 +5,10 @@
         <div class="d-flex align-items-center">
           <a class="navbar-brand" href="#">
             <img
-              src="https://i1.wp.com/thinkiqbs.com/wp-content/uploads/2021/01/cropped-Logo-150-by-150-1.png?fit=150%2C61&ssl=1"
-              alt="Logo"
-            />
+                        class="logo-display img-fluid"
+                        :src= "this.logo"
+                        :title="orgname"
+                      />
           </a>
 
           <form
@@ -580,6 +581,7 @@ export default {
   data(){
     return {
       is_staff: "",
+      logo: "",
       admincheck: [],
       is_member: 0,
       membercount: "",
@@ -594,6 +596,18 @@ export default {
   },
   mounted() {
     this.admincheck = this.allorg;
+
+    getAPI
+      .get("sys_config/api/v1/logoFile/", {
+        params: {
+          company_id: this.companyid3,
+        },
+      })
+      .then((response) => {
+        this.logoinfo = response.data.results;
+        this.logo = this.logoinfo[0].logo;
+        
+      });
     
    
   },
@@ -689,6 +703,10 @@ export default {
       } else {
         return y;
       }
+    },
+
+    orgname() {
+      return this.org1;
     },
     allorg() {
       return this.$store.getters.allOrg.filter(

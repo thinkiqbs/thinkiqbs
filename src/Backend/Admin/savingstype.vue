@@ -28,7 +28,8 @@
             </div>
 
             <div class="card-body">
-              <table class="table table-striped table-borderlesstable-hover walla">
+              <div class="table table-striped table-borderless table-hover table-responsive">
+              <table class="table walla">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -66,6 +67,7 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
 
@@ -522,8 +524,7 @@
 </template>
 
 <script>
-
-import {getAPI} from "@/axios-api.js";
+import { getAPI } from "@/axios-api.js";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
@@ -751,6 +752,7 @@ export default {
         .catch((e) => {
           this.errors.push(e);
           alert(e);
+          this
         });
     },
 

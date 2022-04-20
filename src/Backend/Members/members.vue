@@ -95,6 +95,7 @@
                       <tr lass="line-item-header">
                         <th>#</th>
                         <th>Member Names</th>
+                        <th>National ID</th>
                         <th>Phone Number</th>
                         <th>email</th>
                         <th>Account Number</th>
@@ -108,8 +109,9 @@
                       <tr v-for="member in filterloans" :key="member.id">
                         <td>{{ member.id }}</td>
                         <td>{{ member.first_name }} {{ member.last_name }}</td>
+                        <td>{{member.national_id}}</td>
                         <td>{{ member.phone_no }}</td>
-                        <td>{{ member.email }}</td>
+                        <td><a :href="entry[key]">${ entry[key] }</a></td>
                         <td>{{ member.account_no }}</td>
 
                         <td>

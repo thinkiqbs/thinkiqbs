@@ -1928,7 +1928,7 @@
                 </div>
               </div>
               <div class="right">
-                <div class="price text-danger">- $ 186</div>
+                <div class="price text-success">{{ sumofmyGuarantor }}</div>
               </div>
             </a>
 
@@ -1957,7 +1957,7 @@
                 </div>
               </div>
               <div class="right">
-                <div class="price text-danger">- $ 186</div>
+                <div class="price text-danger">{{ sumofMyguarantee }}</div>
               </div>
             </a>
             <!-- * item -->
@@ -2077,86 +2077,6 @@
         </div>
         <!-- * Monthly Bills -->
 
-        <!-- Saving Goals -->
-        <div class="section mt-4">
-          <div class="section-heading">
-            <h2 class="title">Saving Goals</h2>
-            <a href="app-savings.html" class="link">View All</a>
-          </div>
-          <div class="goals">
-            <!-- item -->
-            <div class="item">
-              <div class="in">
-                <div>
-                  <h4>Gaming Console</h4>
-                  <p>Gaming</p>
-                </div>
-                <div class="price">$ 499</div>
-              </div>
-              <div class="progress">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 85%"
-                  aria-valuenow="85"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                >
-                  85%
-                </div>
-              </div>
-            </div>
-            <!-- * item -->
-            <!-- item -->
-            <div class="item">
-              <div class="in">
-                <div>
-                  <h4>New House</h4>
-                  <p>Living</p>
-                </div>
-                <div class="price">$ 100,000</div>
-              </div>
-              <div class="progress">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 55%"
-                  aria-valuenow="55"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                >
-                  55%
-                </div>
-              </div>
-            </div>
-            <!-- * item -->
-            <!-- item -->
-            <div class="item">
-              <div class="in">
-                <div>
-                  <h4>Sport Car</h4>
-                  <p>Lifestyle</p>
-                </div>
-                <div class="price">$ 42,500</div>
-              </div>
-              <div class="progress">
-                <div
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 15%"
-                  aria-valuenow="15"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                >
-                  15%
-                </div>
-              </div>
-            </div>
-            <!-- * item -->
-          </div>
-        </div>
-        <!-- * Saving Goals -->
-
         <!-- News -->
         <div class="section full mt-4 mb-3">
           <div class="section-heading padding">
@@ -2175,8 +2095,8 @@
                 data-bs-ride="carousel"
               ></div>
               <ul id="example-1">
-                <li v-for="item in savings" :key="item.id">
-                  <div class="carousel-item active">
+                <div class="carousel-item active">
+                  <li v-for="item in savings" :key="item.id">
                     <div class="card">
                       <!-- <img src="..." class="card-img-top" alt="..."> -->
                       <div class="card-body">
@@ -2191,8 +2111,8 @@
                         <a href="#" class="btn btn-primary">Pledge</a>
                       </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                </div>
               </ul>
             </div>
             <button
@@ -2313,7 +2233,7 @@
 
       <!-- App Bottom Menu -->
       <div class="appBottomMenu">
-        <a href="/test" class="item active">
+        <a href="/profile" class="item active">
           <div class="col">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -2477,7 +2397,7 @@
                     Pledge
                   </div>
                 </a>
-                <a href="app-index.html" class="action-button">
+                <a href="app-index.html" class="action-button" hidden>
                   <div class="in">
                     <div class="iconbox">
                       <ion-icon name="arrow-down-outline"></ion-icon>
@@ -3557,9 +3477,31 @@ export default {
       );
     },
 
+    sumofmyGuarantor() {
+      var sum = 0;
+      this.allMyguarantor.forEach((e) => {
+        sum += e.Amount_guaranteed;
+      });
+      return sum;
+    },
+
+    sumofMyguarantee() {
+      var sum = 0;
+      this.allMyguarantors.forEach((e) => {
+        sum += e.Amount_guaranteed;
+      });
+      return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
     allMyguarantee() {
       return this.$store.getters.allGuarantors.filter(
         (item) => item.email == this.email
+      );
+    },
+
+    allMyguarantor() {
+      return this.$store.getters.allGuarantors.filter(
+        (item) => item.borrower_email == this.email
       );
     },
 

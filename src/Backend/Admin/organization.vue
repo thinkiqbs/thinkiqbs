@@ -45,6 +45,7 @@
                     <input type="file" @change="onfileSelected" />
                     <button class="btn btn-success" @click="uploadLogo">
                       Upload Logo
+                    </button>
                     <small class="form-text"
                       >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
                       of 1MB.</small
@@ -711,12 +712,9 @@ export default {
     },
 
     uploadLogo() {
-      const formData = new FormData();
-      formData.append("logo", this.selectedFile);
       getAPI
-        .post(this.path + "logo/", formData
-          
-        })
+        .post("sys_config/api/v1/logoFile/" + "logo/", this.selectedFile
+        )
         .then((response) => {
           console.log(response);
         })

@@ -2095,7 +2095,11 @@
                 data-bs-ride="carousel"
               ></div>
               <ul id="example-1">
-                <div class="carousel-item active">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+
+
+
                   <li v-for="item in savings" :key="item.id">
                     <div class="card">
                       <!-- <img src="..." class="card-img-top" alt="..."> -->
@@ -2112,6 +2116,10 @@
                       </div>
                     </div>
                   </li>
+
+
+
+                </div>
                 </div>
               </ul>
             </div>

@@ -156,8 +156,6 @@
       </div>
     </div>
 
-    
-
     <div
       class="modal fade modalbox"
       id="addmaster"
@@ -214,17 +212,23 @@
                       <td>{{ product.maincode }}</td>
                       <td>{{ product.accountname }}</td>
                       <td>
+                       
                         <button
-                          class="btn btn-success btn-sm"
-                          @click="editMode(product)"
-                        >
-                          <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <button
-                          class="btn btn-success btn-sm"
+                          class="btn"
                           @click="addcoamaster(product)"
                         >
-                          <i class="bi bi-plus-square-fill"></i>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="currentColor"
+                            class="bi bi-plus-square-fill"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+                            />
+                          </svg>
                         </button>
                       </td>
                     </tr>
@@ -249,41 +253,35 @@
       </div>
     </div>
 
-    
-
     <div class="col-10">
       <div class="mb-11" style="max-width: 98rem">
         <div class="col-sm-12">
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Chart of Account</h2>
-              
-                
-                
 
-                <div class="topnav-right">
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    style="float: right"
-                    data-bs-toggle="modal"
-                    data-bs-target="#AddnewGL"
-                  >
-                    New GL Account
-                  </button>
-                </div>
-                <div class="topnav-right">
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    style="float: right"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addmaster"
-                  >
-                    Add from Master
-                  </button>
-                </div>
-            
+              <div class="topnav-right">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  style="float: right"
+                  data-bs-toggle="modal"
+                  data-bs-target="#AddnewGL"
+                >
+                  New GL Account
+                </button>
+              </div>
+              <div class="topnav-right">
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  style="float: right"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addmaster"
+                >
+                  Add from Master
+                </button>
+              </div>
 
               <div class="card-body">
                 <div class="table-responsive">
@@ -308,17 +306,15 @@
                         <td>{{ product.maincode }}</td>
                         <td>
                           <button
-                            class="btn btn-success btn-sm"
+                            class="btn "
                             @click="editMode(product)"
                           >
-                            <i class="fa fa-edit"></i>
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+</svg>
                           </button>
-                          <button
-                            class="btn btn-danger btn-sm"
-                            @click="deleteProduct(product.id)"
-                          >
-                            <i class="fa fa-trash"></i>
-                          </button>
+                         
                         </td>
                       </tr>
                     </tbody>
@@ -335,7 +331,7 @@
 <script>
 import SysAdminNav from "@/components/SysAdminNav";
 
-import { getAPI} from "@/axios-api.js"
+import { getAPI } from "@/axios-api.js";
 //Bootstrap and jQuery libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
@@ -348,7 +344,7 @@ import "vue-popperjs/dist/vue-popper.css";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name:"chart-of-account",
+  name: "chart-of-account",
   components: {
     SysAdminNav,
   },

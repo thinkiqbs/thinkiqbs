@@ -1,0 +1,22 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 22 2022 23:16:35 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* package-lock.json
+* package.json
+* public/index.html
+* src/Backend/Finance/dashboards.vue
+* src/components/Navbar.vue
+* src/store/modules/budgets.js
+* src/store/modules/journals.js
+
+
+Created files:
+* .autogit/logs/log-22-3-2022-22-34-21.txt
+
+
+Deleted files:
+
+
+Renamed files:

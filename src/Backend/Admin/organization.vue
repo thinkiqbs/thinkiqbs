@@ -593,7 +593,8 @@
                     <!---->
                     Save
                   </button>
-                  {{ this.user_id }} {{ this.path }}
+                  <!-- {{ this.user_id }}  -->
+                  {{ this.path }}
                 </div>
                 <div class="col-lg-6 text-right">
                   <a

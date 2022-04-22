@@ -28,8 +28,8 @@
             </div>
 
             <div class="card-body">
-              <div class="table table-striped table-borderless table-hover table-responsive">
-              <table class="table walla">
+              <div class="table-responsive">
+              <table class="table table table-striped table-borderless table-hover walla">
                 <thead>
                   <tr>
                     <th>#</th>

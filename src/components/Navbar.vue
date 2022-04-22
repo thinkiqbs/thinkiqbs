@@ -569,7 +569,7 @@
 
 
 import {getAPI} from "@/axios-api.js"
-import { mapGetters, mapActions, mapState } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 
 // const auth = new AuthService();
@@ -662,7 +662,7 @@ export default {
   },
   computed: {
     // computed: mapState(["token"]),
-    ...mapState(["org1"]),
+    // ...mapState(["org1"]),
     ...mapGetters(["allMembers", "allOrg", "allUser"]),
     token() {
       return this.$store.state.accessToken;

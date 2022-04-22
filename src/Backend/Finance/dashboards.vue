@@ -591,7 +591,10 @@ import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
-import axios from "axios";
+
+
+import { getAPI } from "@/axios-api.js";
+
 import BarChart from "@/components/BarChart.vue";
 // import PieChart from "@/components/PieChart.vue";
 // import LineChart from "@/components/LineChart.vue";
@@ -697,7 +700,7 @@ export default {
   mounted() {
     this.fillData();
 
-    axios
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: {
           organizationprofile: this.orgprofileid,
@@ -708,8 +711,8 @@ export default {
         this.applicount = res.data.count;
       });
 
-    //count records based on axios filter  for MemberDetails
-    axios
+    //count records based on getAPI filter  for MemberDetails
+    getAPI
       .get("/members/api/v1/MemberDetails/", {
         params: {
           company_id: this.companyid3,
@@ -757,7 +760,7 @@ export default {
 
     addnewmeber() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -795,7 +798,7 @@ export default {
       this.member = member;
 
       Promise.all([
-        axios
+        getAPI
           .post(`dj-rest-auth/registration/`, {
             // names: '',
             username: this.member.email,
@@ -819,7 +822,7 @@ export default {
             alert(JSON.stringify(e.response.data));
           }),
 
-        axios
+        getAPI
           .put("/members/update/" + this.member.id + "/", {
             Application_Status: "True",
             invited: "True",
@@ -852,7 +855,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.id,
           email: this.loan.email,
@@ -887,7 +890,7 @@ export default {
       // alert(item.Total_Loan);
 
       Promise.all([
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: memberfilter, Status: "4" },
           })
@@ -897,7 +900,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: memberfilter },
           })
@@ -909,7 +912,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { email: memberfilter },
           })
@@ -921,7 +924,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "deposits" },
           })
@@ -933,7 +936,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "loans" },
           })
@@ -941,7 +944,7 @@ export default {
             this.loanscheduleMe = res.data.results;
             $("#walla").DataTable();
           }),
-        axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
           this.employer = res.data.results;
           // $("#example").DataTable();
         }),
@@ -957,7 +960,7 @@ export default {
     },
     addrecords() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -989,7 +992,7 @@ export default {
     },
 
     saveloan() {
-      axios
+      getAPI
         .post(`/loans/api/v1/loans/`, {
           // names: '',
           User_id: this.loan.id,
@@ -1021,7 +1024,7 @@ export default {
     },
 
     deleteProduct(id) {
-      axios
+      getAPI
         .delete(`products/${id}`)
         .then((res) => {
           for (let i = 0; i < this.tableData.length; i++) {

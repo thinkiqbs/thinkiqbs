@@ -139,9 +139,9 @@
                         <td>
                           <button
                             class="btn btn-success"
-                            @click="updategl(item)"
+                            @click="postdocument(item)"
                           >
-                            Edit
+                            post2GL
                           </button>
                         </td>
                       </tr>
@@ -515,6 +515,60 @@ export default {
             memberemail: allOB.memberemail,
             Transaction_date: "2021-12-31",
             maincode_description: allOB.Accountcode_description,
+            Account_Code: allOB.Account,
+            accountype_description: allOB.accountype_description,
+            Accountcode_description: allOB.Accountcode_description,
+            maincode: allOB.maincode,
+            Debit: allOB.Debit,
+            Credit: allOB.Credit,
+            Amount: allOB.Amount,
+            Document: "deposits",
+            Transaction_type: allOB.Transaction_type,
+            Posting_Date: allOB.Posting_Date,
+            allocated: allOB.allocated,
+            company_id: allOB.company_id,
+            notes: allOB.notes,
+            updatedgl: allOB.updatedgl,
+            organizationprofile: allOB.organizationprofile,
+          })
+          .then((response) => {
+            console.log(response);
+            this.$swal("Posted")
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+            this.$swal("Error",error.response.data)
+
+          });
+      }
+    },
+
+    importexpences() {
+      this.$router.push("/obimports");
+    },
+
+    // Post opening balance to documents 
+    postdocument(item){
+
+      const allOB = item
+
+      getAPI
+          .post("/finance/api/v1/documents/", {
+            DocumentID: allOB.keyvalue,
+            SourcedocID: "OB" + allOB.keyvalue,
+
+            Reporting: "Balance Sheet",
+
+            Account_type: "1000000",
+            created: "2022-04-15T08:15:27.010435Z",
+
+            paymentnumber: null,
+
+            Account: allOB.Account,
+            user_Id: allOB.id,
+            memberemail: allOB.memberemail,
+            Transaction_date: "2021-12-31",
+            maincode_description: allOB.Accountcode_description,
             Account_Code: allOB.Account_Code,
             accountype_description: allOB.accountype_description,
             Accountcode_description: allOB.Accountcode_description,
@@ -533,16 +587,16 @@ export default {
           })
           .then((response) => {
             console.log(response);
+            this.$swal("Posted")
           })
           .catch((error) => {
             console.log(error.response.data);
-          });
-      }
-    },
+            this.$swal("Error",error.response.data)
 
-    importexpences() {
-      this.$router.push("/obimports");
-    },
+          });
+      },
+
+  
 
     updategl(item) {
       this.fetchDocuments();
@@ -619,6 +673,8 @@ export default {
           notes: "Members Share Contribution",
           updatedgl: false,
           paymentnumber: Math.floor(Math.random() * 100000000) + 1000,
+          keyvalue:
+            this.companyid3 + this.glchanged.parent_account + this.ob.email,
         })
         .then(function () {
           this.fetchOb();
@@ -1056,8 +1112,7 @@ export default {
 
     allob: function () {
       return this.$store.getters.allOb.filter(
-        (item) =>
-          item.company_id == this.companyid3 && item.Document == "Deposits"
+        (item) => item.company_id == this.companyid3
       );
     },
 

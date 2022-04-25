@@ -186,12 +186,14 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    // this.fetchGl();
+    // this.fetchDocuments();
+    this.Printlist();
+
+  },
 
   created() {
-    this.Printlist();
-    this.fetchGl();
-    this.fetchDocuments();
     this.initDatatable();
   },
 
@@ -211,7 +213,7 @@ export default {
         const sumOf1 = sumOfId(this.allGls1[i].maincode); //85
 
         this.allGls2 = this.allGls1.map((item) => {
-          if (item.maincode === this.allGls1[i].maincode) {
+          if (item.maincode == this.allGls1[i].maincode) {
             item.balance = sumOf1;
           }
           return item;

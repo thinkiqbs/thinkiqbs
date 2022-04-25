@@ -957,11 +957,7 @@ export default {
         (item) => item.email == this.emailstate
       );
     },
-    companyid3() {
-      return this.$store.getters.allOrg.filter(
-        (item) => item.id == this.selectedcompanyid
-      )[0].company_id;
-    },
+    
   },
 };
 </script>

@@ -15,14 +15,9 @@ import VueExcelXlsx from "vue-excel-xlsx";
 
 
 
-import VueTelInput from 'vue-tel-input';
-import 'vue-tel-input/dist/vue-tel-input.css';
 
 
 
-const globalOptions = {
-    mode: 'auto',
-};
 
 
 
@@ -49,8 +44,8 @@ store.state.config
 
 
 
-// axios.defaults.baseURL = "http://127.0.0.1:8000/";
-axios.defaults.baseURL = "https://backend.iqsacco.com/";
+axios.defaults.baseURL = "http://127.0.0.1:8000/";
+// axios.defaults.baseURL = "https://backend.iqsacco.com/";
 // axios.defaults.headers.common['Authorization'] =
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -74,4 +69,4 @@ router.beforeEach((to, from, next) => {
 
 
 
-createApp(App).use(router).use(store).use(VueExcelXlsx).use(VueSweetalert2).use(VueAxios, axios).use(VueTelInput, globalOptions).mount("#app");
+createApp(App).use(router).use(store).use(VueExcelXlsx).use(VueSweetalert2).use(VueAxios, axios).mount("#app");

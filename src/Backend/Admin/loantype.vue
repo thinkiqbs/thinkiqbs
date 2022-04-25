@@ -26,8 +26,8 @@
               </div>
             </div>
 
-            <div class="card-body">
-              <table class="table table-hover walla">
+            <div class="card-body table-responsive" >
+              <table class="table .styled-table walla">
                 <thead>
                   <tr>
                     <th>#</th>
@@ -835,4 +835,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+</style>

@@ -14,7 +14,7 @@
               <div class="card-header">
                 <headerDashboard></headerDashboard>
 
-                <h4 class="card-title">Members</h4>
+                <h3 class="card-title">Members</h3>
 
                 <div class="btn-toolbar float-right align-items-center">
                   <!---->

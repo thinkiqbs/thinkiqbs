@@ -34,7 +34,9 @@
                 <div class="text-center">
                   <h2 class="text-primary">Get in Touch</h2>
                   <p>Fill the form to contact us</p>
+                  <!-- <vue-whatsapp-widget phoneNumber="254723457189"/> -->
                 </div>
+
                 <form>
                   <div class="form-group basic animated">
                     <div class="input-wrapper">
@@ -420,8 +422,14 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'app-contact',
+  components: {
+
+  },
+
   data () {
     return {}
   }

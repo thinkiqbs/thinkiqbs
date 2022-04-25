@@ -1,0 +1,27 @@
+-------------------- Auto-Git Log --------------------
+		Mon Apr 25 2022 12:02:42 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* package-lock.json
+* package.json
+* public/index.html
+* src/Backend/Admin/loantype.vue
+* src/Backend/Finance/accounting.vue
+* src/Backend/Finance/openingbalances.vue
+* src/Backend/Members/members.vue
+* src/assets/css/style.css
+* src/axios-api.js
+* src/main.js
+* src/store/modules/documents.js
+* src/views/HomeView.vue
+
+
+Created files:
+* .autogit/logs/log-22-3-2022-23-46-46.txt
+
+
+Deleted files:
+
+
+Renamed files:

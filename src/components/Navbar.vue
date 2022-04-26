@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <nav  v-if="token == null"
+    <nav 
       class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm"
       id="mainNav"
       
@@ -129,8 +129,6 @@
           </div>
         </div>
       </div>
-    </nav>
-    <header id="page-header">
       <div class="content-header" v-if="token != null">
         <div class="d-flex align-items-center">
           <a class="navbar-brand" href="#">
@@ -418,6 +416,9 @@
           </button>
         </div>
       </div>
+    </nav>
+
+      
 
       <div id="page-header-loader" class="overlay-header bg-body-extra-light">
         <div class="content-header">
@@ -426,7 +427,7 @@
           </div>
         </div>
       </div>
-    </header>
+
 
     <!-- App Header -->
     <!-- <div class="appHeader bg-primary text-light">

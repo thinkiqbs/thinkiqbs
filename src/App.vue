@@ -1,12 +1,12 @@
 <template>
-    <Navbar></Navbar>
+  <Navbar></Navbar>
 
   <div class="container-fluid">
-      <error />
-      <div class="">
-        <router-view />
-      </div>
+    <error />
+    <div class="">
+      <router-view />
     </div>
+  </div>
   <!-- <router-view/> -->
 </template>
 
@@ -21,10 +21,8 @@ export default {
 </script>
 
 <style>
-
-
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif,Metropolis, -apple-system, "system-ui", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -109,15 +109,13 @@
                       <tr v-for="member in filterloans" :key="member.id">
                         <td>{{ member.id }}</td>
                         <td>{{ member.first_name }} {{ member.last_name }}</td>
-                        <td>{{member.national_id}}</td>
+                        <td>{{ member.national_id }}</td>
                         <td>{{ member.phone_no }}</td>
-                        <td>{{ member.email }} </td>
+                        <td>{{ member.email }}</td>
                         <td>{{ member.account_no }}</td>
                         <!-- <td onClick="window.location.href='mailto:username@example.com?subject=Subject&body=message%20goes%20here;">click</td>  -->
-                        
 
                         <!-- createa clickable table detail -->
-
 
                         <td>
                           <span v-if="member.Application_Status">
@@ -645,32 +643,10 @@
             <a href="javascript:;" data-bs-dismiss="modal">Close</a>
           </div>
           <div class="row">
-            <div class="col-sm-3 my-1">
-              <input type="file" @change="onFileChange" />
-            </div>
-
-            <div class="col-sm-3 my-1">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="postMembers"
-              >
-                Import
-              </button>
-            </div>
-
-            <div class="col-sm-3 my-1">
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="processMembers"
-              >
-                Process Imports
-              </button>
-            </div>
-
-            <div class="col-sm-3 my-1">
+            <div class="col">
               <!-- boostrap select  -->
+              <p>Step 2</p>
+
               <select
                 class="form-select form-select-sm"
                 aria-label=".form-select-sm example"
@@ -682,7 +658,21 @@
                 <option value="Pledges">MemberP Ledges</option>
               </select>
             </div>
-            <div class="col-sm-3 my-1">
+
+            <div class="col">
+              <p>Step 2</p>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="processMembers"
+              >
+                Process Imports
+              </button>
+            </div>
+            <div class="col">
+              <p>Step 3</p>
+
               <vue-excel-xlsx
                 class="btn btn-success"
                 :data="ExcelData"
@@ -694,6 +684,21 @@
               >
                 Download xlsx template
               </vue-excel-xlsx>
+            </div>
+            <div class="col">
+              <p>Step 4</p>
+              <input type="file" @change="onFileChange" />
+            </div>
+
+            <div class="col">
+              <p>Step 5</p>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="postMembers"
+              >
+                Import
+              </button>
             </div>
           </div>
           <div class="modal-body">
@@ -1896,7 +1901,7 @@ export default {
       "fetchEmployerinfo",
       "fetchMemberImports",
       "fetchSavingtype",
-      "fetchLoantype"
+      "fetchLoantype",
     ]),
 
     onFileChange(event) {
@@ -2004,21 +2009,19 @@ export default {
     processMembers() {
       //Post a memberImports to Members
       this.fetchMemberImports();
-      
+
       for (var i = 0; i < this.memberImports.length; i++) {
         var member = this.memberImports[i];
         getAPI
           .post("/members/api/v1/MemberDetails/", member)
           .then((response) => {
             console.log(response);
-            
           })
           .catch((error) => {
-            
             console.log(error.response.data);
             this.$swal({
               title: "Error",
-              text: (error),
+              text: error,
               icon: "error",
               button: "Ok",
             });
@@ -2484,7 +2487,6 @@ export default {
       "allMemberImports",
       "allLoantype",
       "allSavinttype",
-
     ]),
 
     token() {
@@ -2738,7 +2740,7 @@ export default {
       );
     },
 
-        savingType: function () {
+    savingType: function () {
       return this.$store.getters.allSavinttype.filter(
         (item) => item.company_id == this.companyid3
       );
@@ -2771,7 +2773,6 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
-    
   },
 };
 </script>

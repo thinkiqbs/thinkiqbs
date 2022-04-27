@@ -20,21 +20,10 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h2 class="card-title">Member Shares- <span>Org:{{ companyid3 }}</span></h2>
-                  
-
-                  <!-- button to toggle modal addSharesDeposits -->
-
-                  <button
-                    type="button"
-                    style="float: right"
-                    class="btn btn-primary btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addSharesDeposits"
-                  >
-                    Add Shares/Deposits
-                  </button>
+                  <h4 class="card-title">All Loans</h4>
+                  <span>Org:{{ companyid3 }}</span>
                 </div>
+
                 <AccountingMenu></AccountingMenu>
 
                 <div class="card-body">
@@ -100,249 +89,16 @@
           </div>
         </div>
 
-        <!-- Modal for Adding Shares Deposits  -->
-        <div
-          class="modal fade modalbox"
-          id="addSharesDeposits"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  Add Shares Deposits
-                </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col">
-                    <div class="card">
-                      <div class="card-header">
-                        <h4 class="card-title">Members</h4>
+        <!-- Modal for Allocating Deposits  -->
 
-                        <div class="btn-toolbar float-right align-items-center">
-                          <!---->
-
-                          <button
-                            class="btn btn-success"
-                            style="float: right"
-                            type="button"
-                            data-bs-toggle="modal"
-                            data-bs-target="#Addnewbank"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="16"
-                              height="16"
-                              fill="currentColor"
-                              class="bi bi-plus-circle-fill"
-                              viewBox="0 0 16 16"
-                            >
-                              <path
-                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
-                              />
-                            </svg>
-
-                            New Member
-
-                            <H3 class="badge badge-pill badge-info">
-                              {{ applicount }}
-                            </H3>
-                          </button>
-
-                          <!--  -->
-
-                          <!--  -->
-
-                          <!--  -->
-                        </div>
-
-                        <div class="card-body table-responsive">
-                          <table
-                            class="table-borderless table-hover table-striped walla"
-                          >
-                            <thead>
-                              <tr lass="line-item-header">
-                                <th>#</th>
-                                <th>Member Names</th>
-                                <th>Phone Number</th>
-                                <th>email</th>
-                                <th>Account Number</th>
-                                
-                                <th>Invite</th>
-                                
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr
-                                v-for="member in filterloans"
-                                :key="member.id"
-                              >
-                                <td>{{ member.id }}</td>
-                                <td>
-                                  {{ member.first_name }} {{ member.last_name }}
-                                </td>
-                                <td>{{ member.phone_no }}</td>
-                                <td>{{ member.email }}</td>
-                                <td>{{ member.account_no }}</td>
-
-                                
-
-                                <td>
-                                  <h1>
-                                    <input
-                                      type="checkbox"
-                                      id="checkbox"
-                                      v-model="member.invited"
-                                      @click="changemembershares(member)"
-                                    />
-                                  </h1>
-                                  <h5 class="badge badge-pill badge-info">
-                                    {{ member.invited }}
-                                    <label for="checkbox"></label> 👍
-                                  </h5>
-                                </td>
-
-                                
-                                
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <!-- form to addNewShares -->
-                    <form class="row g-3" @submit.prevent="onSubmit">
-                      <div class="col-md-4">
-                        <label for="validationDefault01" class="form-label"
-                          >First name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="validationDefault01"
-                          v-model="this.selectedmember.first_name"
-
-                          required
-                        />
-                      </div>
-                      <div class="col-md-4">
-                        <label for="validationDefault02" class="form-label"
-                          >Last name</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="validationDefault02"
-
-                          v-model="this.selectedmember.last_name"
-                          required
-                        />
-                      </div>
-                      <div class="col-md-4">
-                        <label
-                          for="validationDefaultUsername"
-                          class="form-label"
-                          >Email Address</label
-                        >
-                        <div class="input-group">
-                          <span class="input-group-text" id="inputGroupPrepend2"
-                            >@</span
-                          >
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="validationDefaultUsername"
-                            aria-describedby="inputGroupPrepend2"
-                            v-model="this.selectedmember.email"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <label for="validationDefault03" class="form-label"
-                          >Share Capital GL</label
-                        >
-                        <select
-                              v-model="selectedgl"
-                              class="selectpicker form-control"
-                              @change="changeSharesGl"
-                            >
-                              <option
-                                v-for="option in allGl1Expense"
-                                :value="option.maincode"
-                                :key="option.id"
-                              >
-                                {{ option.accountname }}
-                              </option>
-                            </select>
-                      </div>
-                      
-                      <div class="col-md-3">
-                        <label for="validationDefault05" class="form-label"
-                          >Amount</label
-                        >
-                        <input
-                          type="number"
-                          class="form-control"
-                          id="validationDefault05"
-                          v-model="this.selectedmember.Amount"
-                          required
-                        />
-                      </div>
-                      
-                      <div class="col-12">
-                        <button class="btn btn-primary" type="submit" @click="addMemberShares">
-                          Add Share Contribution
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="addSharesDeposits"
-              >
-                Send message
-              </button>
-            </div>
-          </div>
-        </div>
+        <!-- Modal -->
       </div>
-
-      <!-- Modal -->
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import { getAPI } from "@/axios-api";
-
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
 import AccountingMenu from "@/components/AccountingMenu.vue";
@@ -375,8 +131,6 @@ export default {
   data() {
     return {
       picked: "",
-      selectedgl:'',
-      glchanged:{},
 
       loan_id: "",
       maincodeid: [],
@@ -414,34 +168,6 @@ export default {
       roles: [],
       path: "",
       loanschedule: [],
-      selectedmember: {},
-      shares: [
-        {
-          DocumentID: "sh" + "mem",
-          SourcedocID: "mem",
-          accountype_description: "",
-          maincode: "",
-          maincode_description: "",
-          Account: "",
-          Reporting: "",
-          user_Id: "",
-          memberemail: "",
-          Transaction_date: "",
-          Account_Code: "",
-          Accountcode_description: "",
-          Document: "",
-          Account_type: "",
-          Transaction_type: "",
-          Posting_Date: "",
-          Amount: "",
-          allocated: false,
-          company_id: "",
-          notes: "",
-          updatedgl: false,
-          paymentnumber: "",
-          organizationprofile: "",
-        },
-      ],
 
       addmembers: [
         {
@@ -473,13 +199,97 @@ export default {
         console.log(error);
       });
 
-    
-      
-      
-      
-      
-      
-     
+    axios
+      .get("/loans/api/v1/loans/", {
+        params: { company_id: this.companyid3 },
+      })
+      .then((res) => {
+        this.all_loans = res.data.results;
+        // console.log("myloans:",this.all_loans)
+        // $("#walla").DataTable();
+      }),
+      axios
+        .get("/loans/api/v1/loans/", {
+          params: { organizationprofile: this.orgprofileid, Status: 4 },
+        })
+        .then((res) => {
+          this.monthlyloan = res.data.results;
+          $("#walla").DataTable();
+        }),
+      axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        this.employer = res.data.results;
+        // $("#example").DataTable();
+      }),
+      axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        this.employer = res.data.results;
+        // $("#example").DataTable();
+      }),
+      axios
+        .get("/members/api/v1/MonthDeposits/", {
+          params: { organizationprofile: this.orgprofileid },
+        })
+        .then((res) => {
+          this.monthdeposits = res.data.results;
+          $("#monthdeposits").DataTable();
+        })
+        .catch((error) => {
+          console.error(error);
+        }),
+      axios
+        .get("/finance/api/v1/documents/", {
+          params: { Document: "deposits" },
+        })
+        .then((res) => {
+          this.totaldeposits = res.data.results;
+          $("#monthdeposits").DataTable();
+        })
+        .catch((error) => {
+          console.error(error);
+        }),
+      axios
+        .get("/finance/api/v1/documents/", {
+          params: {
+            organizationprofile: this.orgprofileid,
+            Document: "loans",
+          },
+        })
+        .then((res) => {
+          this.loanschedule = res.data.results;
+          $("#walla").DataTable();
+        }),
+      axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        this.employer = res.data.results;
+        // $("#example").DataTable();
+      });
+
+    axios
+      .get("/members/api/v1/MemberDetails/", {
+        params: { organizationprofile: this.orgprofileid },
+      })
+      .then((res) => {
+        this.memberscount = res.data.count;
+        // $("#members").DataTable();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    axios
+      .get("/members/api/v1/MemberDetails/", {
+        params: {},
+      })
+      .then((res) => {
+        this.memberemail = res.data.results;
+        //   console.log("loans", this.loans)
+        $("#walla").DataTable();
+      }),
+      axios
+        .get("/loans/api/v1/loans/", {
+          params: {},
+        })
+        .then((res) => {
+          this.optionloansemail = res.data.results;
+          $("#walla").DataTable();
+        });
   },
 
   created() {
@@ -493,10 +303,6 @@ export default {
     this.fetchBanktransactions();
     this.fetchPaymentsmade();
     this.fetchPaymentsreceived();
-    this.fetchGl();
-    this.fetchShares();
-
-
   },
 
   methods: {
@@ -510,8 +316,6 @@ export default {
       "fetchBanktransactions",
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
-      "fetchGl",
-      "fetchShares",
     ]),
 
     updategl(item) {
@@ -589,73 +393,6 @@ export default {
             console.error(error);
           });
     },
-
-    changemembershares(member) {
-      this.selectedmember = member;
-      console.log("member",this.selectedmember)
-    },
-
-    changeSharesGl() {
-      const opt = this.allGls1.find((o) => o.maincode == this.selectedgl);
-      console.log(opt);
-
-      this.glchanged.account_type = opt.account_type;
-      this.glchanged.accountype_description = opt.accounttype_description;
-      this.glchanged.maincode = opt.maincode;
-      this.glchanged.maincode_description = opt.maincode_description;
-      this.glchanged.parent_account = opt.parent_account;
-      this.glchanged.accountname = opt.accountname;
-    },
-
-    addMemberShares() {
-      getAPI
-        .post("/finance/api/v1/Shares/", {
-          organizationprofile: this.orgprofileid,
-
-          DocumentID: "sh" + "mem" + this.selectedmember.id,
-          SourcedocID: "mem" + this.selectedmember.id,
-          accountype_description: this.glchanged.accountype_description,
-          maincode: this.glchanged.maincode,
-          maincode_description: this.glchanged.maincode_description,
-          Account: this.glchanged.parent_account,
-          Reporting: "bs",
-          user_Id: this.user_id,
-          memberemail: this.selectedmember.email,
-          Transaction_date: this.currentDate,
-          Account_Code: this.glchanged.parent_account,
-          Accountcode_description: this.glchanged.accountname,
-          Document: "shares",
-          Account_type: this.glchanged.account_type,
-          Transaction_type: "CR",
-          Posting_Date: this.currentDate,
-          Amount: this.selectedmember.Amount,
-          allocated: false,
-          company_id: this.companyid3,
-          notes: "Members Share Contribution",
-          updatedgl: false,
-          paymentnumber: Math.floor(Math.random() * 100000000) + 1000,
-        })
-        .then(function () {
-          
-          this.$swal({
-            title: "Shares Added",
-            text: "Shares Added Successfully",
-            icon: "success",
-            button: "OK",
-          });
-          // window.location.reload();
-        })
-        .catch((e) => {
-          this.$wal({
-            title: "Shares Not Added",
-            text: ("Shares Not Added" + e),
-            icon: "error",
-            button: "OK",
-          });
-          // alert(e);
-        });
-    },
-
     updateloanschedule(item) {
       this.loan = item;
 
@@ -1302,7 +1039,6 @@ export default {
       });
     },
   },
-
   computed: {
     ...mapGetters([
       "allDocuments",
@@ -1314,8 +1050,6 @@ export default {
       "allBanktransactions",
       "allPaymentsmade",
       "allPaymentsreceived",
-      "allGl",
-      "allShares",
     ]),
 
     token() {
@@ -1354,7 +1088,6 @@ export default {
       }
       return int;
     },
-    
 
     newinterestmonthly() {
       // let tTerm = this.Loans.Term;
@@ -1581,14 +1314,8 @@ export default {
     },
 
     filterloans: function () {
-      return this.members1.filter((member) =>
-        member.email.toLowerCase().includes(this.search.toLowerCase())
-      );
-    },
-
-    members1: function () {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.company_id == this.companyid3
+      return this.alldocuments.filter((item) =>
+        item.email.toLowerCase().includes(this.search.toLowerCase())
       );
     },
 
@@ -1615,7 +1342,7 @@ export default {
     },
 
     alldocuments: function () {
-      return this.$store.getters.allShares.filter(
+      return this.$store.getters.allDocuments.filter(
         (item) => item.company_id == this.companyid3
       );
     },
@@ -1721,17 +1448,6 @@ export default {
         sum += e.Amount;
       });
       return sum;
-    },
-    allGl1Expense: function () {
-      return this.$store.getters.allGl.filter(
-        (item) =>
-          item.company_id == this.companyid3 && item.account_type == "3000000"
-      );
-    },
-     allGls1: function () {
-      return this.$store.getters.allGl.filter(
-        (item) => item.company_id == this.companyid3
-      );
     },
 
     // maincodeid: function() {

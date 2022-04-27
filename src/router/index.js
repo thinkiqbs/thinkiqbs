@@ -71,7 +71,7 @@ import approvers from "../Backend/Admin/approvers.vue";
 import journals from "../Backend/Finance/journals.vue";
 import budgets from "../Backend/Finance/budgets.vue";
 import documents from "../Backend/Finance/documents.vue";
-import allShares from "../Backend/Finance/shares.vue";
+import shares from "../Backend/Finance/shares.vue";
 import openingBalances from "../Backend/Finance/openingbalances.vue";
 
 
@@ -465,7 +465,7 @@ const routes = [{
     {
         path: "/shares",
         name: "shares",
-        component: allShares,
+        component: shares,
         meta: {
             requiresLogin: false,
         },

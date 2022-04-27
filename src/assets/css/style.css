@@ -43,6 +43,11 @@ svg {
     vertical-align: middle;
 }
 
+.nav-items {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
 ::-moz-focus-inner {
     padding: 0;
     border-style: none;

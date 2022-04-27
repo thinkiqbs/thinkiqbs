@@ -290,7 +290,7 @@
                       />
                     </svg>
                     <span class="d-none d-sm-inline-block ms-2"
-                      >Sub Ledgers</span
+                      >Actions</span
                     >
                     <i
                       class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
@@ -303,19 +303,19 @@
                   >
                     <div class="p-2">
                       <router-link
-                        :to="{ path: 'expenses' }"
+                        :to="{ path: 'memberapplications' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Expenses</router-link
+                        >New Members</router-link
                       >
                       <router-link
-                        :to="{ path: 'purchasing' }"
+                        :to="{ path: 'loanapplications' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Purchasing</router-link
+                        >New Loans</router-link
                       >
                       <router-link
-                        :to="{ path: 'sales' }"
+                        :to="{ path: 'distribute' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Sales</router-link
+                        >Monthly Contributers</router-link
                       >
 
                       <div role="separator" class="dropdown-divider m-0"></div>
@@ -323,33 +323,35 @@
                       <router-link
                         :to="{ path: 'journals' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Journals</router-link
+                        >Defaulters</router-link
                       >
 
                       <div role="separator" class="dropdown-divider m-0"></div>
 
                       <router-link
-                        :to="{ path: 'documents' }"
+                        :to="{ path: 'guarantorslist' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Documents</router-link
+                        >Guarantors</router-link
                       >
                       <router-link
-                        :to="{ path: 'budgets' }"
+                        :to="{ path: 'shares' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Budgets
+                        >Member Shares
                       </router-link>
-                      <router-link
-                        :to="{ path: 'taxes' }"
-                        class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Taxes</router-link
-                      >
 
+                      <router-link
+                        :to="{ path: 'depositschedule' }"
+                        class="dropdown-item d-flex align-items-center justify-content-between"
+                        >Deposits Schedule
+                      </router-link>
+
+                      
                       <div role="separator" class="dropdown-divider m-0"></div>
 
                       <router-link
-                        :to="{ path: 'accounting' }"
+                        :to="{ path: 'loanschedule' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
-                        >Genral Ledger</router-link
+                        >Loans Schedule</router-link
                       >
                     </div>
                   </div>

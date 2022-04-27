@@ -10,6 +10,13 @@
                         :title="orgname"
                       />
           </a>
+          <a class="navbar-brand" href="#" v-if">
+            <img
+                        class="logo-display img-fluid"
+                        :src= "this.logo"
+                        :title="orgname"
+                      />
+          </a>
 
           <form
             class="d-none d-md-inline-block"

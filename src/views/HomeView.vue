@@ -137,7 +137,7 @@
             <!-- Mashead text and app badges-->
             <div class="mb-5 mb-lg-0 text-center text-lg-start">
               <h1 class="display-1 lh-1 mb-3">
-                Get started in just a few steps.
+                Manage Your SACCO online.
               </h1>
               <p class="lead fw-normal text-muted mb-5">
                 It's simple to manage your SACCO's day-to-day operations with

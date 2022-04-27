@@ -1,142 +1,14 @@
 <template>
   <div class="container-fluid">
-    <nav 
-      class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm"
-      id="mainNav"
-      
-    >
-      <div class="container px-5">
-        <!-- <a class="navbar-brand fw-bold" href="#page-top">Start Bootstrap</a> -->
-        <img
-          src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
-          width="150"
-          height="150"
-          alt="Sacco ERP Software"
-        />
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menu
-          <i class="bi-list"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-            <li class="nav-item">
-              <a class="nav-link me-lg-3" href="#features">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-lg-3" href="#download">Download</a>
-            </li>
-          </ul>
-
-          <div v-if="token != null && this.memberdetails == 2">
-            <button
-              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-              data-bs-toggle="modal"
-              data-bs-target="#JoinSaccoModal"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Join a Sacco</span>
-              </span>
-            </button>
-          </div>
-
-          <div v-if="token != null">
-            <div
-              v-if="this.organizationdetails == 2 && this.memberdetails == 2"
-            >
-              <button
-                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                data-bs-toggle="modal"
-                data-bs-target="#feedbackModal"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Start A New SACCO</span>
-                </span>
-              </button>
-            </div>
-            <div v-if="this.organizationdetails == 1">
-              <button
-                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                @click="gotoDashboard"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Back Office</span>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <div v-if="token == null">
-              <button
-                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                data-bs-toggle="modal"
-                data-bs-target="#LoginModal"
-              >
-                <span class="d-flex align-items-center">
-                  <b class="bold">Sign in </b>
-                  &nbsp; &nbsp;
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-box-arrow-in-right"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-            <div v-if="token != null">
-              <button
-                class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                @click="logout"
-              >
-                <span class="d-flex align-items-center">
-                  <i class="bi-chat-text-fill me-2"></i>
-                  <span class="small">Log Out</span>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div v-if="token != null && this.memberdetails == 1">
-            <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-              <li class="nav-item">
-                <a class="nav-link me-lg-3" href="/Profile">My Account</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="content-header" v-if="token != null">
+    <header id="page-header">
+      <div class="content-header">
         <div class="d-flex align-items-center">
           <a class="navbar-brand" href="#">
             <img
-              class="logo-display img-fluid"
-              :src="this.logo"
-              :title="orgname"
-            />
+                        class="logo-display img-fluid"
+                        :src= "this.logo"
+                        :title="orgname"
+                      />
           </a>
 
           <form
@@ -159,7 +31,10 @@
           </form>
         </div>
 
+       
+
         <div class="d-flex align-items-right">
+
           <router-link
             style="float: right"
             class="nav-link dropdown-toggle"
@@ -416,9 +291,6 @@
           </button>
         </div>
       </div>
-    </nav>
-
-      
 
       <div id="page-header-loader" class="overlay-header bg-body-extra-light">
         <div class="content-header">
@@ -427,7 +299,7 @@
           </div>
         </div>
       </div>
-
+    </header>
 
     <!-- App Header -->
     <!-- <div class="appHeader bg-primary text-light">
@@ -695,8 +567,10 @@
 <script>
 // import AuthService from "@/auth/AuthService";
 
-import { getAPI } from "@/axios-api.js";
+
+import {getAPI} from "@/axios-api.js"
 import { mapGetters, mapActions } from "vuex";
+
 
 // const auth = new AuthService();
 // import { mapState } from "vuex";
@@ -704,7 +578,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Nav-bar",
   components: {},
-  data() {
+  data(){
     return {
       is_staff: "",
       logo: "",
@@ -732,14 +606,22 @@ export default {
       .then((response) => {
         this.logoinfo = response.data.results;
         this.logo = this.logoinfo[0].logo;
+        
       });
+    
+   
   },
 
   methods: {
     ...mapActions(["fetchMembers", "fetchOrg", "fetchUserinfo"]),
 
+    
+
     gotocreateorganization() {
-      this.$router.push("createorganization");
+      this.$router.push(
+        'createorganization'
+
+      );
     },
 
     countadmin: function () {
@@ -766,13 +648,17 @@ export default {
         this.message = "";
       }
     },
-    logout: function () {
-      this.$store.dispatch("userLogout").then(() => {
-        window.localStorage.clear();
+    logout: function() {
 
-        window.location.replace("/");
-      });
+    this.$store.dispatch("userLogout").then(() => {
+      window.localStorage.clear();
+
+      window.location.replace('/');
+    });
     },
+
+
+    
   },
   computed: {
     // computed: mapState(["token"]),
@@ -784,11 +670,11 @@ export default {
     email() {
       return this.$store.state.email;
     },
-    username() {
+     username() {
       return this.$store.state.username;
     },
 
-    id() {
+    id(){
       return this.$store.state.id;
     },
     first_name() {

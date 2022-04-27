@@ -1,21 +1,23 @@
 <template>
   <div class="container-fluid">
+    
     <header id="page-header">
       <div class="content-header">
         <div class="d-flex align-items-center">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#" v-if="token == null">
             <img
-                        class="logo-display img-fluid"
-                        :src= "this.logo"
-                        :title="orgname"
-                      />
+              src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
+              width="150"
+              height="150"
+              alt="Sacco ERP Software"
+            />
           </a>
-          <a class="navbar-brand" href="#" v-if">
+          <a class="navbar-brand" href="#" v-if="token != null">
             <img
-                        class="logo-display img-fluid"
-                        :src= "this.logo"
-                        :title="orgname"
-                      />
+              class="logo-display img-fluid"
+              :src="this.logo"
+              :title="orgname"
+            />
           </a>
 
           <form
@@ -37,19 +39,119 @@
             </div>
           </form>
         </div>
-
-       
+        
+        
+        
 
         <div class="d-flex align-items-right">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="/"
+              data-toggle="modal"
+              data-target="#logoutModal"
+            >
+              <span class="nav-link-text" v-if="token == null">HOME</span>
+            </a>
+          </li>
 
-          <router-link
-            style="float: right"
-            class="nav-link dropdown-toggle"
-            to="/"
-            ><span class="fs-sm fw-medium">HOME</span></router-link
+          <li class="nav-item">
+            <a class="nav-link" href="/contacts" v-if="token == null">CONTACTS</a>
+          </li>
+
+          <li class="nav-item" v-if="token == null">
+            <a class="nav-link me-lg-3" href="#features">Features</a>
+          </li>
+          <li class="nav-item" v-if="token == null">
+            <a class="nav-link me-lg-3" href="#download">Download</a>
+          </li>
+        </div>
+        <div v-if="token != null && this.memberdetails == 1">
+          <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link me-lg-3" href="/Profile">My Account</a>
+            </li>
+          </ul>
+        </div>
+
+        <div v-if="token != null && this.memberdetails == 2">
+          <button
+            class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+            data-bs-toggle="modal"
+            data-bs-target="#JoinSaccoModal"
           >
+            <span class="d-flex align-items-center">
+              <i class="bi-chat-text-fill me-2"></i>
+              <span class="small">Join a Sacco</span>
+            </span>
+          </button>
+        </div>
 
-          <a class="nav-link" href="/contacts">CONTACTS</a>
+        <div v-if="token != null">
+          <div v-if="this.organizationdetails == 2 && this.memberdetails == 2">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              data-bs-toggle="modal"
+              data-bs-target="#feedbackModal"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Start A New SACCO</span>
+              </span>
+            </button>
+          </div>
+          <div v-if="this.organizationdetails == 1">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="gotoDashboard"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Back Office</span>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div>
+          <div v-if="token == null">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="gotologin"
+            >
+              <span class="d-flex align-items-center">
+                <b class="bold">Sign in </b>
+                &nbsp; &nbsp;
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-box-arrow-in-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div v-if="token != null">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="logout"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Log Out</span>
+              </span>
+            </button>
+          </div>
         </div>
 
         <div class="d-flex align-items-center">
@@ -90,7 +192,7 @@
                   />
                 </a>
                 <p class="mt-2 mb-0 fw-medium">{{ this.email }}</p>
-                <p class="mb-0 text-muted fs-sm fw-medium">Enter Location</p>
+                <p class="mb-0 text-muted fs-sm fw-medium">My Account</p>
               </div>
               <div class="p-2" v-if="this.memberdetails == 2">
                 <a
@@ -107,7 +209,7 @@
                   id="checkadmin"
                   @click="countadmin"
                 >
-                  BOSA
+                  Backoffice
                 </a>
 
                 <a
@@ -115,7 +217,7 @@
                   id="checkadmin"
                   @click="countadmin"
                 >
-                  FOSA
+                  Front Office
                 </a>
               </div>
               <div
@@ -307,6 +409,8 @@
         </div>
       </div>
     </header>
+
+    
 
     <!-- App Header -->
     <!-- <div class="appHeader bg-primary text-light">
@@ -574,10 +678,8 @@
 <script>
 // import AuthService from "@/auth/AuthService";
 
-
-import {getAPI} from "@/axios-api.js"
+import { getAPI } from "@/axios-api.js";
 import { mapGetters, mapActions } from "vuex";
-
 
 // const auth = new AuthService();
 // import { mapState } from "vuex";
@@ -585,7 +687,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Nav-bar",
   components: {},
-  data(){
+  data() {
     return {
       is_staff: "",
       logo: "",
@@ -613,22 +715,22 @@ export default {
       .then((response) => {
         this.logoinfo = response.data.results;
         this.logo = this.logoinfo[0].logo;
-        
       });
-    
-   
   },
 
   methods: {
     ...mapActions(["fetchMembers", "fetchOrg", "fetchUserinfo"]),
 
-    
-
     gotocreateorganization() {
-      this.$router.push(
-        'createorganization'
+      this.$router.push("createorganization");
+    },
 
-      );
+     gotoDashboard() {
+      window.location.replace("/DashBoards");
+    },
+
+    gotologin() {
+      this.$router.push("login");
     },
 
     countadmin: function () {
@@ -655,17 +757,13 @@ export default {
         this.message = "";
       }
     },
-    logout: function() {
+    logout: function () {
+      this.$store.dispatch("userLogout").then(() => {
+        window.localStorage.clear();
 
-    this.$store.dispatch("userLogout").then(() => {
-      window.localStorage.clear();
-
-      window.location.replace('/');
-    });
+        window.location.replace("/");
+      });
     },
-
-
-    
   },
   computed: {
     // computed: mapState(["token"]),
@@ -677,11 +775,11 @@ export default {
     email() {
       return this.$store.state.email;
     },
-     username() {
+    username() {
       return this.$store.state.username;
     },
 
-    id(){
+    id() {
       return this.$store.state.id;
     },
     first_name() {

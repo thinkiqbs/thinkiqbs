@@ -76,7 +76,7 @@
     <div class="card">
       <img
         class="card-img-top"
-        src="https://picsum.photos/200/200"
+        src="https://picsum.photos/12/1020/?random"
         alt="Card image cap"
       />
     </div>

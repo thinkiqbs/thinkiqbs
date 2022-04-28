@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Thu Apr 28 2022 22:08:42 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/views/Login.vue
+
+
+Created files:
+* .autogit/logs/log-28-3-2022-21-38-28.txt
+
+
+Deleted files:
+
+
+Renamed files:

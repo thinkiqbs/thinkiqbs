@@ -9,7 +9,8 @@ import VueSweetalert2 from 'vue-sweetalert2'
 
 import VueAxios from 'vue-axios'
 import VueExcelXlsx from "vue-excel-xlsx";
-// import "@/assets/css/style.css"
+import "@/assets/css/style.css"
+
 
 
 

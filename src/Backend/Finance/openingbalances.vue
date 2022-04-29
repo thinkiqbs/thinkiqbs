@@ -184,7 +184,7 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="OpeningBalance">
+                <form id="OpeningBalance" @submit.prevent="submit">
                   <!-- Name input-->
                   <div class="form-floating mb-3">
                     <input
@@ -556,6 +556,7 @@ export default {
       selectedgl: "",
       glchanged: {},
       selectedEquityAccount: "",
+      selecteddoc: "",
 
       loan_id: "",
       maincodeid: [],
@@ -846,7 +847,7 @@ export default {
           Transaction_date: this.ob.Transaction_date,
           Account_Code: this.glchanged.parent_account,
           Accountcode_description: this.glchanged.accountname,
-          Document: "shares",
+          Document: this.selecteddoc,
           Account_type: this.glchanged.account_type,
           Transaction_type: "CR",
           Posting_Date: this.currentDate,
@@ -855,11 +856,11 @@ export default {
           Debit: this.debit,
           allocated: false,
           company_id: this.companyid3,
-          notes: "Members Share Contribution",
+          notes: this.selecteddoc + " " + "Opening Balance as AT" + " " + this.ob.Transaction_date,
           updatedgl: false,
           paymentnumber: Math.floor(Math.random() * 100000000) + 1000,
           keyvalue:
-            this.companyid3 + this.glchanged.parent_account + this.ob.email,
+            this.companyid3 + this.glchanged.parent_account + this.email + this.ob.Transaction_date,
         })
         .then(function () {
           this.fetchOb();

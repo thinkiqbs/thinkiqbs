@@ -32,7 +32,7 @@
                     <div class="imgDIV">
                       <img
                         class="logo-display img-fluid"
-                        :src= "this.logo"
+                        :src="this.logo"
                         title="Your organization's logo"
                       />
                     </div>
@@ -46,7 +46,7 @@
                     <button class="btn btn-success" @click="uploadLogo">
                       Upload Logo
                     </button>
-                    {{this.logo}}
+                    {{ this.logo }}
                     <small class="form-text"
                       >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
                       of 1MB.</small
@@ -660,8 +660,7 @@ export default {
         this.updateorganization = this.currentorg;
       });
 
-
-      getAPI
+    getAPI
       .get("sys_config/api/v1/logoFile/", {
         params: {
           company_id: this.companyid3,
@@ -670,11 +669,8 @@ export default {
       .then((response) => {
         this.logoinfo = response.data.results;
         this.logo = this.logoinfo[0].logo;
-        
       });
   },
-
-    
 
   computed: {
     token() {

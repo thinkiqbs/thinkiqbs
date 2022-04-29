@@ -50,6 +50,20 @@
                   TAX/PIN NO is required.
                 </div>
               </div>
+              <div class="form-floating mb-3">
+                <input
+                  class="form-control"
+                  id="input-address"
+                  type="text"
+                  placeholder="Address"
+                  data-sb-validations="required"
+                  v-model="org.business_address"
+                />
+                <label for="name">Address</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
+                  Address is required.
+                </div>
+              </div>
               <!-- Email address input-->
               <div class="form-floating mb-3">
                 <input
@@ -58,6 +72,7 @@
                   type="email"
                   placeholder="name@example.com"
                   data-sb-validations="required,email"
+                  v-model="this.email"
                 />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">
@@ -67,8 +82,109 @@
                   Email is not valid.
                 </div>
               </div>
+              <div class="row">
+                <div class="col form-floating mb-3">
+                 
+                  <input
+                    type="text"
+                    id="input-city"
+                    class="form-control"
+                    placeholder="City"
+                    v-model="org.business_city"
+                  />
+                  <label for="input-city">Business City</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
+                  Address is required.
+                </div>
+                </div>
+                <div class="col form-floating mb-3">
+                  
+                  <input
+                    type="text"
+                    id="input-country"
+                    class="form-control"
+                    placeholder="Country"
+                    v-model="org.business_location"
+                  />
+                  <label for="input-country"
+                    >Country</label
+                  >
+                  <div class="invalid-feedback" data-sb-feedback="name:required">
+                  Country is required.
+                </div>
+                </div>
+                <div class="col form-floating mb-3">
+                  <input
+                    type="number"
+                    id="input-postal-code"
+                    class="form-control"
+                    placeholder="Postal code"
+                    v-model="org.Postal_address"
+                  />
+                  <label class="form-control-label" for="input-country"
+                    >Postal code</label
+                  >
+                  <div class="invalid-feedback" data-sb-feedback="name:required">
+                  Postal Code is required.
+                </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col form-floating mb-3" >
+                   <input
+                type="checkbox"
+                class="form-check-input"
+                id="Entity-Type"
+                v-model="org.deposittaking"
+              />
+              <label for="Entity-Type">Check if deposit Taking</label>
+              
+                </div>
+                <div class="col form-floating mb-3">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                v-model="org.industry"
+              >
+                <option selected>Financial</option>
+                <option>Manufacturing</option>
+                <option>Telecomunication</option>
+                <option>Banking</option>
+                <option>Retail</option>
+                <option>Education</option>
+                <option>Security</option>
+              </select>
+                  <label class="form-control-label" for="input-country"
+                >Industry</label
+              >
+              <div class="invalid-feedback" data-sb-feedback="name:required">
+                  Industry is required.
+                </div>
+                </div>
+                <div class="col form-floating mb-3">
+              <select
+                id="industry1"
+                class="form-select"
+                v-model="org.base_currency"
+              >
+                <option selected>Select Currency...</option>
+                <option>KES</option>
+                <option>UGX</option>
+                <option>RWF</option>
+                <option>TZS</option>
+                <option>ETB</option>
+              </select>
+                  <label class="form-control-label" for="input-country"
+                >Currency
+              </label>
+              <div class="invalid-feedback" data-sb-feedback="name:required">
+                  Address is required.
+                </div>
+                </div>
+              </div>
               <!-- Phone number input-->
-              <div class="form-floating mb-3">
+              <!-- <div class="form-floating mb-3">
                 <input
                   class="form-control"
                   id="phone"
@@ -80,25 +196,30 @@
                 <div class="invalid-feedback" data-sb-feedback="phone:required">
                   A phone number is required.
                 </div>
-              </div>
+              </div> -->
               <!-- Message input-->
-              <div class="form-floating mb-3">
-                <textarea
-                  class="form-control"
-                  id="message"
-                  type="text"
-                  placeholder="Enter your message here..."
-                  style="height: 10rem"
-                  data-sb-validations="required"
-                ></textarea>
-                <label for="message">Message</label>
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="message:required"
-                >
-                  A message is required.
-                </div>
-              </div>
+              <div class="col-lg-5 font-xs">
+                    <div class="text-muted">
+                      This logo will appear on transactions and email
+                      notifications.
+                    </div>
+                    <input type="file" @change="onfileSelected" />
+                    <button class="btn btn-success" @click="uploadLogo">
+                      Upload Logo
+                    </button>
+                    {{ this.logo }}
+                    <small class="form-text"
+                      >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size
+                      of 1MB.</small
+                    >
+                    <a
+                      class="d-block"
+                      href="#"
+                      data-ember-action=""
+                      data-ember-action-1043="1043"
+                      >Remove Logo</a
+                    >
+                  </div>
               <!-- Submit success message-->
               <!---->
               <!-- This is what your users will see when the form-->

@@ -35,7 +35,7 @@
                   <!--  -->
 
                   <table
-                    class="table table-borderless table-hover table-striped walla"
+                    class="table table-borderless table-hover walla"
                   >
                     <thead>
                       <tr class="line-item-header">
@@ -46,14 +46,13 @@
                         <th>description</th>
 
                         <!---->
-                        <th class="text-left">Company ID</th>
+
                         <th class="text-left">debit</th>
                         <th class="text-left">credit</th>
 
                         <th class="text-left">Balance</th>
 
-                        <th class="text-left">Status</th>
-                        <th class="text-left">Action</th>
+                        
 
                         <!----><!---->
                       </tr>
@@ -64,16 +63,11 @@
                         <td>{{ item.accountname }}</td>
                         <td>{{ item.maincode }}</td>
                         <td>{{ item.description }}</td>
-                        <td>{{ item.company_id }}</td>
+
                         <td>{{ item.debit }}</td>
                         <td>{{ item.credit }}</td>
                         <td>{{ item.balance }}</td>
-                        <td>
-                          <i class="fa fa-check-circle text-success"></i>
-                        </td>
-                        <td>
-                          <i class="fa fa-edit" @click="edit(item.id)"></i>
-                        </td>
+                        
                       </tr>
                     </tbody>
                   </table>
@@ -189,12 +183,12 @@ export default {
   mounted() {
     // this.fetchGl();
     // this.fetchDocuments();
-    this.Printlist();
 
   },
 
   created() {
-    this.initDatatable();
+    // this.initDatatable();
+    this.Printlist();
   },
 
   methods: {
@@ -210,19 +204,44 @@ export default {
               .filter((i) => i.Account_Code === Account_Code)
               .reduce((a, b) => a + b.Amount, 0);
 
+           var array2 = this.alldocs,
+
+           sumOfIddr = (Account_Code) =>
+            array2
+              .filter((i) => i.Account_Code === Account_Code)
+              .reduce((a, b) => a + b.Debit, 0);
+            var array3 = this.alldocs,
+
+           sumOfIdcr = (Account_Code) =>
+            array3
+              .filter((i) => i.Account_Code === Account_Code)
+              .reduce((a, b) => a + b.Credit, 0);
+          
+
         const sumOf1 = sumOfId(this.allGls1[i].maincode); //85
+        const sumOf2 = sumOfIddr(this.allGls1[i].maincode); //85
+        const sumOf3 = sumOfIdcr(this.allGls1[i].maincode); //85
+
+
 
         this.allGls2 = this.allGls1.map((item) => {
           if (item.maincode == this.allGls1[i].maincode) {
             item.balance = sumOf1;
+            item.debit = sumOf2;
+            item.credit = sumOf3;
+
           }
           return item;
         });
 
+        
+
         console.log(
           this.allGls1[i].accountname,
           this.allGls1[i].maincode,
-          sumOf1
+          sumOf1,
+          sumOf2,
+          sumOf3
         );
       }
     },

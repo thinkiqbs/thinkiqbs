@@ -86,147 +86,8 @@
                         KES &nbsp; {{ cashatbank }}
                       </div>
                     </div>
-                  </div>
-                </div>
-                <!---->
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"></h4>
-
-                <div id="container-fluid" style="float: right">
-                  <div id="ember1564" class="ember-view">
-                    <div class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex">
-                      <!-- <div class="topnav-right col-2">
-								<select
-									class="selectpicker form-control icon-align-center fas fa-bars"
-									v-model="path"
-									@change="onChange"
-									style="float: right;"
-								>
-									<i class="fas fa-bars"></i>
-									<option default value="" disabeled> Select Menu</option>
-									<optgroup label="Members Area">
-										<option value="members">members</option>
-										<option value="members">New Members</option>
-										<option value="deposits">Deposits</option>
-										<option value="monthcontribution"
-											>Add a contribution
-										</option>
-									</optgroup>
-									<optgroup label="Loans Area">
-										<option value="loans">Loans</option>
-										<option value="loanschedule">Loans Repayment </option>
-									</optgroup>
-
-									<optgroup label="Bank">
-										<option value="bank">Bank Transactions </option>
-									</optgroup>
-									<optgroup label="Accounting">
-										<option value="accounting">Accounting </option>
-										<option value="distribute">Allocate to Member </option>
-									</optgroup>
-									<optgroup label="Reports">
-										<option value="reports"> Reports </option>
-									</optgroup>
-								</select>
-							</div> -->
-                      <!-- <dropdown-menu
-								v-model="show"
-								:right="right"
-								:hover="hover"
-								:interactive="interactive"
-							>
-								<button class="btn btn-secondary dropdown-toggle">
-									<i class="fas fa-bars"></i>
-								</button>
-								<div slot="dropdown">
-									<ul class="list-group">
-										<li class="list-group-item">
-											<router-link
-												to="/members"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-book"></i> &nbsp; Members</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/reports"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-chart-line"></i> &nbsp; Member
-												Deposits</router-link
-											>
-										</li>
-										<li><hr class="dropdown-divider" /></li>
-
-										<li class="list-group-item">
-											<router-link
-												to="/accounting"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-file-invoice"></i> &nbsp;
-												Accounting</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/loans"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-book"></i> &nbsp; Loans</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/reports"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-chart-line"></i> &nbsp;
-												Reports</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/guarantorslist"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-file-invoice"></i> &nbsp; Guarator
-												Tracking</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/loans"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-book"></i> &nbsp; Loans</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/reports"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-chart-line"></i> &nbsp;
-												Reports</router-link
-											>
-										</li>
-										<li class="list-group-item">
-											<router-link
-												to="/accounting"
-												class="btn btn-btn-hover"
-												tag="Button"
-												><i class="fas fa-file-invoice"></i> &nbsp;
-												Accounting</router-link
-											>
-										</li>
-									</ul>
-								</div>
-							</dropdown-menu> -->
+                    <div class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex " style="float:right;">
+                      
                       <div class="dropdown">
                         <a
                           class="btn btn-secondary dropdown-toggle"
@@ -367,8 +228,19 @@
                     </div>
                   </div>
                 </div>
+                <!---->
               </div>
             </div>
+
+            
+                <h4 class="card-title"></h4>
+
+                <div id="container-fluid" style="float: right">
+                  <div id="ember1564" class="ember-view">
+                    
+                  </div>
+                </div>
+               
 
             <div class="col">
               <p>reconcile with your bank statement</p>

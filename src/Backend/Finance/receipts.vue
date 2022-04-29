@@ -481,85 +481,8 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form>
-                  <div class="primary-info grey-bg">
-                    <div class="zb-txn-form">
-                      <div
-                        tabindex="-1"
-                        id="ember1177"
-                        class="no-outline ember-view"
-                      ></div>
-
-                      <div class="form-group row">
-                        <label class="col-form-label col-lg-2 required"
-                          >Select Type
-                        </label>
-                        <div class="col-lg-5">
-                          <div
-                            id="ember1187"
-                            class="accounts-select ember-view"
-                          >
-                            <!-- {{this.NewSourceID}} -->
-                            {{ this.paymentrcvd.customer }}
-
-                            <!-- {{this.memberloanrepayment}} -->
-                          </div>
-                        </div>
-                      </div>
-
-                      <!---->
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label class="col-form-label col-lg-2 required"
-                      >Amount Received</label
-                    >
-                    <div class="col-lg-10">
-                      <div class="row">
-                        <div class="col-lg-3">
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text">KES </span>
-                            </div>
-                            <input
-                              id="ember1179"
-                              class="ember-text-field text-left ember-view form-control text-left"
-                              type="text"
-                              v-model="paymentrcvd.amount"
-                              disabled
-                            />
-                          </div>
-                          <!---->
-                          <div
-                            id="ember1180"
-                            class="popover-container ember-view"
-                          >
-                            <div
-                              id="ember1181"
-                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
-                            >
-                              <!---->
-                            </div>
-                          </div>
-                        </div>
-                        <label class="col-form-label col-lg-2 px-0"
-                          >Bank Charges (if any)</label
-                        >
-                        <!-- {{ this.paymentrcvd.transactiondate }} -->
-
-                        <div class="col-lg-2">
-                          <input
-                            id="ember1182"
-                            class="ember-text-field text-left ember-view form-control"
-                            type="text"
-                            disabled
-                          />
-                        </div>
-                        <!---->
-                      </div>
-                    </div>
-                  </div>
+                
+                <form id="amount">
                   <div class="form-group row">
                     <label class="col-form-label col-lg-2 required"
                       >Payment Date</label
@@ -576,18 +499,18 @@
                       <!---->
                     </div>
                   </div>
-                </form>
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                   <!-- Name input-->
                   <div class="form-floating mb-3">
                     <input
                       class="form-control"
-                      id="name"
-                      type="text"
+                      id="email"
+                      type="email"
                       placeholder="Enter your name..."
                       data-sb-validations="required"
+                      v-model="this.paymentrcvd.customer"
+                      disabled="True"
                     />
-                    <label for="name">Full name</label>
+                    <label for="name">Email</label>
                     <div
                       class="invalid-feedback"
                       data-sb-feedback="name:required"
@@ -595,83 +518,153 @@
                       A name is required.
                     </div>
                   </div>
-                  <!-- Email address input-->
+
                   <div class="form-floating mb-3">
                     <input
                       class="form-control"
-                      id="email"
-                      type="email"
-                      placeholder="name@example.com"
-                      data-sb-validations="required,email"
-                    />
-                    <label for="email">Email address</label>
-                    <div
-                      class="invalid-feedback"
-                      data-sb-feedback="email:required"
-                    >
-                      An email is required.
-                    </div>
-                    <div
-                      class="invalid-feedback"
-                      data-sb-feedback="email:email"
-                    >
-                      Email is not valid.
-                    </div>
-                  </div>
-                  <!-- Phone number input-->
-                  <div class="form-floating mb-3">
-                    <input
-                      class="form-control"
-                      id="phone"
-                      type="tel"
-                      placeholder="(123) 456-7890"
+                      id="amout"
+                      type="number"
+                      placeholder="Enter your name..."
                       data-sb-validations="required"
+                      v-model="this.paymentrcvd.Amount"
+                      disabled="True"
                     />
-                    <label for="phone">Phone number</label>
+                    <label for="amount">amount</label>
                     <div
                       class="invalid-feedback"
-                      data-sb-feedback="phone:required"
+                      data-sb-feedback="name:required"
                     >
-                      A phone number is required.
+                      A name is required.
                     </div>
                   </div>
-                  <!-- Message input-->
-                  <div class="form-floating mb-3">
-                    <textarea
-                      class="form-control"
-                      id="message"
-                      type="text"
-                      placeholder="Enter your message here..."
-                      style="height: 10rem"
-                      data-sb-validations="required"
-                    ></textarea>
-                    <label for="message">Message</label>
-                    <div
-                      class="invalid-feedback"
-                      data-sb-feedback="message:required"
-                    >
-                      A message is required.
-                    </div>
-                  </div>
-                  <!-- Submit success message-->
-                  <!---->
-                  <!-- This is what your users will see when the form-->
-                  <!-- has successfully submitted-->
-                  <div class="d-none" id="submitSuccessMessage">
-                    <div class="text-center mb-3">
-                      <div class="fw-bolder">Form submission successful!</div>
-                      To activate this form, sign up at
-                      <br />
-                      <a
-                        href="https://startbootstrap.com/solution/contact-forms"
-                        >https://startbootstrap.com/solution/contact-forms</a
+
+                  <table class="table table-bordered responsive">
+                  <tbody>
+                    <tr>
+                      <td colspan="2">
+                        <small class="text-muted"
+                          ><span></span>Total Received amount Bills
+                          <b style="color: Green"
+                            >{{ paymentrcvd.amount }}
+                          </b></small
+                        >
+                        
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        class="cursor-pointer"
+                        width="50%"
+                        data-ember-action=""
+                        data-ember-action-1744="1744"
                       >
-                    </div>
-                  </div>
-                  <!-- Submit error message-->
-                  <!---->
-                  <!-- This is what your users will see when there is-->
-                  <!-- an error submitting the form-->
+                        <div class="legend over-flow" title=":this.totalAmount">
+                          <div class="card" style="responsive">
+                            <ul class="list-group list-group-flush">
+                              <li
+                                class="list-group-item"
+                                v-for="contribution in alldepositsmember"
+                                :key="contribution.id"
+                              >
+                                <div class="table-borderless">
+                                  <td>{{ contribution.SavingsType }}</td>
+
+                                  <td>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="Recipient's username"
+                                      aria-label="Recipient's username with two button addons"
+                                      v-model="contribution.Amount"
+                                    />
+                                  </td>
+                                  <td>
+                                    
+                                    <button
+                                      class="btn btn-primary"
+                                      type="button"
+                                      @click="
+                                        postdepositsallocations(contribution)
+                                      "
+                                    >
+                                      <i
+                                        class="fa fa-check-square"
+                                        aria-hidden="true"
+                                      >Allocate</i>
+                                    </button>
+                                  </td>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td>
+                        <div
+                          id="ember1745"
+                          class="popover-container ember-view"
+                        >
+                          <div class="overdue-balance">
+                            <small class="text-overdue uppercase"
+                              >Overdue</small
+                            >
+                            <div title="KES0.00">
+                              <ul class="list-group list-group-flush">
+                                <li
+                                  class="list-group-item"
+                                  v-for="savedloans in Myloanscustomertype"
+                                  :key="savedloans.id"
+                                >
+                                  <div
+                                    class="table table-borderless responsive"
+                                  >
+                                    <td>{{ savedloans.id }}</td>
+                                    <td>{{ savedloans.loan_Type }}</td>
+                                    <td>{{ savedloans.gl_account }}</td>
+
+                                    <td>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Recipient's username"
+                                        aria-label="Recipient's username with two
+																			button addons"
+                                        v-model="savedloans.Principle_Monthly"
+                                      />
+                                    </td>
+                                    <td>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Recipient's username"
+                                        aria-label="Recipient's username with two button addons"
+                                        v-model="savedloans.Interest_Monthly"
+                                      />
+                                    </td>
+                                    <td>
+                                      
+
+                                      <i
+                                        class="fa fa-check-square"
+                                        aria-hidden="true"
+                                        @click="
+                                          allocateloanspromise(savedloans)
+                                        "
+                                      ></i>
+                                    </td>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                  
                   <div class="d-none" id="submitErrorMessage">
                     <div class="text-center text-danger mb-3">
                       Error sending message!

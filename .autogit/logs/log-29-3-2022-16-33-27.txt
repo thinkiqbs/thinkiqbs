@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 29 2022 16:33:27 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Finance/bank.vue
+* src/Backend/Finance/receipts.vue
+
+
+Created files:
+* .autogit/logs/log-29-3-2022-16-2-40.txt
+
+
+Deleted files:
+
+
+Renamed files:

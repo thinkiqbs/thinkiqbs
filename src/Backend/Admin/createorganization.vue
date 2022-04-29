@@ -5,19 +5,22 @@
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <form id="createorg" @submit.prevent="submit">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="name"
+                  id="orgname"
                   type="text"
                   placeholder="Sacco or MFI name"
                   data-sb-validations="required"
                   v-model="org.name"
                 />
-                <label for="name">Organization Name</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">
+                <label for="orgname">Organization Name</label>
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="orgname:required"
+                >
                   A name is required.
                 </div>
               </div>
@@ -30,8 +33,13 @@
                   data-sb-validations="required"
                   v-model="org.Business_registration_no"
                 />
-                <label for="name">Company Registration Number</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">
+                <label for="Registration-Number"
+                  >Company Registration Number</label
+                >
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="Registration-Number:required"
+                >
                   Company Registration Number is required.
                 </div>
               </div>
@@ -45,8 +53,11 @@
                   data-sb-validations="required"
                   v-model="org.tax_id"
                 />
-                <label for="name">TAX/PIN NO</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">
+                <label for="Tax_PIN_Number">TAX/PIN NO</label>
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="nTax_PIN_Numberame:required"
+                >
                   TAX/PIN NO is required.
                 </div>
               </div>
@@ -59,8 +70,11 @@
                   data-sb-validations="required"
                   v-model="org.business_address"
                 />
-                <label for="name">Address</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">
+                <label for="input-address">Address</label>
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="input-address:required"
+                >
                   Address is required.
                 </div>
               </div>
@@ -94,7 +108,7 @@
                   <label for="input-city">Business City</label>
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="name:required"
+                    data-sb-feedback="input-city:required"
                   >
                     Address is required.
                   </div>
@@ -128,7 +142,7 @@
                   >
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="name:required"
+                    data-sb-feedback="input-postal-code:required"
                   >
                     Postal Code is required.
                   </div>
@@ -148,6 +162,7 @@
                 <div class="col form-floating mb-3">
                   <select
                     class="form-select"
+                    id="industry"
                     aria-label="Default select example"
                     v-model="org.industry"
                   >
@@ -159,19 +174,19 @@
                     <option>Education</option>
                     <option>Security</option>
                   </select>
-                  <label class="form-control-label" for="input-country"
+                  <label class="form-control-label" for="industry"
                     >Industry</label
                   >
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="name:required"
+                    data-sb-feedback="industry:required"
                   >
                     Industry is required.
                   </div>
                 </div>
                 <div class="col form-floating mb-3">
                   <select
-                    id="industry1"
+                    id="currency"
                     class="form-select"
                     v-model="org.base_currency"
                   >
@@ -182,12 +197,12 @@
                     <option>TZS</option>
                     <option>ETB</option>
                   </select>
-                  <label class="form-control-label" for="input-country"
+                  <label class="form-control-label" for="currency"
                     >Currency
                   </label>
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="name:required"
+                    data-sb-feedback="currency:required"
                   >
                     Address is required.
                   </div>
@@ -257,6 +272,7 @@
                 <button
                   class="btn btn-primary rounded-pill btn-lg"
                   id="submitButton"
+                  type="submit"
                   @click="createorg"
                 >
                   Submit
@@ -270,12 +286,12 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Company Informations Details</h5>
-            <form id="createorgnization" @submit.prevent="submit">
+            <form id="createorgnization" v-on:submit.prevent="submit">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="name"
+                  id="orgnameview"
                   type="text"
                   placeholder="Sacco or MFI name"
                   data-sb-validations="required"
@@ -283,7 +299,10 @@
                   disabled="True"
                 />
                 <label for="name">Organization Name</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="orgnameview:required"
+                >
                   A name is required.
                 </div>
               </div>
@@ -551,7 +570,7 @@ export default {
       logo: "",
 
       org: {
-        name: "",
+        name: "dddd",
         business_name: "",
         business_city: "",
         business_address: "",

@@ -1,12 +1,12 @@
 <template>
-  <div class="card-group container-fluid">
-    <div class="card">
-      <div class="card-body">
+  <div class="card-group container-fluid align-self-center mt-5 mb-auto">
+    <div class="card ">
+      <div class="card-body mt-auto">
         <div class="section mt-8 text-center">
           <h1>Log in</h1>
           <h4>Fill the form to log in</h4>
         </div>
-        <div class="section mt-5 mb-5 p-3">
+        <div class="section mt-2 mb-5 p-3">
           <form v-on:submit.prevent>
             <div class="form-group basic">
               <div class="input-wrapper">
@@ -15,12 +15,11 @@
                   type="text"
                   class="form-control"
                   id="idnumber"
+                  autocomplete="off"
                   placeholder="Your National ID "
                   v-model="username"
                 />
-                <i class="clear-input"
-                  ><ion-icon name="close-circle"></ion-icon
-                ></i>
+                
               </div>
             </div>
             <!-- <div class="form-group basic">
@@ -39,11 +38,10 @@
                   class="form-control"
                   id="password1"
                   placeholder="Your password"
+                  autocomplete="off"
                   v-model="password"
                 />
-                <i class="clear-input"
-                  ><ion-icon name="close-circle"></ion-icon
-                ></i>
+                
               </div>
             </div>
             <button
@@ -60,7 +58,7 @@
 
                 <router-link to="/register">Register Now</router-link>
               </div>
-              {{ access }}
+
               <div>
                 <a href="app-forgot-password.html" class="text-muted"
                   >Forgot Password?</a

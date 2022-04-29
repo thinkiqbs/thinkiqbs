@@ -102,7 +102,6 @@
                         <th>Approved</th>
                         <th>Invite</th>
                         <th>Action</th>
-
                       </tr>
                     </thead>
                     <tbody>
@@ -141,9 +140,11 @@
                           <h5 v-else><label for="checkbox"></label> 👍</h5>
                         </td>
 
-                        
                         <td>
-                          <div class="dropdown" v-if="member.Application_Status">
+                          <div
+                            class="dropdown"
+                            v-if="member.Application_Status"
+                          >
                             <a
                               class="btn btn-secondary dropdown-toggle"
                               href="#"
@@ -163,7 +164,6 @@
                                 <a
                                   class="dropdown-item"
                                   href="#"
-
                                   data-bs-toggle="modal"
                                   data-bs-target="#Contribution"
                                   @click="newcontribution(member)"

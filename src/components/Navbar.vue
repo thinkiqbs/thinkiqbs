@@ -1,14 +1,14 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm  py-0"
-    
+    class="navbar  navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-0"
     id="mainNav"
   >
     <div class="container">
-      <a class=".navbar-brand" href="#" v-if="token == null">
+      <a class="navbar-brand" href="#" v-if="token == null">
         <img
           src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
-        
+          width="100"
+          height="100"
           alt="Sacco ERP Software"
         />
       </a>
@@ -44,47 +44,46 @@
             <a class="nav-link me-lg-3" href="/Profile">My Account</a>
           </li>
         </ul>
-        <div class="align-right">
-          <div v-if="token == null">
-            <button
-              class="btn btn-primary d-flex px-5 mb-2 mb-lg-0"
-              @click="gotologin"
+
+        <button
+          class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+          @click="gotologin"
+          v-if="token == null"
+        >
+          <span class="d-flex align-items-center">
+            <b class="bold">Sign in </b>
+            &nbsp; &nbsp;
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-box-arrow-in-right"
+              viewBox="0 0 16 16"
             >
-              <span class="d-flex align-items-center">
-                <b class="bold">Sign in </b>
-                &nbsp; &nbsp;
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-box-arrow-in-right"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-          <div v-if="token != null">
-            <button
-              class="btn btn-primary d-flex rounded-pill px-3 mb-2 mb-lg-0"
-              @click="logout"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Log Out</span>
-              </span>
-            </button>
-          </div>
-        </div>
+              <path
+                fill-rule="evenodd"
+                d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+              />
+            </svg>
+          </span>
+        </button>
+
+        <button
+          class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+          @click="logout"
+          v-if="token != null"
+        >
+          <span class="d-flex align-items-center">
+            <i class="bi-chat-text-fill me-2"></i>
+            <span class="small">Log Out</span>
+          </span>
+        </button>
+
         <button
           class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
           data-bs-toggle="modal"
@@ -155,7 +154,7 @@ export default {
     },
 
     gotologin() {
-      this.$router.push("login");
+      window.location.replace("/login");
     },
 
     countadmin: function () {
@@ -253,15 +252,13 @@ export default {
 </script>
 
 <style>
-
 .navbar {
-  min-height: 60px;
+  min-height: 20px;
 }
 .navbar-brand {
   padding: 0 20px;
-  height: 150px;
+  height: 20px;
   line-height: 60px;
-  
 }
 
 .navbar-toggle {
@@ -273,11 +270,9 @@ export default {
 @media (min-width: 768px) {
   .navbar-nav > li > a {
     /* (80px - line-height of 27px) / 2 = 26.5px */
-    padding-top: 26.5px;
-    padding-bottom: 26.5px;
+    padding-top: 10.5px;
+    padding-bottom: 10.5px;
     line-height: 27px;
   }
 }
-
-
 </style>

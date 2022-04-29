@@ -1,0 +1,17 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 29 2022 09:13:35 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/components/Navbar.vue
+* src/main.js
+
+
+Created files:
+* .autogit/logs/log-29-3-2022-8-43-17.txt
+
+
+Deleted files:
+
+
+Renamed files:

@@ -43,6 +43,12 @@ svg {
     vertical-align: middle;
 }
 
+.navbar-brand {
+    padding: 0 20px;
+    height: 150px;
+    line-height: 60px;
+}
+
 .nav-items {
     font-size: 1.25rem;
     font-weight: 300;

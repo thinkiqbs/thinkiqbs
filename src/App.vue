@@ -1,5 +1,5 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar v-if="!$route.meta.hideNavbar" ></Navbar>
 
   <div class="container-fluid">
     <error />
@@ -31,7 +31,7 @@ export default {
 }
 
 nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 nav a {

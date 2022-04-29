@@ -155,7 +155,10 @@ const routes = [{
     {
         path: '/login',
         name: 'login',
-        component: LogIn
+        component: LogIn,
+        meta: {
+            hideNavbar: true,
+        }
     },
     {
         path: '/members',

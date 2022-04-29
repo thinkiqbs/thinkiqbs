@@ -16,6 +16,8 @@
           <div class="card-header">
             <h4 class="card-title">Data Migration Section</h4>
 
+            
+
             <div class="d-flex align-items-center">
               <div class="dropdown d-inline-block ms-2">
                 <button
@@ -521,10 +523,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr
-                          v-for="(item, index) in level"
-                          :key="item.id"
-                        >
+                        <tr v-for="(item, index) in level" :key="item.id">
                           <th scope="row">{{ index + 1 }}</th>
                           <td>{{ item.date_disbursed }}</td>
                           <td>{{ item.id }}</td>
@@ -2327,3 +2326,5 @@ export default {
   },
 };
 </script>
+<style scoped>
+</style>

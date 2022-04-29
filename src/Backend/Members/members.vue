@@ -421,11 +421,12 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="name"
-                  type="National_Id"
+                  id="National_Id"
+                  type="number"
                   placeholder="Enter your name..."
                   data-sb-validations="required"
                   v-model="addmembers.national_id"
+                  autocomplete="off"
                 />
                 <label for="name">National ID</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -435,7 +436,7 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="name"
+                  id="first_name"
                   type="text"
                   placeholder="Enter your name..."
                   data-sb-validations="required"
@@ -495,7 +496,6 @@
               </div>
               <!-- Message input-->
               <div class="form-floating mb-3">
-                
                 <select
                   class="form-control .choices"
                   v-model="selectedemployer"
@@ -515,44 +515,38 @@
                 </div>
               </div>
               <div class="form-floating mb-3">
-                <select
-                                    class="form-control .choices"
-                                    v-model="selectedcounty"
-                                  >
-                                    <option
-                                      v-for="option in county"
-                                      v-bind:value="option.county"
-                                      :key="option.id"
-                                    >
-                                      {{ option.county }}
-                                    </option>
-                                  </select>
-                <label for="name">First name</label>
+                <select class="form-control .choices" v-model="selectedcounty">
+                  <option
+                    v-for="option in county"
+                    v-bind:value="option.county"
+                    :key="option.id"
+                  >
+                    {{ option.county }}
+                  </option>
+                </select>
+                <label for="name">County</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
-                  First Name is required.
+                  County is required.
                 </div>
               </div>
               <div class="form-floating mb-3">
                 <select
-                                    class="form-select"
-                                    aria-label="Default select example"
-                                    v-model="addmembers.Department"
+                  class="form-select"
+                  aria-label="Default select example"
+                  v-model="addmembers.Department"
                   data-sb-validations="required"
-
-                                  >
-                                    <option selected>
-                                      Open this select menu
-                                    </option>
-                                    <option value="1">Finance</option>
-                                    <option value="2">Sales</option>
-                                    <option value="3">Marketing</option>
-                                    <option value="3">HR</option>
-                                    <option value="3">Admin</option>
-                                    <option value="3">House Keeping</option>
-                                  </select>
-                <label for="name">First name</label>
+                >
+                  <option selected>Open this select menu</option>
+                  <option value="1">Finance</option>
+                  <option value="2">Sales</option>
+                  <option value="3">Marketing</option>
+                  <option value="3">HR</option>
+                  <option value="3">Admin</option>
+                  <option value="3">House Keeping</option>
+                </select>
+                <label for="name">Department</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
-                  First Name is required.
+                  Department is required.
                 </div>
               </div>
               <!-- Submit success message-->
@@ -576,9 +570,10 @@
               <!-- Submit Button-->
               <div class="d-grid">
                 <button
-                  class="btn btn-primary rounded-pill btn-lg disabled"
+                  class="btn btn-primary rounded-pill btn-lg"
                   id="submitButton"
                   type="submit"
+                  @click="addnewmeber"
                 >
                   Submit
                 </button>
@@ -590,274 +585,7 @@
     </div>
 
     <!-- Modal to Add Members  -->
-    <div
-      class="modal fade modalbox"
-      id="Addnewbankx"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-header"></div>
-          <div class="modal-body">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <!-- <img src="..." class="img-fluid rounded-start" alt="..."> -->
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <form class="modal-content" @submit.prevent="onSubmit">
-                      <div class="container">
-                        <div class="card">
-                          <h2>New Member</h2>
-                          <p>
-                            Please fill in this form to create an new member
-                            account.
-                          </p>
-                          <hr />
-
-                          <div class="form-group row">
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >Email Address
-                                  </label>
-                                  <input
-                                    type="text"
-                                    placeholder="Enter Email"
-                                    name="email"
-                                    required
-                                    v-model="addmembers.email"
-                                  />
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >First Name</label
-                                  >
-                                  <input
-                                    type="text"
-                                    placeholder="John"
-                                    name="firstname"
-                                    required
-                                    v-model="addmembers.first_name"
-                                  />
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >Last Name</label
-                                  >
-                                  <input
-                                    type="text"
-                                    placeholder="Apopo"
-                                    name="lastname"
-                                    required
-                                    v-model="addmembers.last_name"
-                                  />
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-2">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >Mobile Number
-                                  </label>
-                                  <input
-                                    type="tel"
-                                    placeholder="254723456789"
-                                    name="mobilenumber"
-                                    required
-                                    v-model="addmembers.phone_no"
-                                  />
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <label for="address"><b>Address</b></label>
-                          <input
-                            type="tel"
-                            placeholder="Address"
-                            name="address"
-                            required
-                            v-model="addmembers.Address"
-                          />
-
-                          <div class="form-group row">
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >National ID
-                                  </label>
-                                  <input
-                                    type="Number"
-                                    placeholder="14232323"
-                                    name="National_Id"
-                                    required
-                                    v-model="addmembers.national_id"
-                                  />
-
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >Employer
-                                  </label>
-                                  <select
-                                    class="form-control .choices"
-                                    v-model="selectedemployer"
-                                  >
-                                    <option
-                                      v-for="option in employers"
-                                      v-bind:value="option.id"
-                                      :key="option.id"
-                                    >
-                                      {{ option.employer_name }}
-                                    </option>
-                                  </select>
-
-                                  <span>selected: {{ selectedemployer }}</span>
-
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >Department</label
-                                  >
-                                  <select
-                                    class="form-select"
-                                    aria-label="Default select example"
-                                    v-model="addmembers.Department"
-                                  >
-                                    <option selected>
-                                      Open this select menu
-                                    </option>
-                                    <option value="1">Finance</option>
-                                    <option value="2">Sales</option>
-                                    <option value="3">Marketing</option>
-                                    <option value="3">HR</option>
-                                    <option value="3">Admin</option>
-                                    <option value="3">House Keeping</option>
-                                  </select>
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col">
-                              <div class="form-group boxed">
-                                <div class="input-wrapper">
-                                  <label class="label" for="name5"
-                                    >County
-                                  </label>
-                                  <select
-                                    class="form-control .choices"
-                                    v-model="selectedcounty"
-                                  >
-                                    <option
-                                      v-for="option in county"
-                                      v-bind:value="option.county"
-                                      :key="option.id"
-                                    >
-                                      {{ option.county }}
-                                    </option>
-                                  </select>
-                                  <span>selected: {{ selectedcounty }}</span>
-                                  <i class="clear-input"
-                                    ><ion-icon name="close-circle"></ion-icon
-                                  ></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <p>
-                            By creating an account the user has agreed to become
-                            a member
-                            <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
-                          </p>
-
-                          <div class="form-row">
-                            <div class="col">
-                              <button
-                                style="margin-right: 16px"
-                                type="button"
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                              >
-                                Cancel
-                              </button>
-
-                              <button
-                                style="margin-right: 16px"
-                                type="submit"
-                                class="btn btn-secondary"
-                                @click="addnewmeber"
-                              >
-                                Add Member
-                              </button>
-                              <span style="color: green"
-                                >{{ this.message }} <i class="fas fa-check"></i
-                              ></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                    <p class="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+   
 
     <!-- Modal for Import  -->
 
@@ -2365,12 +2093,7 @@ export default {
             response;
             this.fetchMembers(this.selected);
 
-            this.fetchDocuments();
-            this.fetchDeposits();
-            this.fetchLoans();
-            this.fetchBanktransactions();
-            this.fetchPaymentsmade();
-            this.fetchPaymentsreceived();
+            
             // this.$router.go(); // Refreshes page
             this.$swal({
               title: "Success",
@@ -2418,7 +2141,8 @@ export default {
             this.fetchMembers(this.selected);
           })
           .catch((e) => {
-            alert(JSON.stringify(e.response.data));
+            console.log(e);
+            this.$swal("Member Is Already a user");
           }),
 
         getAPI
@@ -2442,6 +2166,7 @@ export default {
           })
           .then((response) => {
             response;
+            this.$swal("Member is now Active")
             // confirm("We have received your application");
             // this.$router.push({ name: "members" });
           })

@@ -257,7 +257,6 @@
                 <button
                   class="btn btn-primary rounded-pill btn-lg"
                   id="submitButton"
-                 
                   @click="createorg"
                 >
                   Submit
@@ -270,7 +269,7 @@
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Company Informations Details </h5>
+            <h5 class="card-title">Company Informations Details</h5>
             <form id="contactForm" data-sb-form-api-token="API_TOKEN">
               <!-- Name input-->
               <div class="form-floating mb-3">
@@ -280,8 +279,8 @@
                   type="text"
                   placeholder="Sacco or MFI name"
                   data-sb-validations="required"
-                  v-model="org.name"
-                  disabled = "True"
+                  v-model="this.org.name"
+                  disabled="True"
                 />
                 <label for="name">Organization Name</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -296,8 +295,7 @@
                   placeholder="PVT-XXXXXXXX"
                   data-sb-validations="required"
                   v-model="org.Business_registration_no"
-                  disabled = "True"
-
+                  disabled="True"
                 />
                 <label for="name">Company Registration Number</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -313,8 +311,7 @@
                   placeholder="Tax Authority Number"
                   data-sb-validations="required"
                   v-model="org.tax_id"
-                  disabled = "True"
-
+                  disabled="True"
                 />
                 <label for="name">TAX/PIN NO</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -329,8 +326,7 @@
                   placeholder="Address"
                   data-sb-validations="required"
                   v-model="org.business_address"
-                  disabled = "True"
-
+                  disabled="True"
                 />
                 <label for="name">Address</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -346,8 +342,7 @@
                   placeholder="name@example.com"
                   data-sb-validations="required,email"
                   v-model="this.email"
-                  disabled = "True"
-
+                  disabled="True"
                 />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">
@@ -365,8 +360,7 @@
                     class="form-control"
                     placeholder="City"
                     v-model="org.business_city"
-                  disabled = "True"
-
+                    disabled="True"
                   />
                   <label for="input-city">Business City</label>
                   <div
@@ -383,8 +377,7 @@
                     class="form-control"
                     placeholder="Country"
                     v-model="org.business_location"
-                  disabled = "True"
-
+                    disabled="True"
                   />
                   <label for="input-country">Country</label>
                   <div
@@ -401,8 +394,7 @@
                     class="form-control"
                     placeholder="Postal code"
                     v-model="org.Postal_address"
-                  disabled = "True"
-
+                    disabled="True"
                   />
                   <label class="form-control-label" for="input-country"
                     >Postal code</label
@@ -423,8 +415,7 @@
                     class="form-check-input"
                     id="Entity-Type"
                     v-model="org.deposittaking"
-                  disabled = "True"
-
+                    disabled="True"
                   />
                   <label for="Entity-Type">Check if deposit Taking</label>
                 </div>
@@ -433,8 +424,7 @@
                     class="form-select"
                     aria-label="Default select example"
                     v-model="org.industry"
-                  disabled = "True"
-
+                    disabled="True"
                   >
                     <option selected>Financial</option>
                     <option>Manufacturing</option>
@@ -459,8 +449,7 @@
                     id="industry1"
                     class="form-select"
                     v-model="org.base_currency"
-                  disabled = "True"
-
+                    disabled="True"
                   >
                     <option selected>Select Currency...</option>
                     <option>KES</option>
@@ -495,7 +484,7 @@
                 </div>
               </div> -->
               <!-- Message input-->
-              <div class="col-lg-5 font-xs">
+              <div class="font-xs">
                 <div class="text-muted">
                   This logo will appear on transactions and email notifications.
                 </div>
@@ -520,7 +509,14 @@
               <!---->
               <!-- This is what your users will see when the form-->
               <!-- has successfully submitted-->
-              
+              <div class="d-none" id="submitSuccessMessage">
+                <div class="text-center mb-3">
+                  <div class="fw-bolder">Form submission successful!</div>
+                  <div class="text-muted">
+                    Thank you for your submission. We will be in touch soon.
+                  </div>
+                </div>
+              </div>
               <!-- Submit error message-->
               <!---->
               <!-- This is what your users will see when there is-->
@@ -531,21 +527,14 @@
                 </div>
               </div>
               <!-- Submit Button-->
-              
             </form>
-            <a href="#" class="btn btn-primary">Go to Back Office</a>
           </div>
         </div>
       </div>
     </div>
-
-    
   </div>
 
-  
-
   <!--  -->
-  
 </template>
 
 <script>
@@ -560,7 +549,6 @@ export default {
     return {
       checkedNames: [],
       logo: "",
-
 
       org: {
         name: "",
@@ -582,8 +570,12 @@ export default {
     gohome() {
       this.$router.push("/");
     },
-     onfileSelected(e) {
+    onfileSelected(e) {
       this.selectedFile = e.target.files[0];
+    },
+
+    orginfo() {
+      this.org = this.allorg[0];
     },
 
     uploadLogo() {
@@ -697,11 +689,22 @@ export default {
     last_name() {
       return this.$store.state.last_name;
     },
+    allorg() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.admin_email == this.email
+      );
+    },
   },
   mounted() {
+    this.orginfo();
     this.fetchMembers();
     this.fetchOrg();
     this.fetchUserinfo();
+  },
+  created() {
+    // this.countadmin();
+
+    this.fetchOrg();
   },
 };
 </script>

@@ -41,7 +41,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="/Profile">My Account</a>
+            <a class="nav-link me-lg-3" href="/Profile" >My Account</a>
           </li>
         </ul>
 
@@ -86,12 +86,12 @@
 
         <button
           class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-          data-bs-toggle="modal"
-          data-bs-target="#feedbackModal"
+         @click="gotoSignup"
+          v-if="token == null"
         >
           <span class="d-flex align-items-center">
             <i class="bi-chat-text-fill me-2"></i>
-            <span class="small">Send Feedback</span>
+            <span class="small">or Sign up</span>
           </span>
         </button>
         <div v-if="token != null">
@@ -183,6 +183,9 @@ export default {
 
     gotologin() {
       window.location.replace("/login");
+    },
+     gotoSignup() {
+      window.location.replace("/register");
     },
 
     countadmin: function () {

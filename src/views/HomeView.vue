@@ -16,35 +16,7 @@
                 activities in real time, and reporting for your annual audit has
                 never been easier.
               </p>
-              <div v-if="token != null">
-                <div
-                  v-if="
-                    this.organizationdetails == 2 && this.memberdetails == 2
-                  "
-                >
-                  <button
-                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                    data-bs-toggle="modal"
-                    data-bs-target="#feedbackModal"
-                  >
-                    <span class="d-flex align-items-center">
-                      <i class="bi-chat-text-fill me-2"></i>
-                      <span class="small">Start A New SACCO</span>
-                    </span>
-                  </button>
-                </div>
-                <div v-if="this.organizationdetails == 1">
-                  <button
-                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                    @click="gotoDashboard"
-                  >
-                    <span class="d-flex align-items-center">
-                      <i class="bi-chat-text-fill me-2"></i>
-                      <span class="small">Back Office</span>
-                    </span>
-                  </button>
-                </div>
-              </div>
+              
               <div v-if="token != null && this.memberdetails == 2">
                 <button
                   class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"

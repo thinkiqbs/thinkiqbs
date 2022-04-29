@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar  navbar-expand-lg navbar-light bg-white fixed-top shadow-sm py-0"
+    class="navbar  navbar-expand-lg navbar-light bg-white  shadow-sm py-0"
     id="mainNav"
   >
     <div class="container">
@@ -94,6 +94,34 @@
             <span class="small">Send Feedback</span>
           </span>
         </button>
+        <div v-if="token != null">
+                <div
+                  v-if="
+                    this.organizationdetails == 2 && this.memberdetails == 2
+                  "
+                >
+                  <button
+                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                    @click="gotocreateorganization"
+                  >
+                    <span class="d-flex align-items-center">
+                      <i class="bi-chat-text-fill me-2"></i>
+                      <span class="small">Start A New SACCO</span>
+                    </span>
+                  </button>
+                </div>
+                <div v-if="this.organizationdetails == 1">
+                  <button
+                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                    @click="gotoDashboard"
+                  >
+                    <span class="d-flex align-items-center">
+                      <i class="bi-chat-text-fill me-2"></i>
+                      <span class="small">Back Office</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
       </div>
     </div>
   </nav>
@@ -272,7 +300,7 @@ export default {
     /* (80px - line-height of 27px) / 2 = 26.5px */
     padding-top: 10.5px;
     padding-bottom: 10.5px;
-    line-height: 27px;
+    line-height: 10px;
   }
 }
 </style>

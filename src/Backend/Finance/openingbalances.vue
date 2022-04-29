@@ -51,7 +51,7 @@
                         style="float: right"
                         class="btn btn-primary btn-sm"
                         data-bs-toggle="modal"
-                        data-bs-target="#addSharesDeposits"
+                        data-bs-target="#addOpeningBalance"
                       >
                         Add Opening Balance
                       </button>
@@ -184,17 +184,18 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                <form id="OpeningBalance">
                   <!-- Name input-->
                   <div class="form-floating mb-3">
                     <input
                       class="form-control"
-                      id="name"
-                      type="text"
-                      placeholder="Enter your name..."
+                      id="as_at_date"
+                      type="date"
+                      placeholder="Enter the date ."
                       data-sb-validations="required"
+                      v-model="ob.Transaction_date"
                     />
-                    <label for="name">Full name</label>
+                    <label for="name">As at Date </label>
                     <div
                       class="invalid-feedback"
                       data-sb-feedback="name:required"
@@ -202,64 +203,105 @@
                       A name is required.
                     </div>
                   </div>
-                  <!-- Email address input-->
+                  <div class="form-floating mb-3">
+                    <select
+                      v-model="selectedgl"
+                      class="selectpicker form-control"
+                      @change="changeSharesGl"
+                    >
+                      <option
+                        v-for="option in allGl1Expense"
+                        :value="option.maincode"
+                        :key="option.id"
+                      >
+                        {{ option.accountname }}
+                      </option>
+                    </select>
+                    <label for="name">GL Account </label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      GL ACCOUNT missing
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      data-sb-validations="required"
+                      v-model="selecteddoc"
+                    >
+                      <option selected>Open this select menu</option>
+                      <option value="loans">Loans</option>
+                      <option value="deposits">Deposits</option>
+                      <option value="expenses">Expenses</option>
+                      <option value="shares">Shares</option>
+                      <option value="income">Income</option>
+
+                      Bank
+                    </select>
+
+                    <label for="name">Document Type</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
                   <div class="form-floating mb-3">
                     <input
                       class="form-control"
-                      id="email"
-                      type="email"
-                      placeholder="name@example.com"
-                      data-sb-validations="required,email"
+                      id="debit"
+                      type="number"
+                      placeholder="Enter your name..."
+                      data-sb-validations="required"
+                      v-model="this.ob.Amount"
                     />
-                    <label for="email">Email address</label>
+                    <label for="name">Amount</label>
                     <div
                       class="invalid-feedback"
-                      data-sb-feedback="email:required"
+                      data-sb-feedback="name:required"
                     >
-                      An email is required.
-                    </div>
-                    <div
-                      class="invalid-feedback"
-                      data-sb-feedback="email:email"
-                    >
-                      Email is not valid.
+                      Amount is Required
                     </div>
                   </div>
-                  <!-- Phone number input-->
                   <div class="form-floating mb-3">
                     <input
                       class="form-control"
-                      id="phone"
-                      type="tel"
-                      placeholder="(123) 456-7890"
+                      id="debit"
+                      type="number"
+                      placeholder="Enter your name..."
                       data-sb-validations="required"
+                      v-model="this.debit"
                     />
-                    <label for="phone">Phone number</label>
+                    <label for="name">Debit</label>
                     <div
                       class="invalid-feedback"
-                      data-sb-feedback="phone:required"
+                      data-sb-feedback="name:required"
                     >
-                      A phone number is required.
+                      {{ this.debitpositing }}
                     </div>
                   </div>
-                  <!-- Message input-->
                   <div class="form-floating mb-3">
-                    <textarea
+                    <input
                       class="form-control"
-                      id="message"
-                      type="text"
-                      placeholder="Enter your message here..."
-                      style="height: 10rem"
+                      id="credit"
+                      type="number"
+                      placeholder="Enter your name..."
                       data-sb-validations="required"
-                    ></textarea>
-                    <label for="message">Message</label>
+                      v-model="this.credit"
+                    />
+                    <label for="name">Debit</label>
                     <div
                       class="invalid-feedback"
-                      data-sb-feedback="message:required"
+                      data-sb-feedback="name:required"
                     >
-                      A message is required.
+                      {{ this.credit }}
                     </div>
                   </div>
+                  
                   <!-- Submit success message-->
                   <!---->
                   <!-- This is what your users will see when the form-->
@@ -287,9 +329,10 @@
                   <!-- Submit Button-->
                   <div class="d-grid">
                     <button
-                      class="btn btn-primary rounded-pill btn-lg disabled"
+                      class="btn btn-primary rounded-pill btn-lg"
                       id="submitButton"
                       type="submit"
+                       @click="addMemberShares"
                     >
                       Submit
                     </button>
@@ -800,7 +843,7 @@ export default {
           Reporting: "bs",
           user_Id: this.user_id,
           memberemail: this.ob.email,
-          Transaction_date: this.currentDate,
+          Transaction_date: this.ob.Transaction_date,
           Account_Code: this.glchanged.parent_account,
           Accountcode_description: this.glchanged.accountname,
           Document: "shares",

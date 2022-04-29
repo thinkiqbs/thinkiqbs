@@ -395,9 +395,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">date</th>
                     <th scope="col">REF#</th>
-                    <th scope="col">#Cheque No</th>
+                    <!-- <th scope="col">#Cheque No</th> -->
                     <th scope="col">#notes</th>
-                    <th scope="col">#Bank</th>
+                    <!-- <th scope="col">#Bank</th> -->
                     <th scope="col">#Paid to</th>
                     <th scope="col">#Amount</th>
                     <th scope="col">#Cleared</th>
@@ -408,9 +408,9 @@
                     <td>{{ item.id }}</td>
                     <td>{{ item.Transaction_date }}</td>
                     <td>{{ item.ReferenceNo }}</td>
-                    <td>{{ item.ChequeNo }}</td>
+                    <!-- <td>{{ item.ChequeNo }}</td> -->
                     <td>{{ item.notes }}</td>
-                    <td>{{ item.bank }}</td>
+                    <!-- <td>{{ item.bank }}</td> -->
                     <td>{{ item.Paid_to }}</td>
                     <td>{{ item.Amount }}</td>
                     <td>

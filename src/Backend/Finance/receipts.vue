@@ -31,31 +31,25 @@
                       New Payment Receipts
                     </button>
 
-                     <button
+                    <button
                       class="btn btn-success"
                       style="float: right"
                       type="button"
-                     
                       @click="gotobank"
                     >
-                      View Bank Bank Transactions 
+                      View Bank Bank Transactions
                     </button>
 
                     <a
-                    class="
-                      dropdown-item
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    "
-                    style="float: right"
-                    @click="gotobank"
-                  >
-                    <span class="fs-sm fw-medium">View Bank Bank Transactions </span>
-                  </a>
+                      class="dropdown-item d-flex align-items-center justify-content-between"
+                      style="float: right"
+                      @click="gotobank"
+                    >
+                      <span class="fs-sm fw-medium"
+                        >View Bank Bank Transactions
+                      </span>
+                    </a>
                   </div>
-
-                  
 
                   <table
                     class="table-bordeless table-hover table-striped walla"
@@ -160,43 +154,24 @@
             <div class="modal-content">
               <div class="modal-header">
                 <div
-                  class="
-                    dropdown-menu dropdown-menu-md dropdown-menu-end
-                    p-0
-                    border-0
-                  "
+                  class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
                   aria-labelledby="page-header-user-dropdown"
                   style=""
                 >
                   <div class="p-2">
                     <router-link
                       :to="{ path: 'expenses' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Expenses</router-link
                     >
                     <router-link
                       :to="{ path: 'purchasing' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Purchasing</router-link
                     >
                     <router-link
                       :to="{ path: 'sales' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Sales</router-link
                     >
 
@@ -204,12 +179,7 @@
 
                     <router-link
                       :to="{ path: 'journals' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Journals</router-link
                     >
 
@@ -217,32 +187,17 @@
 
                     <router-link
                       :to="{ path: 'documents' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Documents</router-link
                     >
                     <router-link
                       :to="{ path: 'budgets' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Budgets
                     </router-link>
                     <router-link
                       :to="{ path: 'taxes' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Taxes</router-link
                     >
 
@@ -250,12 +205,7 @@
 
                     <router-link
                       :to="{ path: 'accounting' }"
-                      class="
-                        dropdown-item
-                        d-flex
-                        align-items-center
-                        justify-content-between
-                      "
+                      class="dropdown-item d-flex align-items-center justify-content-between"
                       >Genral Ledger</router-link
                     >
                   </div>
@@ -501,8 +451,251 @@
         </div>
 
         <div
-          class="modal fade modalbox"
+          class="modal fade"
           id="AllocateReceipts"
+          tabindex="-1"
+          aria-labelledby="feedbackModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-gradient-primary-to-secondary p-4">
+                <h5
+                  class="modal-title font-alt text-white"
+                  id="feedbackModalLabel"
+                >
+                  Send feedback
+                </h5>
+                <button
+                  class="btn-close btn-close-white"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body border-0 p-4">
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form>
+                  <div class="primary-info grey-bg">
+                    <div class="zb-txn-form">
+                      <div
+                        tabindex="-1"
+                        id="ember1177"
+                        class="no-outline ember-view"
+                      ></div>
+
+                      <div class="form-group row">
+                        <label class="col-form-label col-lg-2 required"
+                          >Select Type
+                        </label>
+                        <div class="col-lg-5">
+                          <div
+                            id="ember1187"
+                            class="accounts-select ember-view"
+                          >
+                            <!-- {{this.NewSourceID}} -->
+                            {{ this.paymentrcvd.customer }}
+
+                            <!-- {{this.memberloanrepayment}} -->
+                          </div>
+                        </div>
+                      </div>
+
+                      <!---->
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2 required"
+                      >Amount Received</label
+                    >
+                    <div class="col-lg-10">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">KES </span>
+                            </div>
+                            <input
+                              id="ember1179"
+                              class="ember-text-field text-left ember-view form-control text-left"
+                              type="text"
+                              v-model="paymentrcvd.amount"
+                              disabled
+                            />
+                          </div>
+                          <!---->
+                          <div
+                            id="ember1180"
+                            class="popover-container ember-view"
+                          >
+                            <div
+                              id="ember1181"
+                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
+                            >
+                              <!---->
+                            </div>
+                          </div>
+                        </div>
+                        <label class="col-form-label col-lg-2 px-0"
+                          >Bank Charges (if any)</label
+                        >
+                        <!-- {{ this.paymentrcvd.transactiondate }} -->
+
+                        <div class="col-lg-2">
+                          <input
+                            id="ember1182"
+                            class="ember-text-field text-left ember-view form-control"
+                            type="text"
+                            disabled
+                          />
+                        </div>
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2 required"
+                      >Payment Date</label
+                    >
+                    <div class="col-lg-5">
+                      <input
+                        placeholder="dd MMM yyyy"
+                        id="ember1183"
+                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
+                        type="date"
+                        v-model="paymentrcvd.transactiondate"
+                        disabled
+                      />
+                      <!---->
+                    </div>
+                  </div>
+                </form>
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                  <!-- Name input-->
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="name"
+                      type="text"
+                      placeholder="Enter your name..."
+                      data-sb-validations="required"
+                    />
+                    <label for="name">Full name</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
+                  <!-- Email address input-->
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="email"
+                      type="email"
+                      placeholder="name@example.com"
+                      data-sb-validations="required,email"
+                    />
+                    <label for="email">Email address</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="email:required"
+                    >
+                      An email is required.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="email:email"
+                    >
+                      Email is not valid.
+                    </div>
+                  </div>
+                  <!-- Phone number input-->
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="phone"
+                      type="tel"
+                      placeholder="(123) 456-7890"
+                      data-sb-validations="required"
+                    />
+                    <label for="phone">Phone number</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="phone:required"
+                    >
+                      A phone number is required.
+                    </div>
+                  </div>
+                  <!-- Message input-->
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      type="text"
+                      placeholder="Enter your message here..."
+                      style="height: 10rem"
+                      data-sb-validations="required"
+                    ></textarea>
+                    <label for="message">Message</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="message:required"
+                    >
+                      A message is required.
+                    </div>
+                  </div>
+                  <!-- Submit success message-->
+                  <!---->
+                  <!-- This is what your users will see when the form-->
+                  <!-- has successfully submitted-->
+                  <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center mb-3">
+                      <div class="fw-bolder">Form submission successful!</div>
+                      To activate this form, sign up at
+                      <br />
+                      <a
+                        href="https://startbootstrap.com/solution/contact-forms"
+                        >https://startbootstrap.com/solution/contact-forms</a
+                      >
+                    </div>
+                  </div>
+                  <!-- Submit error message-->
+                  <!---->
+                  <!-- This is what your users will see when there is-->
+                  <!-- an error submitting the form-->
+                  <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">
+                      Error sending message!
+                    </div>
+                  </div>
+                  <!-- Submit Button-->
+                  <div class="d-grid">
+                    <button
+                      class="btn btn-primary rounded-pill btn-lg disabled"
+                      id="submitButton"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade modalbox"
+          id="AllocateReceiptsx"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -567,13 +760,7 @@
                             </div>
                             <input
                               id="ember1179"
-                              class="
-                                ember-text-field
-                                text-left
-                                ember-view
-                                form-control
-                                text-left
-                              "
+                              class="ember-text-field text-left ember-view form-control text-left"
                               type="text"
                               v-model="paymentrcvd.amount"
                               disabled
@@ -586,13 +773,7 @@
                           >
                             <div
                               id="ember1181"
-                              class="
-                                d-none
-                                popover
-                                bs-popover-bottom
-                                ember-view
-                                pop-over-div
-                              "
+                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
                             >
                               <!---->
                             </div>
@@ -606,12 +787,7 @@
                         <div class="col-lg-2">
                           <input
                             id="ember1182"
-                            class="
-                              ember-text-field
-                              text-left
-                              ember-view
-                              form-control
-                            "
+                            class="ember-text-field text-left ember-view form-control"
                             type="text"
                             disabled
                           />
@@ -628,13 +804,7 @@
                       <input
                         placeholder="dd MMM yyyy"
                         id="ember1183"
-                        class="
-                          ember-text-field
-                          zf-date-picker
-                          date-picker
-                          ember-view
-                          form-control
-                        "
+                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
                         type="date"
                         v-model="paymentrcvd.transactiondate"
                         disabled
@@ -863,13 +1033,7 @@
                             </div>
                             <input
                               id="ember1179"
-                              class="
-                                ember-text-field
-                                text-left
-                                ember-view
-                                form-control
-                                text-left
-                              "
+                              class="ember-text-field text-left ember-view form-control text-left"
                               type="text"
                               v-model="paymentrcvd.amount"
                             />
@@ -881,13 +1045,7 @@
                           >
                             <div
                               id="ember1181"
-                              class="
-                                d-none
-                                popover
-                                bs-popover-bottom
-                                ember-view
-                                pop-over-div
-                              "
+                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
                             >
                               <!---->
                             </div>
@@ -899,12 +1057,7 @@
                         <div class="col-lg-2">
                           <input
                             id="ember1182"
-                            class="
-                              ember-text-field
-                              text-left
-                              ember-view
-                              form-control
-                            "
+                            class="ember-text-field text-left ember-view form-control"
                             type="text"
                           />
                         </div>
@@ -930,13 +1083,7 @@
                       <input
                         placeholder="dd MMM yyyy"
                         id="ember1183"
-                        class="
-                          ember-text-field
-                          zf-date-picker
-                          date-picker
-                          ember-view
-                          form-control
-                        "
+                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
                         type="date"
                         v-model="paymentrcvd.transactiondate"
                       />
@@ -958,13 +1105,7 @@
                           </div>
                           <input
                             id="ember1179"
-                            class="
-                              ember-text-field
-                              text-left
-                              ember-view
-                              form-control
-                              text-left
-                            "
+                            class="ember-text-field text-left ember-view form-control text-left"
                             type="text"
                             v-model="this.totalEmployerDeposits"
                           />
@@ -976,13 +1117,7 @@
                         >
                           <div
                             id="ember1181"
-                            class="
-                              d-none
-                              popover
-                              bs-popover-bottom
-                              ember-view
-                              pop-over-div
-                            "
+                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
                           >
                             <!---->
                           </div>
@@ -1026,13 +1161,7 @@
                           </div>
                           <input
                             id="ember1179"
-                            class="
-                              ember-text-field
-                              text-left
-                              ember-view
-                              form-control
-                              text-left
-                            "
+                            class="ember-text-field text-left ember-view form-control text-left"
                             type="text"
                             v-model="this.totalEmployerLoans"
                           />
@@ -1044,13 +1173,7 @@
                         >
                           <div
                             id="ember1181"
-                            class="
-                              d-none
-                              popover
-                              bs-popover-bottom
-                              ember-view
-                              pop-over-div
-                            "
+                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
                           >
                             <!---->
                           </div>
@@ -1096,13 +1219,7 @@
                           </div>
                           <input
                             id="ember1179"
-                            class="
-                              ember-text-field
-                              text-left
-                              ember-view
-                              form-control
-                              text-left
-                            "
+                            class="ember-text-field text-left ember-view form-control text-left"
                             type="text"
                             v-model="this.totalEmployerInterest"
                           />
@@ -1114,13 +1231,7 @@
                         >
                           <div
                             id="ember1181"
-                            class="
-                              d-none
-                              popover
-                              bs-popover-bottom
-                              ember-view
-                              pop-over-div
-                            "
+                            class="d-none popover bs-popover-bottom ember-view pop-over-div"
                           >
                             <!---->
                           </div>
@@ -1402,13 +1513,7 @@
                             </div>
                             <input
                               id="ember1179"
-                              class="
-                                ember-text-field
-                                text-left
-                                ember-view
-                                form-control
-                                text-left
-                              "
+                              class="ember-text-field text-left ember-view form-control text-left"
                               type="text"
                               v-model="Payments.amount"
                             />
@@ -1420,13 +1525,7 @@
                           >
                             <div
                               id="ember1181"
-                              class="
-                                d-none
-                                popover
-                                bs-popover-bottom
-                                ember-view
-                                pop-over-div
-                              "
+                              class="d-none popover bs-popover-bottom ember-view pop-over-div"
                             >
                               <!---->
                             </div>
@@ -1438,12 +1537,7 @@
                         <div class="col-lg-2">
                           <input
                             id="ember1182"
-                            class="
-                              ember-text-field
-                              text-left
-                              ember-view
-                              form-control
-                            "
+                            class="ember-text-field text-left ember-view form-control"
                             type="text"
                           />
                         </div>
@@ -1470,13 +1564,7 @@
                       <input
                         placeholder="dd MMM yyyy"
                         id="ember1183"
-                        class="
-                          ember-text-field
-                          zf-date-picker
-                          date-picker
-                          ember-view
-                          form-control
-                        "
+                        class="ember-text-field zf-date-picker date-picker ember-view form-control"
                         type="date"
                       />
                       <!---->
@@ -1497,12 +1585,7 @@
                     </div>
                     <i
                       id="ember1185"
-                      class="
-                        tooltip-container
-                        form-control-help
-                        text-blue
-                        ember-view
-                      "
+                      class="tooltip-container form-control-help text-blue ember-view"
                     >
                     </i>
                   </div>

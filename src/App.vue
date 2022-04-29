@@ -1,5 +1,5 @@
 <template>
-  <Navbar v-if="!$route.meta.hideNavbar" ></Navbar>
+  <Navbar v-if="!$route.meta.hideNavbar"></Navbar>
 
   <div class="container-fluid">
     <error />
@@ -16,7 +16,6 @@ export default {
   name: "App",
   components: {
     Navbar,
-    
   },
 };
 </script>
@@ -41,5 +40,26 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+/*! CSS Used from: https://demo.pixelcave.com/oneui/assets/css/oneui.min-5.2.css */
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+.d-none {
+  display: none !important;
+}
+.ms-2 {
+  margin-left: 0.5rem !important;
+}
+@media (min-width: 576px) {
+  .d-sm-inline-block {
+    display: inline-block !important;
+  }
 }
 </style>

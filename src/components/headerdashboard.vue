@@ -267,17 +267,9 @@
                 <Refresh><i class="bi bi-arrow-clockwise"></i></Refresh>
               </div>
 
-              <div class="d-flex align-items-center">
-                <div class="dropdown d-inline-block ms-2">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-alt-secondary d-flex align-items-center"
-                    id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <svg
+              <div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
@@ -295,13 +287,10 @@
                     <i
                       class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
                     ></i>
-                  </button>
-                  <div
-                    class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
-                    aria-labelledby="page-header-user-dropdown"
-                    style=""
-                  >
-                    <div class="p-2">
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <div class="p-2">
                       <router-link
                         :to="{ path: 'memberapplications' }"
                         class="dropdown-item d-flex align-items-center justify-content-between"
@@ -354,9 +343,10 @@
                         >Loans Schedule</router-link
                       >
                     </div>
-                  </div>
-                </div>
-              </div>
+  </ul>
+</div>
+
+             
             </div>
           </div>
         </div>

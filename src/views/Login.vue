@@ -1,7 +1,7 @@
 <template>
   <div class="card-group container-fluid align-self-center mt-5 mb-auto">
     <div class="card ">
-      <div class="card-body mt-auto">
+      <div class="card-body justify-content-center mt-auto">
         <div class="section mt-8 text-center">
           <h1>Log in</h1>
           <h4>Fill the form to log in</h4>

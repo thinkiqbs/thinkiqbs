@@ -1,7 +1,7 @@
 @<template>
   <body id="page-top">
     <!-- Navigation-->
-   
+
     <!-- Mashead header-->
     <header class="masthead">
       <div class="container px-5">
@@ -9,15 +9,54 @@
           <div class="col-lg-6">
             <!-- Mashead text and app badges-->
             <div class="mb-5 mb-lg-0 text-center text-lg-start">
-              <h1 class="display-1 lh-1 mb-3">
-                Manage Your SACCO online.
-              </h1>
+              <h1 class="display-1 lh-1 mb-3">Manage Your SACCO online.</h1>
               <p class="lead fw-normal text-muted mb-5">
                 It's simple to manage your SACCO's day-to-day operations with
                 IQSACCO. The dashboards allow you to monitor your SACCO
                 activities in real time, and reporting for your annual audit has
                 never been easier.
               </p>
+              <div v-if="token != null">
+                <div
+                  v-if="
+                    this.organizationdetails == 2 && this.memberdetails == 2
+                  "
+                >
+                  <button
+                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                    data-bs-toggle="modal"
+                    data-bs-target="#feedbackModal"
+                  >
+                    <span class="d-flex align-items-center">
+                      <i class="bi-chat-text-fill me-2"></i>
+                      <span class="small">Start A New SACCO</span>
+                    </span>
+                  </button>
+                </div>
+                <div v-if="this.organizationdetails == 1">
+                  <button
+                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                    @click="gotoDashboard"
+                  >
+                    <span class="d-flex align-items-center">
+                      <i class="bi-chat-text-fill me-2"></i>
+                      <span class="small">Back Office</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div v-if="token != null && this.memberdetails == 2">
+                <button
+                  class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+                  data-bs-toggle="modal"
+                  data-bs-target="#JoinSaccoModal"
+                >
+                  <span class="d-flex align-items-center">
+                    <i class="bi-chat-text-fill me-2"></i>
+                    <span class="small">Join a Sacco</span>
+                  </span>
+                </button>
+              </div>
               <div class="d-flex flex-column flex-lg-row align-items-center">
                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"
                   ><img
@@ -195,8 +234,6 @@
           </div>
         </div>
       </div>
-
-      
     </section>
     <!-- Basic features section-->
     <section class="bg-light">
@@ -281,7 +318,7 @@
       </div>
     </footer>
     <!-- Register Modal-->
-    
+
     <!-- Login Modal-->
     <div
       class="modal fade"
@@ -638,11 +675,10 @@ export default {
         (item) => item.email == this.emailstate
       );
     },
-    
   },
 };
 </script>
 
 <style>
-@import "../assets/css/style.css"; 
+@import "../assets/css/style.css";
 </style>

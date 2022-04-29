@@ -30,10 +30,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="#features">Features</a>
+            <a class="nav-link me-lg-3" href="#features" v-if="token == null">Features</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="#download">Download</a>
+            <a class="nav-link me-lg-3" href="#download" v-if="token == null">Download</a>
           </li>
           <li class="nav-item">
             <a class="nav-link me-lg-3" href="/contacts" v-if="token == null"
@@ -41,7 +41,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="/Profile" >My Account</a>
+            <a class="nav-link me-lg-3" href="/Profile" v-if="token != null">My Account</a>
           </li>
         </ul>
 

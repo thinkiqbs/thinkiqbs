@@ -270,7 +270,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Company Informations Details</h5>
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <form id="createorgnization" @submit.prevent="submit">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input

@@ -5,7 +5,7 @@
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-            <form id="createorg" @submit.prevent="submit">
+            <form id="createorg">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
@@ -570,7 +570,7 @@ export default {
       logo: "",
 
       org: {
-        name: "dddd",
+        name: "",
         business_name: "",
         business_city: "",
         business_address: "",

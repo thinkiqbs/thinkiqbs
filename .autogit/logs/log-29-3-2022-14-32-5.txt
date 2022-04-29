@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Fri Apr 29 2022 14:32:05 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Members/members.vue
+
+
+Created files:
+* .autogit/logs/log-29-3-2022-14-0-45.txt
+
+
+Deleted files:
+
+
+Renamed files:

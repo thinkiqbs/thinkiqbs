@@ -586,11 +586,11 @@
                                       @click="
                                         postdepositsallocations(contribution)
                                       "
-                                    >
+                                    >Allocate
                                       <i
                                         class="fa fa-check-square"
                                         aria-hidden="true"
-                                      >Allocate</i>
+                                      ></i>
                                     </button>
                                   </td>
                                 </div>
@@ -620,9 +620,9 @@
                                   <div
                                     class="table table-borderless responsive"
                                   >
-                                    <td>{{ savedloans.id }}</td>
+
                                     <td>{{ savedloans.loan_Type }}</td>
-                                    <td>{{ savedloans.gl_account }}</td>
+
 
                                     <td>
                                       <input
@@ -646,13 +646,13 @@
                                     <td>
                                       
 
-                                      <i
-                                        class="fa fa-check-square"
+                                      <button
+                                        class="btn btn-primary"
                                         aria-hidden="true"
                                         @click="
                                           allocateloanspromise(savedloans)
                                         "
-                                      ></i>
+                                      >allocate</button>
                                     </td>
                                   </div>
                                 </li>
@@ -901,7 +901,7 @@
                                   >
                                     <td>{{ savedloans.id }}</td>
                                     <td>{{ savedloans.loan_Type }}</td>
-                                    <td>{{ savedloans.gl_account }}</td>
+
 
                                     <td>
                                       <input
@@ -923,18 +923,15 @@
                                       />
                                     </td>
                                     <td>
-                                      <i
-                                        class="fa fa-pencil-square-o"
-                                        aria-hidden="true"
-                                      ></i>
-
-                                      <i
-                                        class="fa fa-check-square"
+                                      
+                                     Allocate
+                                      <button
+                                        class="button btn-primary"
                                         aria-hidden="true"
                                         @click="
                                           allocateloanspromise(savedloans)
                                         "
-                                      ></i>
+                                      ></button>
                                     </td>
                                   </div>
                                 </li>
@@ -3716,16 +3713,12 @@ export default {
           response;
           // confirm("Loan Schedule updated");
           console.log("contribution", this.loan);
-          alert("Deposits control updated");
-          this.fetchDocuments();
-
-          this.fetchLoans();
-
-          this.fetchPaymentsreceived();
+          this.$swal("Member Deposits have been updated")
+          
         })
         .catch((e) => {
           this.errors.push(e);
-          alert(e);
+          this.$swal("Already Allocated")
         });
     },
 

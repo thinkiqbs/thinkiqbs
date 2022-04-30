@@ -16,8 +16,6 @@
           <div class="card-header">
             <h4 class="card-title">Data Migration Section</h4>
 
-            
-
             <div class="d-flex align-items-center">
               <div class="dropdown d-inline-block ms-2">
                 <button
@@ -193,7 +191,40 @@
               <div class="modal-body">
                 <!-- {{this.datatable.columns}} -->
                 {{ this.accounttype1 }}
-                <div class="table-responsive"></div>
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered table-hover table-vcenter table-striped"
+                    id="accounttype"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Account Type</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="accounttype in accounttype1"
+                        :key="accounttype.id"
+                      >
+                        <td>{{ accounttype.accountcode }}</td>
+                        <td>{{ accounttype.accounttype }}</td>
+                        <td>
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-alt-danger"
+                            data-toggle="tooltip"
+                            title="Delete"
+                            @click="deleteAccounttype(accounttype.id)"
+                          >
+                            <i class="fa fa-fw fa-times"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="modal-footer">
                 <button
@@ -1268,6 +1299,7 @@
             <!-- {{this.datatable.columns}} -->
             {{ this.mainaccounts1 }}
           </div>
+
           <div class="modal-footer">
             <button
               type="button"
@@ -2178,12 +2210,6 @@ export default {
           })
           .then((response) => {
             this.subaccounts.push(response.data);
-            this.$swal({
-              title: "Success",
-              text: "Sub account added successfully",
-              icon: "success",
-              button: "Ok",
-            });
           })
           .catch((error) => {
             this.$swal({
@@ -2216,7 +2242,6 @@ export default {
           })
           .then((response) => {
             this.counties.push(response.data);
-            
           })
           .catch((error) => {
             console.log(error);
@@ -2236,11 +2261,11 @@ export default {
         // 	.catch(console.log);
       }
       this.$swal({
-              title: "Success",
-              text: "County added successfully",
-              icon: "success",
-              button: "Ok",
-            });
+        title: "Success",
+        text: "County added successfully",
+        icon: "success",
+        button: "Ok",
+      });
     },
 
     maxapp() {

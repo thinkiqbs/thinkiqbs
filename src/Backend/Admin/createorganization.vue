@@ -5,7 +5,7 @@
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-            <form id="createorg">
+            <form id="createorg" @submit.prevent="createorg">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
@@ -14,7 +14,7 @@
                   type="text"
                   placeholder="Sacco or MFI name"
                   data-sb-validations="required"
-                  v-model="org.name"
+                  v-model="namex"
                 />
                 <label for="orgname">Organization Name</label>
                 <div
@@ -154,10 +154,10 @@
                   <input
                     type="checkbox"
                     class="form-check-input"
-                    id="Entity-Type"
+                    id="Entity-Type2"
                     v-model="org.deposittaking"
                   />
-                  <label for="Entity-Type">Check if deposit Taking</label>
+                  <label for="Entity-Type2">Check if deposit Taking</label>
                 </div>
                 <div class="col form-floating mb-3">
                   <select
@@ -208,60 +208,15 @@
                   </div>
                 </div>
               </div>
-              <!-- Phone number input-->
-              <!-- <div class="form-floating mb-3">
-                <input
-                  class="form-control"
-                  id="phone"
-                  type="tel"
-                  placeholder="(123) 456-7890"
-                  data-sb-validations="required"
-                />
-                <label for="phone">Phone number</label>
-                <div class="invalid-feedback" data-sb-feedback="phone:required">
-                  A phone number is required.
-                </div>
-              </div> -->
-              <!-- Message input-->
-              <!-- <div class="col-lg-5 font-xs">
-                <div class="text-muted">
-                  This logo will appear on transactions and email notifications.
-                </div>
-                <input type="file" @change="onfileSelected" />
-                <button class="btn btn-success" @click="uploadLogo">
-                  Upload Logo
-                </button>
-                {{ this.logo }}
-                <small class="form-text"
-                  >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size of
-                  1MB.</small
-                >
-                <a
-                  class="d-block"
-                  href="#"
-                  data-ember-action=""
-                  data-ember-action-1043="1043"
-                  >Remove Logo</a
-                >
-              </div> -->
-              <!-- Submit success message-->
-              <!---->
-              <!-- This is what your users will see when the form-->
-              <!-- has successfully submitted-->
+
               <div class="d-none" id="submitSuccessMessage">
                 <div class="text-center mb-3">
                   <div class="fw-bolder">Form submission successful!</div>
                   To activate this form, sign up at
                   <br />
-                  <a href="https://startbootstrap.com/solution/contact-forms"
-                    >https://startbootstrap.com/solution/contact-forms</a
-                  >
                 </div>
               </div>
-              <!-- Submit error message-->
-              <!---->
-              <!-- This is what your users will see when there is-->
-              <!-- an error submitting the form-->
+
               <div class="d-none" id="submitErrorMessage">
                 <div class="text-center text-danger mb-3">
                   Error sending message!
@@ -291,14 +246,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="orgnameview"
+                  id="orgnameview1"
                   type="text"
                   placeholder="Sacco or MFI name"
                   data-sb-validations="required"
                   v-model="this.org.name"
                   disabled="True"
                 />
-                <label for="name">Organization Name</label>
+                <label for="orgnameview1">Organization Name</label>
                 <div
                   class="invalid-feedback"
                   data-sb-feedback="orgnameview:required"
@@ -309,14 +264,16 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="Registration-Number"
+                  id="Registration-Number1"
                   type="text"
                   placeholder="PVT-XXXXXXXX"
                   data-sb-validations="required"
                   v-model="org.Business_registration_no"
                   disabled="True"
                 />
-                <label for="name">Company Registration Number</label>
+                <label for="Registration-Number1"
+                  >Company Registration Number</label
+                >
                 <div class="invalid-feedback" data-sb-feedback="name:required">
                   Company Registration Number is required.
                 </div>
@@ -325,14 +282,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="Tax_PIN_Number"
+                  id="Tax_PIN_Number1"
                   type="text"
                   placeholder="Tax Authority Number"
                   data-sb-validations="required"
                   v-model="org.tax_id"
                   disabled="True"
                 />
-                <label for="name">TAX/PIN NO</label>
+                <label for="Tax_PIN_Number1">TAX/PIN NO</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
                   TAX/PIN NO is required.
                 </div>
@@ -340,14 +297,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="input-address"
+                  id="input-address1"
                   type="text"
                   placeholder="Address"
                   data-sb-validations="required"
                   v-model="org.business_address"
                   disabled="True"
                 />
-                <label for="name">Address</label>
+                <label for="input-address1">Address</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
                   Address is required.
                 </div>
@@ -356,14 +313,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="email"
+                  id="email1"
                   type="email"
                   placeholder="name@example.com"
                   data-sb-validations="required,email"
                   v-model="this.email"
                   disabled="True"
                 />
-                <label for="email">Email address</label>
+                <label for="email1">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">
                   An email is required.
                 </div>
@@ -375,13 +332,13 @@
                 <div class="col form-floating mb-3">
                   <input
                     type="text"
-                    id="input-city"
+                    id="input-city1"
                     class="form-control"
                     placeholder="City"
                     v-model="org.business_city"
                     disabled="True"
                   />
-                  <label for="input-city">Business City</label>
+                  <label for="input-city1">Business City</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="name:required"
@@ -392,13 +349,13 @@
                 <div class="col form-floating mb-3">
                   <input
                     type="text"
-                    id="input-country"
+                    id="input-country1"
                     class="form-control"
                     placeholder="Country"
                     v-model="org.business_location"
                     disabled="True"
                   />
-                  <label for="input-country">Country</label>
+                  <label for="input-country1">Country</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="name:required"
@@ -409,7 +366,7 @@
                 <div class="col form-floating mb-3">
                   <input
                     type="number"
-                    id="input-postal-code"
+                    id="input-postal-code1"
                     class="form-control"
                     placeholder="Postal code"
                     v-model="org.Postal_address"
@@ -432,7 +389,7 @@
                   <input
                     type="checkbox"
                     class="form-check-input"
-                    id="Entity-Type"
+                    id="Entity-Type1"
                     v-model="org.deposittaking"
                     disabled="True"
                   />
@@ -465,7 +422,7 @@
                 </div>
                 <div class="col form-floating mb-3">
                   <select
-                    id="industry1"
+                    id="industry2"
                     class="form-select"
                     v-model="org.base_currency"
                     disabled="True"
@@ -568,9 +525,10 @@ export default {
     return {
       checkedNames: [],
       logo: "",
+      namex: "",
 
       org: {
-        name: "",
+        // name: "",
         business_name: "",
         business_city: "",
         business_address: "",
@@ -656,7 +614,7 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
-          organization_name: this.org.name,
+          organization_name: this.org.namex,
           industry: this.org.industry,
           business_location: this.org.business_location,
           business_address: this.org.business_address,

@@ -86,8 +86,10 @@
                         KES &nbsp; {{ cashatbank }}
                       </div>
                     </div>
-                    <div class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex " style="float:right;">
-                      
+                    <div
+                      class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex"
+                      style="float: right"
+                    >
                       <div class="dropdown">
                         <a
                           class="btn btn-secondary dropdown-toggle"
@@ -121,7 +123,6 @@
                           class="dropdown-menu"
                           aria-labelledby="dropdownMenuLink"
                         >
-                          
                           <div class="p-2">
                             <a
                               class="dropdown-item d-flex align-items-center justify-content-between"
@@ -207,7 +208,7 @@
                                 >Transfer From Another Account</span
                               >
                             </a>
-                            
+
                             <a
                               class="dropdown-item d-flex align-items-center justify-content-between"
                               @click="gotoreceipts"
@@ -223,8 +224,6 @@
                       <div>
                         <Refresh><i class="bi bi-arrow-clockwise"></i></Refresh>
                       </div>
-
-                      
                     </div>
                   </div>
                 </div>
@@ -232,15 +231,11 @@
               </div>
             </div>
 
-            
-                <h4 class="card-title"></h4>
+            <h4 class="card-title"></h4>
 
-                <div id="container-fluid" style="float: right">
-                  <div id="ember1564" class="ember-view">
-                    
-                  </div>
-                </div>
-               
+            <div id="container-fluid" style="float: right">
+              <div id="ember1564" class="ember-view"></div>
+            </div>
 
             <div class="col">
               <p>reconcile with your bank statement</p>
@@ -1457,8 +1452,362 @@
         <!--  -->
 
         <div
-          class="modal fade modalbox"
+          class="modal fade"
           id="Newpayments"
+          tabindex="-1"
+          aria-labelledby="feedbackModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-gradient-primary-to-secondary p-4">
+                <h5
+                  class="modal-title font-alt text-white"
+                  id="feedbackModalLabel"
+                >
+                  Send feedback
+                </h5>
+                <button
+                  class="btn-close btn-close-white"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body border-0 p-4">
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                  <!-- Name input-->
+
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="date_of_transactions"
+                      type="date"
+                      placeholder="Enter your name..."
+                      data-sb-validations="required"
+                    />
+                    <label for="date_of_transactions">Date</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="date_of_transactions:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <div class="form-floating mb-3">
+                      <input
+                        class="form-control"
+                        id="name"
+                        type="text"
+                        placeholder="Enter your name..."
+                        data-sb-validations="required"
+                      />
+                      <label for="name">Full name</label>
+                      <div
+                        class="invalid-feedback"
+                        data-sb-feedback="name:required"
+                      >
+                        A name is required.
+                      </div>
+                    </div>
+                    <label for="name">Bank</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                      v-model="checkpath"
+                      value="Value"
+                      @change="selectcustomertype"
+                      placeholder="click to select customer type"
+                      data-live-search="true"
+                    >
+                      <option value="none" selected disabled hidden>
+                        Select an Option
+                      </option>
+                      <option selected>Open this select menu</option>
+                      <option value="1">Member</option>
+                      <option value="2">Employer</option>
+                      <option value="3">Customer</option>
+                    </select>
+                    <label for="name">Select Customer Type</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <div class="form-row">
+                      <div class="form-group col-md-8">
+                        <div v-if="checkpath == '1'">
+                          <select
+                            v-model="selectedemail"
+                            class="form-select"
+                            @change="paramfilter"
+                          >
+                            <option
+                              v-for="option in members1"
+                              :value="option.email"
+                              :key="option.id"
+                            >
+                              {{ option.email }}
+                            </option>
+                          </select>
+                          <span style="color: green">
+                            You are receiving payment for x:
+                            {{ this.selectedemail }}</span
+                          >
+                        </div>
+                        <div v-else-if="checkpath == 2">
+                          <select
+                            v-model="employerid"
+                            class="form-select"
+                            @change="paramfilter2"
+                          >
+                            <option
+                              v-for="option in employer1"
+                              :value="option.id"
+                              :key="option.id"
+                            >
+                              {{ option.employer_name }}
+                            </option>
+                          </select>
+                          <span style="color: green"
+                            >You are receiving payment for :
+                            {{ this.employeremail }}</span
+                          >
+                        </div>
+                        <div v-else-if="checkpath == 3">
+                          <select v-model="selected" class="form-select">
+                            <option
+                              v-for="option in options"
+                              :value="option.companyname"
+                              :key="option.id"
+                            >
+                              {{ option.companyname }}
+                            </option>
+                          </select>
+                          <span style="color: green"
+                            >You are receiving payment for :
+                            {{ selected }}</span
+                          >
+                        </div>
+                        <div v-else>
+                          <H3 style="color: red"> Nothing is selected !</H3>
+                        </div>
+                      </div>
+                    </div>
+                    <label for="name">Select Customer</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="name"
+                      type="text"
+                      placeholder="Enter your name..."
+                      data-sb-validations="required"
+                    />
+                    <label for="name">Full name</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="amount_received"
+                      type="number"
+                      placeholder="Enter your name..."
+                      data-sb-validations="required"
+                      v-model="Payments.amount"
+                    />
+                    <label for="amount_received">Amount</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="name:required"
+                    >
+                      A name is required.
+                    </div>
+                    <div class="form-check mt-3 cursor-pointer">
+                      <input
+                        id="ae3fdcc3a"
+                        class="ember-checkbox ember-view form-check-input"
+                        type="checkbox"
+                        @change="receivefullamount"
+                      />
+                      <label for="ae3fdcc3a" class="form-check-label">
+                        Received full amount {{ this.PaymentAmount }}
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Payment Mode</label>
+                    <div class="col-lg-5">
+                      <div id="ember1186" class="ember-view">
+                        <div class="ac-box">
+                          <span class="ac-selected form-control" tabindex="0">
+                            <span data-integrity-label="">Cash</span
+                            ><!---->
+                            <div><i class="zf-ac-toggler"> </i></div>
+                          </span>
+                        </div>
+
+                        <!---->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2 required"
+                      >Deposit To</label
+                    >
+                    <div class="col-lg-5">
+                      <div id="ember1187" class="accounts-select ember-view">
+                        <div id="ember1188" class="ember-view">
+                          <div class="ac-box">
+                            <span class="ac-selected form-control" tabindex="0">
+                              <span data-integrity-label="">Petty Cash</span
+                              ><!---->
+                              <div>
+                                <i class="zf-ac-toggler"> </i>
+                              </div>
+                            </span>
+                          </div>
+
+                          <!---->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Email address input-->
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="reference"
+                      type="text"
+                      placeholder="CHQ32424"
+                      data-sb-validations="required,reference"
+                      v-model="Payments.paymentRef"
+                    />
+                    <label for="reference">Email address</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="reference:required"
+                    >
+                      An email is required.
+                    </div>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="email:email"
+                    >
+                      Email is not valid.
+                    </div>
+                  </div>
+                  <!-- Phone number input-->
+                  <div class="form-floating mb-3">
+                    <input
+                      class="form-control"
+                      id="phone"
+                      type="tel"
+                      placeholder="(123) 456-7890"
+                      data-sb-validations="required"
+                    />
+                    <label for="phone">Phone number</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="phone:required"
+                    >
+                      A phone number is required.
+                    </div>
+                  </div>
+                  <!-- Message input-->
+                  <div class="form-floating mb-3">
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      type="text"
+                      placeholder="Enter your message here..."
+                      style="height: 10rem"
+                      data-sb-validations="required"
+                      v-model="Payments.notes"
+                    ></textarea>
+                    <label for="message">Notes</label>
+                    <div
+                      class="invalid-feedback"
+                      data-sb-feedback="message:required"
+                    >
+                      A message is required.
+                    </div>
+                  </div>
+                  <!-- Submit success message-->
+                  <!---->
+                  <!-- This is what your users will see when the form-->
+                  <!-- has successfully submitted-->
+                  <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center mb-3">
+                      <div class="fw-bolder">Form submission successful!</div>
+                      To activate this form, sign up at
+                      <br />
+                      <a
+                        href="https://startbootstrap.com/solution/contact-forms"
+                        >https://startbootstrap.com/solution/contact-forms</a
+                      >
+                    </div>
+                  </div>
+                  <!-- Submit error message-->
+                  <!---->
+                  <!-- This is what your users will see when there is-->
+                  <!-- an error submitting the form-->
+                  <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">
+                      Error sending message!
+                    </div>
+                  </div>
+                  <!-- Submit Button-->
+                  <div class="d-grid">
+                    <button
+                      class="btn btn-primary rounded-pill btn-lg disabled"
+                      id="submitButton"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade modalbox"
+          id="Newpaymentsx"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -1501,23 +1850,22 @@
                     <label class="visually-hidden" for="autoSizingSelect"
                       >Bank</label
                     >
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                      v-model="selectedbank"
-                      value="Value"
-                      @change="selectcustomertype"
-                      placeholder="click to select customer type"
-                      data-live-search="true"
-                    >
-                      <option
-                        :key="option.id"
-                        v-for="option in banks"
-                        :value="option.id"
+                    <div class="form-floating mb-3">
+                      <input
+                        class="form-control"
+                        id="name"
+                        type="text"
+                        placeholder="Enter your name..."
+                        data-sb-validations="required"
+                      />
+                      <label for="name">Full name</label>
+                      <div
+                        class="invalid-feedback"
+                        data-sb-feedback="name:required"
                       >
-                        {{ option.bankname }}
-                      </option>
-                    </select>
+                        A name is required.
+                      </div>
+                    </div>
                   </div>
                   <div class="col">
                     <label class="visually-hidden" for="autoSizingSelect"
@@ -1541,8 +1889,6 @@
                       <option value="3">Customer</option>
                     </select>
                   </div>
-
-                  
 
                   <div class="form-group row">
                     <label class="col-lg-2 col-form-label required"

@@ -2016,7 +2016,7 @@ export default {
     addsavings() {
       getAPI
         .post(`members/api/v1/MonthDeposits/`, {
-          // names: '',
+          // names: ''
           User_id: this.membersavings.id,
           email: this.membersavings.email,
           Amount: this.contribution.Amount,

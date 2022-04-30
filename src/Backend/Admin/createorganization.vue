@@ -271,7 +271,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Company Informations Details</h5>
-            <form id="createorgnization" v-on:submit.prevent="submit">
+            <form id="createorgnization" v-if="this.orglenght!= 0">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
@@ -636,24 +636,24 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
-          organization_name: this.org.name,
-          industry: this.org.industry,
-          business_location: this.org.business_location,
-          business_address: this.org.business_address,
-          Postal_address: this.org.Postal_address,
+          organization_name: this.org1.name,
+          industry: this.org1.industry,
+          business_location: this.org1.business_location,
+          business_address: this.org1.business_address,
+          Postal_address: this.org1.Postal_address,
           company_email: this.email,
-          business_city: this.org.business_city,
-          base_currency: this.org.base_currency,
-          fiscal_year: this.org.fiscal_year,
-          reporting_basis: this.org.reporting_basis,
-          time_zone: this.org.time_zone,
-          date_format: this.org.date_format,
+          business_city: this.org1.business_city,
+          base_currency: this.org1.base_currency,
+          fiscal_year: this.org1.fiscal_year,
+          reporting_basis: this.org1.reporting_basis,
+          time_zone: this.org1.time_zone,
+          date_format: this.org1.date_format,
           company_id: "",
-          Business_registration_no: this.org.Business_registration_no,
-          tax_id: this.org.tax_id,
-          logo: this.org.logo,
-          deposittaking: this.org.deposittaking,
-          entity_type: this.org.entity_type,
+          Business_registration_no: this.org1.Business_registration_no,
+          tax_id: this.org1.tax_id,
+          logo: this.org1.logo,
+          deposittaking: this.org1.deposittaking,
+          entity_type: this.org1.entity_type,
         })
         .then((response) => {
           response;
@@ -687,6 +687,9 @@ export default {
     },
     last_name() {
       return this.$store.state.last_name;
+    },
+    orglenght(){
+      return this.allOrg.length;
     },
     org(){
 

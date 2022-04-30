@@ -2216,12 +2216,7 @@ export default {
           })
           .then((response) => {
             this.counties.push(response.data);
-            this.$swal({
-              title: "Success",
-              text: "County added successfully",
-              icon: "success",
-              button: "Ok",
-            });
+            
           })
           .catch((error) => {
             console.log(error);
@@ -2240,6 +2235,12 @@ export default {
         // 	.then(console.log)
         // 	.catch(console.log);
       }
+      this.$swal({
+              title: "Success",
+              text: "County added successfully",
+              icon: "success",
+              button: "Ok",
+            });
     },
 
     maxapp() {

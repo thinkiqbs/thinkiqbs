@@ -691,6 +691,12 @@ export default {
       return p + this.pathid + "/";
     },
 
+    organizationprofile() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.admin_email == this.email
+      )[0].id;
+    },
+
     companyid3() {
       return this.$store.getters.allOrg.filter(
         (item) => item.admin_email == this.email
@@ -730,6 +736,8 @@ export default {
       const formData = new FormData();
       formData.append("logo", this.selectedFile, this.selectedFile.name);
       formData.append("company_id", xid);
+      formData.append("organizationprofile", this.organizationprofile);
+
 
       getAPI.post("/sys_config/api/v1/logoFile/", formData).then((response) => {
         console.log(response);
@@ -754,7 +762,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 2,
@@ -773,7 +781,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 3,
@@ -791,7 +799,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 4,
@@ -809,7 +817,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 5,
@@ -827,7 +835,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 6,
@@ -845,7 +853,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 15,
@@ -864,7 +872,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 16,
@@ -883,7 +891,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
         {
           id: 17,
@@ -902,7 +910,7 @@ export default {
           debit: 0,
           credit: 0,
           balance: 0,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
       ];
 
@@ -956,7 +964,7 @@ export default {
           memberkey: this.companyid3 + "2111000",
           company_id: this.companyid3,
           security: true,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
         },
       ];
 
@@ -986,7 +994,7 @@ export default {
       const payloadcoa = [
         {
           id: 1,
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
           email: "nmbajah@gmail.com",
           loan_type: "Normal Loan",
           loan_description:
@@ -1037,7 +1045,7 @@ export default {
           routingnumber: "10001",
           currency: "KES",
           description: "To be used for everything",
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
           gl_account: "1212000",
           company_id: this.companyid3,
         },
@@ -1051,7 +1059,7 @@ export default {
           routingnumber: "100001",
           currency: "KES",
           description: "Head Office Petty cash",
-          organizationprofile: 1,
+          organizationprofile: this.organizationprofile,
           gl_account: "1211020",
           company_id: this.companyid3,
         },
@@ -1080,7 +1088,7 @@ export default {
     loadEmployer() {
       const payloadcoa = [
         {
-          organizationprofile: "1",
+          organizationprofile: this.organizationprofile,
           employer_name: "Self Employed",
           employer_pin: "PVTSELF01",
           employer_email: "self@email.com",

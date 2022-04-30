@@ -10,18 +10,16 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="orgname"
+                  id="name"
                   type="text"
                   placeholder="Sacco or MFI name"
-                  v-model="namex"
+                  data-sb-validations="required"
+                  v-model="org1.name"
                 />
-                <label for="orgname">Organization Name</label>
-                <!-- <div
-                  class="invalid-feedback"
-                  data-sb-feedback="orgname:required"
-                >
-                  A name is required. 
-                </div>-->
+                <label for="name">Organization Name</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
+                  A name is required.
+                </div>
               </div>
               <div class="form-floating mb-3">
                 <input
@@ -30,15 +28,10 @@
                   type="text"
                   placeholder="PVT-XXXXXXXX"
                   data-sb-validations="required"
-                  v-model="org.Business_registration_no"
+                  v-model="org1.Business_registration_no"
                 />
-                <label for="Registration-Number"
-                  >Company Registration Number</label
-                >
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="Business_registration_no:required"
-                >
+                <label for="name">Company Registration Number</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
                   Company Registration Number is required.
                 </div>
               </div>
@@ -50,13 +43,10 @@
                   type="text"
                   placeholder="Tax Authority Number"
                   data-sb-validations="required"
-                  v-model="org.tax_id"
+                  v-model="org1.tax_id"
                 />
-                <label for="Tax_PIN_Number">TAX/PIN NO</label>
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="nTax_PIN_Numberame:required"
-                >
+                <label for="name">TAX/PIN NO</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
                   TAX/PIN NO is required.
                 </div>
               </div>
@@ -67,13 +57,10 @@
                   type="text"
                   placeholder="Address"
                   data-sb-validations="required"
-                  v-model="org.business_address"
+                  v-model="org1.business_address"
                 />
-                <label for="input-address">Address</label>
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="input-address:required"
-                >
+                <label for="name">Address</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
                   Address is required.
                 </div>
               </div>
@@ -102,12 +89,12 @@
                     id="input-city"
                     class="form-control"
                     placeholder="City"
-                    v-model="org.business_city"
+                    v-model="org1.business_city"
                   />
                   <label for="input-city">Business City</label>
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="input-city:required"
+                    data-sb-feedback="name:required"
                   >
                     Address is required.
                   </div>
@@ -118,7 +105,7 @@
                     id="input-country"
                     class="form-control"
                     placeholder="Country"
-                    v-model="org.business_location"
+                    v-model="org1.business_location"
                   />
                   <label for="input-country">Country</label>
                   <div
@@ -134,14 +121,14 @@
                     id="input-postal-code"
                     class="form-control"
                     placeholder="Postal code"
-                    v-model="org.Postal_address"
+                    v-model="org1.Postal_address"
                   />
                   <label class="form-control-label" for="input-country"
                     >Postal code</label
                   >
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="input-postal-code:required"
+                    data-sb-feedback="name:required"
                   >
                     Postal Code is required.
                   </div>
@@ -153,34 +140,40 @@
                   <input
                     type="checkbox"
                     class="form-check-input"
-                    id="Entity-Type2"
-                    v-model="org.deposittaking"
+                    id="Entity-Type"
+                    v-model="org1.deposittaking"
                   />
-                  <label for="Entity-Type2">Check if deposit Taking</label>
+                  <label for="Entity-Type">Check if deposit Taking</label>
                 </div>
                 <div class="col form-floating mb-3">
                   <select
                     class="form-select"
-                    id="industry"
                     aria-label="Default select example"
-                    v-model="selectedIndustry"
+                    v-model="org1.industry"
                   >
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected>Financial</option>
+                    <option>Manufacturing</option>
+                    <option>Telecomunication</option>
+                    <option>Banking</option>
+                    <option>Retail</option>
+                    <option>Education</option>
+                    <option>Security</option>
                   </select>
-                  <label class="form-control-label" for="industry"
+                  <label class="form-control-label" for="input-country"
                     >Industry</label
                   >
-                  {{ this.selectedIndustry }}
+                  <div
+                    class="invalid-feedback"
+                    data-sb-feedback="name:required"
+                  >
+                    Industry is required.
+                  </div>
                 </div>
-                {{ this.selectedIndustry }}
                 <div class="col form-floating mb-3">
                   <select
-                    id="currency"
+                    id="industry1"
                     class="form-select"
-                    v-model="org.base_currency"
+                    v-model="org1.base_currency"
                   >
                     <option selected>Select Currency...</option>
                     <option>KES</option>
@@ -189,26 +182,71 @@
                     <option>TZS</option>
                     <option>ETB</option>
                   </select>
-                  <label class="form-control-label" for="currency"
+                  <label class="form-control-label" for="input-country"
                     >Currency
                   </label>
                   <div
                     class="invalid-feedback"
-                    data-sb-feedback="currency:required"
+                    data-sb-feedback="name:required"
                   >
                     Address is required.
                   </div>
                 </div>
               </div>
-
+              <!-- Phone number input-->
+              <!-- <div class="form-floating mb-3">
+                <input
+                  class="form-control"
+                  id="phone"
+                  type="tel"
+                  placeholder="(123) 456-7890"
+                  data-sb-validations="required"
+                />
+                <label for="phone">Phone number</label>
+                <div class="invalid-feedback" data-sb-feedback="phone:required">
+                  A phone number is required.
+                </div>
+              </div> -->
+              <!-- Message input-->
+              <!-- <div class="col-lg-5 font-xs">
+                <div class="text-muted">
+                  This logo will appear on transactions and email notifications.
+                </div>
+                <input type="file" @change="onfileSelected" />
+                <button class="btn btn-success" @click="uploadLogo">
+                  Upload Logo
+                </button>
+                {{ this.logo }}
+                <small class="form-text"
+                  >Preferred Image Size: 240px x 240px @ 72 DPI Maximum size of
+                  1MB.</small
+                >
+                <a
+                  class="d-block"
+                  href="#"
+                  data-ember-action=""
+                  data-ember-action-1043="1043"
+                  >Remove Logo</a
+                >
+              </div> -->
+              <!-- Submit success message-->
+              <!---->
+              <!-- This is what your users will see when the form-->
+              <!-- has successfully submitted-->
               <div class="d-none" id="submitSuccessMessage">
                 <div class="text-center mb-3">
                   <div class="fw-bolder">Form submission successful!</div>
                   To activate this form, sign up at
                   <br />
+                  <a href="https://startbootstrap.com/solution/contact-forms"
+                    >https://startbootstrap.com/solution/contact-forms</a
+                  >
                 </div>
               </div>
-
+              <!-- Submit error message-->
+              <!---->
+              <!-- This is what your users will see when there is-->
+              <!-- an error submitting the form-->
               <div class="d-none" id="submitErrorMessage">
                 <div class="text-center text-danger mb-3">
                   Error sending message!
@@ -238,38 +276,30 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="orgnameview1"
+                  id="name"
                   type="text"
                   placeholder="Sacco or MFI name"
                   data-sb-validations="required"
                   v-model="this.org.name"
                   disabled="True"
                 />
-                <label for="orgnameview1">Organization Name</label>
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="orgnameview:required"
-                >
+                <label for="name">Organization Name</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
                   A name is required.
                 </div>
               </div>
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="Registration-Number1"
+                  id="Registration-Number"
                   type="text"
                   placeholder="PVT-XXXXXXXX"
                   data-sb-validations="required"
                   v-model="org.Business_registration_no"
                   disabled="True"
                 />
-                <label for="Registration-Number1"
-                  >Company Registration Number</label
-                >
-                <div
-                  class="invalid-feedback"
-                  data-sb-feedback="Business_registration_no:required"
-                >
+                <label for="name">Company Registration Number</label>
+                <div class="invalid-feedback" data-sb-feedback="name:required">
                   Company Registration Number is required.
                 </div>
               </div>
@@ -277,14 +307,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="Tax_PIN_Number1"
+                  id="Tax_PIN_Number"
                   type="text"
                   placeholder="Tax Authority Number"
                   data-sb-validations="required"
                   v-model="org.tax_id"
                   disabled="True"
                 />
-                <label for="Tax_PIN_Number1">TAX/PIN NO</label>
+                <label for="name">TAX/PIN NO</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
                   TAX/PIN NO is required.
                 </div>
@@ -292,14 +322,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="input-address1"
+                  id="input-address"
                   type="text"
                   placeholder="Address"
                   data-sb-validations="required"
                   v-model="org.business_address"
                   disabled="True"
                 />
-                <label for="input-address1">Address</label>
+                <label for="name">Address</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
                   Address is required.
                 </div>
@@ -308,14 +338,14 @@
               <div class="form-floating mb-3">
                 <input
                   class="form-control"
-                  id="email1"
+                  id="email"
                   type="email"
                   placeholder="name@example.com"
                   data-sb-validations="required,email"
                   v-model="this.email"
                   disabled="True"
                 />
-                <label for="email1">Email address</label>
+                <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">
                   An email is required.
                 </div>
@@ -327,13 +357,13 @@
                 <div class="col form-floating mb-3">
                   <input
                     type="text"
-                    id="input-city1"
+                    id="input-city"
                     class="form-control"
                     placeholder="City"
                     v-model="org.business_city"
                     disabled="True"
                   />
-                  <label for="input-city1">Business City</label>
+                  <label for="input-city">Business City</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="name:required"
@@ -344,13 +374,13 @@
                 <div class="col form-floating mb-3">
                   <input
                     type="text"
-                    id="input-country1"
+                    id="input-country"
                     class="form-control"
                     placeholder="Country"
                     v-model="org.business_location"
                     disabled="True"
                   />
-                  <label for="input-country1">Country</label>
+                  <label for="input-country">Country</label>
                   <div
                     class="invalid-feedback"
                     data-sb-feedback="name:required"
@@ -361,7 +391,7 @@
                 <div class="col form-floating mb-3">
                   <input
                     type="number"
-                    id="input-postal-code1"
+                    id="input-postal-code"
                     class="form-control"
                     placeholder="Postal code"
                     v-model="org.Postal_address"
@@ -384,7 +414,7 @@
                   <input
                     type="checkbox"
                     class="form-check-input"
-                    id="Entity-Type1"
+                    id="Entity-Type"
                     v-model="org.deposittaking"
                     disabled="True"
                   />
@@ -417,7 +447,7 @@
                 </div>
                 <div class="col form-floating mb-3">
                   <select
-                    id="industry2"
+                    id="industry1"
                     class="form-select"
                     v-model="org.base_currency"
                     disabled="True"
@@ -520,11 +550,9 @@ export default {
     return {
       checkedNames: [],
       logo: "",
-      namex: "",
-      selectedIndustry: "",
 
-      org: {
-        // name: "",
+      org1: {
+        name: "",
         business_name: "",
         business_city: "",
         business_address: "",
@@ -532,7 +560,7 @@ export default {
         Business_registration_no: "",
         tax_id: "",
         entity_type: "",
-        industry: this.selectedIndustry,
+        industry: "",
         base_currency: "",
         image: null,
       },
@@ -547,9 +575,7 @@ export default {
       this.selectedFile = e.target.files[0];
     },
 
-    orginfo() {
-      this.org = this.allorg[0];
-    },
+    
 
     uploadLogo() {
       var xid = this.companyid3;
@@ -610,7 +636,7 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
-          organization_name: this.namex,
+          organization_name: this.org.name,
           industry: this.org.industry,
           business_location: this.org.business_location,
           business_address: this.org.business_address,
@@ -661,6 +687,11 @@ export default {
     },
     last_name() {
       return this.$store.state.last_name;
+    },
+    org(){
+
+      return this.allorg[0]
+
     },
     allorg() {
       return this.$store.getters.allOrg.filter(

@@ -13,16 +13,15 @@
                   id="orgname"
                   type="text"
                   placeholder="Sacco or MFI name"
-                  data-sb-validations="required"
                   v-model="namex"
                 />
                 <label for="orgname">Organization Name</label>
-                <div
+                <!-- <div
                   class="invalid-feedback"
                   data-sb-feedback="orgname:required"
                 >
-                  A name is required.
-                </div>
+                  A name is required. 
+                </div>-->
               </div>
               <div class="form-floating mb-3">
                 <input
@@ -38,7 +37,7 @@
                 >
                 <div
                   class="invalid-feedback"
-                  data-sb-feedback="Registration-Number:required"
+                  data-sb-feedback="Business_registration_no:required"
                 >
                   Company Registration Number is required.
                 </div>
@@ -164,26 +163,19 @@
                     class="form-select"
                     id="industry"
                     aria-label="Default select example"
-                    v-model="org.industry"
+                    v-model="selectedIndustry"
                   >
-                    <option selected>Financial</option>
-                    <option>Manufacturing</option>
-                    <option>Telecomunication</option>
-                    <option>Banking</option>
-                    <option>Retail</option>
-                    <option>Education</option>
-                    <option>Security</option>
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
                   </select>
                   <label class="form-control-label" for="industry"
                     >Industry</label
                   >
-                  <div
-                    class="invalid-feedback"
-                    data-sb-feedback="industry:required"
-                  >
-                    Industry is required.
-                  </div>
+                  {{ this.selectedIndustry }}
                 </div>
+                {{ this.selectedIndustry }}
                 <div class="col form-floating mb-3">
                   <select
                     id="currency"
@@ -274,7 +266,10 @@
                 <label for="Registration-Number1"
                   >Company Registration Number</label
                 >
-                <div class="invalid-feedback" data-sb-feedback="name:required">
+                <div
+                  class="invalid-feedback"
+                  data-sb-feedback="Business_registration_no:required"
+                >
                   Company Registration Number is required.
                 </div>
               </div>
@@ -526,6 +521,7 @@ export default {
       checkedNames: [],
       logo: "",
       namex: "",
+      selectedIndustry: "",
 
       org: {
         // name: "",
@@ -536,7 +532,7 @@ export default {
         Business_registration_no: "",
         tax_id: "",
         entity_type: "",
-        industry: "",
+        industry: this.selectedIndustry,
         base_currency: "",
         image: null,
       },
@@ -614,7 +610,7 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
-          organization_name: this.org.namex,
+          organization_name: this.namex,
           industry: this.org.industry,
           business_location: this.org.business_location,
           business_address: this.org.business_address,

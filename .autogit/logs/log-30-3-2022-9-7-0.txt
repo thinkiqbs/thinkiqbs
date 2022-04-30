@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 30 2022 09:07:00 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/createorganization.vue
+
+
+Created files:
+* .autogit/logs/log-30-3-2022-5-57-12.txt
+
+
+Deleted files:
+
+
+Renamed files:

@@ -2032,7 +2032,7 @@ export default {
         paymentmode: this.selectedPaymentmode,
         paymentNumber: "",
         referenceNumber: "",
-        notes: "",
+        notes: "#Payment Receipts for",
         loan: "",
         interest: 0,
         deposits: "",

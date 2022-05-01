@@ -4098,6 +4098,7 @@ export default {
         })
         .then((response) => {
           response;
+          this.message = "loans updated"
           // window.location.reload();
         })
         .catch((e) => {
@@ -4132,6 +4133,8 @@ export default {
         })
         .then((response) => {
           response;
+          this.message = "Accounting updated"
+
           // confirm("Loan Schedule updated");
         })
         .catch((e) => {
@@ -4167,6 +4170,8 @@ export default {
         })
         .then((response) => {
           response;
+          this.message = "income updated"
+
           // confirm("Loan Schedule updated");
         })
         .catch((e) => {

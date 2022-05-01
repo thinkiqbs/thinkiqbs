@@ -678,7 +678,8 @@
                       type="submit"
                       @click="updateallocationstatus"
                     >
-                      Submit
+                      Submit Allocation:
+                      {{this.message}}
                     </button>
                   </div>
                 </form>
@@ -3767,12 +3768,15 @@ export default {
         })
         .then((response) => {
           response;
+          this.message = "deposits updated"
+          
           // confirm("Loan Schedule updated");
           alert("Deposits control updated");
         })
         .catch((e) => {
           this.errors.push(e);
-          alert(e);
+          // alert(e);
+          this.$swal(e)
         });
       const patchreceiptsx = getAPI
         .patch(
@@ -3807,6 +3811,8 @@ export default {
         )
         .then((response) => {
           response;
+          this.message = "receipts updated"
+
         })
         .catch((e) => {
           this.errors.push(e);
@@ -3846,9 +3852,11 @@ export default {
           // company_id: this.companyid,
           // organizationprofile: this.orgprofileid,
           allocated_deposit_amount: this.loan.Amount,
+
         })
         .then((response) => {
           response;
+          this.message = "receipts updated"
         })
         .catch((e) => {
           this.errors.push(e);
@@ -4022,14 +4030,16 @@ export default {
           variation_amount:
             this.loan.Amount -
             this.memberLoancureentbalance -
-            this.loan.Monthrepayment * this.getDifference,
+            (this.loan.Monthrepayment * this.getDifference),
           Accountcode_description: this.glchanged.accountname,
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+
         })
         .then((response) => {
           response;
+          this.message = "loans updated"
           // window.location.reload();
         })
         .catch((e) => {
@@ -4061,9 +4071,11 @@ export default {
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+
         })
         .then((response) => {
           response;
+          this.message = "loans repayment updated"
           // confirm("Loan Schedule updated");
         })
         .catch((e) => {
@@ -4099,6 +4111,8 @@ export default {
         })
         .then((response) => {
           response;
+          this.message = "income adjusted"
+
           // confirm("Loan Schedule updated");
         })
         .catch((e) => {
@@ -4133,6 +4147,8 @@ export default {
         })
         .then((response) => {
           response;
+          this.message = "Income updated"
+
           // confirm("Loan Schedule updated");
         })
         .catch((e) => {
@@ -4175,6 +4191,8 @@ export default {
         )
         .then((response) => {
           response;
+          this.message = "reciepts updated"
+
         })
         .catch((e) => {
           this.errors.push(e);
@@ -4208,6 +4226,9 @@ export default {
           this.errors.push(e);
           this.message = JSON.stringify(e.response.data);
         });
+
+        // close current modal
+        this.$modal
 
     },
 

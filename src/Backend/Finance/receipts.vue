@@ -546,7 +546,7 @@
                             ><span></span>Total Received amount Bills
                             <b style="color: Green"
                               >{{ paymentrcvd.amount
-                              }}{{ this.depositsallocations }}
+                              }}{{ this.sumOfallocations }}
                             </b></small
                           >
                         </td>
@@ -2681,8 +2681,26 @@ export default {
 
     depositsallocations() {
       return this.allreceipts.filter(
-        (item) => item.company_id == this.companyid3 && item.id == 1
+        (item) => item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
       )[0].allocated_deposit_amount;
+    },
+     loansallocations() {
+      return this.allreceipts.filter(
+        (item) => item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
+      )[0].allocated_loan_amount;
+    },
+     interestsallocations() {
+      return this.allreceipts.filter(
+        (item) => item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
+      )[0].allocated_interest_amount;
+    },
+    sumOfallocations(){
+      var a = parseInt(this.depositsallocation);
+      var b = parseInt(this.loansallocations) * 1;
+      var c = parseInt(this.interestsallocations) * 1 ;
+      // add the variables
+      return parseInt(a + b + c);
+      
     },
 
     allreceipts() {

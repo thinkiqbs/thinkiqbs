@@ -450,6 +450,7 @@ export default {
       memberscount: [],
       myapprovedloans: [],
       glchanged: [],
+      glchanged2: [],
 
       loading: false,
       memberloan: [],
@@ -551,18 +552,32 @@ export default {
     },
 
     postJounal(item) {
-      const opt = this.allGls1.find((o) => o.maincode == this.bankgl);
+
+      const opt = this.allGls1.find((o) => o.maincode == this.selectedgl);
       console.log("gl", opt);
-
-
       this.glchanged.account_type = opt.account_type;
       this.glchanged.accountype_description = opt.accounttype_description;
       this.glchanged.maincode = opt.maincode;
       this.glchanged.maincode_description = opt.maincode_description;
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
+
+      const opt2 = this.allGls1.find((o) => o.maincode == this.selectedglcontr);
+      console.log("gl", opt);
+      this.glchanged2.account_type = opt2.account_type;
+      this.glchanged2.accountype_description = opt2.accounttype_description;
+      this.glchanged2.maincode = opt2.maincode;
+      this.glchanged2.maincode_description = opt2.maincode_description;
+      this.glchanged2.parent_account = opt2.parent_account;
+      this.glchanged2.accountname = opt2.accountname;
+     
       Promise.all([
-        (this.expense = item),
+        this.expense = item,
+
+      
+
+
+      
          
         getAPI
           .post(`/finance/api/v1/documents/`, {
@@ -576,6 +591,7 @@ export default {
             maincode_description:this.glchanged.maincode_description,
             account_type:this.glchanged.account_type,
             accountype_description:this.glchanged.accountype_description,
+            Accountcode_description:this.glchanged.accountname,
             parent_account:this.glchanged.parent_account,
             accountname:this.glchanged.accountname,
             Account: this.selectedgl,
@@ -620,6 +636,13 @@ export default {
             DocumentID:
               this.companyid3 + Math.floor(Math.random() * 11000000) + "CR",
             SourcedocID: "JNL" + this.expense.id,
+            maincode:this.glchanged2.maincode,
+            maincode_description:this.glchanged2.maincode_description,
+            account_type:this.glchanged2.account_type,
+            accountype_description:this.glchanged2.accountype_description,
+            Accountcode_description:this.glchanged2.accountname,
+            parent_account:this.glchanged2.parent_account,
+            accountname:this.glchanged2.accountname,
             Account: this.selectedglcontr,
             Reporting: "P&L",
             Transaction_date: this.Journal.Posting_Date,
@@ -1088,6 +1111,12 @@ export default {
       return this.$store.getters.allOrg.filter(
         (item) => item.admin_email == this.email
       )[0].id;
+    },
+
+     allGls1: function () {
+      return this.$store.getters.allGl.filter(
+        (item) => item.company_id == this.companyid3
+      );
     },
 
     //

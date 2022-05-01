@@ -692,8 +692,11 @@ export default {
       return this.allOrg.length;
     },
     org(){
+      if (this.allorg.length > 0){
+        return this.allOrg[0];
+      }
 
-      return this.allorg[0]
+      return this.org1;
 
     },
     allorg() {

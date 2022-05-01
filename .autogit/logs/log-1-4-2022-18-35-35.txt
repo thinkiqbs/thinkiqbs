@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Sun May 01 2022 18:35:35 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Finance/journals.vue
+* src/Backend/Finance/receipts.vue
+* src/components/FinanceNav.vue
+
+
+Created files:
+* .autogit/logs/log-1-4-2022-18-5-7.txt
+
+
+Deleted files:
+
+
+Renamed files:

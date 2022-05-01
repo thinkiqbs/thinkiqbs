@@ -481,7 +481,7 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                
+
                 <form id="amount">
                   <div class="form-group row">
                     <label class="col-form-label col-lg-2 required"
@@ -539,132 +539,132 @@
                   </div>
 
                   <table class="table table-bordered responsive">
-                  <tbody>
-                    <tr>
-                      <td colspan="2">
-                        <small class="text-muted"
-                          ><span></span>Total Received amount Bills
-                          <b style="color: Green"
-                            >{{ paymentrcvd.amount }}
-                          </b></small
-                        >
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        class="cursor-pointer"
-                        width="50%"
-                        data-ember-action=""
-                        data-ember-action-1744="1744"
-                      >
-                        <div class="legend over-flow" title=":this.totalAmount">
-                          <div class="card" style="responsive">
-                            <ul class="list-group list-group-flush">
-                              <li
-                                class="list-group-item"
-                                v-for="contribution in alldepositsmember"
-                                :key="contribution.id"
-                              >
-                                <div class="table-borderless">
-                                  <td>{{ contribution.SavingsType }}</td>
-
-                                  <td>
-                                    <input
-                                      type="text"
-                                      class="form-control"
-                                      placeholder="Recipient's username"
-                                      aria-label="Recipient's username with two button addons"
-                                      v-model="contribution.Amount"
-                                    />
-                                  </td>
-                                  <td>
-                                    
-                                    <button
-                                      class="btn btn-primary"
-                                      type="button"
-                                      @click="
-                                        postdepositsallocations(contribution)
-                                      "
-                                    >Allocate
-                                      <i
-                                        class="fa fa-check-square"
-                                        aria-hidden="true"
-                                      ></i>
-                                    </button>
-                                  </td>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </td>
+                    <tbody>
+                      <tr>
+                        <td colspan="2">
+                          <small class="text-muted"
+                            ><span></span>Total Received amount Bills
+                            <b style="color: Green"
+                              >{{ paymentrcvd.amount }}
+                            </b></small
+                          >
+                        </td>
                       </tr>
                       <tr>
-                      <td>
-                        <div
-                          id="ember1745"
-                          class="popover-container ember-view"
+                        <td
+                          class="cursor-pointer"
+                          width="50%"
+                          data-ember-action=""
+                          data-ember-action-1744="1744"
                         >
-                          <div class="overdue-balance">
-                            <small class="text-overdue uppercase"
-                              >Overdue</small
-                            >
-                            <div title="KES0.00">
+                          <div
+                            class="legend over-flow"
+                            title=":this.totalAmount"
+                          >
+                            <div class="card" style="responsive">
                               <ul class="list-group list-group-flush">
                                 <li
                                   class="list-group-item"
-                                  v-for="savedloans in Myloanscustomertype"
-                                  :key="savedloans.id"
+                                  v-for="contribution in alldepositsmember"
+                                  :key="contribution.id"
                                 >
-                                  <div
-                                    class="table table-borderless responsive"
-                                  >
+                                  <div class="table-borderless">
+                                    <td>{{ contribution.SavingsType }}</td>
 
-                                    <td>{{ savedloans.loan_Type }}</td>
-
-
-                                    <td>
-                                      <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Recipient's username"
-                                        aria-label="Recipient's username with two
-																			button addons"
-                                        v-model="savedloans.Principle_Monthly"
-                                      />
-                                    </td>
                                     <td>
                                       <input
                                         type="text"
                                         class="form-control"
                                         placeholder="Recipient's username"
                                         aria-label="Recipient's username with two button addons"
-                                        v-model="savedloans.Interest_Monthly"
+                                        v-model="contribution.Amount"
                                       />
                                     </td>
                                     <td>
-                                      
-
                                       <button
                                         class="btn btn-primary"
-                                        aria-hidden="true"
+                                        type="button"
                                         @click="
-                                          allocateloanspromise(savedloans)
+                                          allocatedepositspromise(contribution)
                                         "
-                                      >allocate</button>
+                                      >
+                                        Allocate
+                                        <i
+                                          class="fa fa-check-square"
+                                          aria-hidden="true"
+                                        ></i>
+                                      </button>
                                     </td>
                                   </div>
                                 </li>
                               </ul>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                  
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div
+                            id="ember1745"
+                            class="popover-container ember-view"
+                          >
+                            <div class="overdue-balance">
+                              <small class="text-overdue uppercase"
+                                >Overdue</small
+                              >
+                              <div title="KES0.00">
+                                <ul class="list-group list-group-flush">
+                                  <li
+                                    class="list-group-item"
+                                    v-for="savedloans in Myloanscustomertype"
+                                    :key="savedloans.id"
+                                  >
+                                    <div
+                                      class="table table-borderless responsive"
+                                    >
+                                      <td>{{ savedloans.loan_Type }}</td>
+
+                                      <td>
+                                        <input
+                                          type="text"
+                                          class="form-control"
+                                          placeholder="Recipient's username"
+                                          aria-label="Recipient's username with two
+																			button addons"
+                                          v-model="savedloans.Principle_Monthly"
+                                        />
+                                      </td>
+                                      <td>
+                                        <input
+                                          type="text"
+                                          class="form-control"
+                                          placeholder="Recipient's username"
+                                          aria-label="Recipient's username with two button addons"
+                                          v-model="savedloans.Interest_Monthly"
+                                        />
+                                      </td>
+                                      <td>
+                                        <button
+                                          class="btn btn-primary"
+                                          aria-hidden="true"
+                                          @click="
+                                            allocateloanspromise(savedloans)
+                                          "
+                                        >
+                                          allocate
+                                        </button>
+                                      </td>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                   <div class="d-none" id="submitErrorMessage">
                     <div class="text-center text-danger mb-3">
                       Error sending message!
@@ -902,7 +902,6 @@
                                     <td>{{ savedloans.id }}</td>
                                     <td>{{ savedloans.loan_Type }}</td>
 
-
                                     <td>
                                       <input
                                         type="text"
@@ -923,8 +922,7 @@
                                       />
                                     </td>
                                     <td>
-                                      
-                                     Allocate
+                                      Allocate
                                       <button
                                         class="button btn-primary"
                                         aria-hidden="true"
@@ -3669,61 +3667,136 @@ export default {
       this.$router.push({ name: "bank" });
     },
 
-    allocatedepositspromise(){
+    allocatedepositspromise(contribution) {
 
-      Promise.all([
-        this.
-        this.AllocationFlagupdate,
+      this.loan = contribution;
+      const opt = this.allGls1.find((o) => o.maincode == this.loan.accountcode);
 
+      const optbank = this.allBanks.find((o) => o.id == this.selectedbank);
+      console.log(optbank);
 
+      this.glchanged.account_type = opt.account_type;
+      this.glchanged.accountype_description = opt.accounttype_description;
+      this.glchanged.maincode = opt.maincode;
+      this.glchanged.maincode_description = opt.maincode_description;
+      this.glchanged.parent_account = opt.parent_account;
+      this.glchanged.accountname = opt.accountname;
 
-      ]
+      const updateglx = getAPI
+        .post(`/finance/api/v1/documents/`, {
+          // names: '',
+         user_Id: this.user_id,
+          memberemail: this.loan.email,
+          DocumentID: "deal" + this.paymentrcvd.paymentNumber + this.loan.id,
+          SourcedocID: "rcpt" + this.loan.id,
+          Account: this.loan.accountcode,
+          Reporting: "Balance Sheet",
+          Transaction_date: this.currentDate,
+          Account_Code: this.loan.accountcode,
+          Document: "deposits",
+          Amount: this.loan.Amount,
+          Credit: this.loan.Amount,
+          Debit: 0,
+          ReferenceNo: this.paymentrcvd.paymentNumber,
+          Transaction_type: "CR",
+          Posting_Date: this.currentDate,
+          Account_type: this.glchanged.account_type,
+          organizationprofile: this.orgprofileid,
+          company_id: this.companyid3,
+          Accountcode_description: this.glchanged.accountname,
+          accountype_description: this.glchanged.accountype_description,
+          maincode: this.glchanged.maincode,
+          maincode_description: this.glchanged.maincode_description,
+        })
+        .then((response) => {
+          response;
+          // confirm("Loan Schedule updated");
+          alert("Deposits control updated");
+          
+        })
+        .catch((e) => {
+          this.errors.push(e);
+          alert(e);
+        });
+        const patchreceiptsx = getAPI
+        .patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + "/", {
+          // names: '',
+          // User_id: this.user_id,
+          // customer: this.selectedemail,
+          // customertype: this.checkpath,
+          // transactiondate: this.Payments.transactiondate,
+          // paymentRef: this.Payments.paymentRef,
+          // Transaction_type: "pymt",
+          // amount: this.Payments.amount,
+          // document: "MemP",
+          // glaccounts: this.bankgl,
+          // paymentmode: this.Payments.paymentmode,
+          // // paymentNumber: this.Payments.paymentNumber,
+          // bankaccount: "undeposited funds",
+          // // paymentNumber: this.addpayment.paymentNumber,
+          // referenceNumber: this.Payments.paymentRef,
+          // paidthrough: this.selectedbank,
+          // notes: this.Payments.notes,
+          // loan: 0,
+          // interest: 0,
+          // deposits: 0,
+          // Amount: 1000,
+          // checkpath: this.checkpath,
+          // company_id: this.companyid,
+          // organizationprofile: this.orgprofileid,
+          allocated_deposit_amount: this.loan.Amount,
+        })
+        .then((response) => {
+          response;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+          this.message = JSON.stringify(e.response.data);
+        });
 
-      )
-
+        Promise.all([
+          updateglx,patchreceiptsx,
+        ])
     },
 
-    AllocationFlagupdate(contribution){
-
+    AllocationFlagupdate(contribution) {
       this.loan = contribution;
 
       getAPI
-          .Patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + '/', {
-            // names: '',
-            // User_id: this.user_id,
-            // customer: this.selectedemail,
-            // customertype: this.checkpath,
-            // transactiondate: this.Payments.transactiondate,
-            // paymentRef: this.Payments.paymentRef,
-            // Transaction_type: "pymt",
-            // amount: this.Payments.amount,
-            // document: "MemP",
-            // glaccounts: this.bankgl,
-            // paymentmode: this.Payments.paymentmode,
-            // // paymentNumber: this.Payments.paymentNumber,
-            // bankaccount: "undeposited funds",
-            // // paymentNumber: this.addpayment.paymentNumber,
-            // referenceNumber: this.Payments.paymentRef,
-            // paidthrough: this.selectedbank,
-            // notes: this.Payments.notes,
-            // loan: 0,
-            // interest: 0,
-            // deposits: 0,
-            // Amount: 1000,
-            // checkpath: this.checkpath,
-            // company_id: this.companyid,
-            // organizationprofile: this.orgprofileid,
-            allocated_deposit_amount:this.loan.Amount,
-          })
-          .then((response) => {
-            response;
-            
-          })
-          .catch((e) => {
-            this.errors.push(e);
-            this.message = JSON.stringify(e.response.data);
-          });
-
+        .Patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + "/", {
+          // names: '',
+          // User_id: this.user_id,
+          // customer: this.selectedemail,
+          // customertype: this.checkpath,
+          // transactiondate: this.Payments.transactiondate,
+          // paymentRef: this.Payments.paymentRef,
+          // Transaction_type: "pymt",
+          // amount: this.Payments.amount,
+          // document: "MemP",
+          // glaccounts: this.bankgl,
+          // paymentmode: this.Payments.paymentmode,
+          // // paymentNumber: this.Payments.paymentNumber,
+          // bankaccount: "undeposited funds",
+          // // paymentNumber: this.addpayment.paymentNumber,
+          // referenceNumber: this.Payments.paymentRef,
+          // paidthrough: this.selectedbank,
+          // notes: this.Payments.notes,
+          // loan: 0,
+          // interest: 0,
+          // deposits: 0,
+          // Amount: 1000,
+          // checkpath: this.checkpath,
+          // company_id: this.companyid,
+          // organizationprofile: this.orgprofileid,
+          allocated_deposit_amount: this.loan.Amount,
+        })
+        .then((response) => {
+          response;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+          this.message = JSON.stringify(e.response.data);
+        });
     },
 
     postdepositsallocations(contribution) {
@@ -3769,14 +3842,13 @@ export default {
         .then((response) => {
           response;
           // confirm("Loan Schedule updated");
-          this.AllocationFlagupdate()
+          this.AllocationFlagupdate();
           console.log("contribution", this.loan);
-          this.$swal("Member Deposits have been updated")
-          
+          this.$swal("Member Deposits have been updated");
         })
         .catch((e) => {
           this.errors.push(e);
-          this.$swal("Already Allocated")
+          this.$swal("Already Allocated");
         });
     },
 
@@ -4011,11 +4083,50 @@ export default {
           alert(e);
         });
 
+        const patchreceiptsx = getAPI
+        .patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + "/", {
+          // names: '',
+          // User_id: this.user_id,
+          // customer: this.selectedemail,
+          // customertype: this.checkpath,
+          // transactiondate: this.Payments.transactiondate,
+          // paymentRef: this.Payments.paymentRef,
+          // Transaction_type: "pymt",
+          // amount: this.Payments.amount,
+          // document: "MemP",
+          // glaccounts: this.bankgl,
+          // paymentmode: this.Payments.paymentmode,
+          // // paymentNumber: this.Payments.paymentNumber,
+          // bankaccount: "undeposited funds",
+          // // paymentNumber: this.addpayment.paymentNumber,
+          // referenceNumber: this.Payments.paymentRef,
+          // paidthrough: this.selectedbank,
+          // notes: this.Payments.notes,
+          // loan: 0,
+          // interest: 0,
+          // deposits: 0,
+          // Amount: 1000,
+          // checkpath: this.checkpath,
+          // company_id: this.companyid,
+          // organizationprofile: this.orgprofileid,
+          allocated_loan_amount: this.loan.Amount,
+          allocated_interest_amount: this.loan.Interest_Monthly,
+
+        })
+        .then((response) => {
+          response;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+          this.message = JSON.stringify(e.response.data);
+        });
+
       Promise.all([
         updateloandetails,
         deductloanrepayment,
         incomeAdjustment,
         incomefromasset,
+        patchreceiptsx,
       ]);
     },
 

@@ -92,7 +92,7 @@
                             style="color: MediumSeaGreen"
                           ></i>
 
-                          <div v-if="item.customertype == 1">
+                          <div v-if="item.customertype == 1 && item.allocated == false">
                             <button
                               type="button"
                               @click="changepymtrcvd(item)"
@@ -482,7 +482,7 @@
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
 
-                <form id="amount">
+                <form id="amount" @submit.prevent="updateallocationstatus">
                   <div class="form-group row">
                     <label class="col-form-label col-lg-2 required"
                       >Payment Date</label
@@ -673,9 +673,10 @@
                   <!-- Submit Button-->
                   <div class="d-grid">
                     <button
-                      class="btn btn-primary rounded-pill btn-lg disabled"
+                      class="btn btn-primary rounded-pill btn-lg"
                       id="submitButton"
                       type="submit"
+                      @click="updateallocationstatus"
                     >
                       Submit
                     </button>
@@ -2720,7 +2721,7 @@ export default {
       return true;
     }
     else {
-      
+      return false;
     }
 
 
@@ -4187,6 +4188,27 @@ export default {
         incomefromasset,
         patchreceiptsx,
       ]);
+    },
+
+    updateallocationstatus() {
+
+      getAPI
+        .patch(
+          `/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/",
+          {
+            
+            allocated:this.allocationstatus,
+            
+          }
+          )
+        .then((response) => {
+          response;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+          this.message = JSON.stringify(e.response.data);
+        });
+
     },
 
     AllocateDepositsControls() {

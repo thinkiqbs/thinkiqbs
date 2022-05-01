@@ -3669,6 +3669,63 @@ export default {
       this.$router.push({ name: "bank" });
     },
 
+    allocatedepositspromise(){
+
+      Promise.all([
+        this.
+        this.AllocationFlagupdate,
+
+
+
+      ]
+
+      )
+
+    },
+
+    AllocationFlagupdate(contribution){
+
+      this.loan = contribution;
+
+      getAPI
+          .Patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + '/', {
+            // names: '',
+            // User_id: this.user_id,
+            // customer: this.selectedemail,
+            // customertype: this.checkpath,
+            // transactiondate: this.Payments.transactiondate,
+            // paymentRef: this.Payments.paymentRef,
+            // Transaction_type: "pymt",
+            // amount: this.Payments.amount,
+            // document: "MemP",
+            // glaccounts: this.bankgl,
+            // paymentmode: this.Payments.paymentmode,
+            // // paymentNumber: this.Payments.paymentNumber,
+            // bankaccount: "undeposited funds",
+            // // paymentNumber: this.addpayment.paymentNumber,
+            // referenceNumber: this.Payments.paymentRef,
+            // paidthrough: this.selectedbank,
+            // notes: this.Payments.notes,
+            // loan: 0,
+            // interest: 0,
+            // deposits: 0,
+            // Amount: 1000,
+            // checkpath: this.checkpath,
+            // company_id: this.companyid,
+            // organizationprofile: this.orgprofileid,
+            allocated_deposit_amount:this.loan.Amount,
+          })
+          .then((response) => {
+            response;
+            
+          })
+          .catch((e) => {
+            this.errors.push(e);
+            this.message = JSON.stringify(e.response.data);
+          });
+
+    },
+
     postdepositsallocations(contribution) {
       this.loan = contribution;
       const opt = this.allGls1.find((o) => o.maincode == this.loan.accountcode);
@@ -3712,6 +3769,7 @@ export default {
         .then((response) => {
           response;
           // confirm("Loan Schedule updated");
+          this.AllocationFlagupdate()
           console.log("contribution", this.loan);
           this.$swal("Member Deposits have been updated")
           

@@ -78,7 +78,7 @@
                         <td>{{ item.bankaccount }}</td>
                         <td>{{ item.paymentNumber }}</td>
                         <td>{{ item.referenceNumber }}</td>
-                        <td>{{ item.amount }}</td>
+                        <td>{{ item.amount }} </td>
                         <td>{{ item.paymentmode }}</td>
 
                         <!-- <td>{{ item.notes }}</td> -->
@@ -3719,7 +3719,7 @@ export default {
           alert(e);
         });
         const patchreceiptsx = getAPI
-        .patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + "/", {
+        .patch(`/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/", {
           // names: '',
           // User_id: this.user_id,
           // customer: this.selectedemail,
@@ -4084,7 +4084,7 @@ export default {
         });
 
         const patchreceiptsx = getAPI
-        .patch(`/finance/api/v1/PaymentsReceived/` + this.loan.id + "/", {
+        .patch(`/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/", {
           // names: '',
           // User_id: this.user_id,
           // customer: this.selectedemail,
@@ -4109,7 +4109,7 @@ export default {
           // checkpath: this.checkpath,
           // company_id: this.companyid,
           // organizationprofile: this.orgprofileid,
-          allocated_loan_amount: this.loan.Amount,
+          allocated_loan_amount: this.loan.Principle_Monthly,
           allocated_interest_amount: this.loan.Interest_Monthly,
 
         })

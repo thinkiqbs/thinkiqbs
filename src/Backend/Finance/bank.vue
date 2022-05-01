@@ -1477,64 +1477,95 @@
                 <!-- New Form  -->
 
                 <form class="row gy-2 gx-3 align-items-center">
-                  <label class="col-form-label col-lg-2 required"
-                    >Payment Date</label
-                  >
-
-                  <div class="col-2">
-                    <label class="visually-hidden" for="autoSizingInput"
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2 required"
                       >Payment Date</label
                     >
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="autoSizingInput"
-                      placeholder="date"
-                    />
-                  </div>
-                  <div class="col-2">
-                    <label class="visually-hidden" for="autoSizingSelect"
-                      >Bank</label
-                    >
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                      v-model="selectedbank"
-                      value="Value"
-                      @change="selectcustomertype"
-                      placeholder="click to select customer type"
-                      data-live-search="true"
-                    >
-                      <option
-                        :key="option.id"
-                        v-for="option in banks"
-                        :value="option.id"
+
+                    <div class="col-2">
+                      <label class="visually-hidden" for="autoSizingInput"
+                        >Payment Date</label
                       >
-                        {{ option.bankname }}
-                      </option>
-                    </select>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="autoSizingInput"
+                        placeholder="date"
+                      />
+                    </div>
+                    <div class="col-2">
+                      <label class="visually-hidden" for="autoSizingSelect"
+                        >Bank</label
+                      >
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        v-model="selectedbank"
+                        value="Value"
+                        @change="selectcustomertype"
+                        placeholder="click to select customer type"
+                        data-live-search="true"
+                      >
+                        <option
+                          :key="option.id"
+                          v-for="option in banks"
+                          :value="option.id"
+                        >
+                          {{ option.bankname }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-2">
+                      <label class="visually-hidden" for="autoSizingSelect"
+                        >Preference</label
+                      >
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        v-model="checkpath"
+                        value="Value"
+                        @change="selectcustomertype"
+                        placeholder="click to select customer type"
+                        data-live-search="true"
+                      >
+                        <option value="none" selected disabled hidden>
+                          Select an Option
+                        </option>
+                        <option selected>Open this select menu</option>
+                        <option value="1">Member</option>
+                        <option value="2">Employer</option>
+                        <option value="3">Customer</option>
+                      </select>
+                    </div>
                   </div>
-                  <div class="col-2">
-                    <label class="visually-hidden" for="autoSizingSelect"
-                      >Preference</label
+
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2"
+                      >Notes# Describe the receipt & clearly indicate the period
+                      it will apply</label
                     >
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                      v-model="checkpath"
-                      value="Value"
-                      @change="selectcustomertype"
-                      placeholder="click to select customer type"
-                      data-live-search="true"
-                    >
-                      <option value="none" selected disabled hidden>
-                        Select an Option
-                      </option>
-                      <option selected>Open this select menu</option>
-                      <option value="1">Member</option>
-                      <option value="2">Employer</option>
-                      <option value="3">Customer</option>
-                    </select>
+                    <div class="col-lg-6">
+                      <textarea
+                        maxlength="50"
+                        id="ember1189"
+                        class="ember-text-field ember-view form-control"
+                        type="text"
+                        v-model="Payments.notes"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-form-label col-lg-2">Reference#</label>
+                    <div class="col-lg-6">
+                      <input
+                        maxlength="50"
+                        id="ember1189"
+                        class="ember-text-field ember-view form-control"
+                        type="text"
+                        v-model="Payments.paymentRef"
+                      />
+                    </div>
                   </div>
 
                   <div class="row primary-info grey-bg">
@@ -1553,7 +1584,7 @@
                     <label class="col-lg-2 col-form-label required"
                       >Customer Email {{ this.companyid3 }}</label
                     >
-                    <div class="col">
+                    <div class="col-6">
                       <!-- customer area  -->
 
                       <div class="form-row">
@@ -1655,7 +1686,7 @@
                     >
                     <div class="col-lg-10">
                       <div class="row">
-                        <div class="col">
+                        <div class="col-4">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text">KES </span>
@@ -1668,51 +1699,21 @@
                             />
                           </div>
                         </div>
-                        <label class="col-form-label col-lg-4 px-0"
-                          >Bank Charges (if any)</label
-                        >
-                        <div class="col">
+                        <div class="form-check mt-3 cursor-pointer col-2">
                           <input
-                            id="ember1182"
-                            class="ember-text-field text-left ember-view form-control"
-                            type="text"
+                            id="ae3fdcc3a"
+                            class="ember-checkbox ember-view form-check-input"
+                            type="checkbox"
+                            @change="receivefullamount"
                           />
+                          <label for="ae3fdcc3a" class="form-check-label">
+                            Received full amount {{ this.PaymentAmount }}
+                          </label>
                         </div>
-                        <!---->
-                      </div>
-                      <div class="form-check mt-3 cursor-pointer">
-                        <input
-                          id="ae3fdcc3a"
-                          class="ember-checkbox ember-view form-check-input"
-                          type="checkbox"
-                          @change="receivefullamount"
-                        />
-                        <label for="ae3fdcc3a" class="form-check-label">
-                          Received full amount {{ this.PaymentAmount }}
-                        </label>
                       </div>
                     </div>
                   </div>
 
-                  <div class="form-group row">
-                    <label class="col-form-label col-lg-2 required"
-                      >Payment #</label
-                    >
-                    <!---->
-                    <div class="col-lg-5">
-                      <input
-                        disabled=""
-                        id="ember1184"
-                        class="ember-text-field ember-view form-control"
-                        type="text"
-                      />
-                    </div>
-                    <i
-                      id="ember1185"
-                      class="tooltip-container form-control-help text-blue ember-view"
-                    >
-                    </i>
-                  </div>
                   <div class="form-group row">
                     <label class="col-form-label col-lg-2">Payment Mode</label>
                     <div class="col-lg-5">
@@ -1739,7 +1740,9 @@
                         <div id="ember1188" class="ember-view">
                           <div class="ac-box">
                             <span class="ac-selected form-control" tabindex="0">
-                              <span data-integrity-label="">Petty Cash</span
+                              <span data-integrity-label="">{{
+                                selectedbank
+                              }}</span
                               ><!---->
                               <div>
                                 <i class="zf-ac-toggler"> </i>
@@ -1749,64 +1752,6 @@
 
                           <!---->
                         </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Reference#</label>
-                    <div class="col-lg-5">
-                      <input
-                        maxlength="50"
-                        id="ember1189"
-                        class="ember-text-field ember-view form-control"
-                        type="text"
-                        v-model="Payments.paymentRef"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label class="col-form-label col-lg-2"
-                      >Notes# Describe the receipt & clearly indicate the period
-                      it will apply</label
-                    >
-                    <div class="col-lg-5">
-                      <input
-                        maxlength="50"
-                        id="ember1189"
-                        class="ember-text-field ember-view form-control"
-                        type="text"
-                        v-model="Payments.notes"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Tax deducted?</label>
-                    <div class="col-lg-10 align-self-center">
-                      <div class="form-check form-check-inline">
-                        <input
-                          id="ab8c5d324"
-                          class="ember-view form-check-input"
-                          type="radio"
-                          value="notds"
-                        />
-                        <label for="ab8c5d324" class="form-check-label"
-                          >No Tax deducted</label
-                        >
-                      </div>
-                      <!---->
-                      <div class="form-check form-check-inline">
-                        <input
-                          id="a93299fd1"
-                          class="ember-view form-check-input"
-                          type="radio"
-                          value="incometds"
-                        />
-                        <label for="a93299fd1" class="form-check-label">
-                          Yes, TDS
-                        </label>
                       </div>
                     </div>
                   </div>

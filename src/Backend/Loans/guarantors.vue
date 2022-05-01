@@ -24,6 +24,7 @@
                     v-model="this.email"
                   />
                 </div>
+                {{this.memberloan}}
 
                 <label for="" class="col-sm-2 form-control-label"
                   >Loan ID</label
@@ -347,11 +348,12 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import {getAPI} from "@/axios-api.js"
 
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
-// import axios from "axios";
+// import getAPI from "getAPI";
 //Bootstrap and jQuery libraries
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -384,7 +386,7 @@ export default {
       optionloansemail: [],
       optionloans: "",
       loading: false,
-      memberloan: {},
+      memberloan1: {},
       myapprovedloans: [],
       orgprofile: {},
       orgprofile1: {},
@@ -468,43 +470,10 @@ export default {
   },
 
   mounted() {
-    axios
-      .get("/members/api/v1/MemberDetails/", {
-        params: {
-          email: this.email,
-        },
-      })
-      .then((response) => {
-        this.orgprofile = response.data.results;
-        this.companyid1 = this.orgprofile[0].company_id;
-      });
-    axios
-      .get("/loans/api/v1/loans/", {
-        params: { email: this.email },
-      })
-      .then((res) => {
-        this.monthlyloan = res.data.results;
-        $("#walla").DataTable();
-      }),
-      axios
-        .get("members/api/v1/MemberDetails/", {
-          params: {},
-        })
-        .then((res) => {
-          this.memberemail = res.data.results;
-          //   console.log("loans", this.loans)
-          $("#walla").DataTable();
-        }),
-      axios
-        .get("members/api/v1/MemberDetails/", {
-          params: { company_id: this.companyid1 },
-        })
-        .then((res) => {
-          this.optionloansemail = res.data.results.filter(
-            (item) =>
-              item.company_id == this.companyid1 && item.email != this.email
-          );
-        });
+    
+    
+      
+      
   },
 
   methods: {
@@ -526,7 +495,7 @@ export default {
     ]),
 
     searchmember() {
-      axios
+      getAPI
         .get("/loans/api/v1/loans/" + this.selectedemail, {
           params: {},
         })
@@ -536,15 +505,15 @@ export default {
         });
     },
 
-    getloan() {
-      this.loading = true;
+    // getloan() {
+    //   this.loading = true;
 
-      axios.get("/loans/api/v1/guarantors/").then((res) => {
-        this.guarantors = res.data.results.filter(
-          (item) => item.Loan_id == this.selectedid
-        );
-      }),
-        // axios
+    //   getAPI.get("/loans/api/v1/guarantors/").then((res) => {
+    //     this.guarantors = res.data.results.filter(
+    //       (item) => item.Loan_id == this.selectedid
+    //     );
+    //   }),
+        // getAPI
         //   .get("/loans/api/v1/loans/" + this.selectedid + "/")
         //   .then((res) => {
         //     this.loading = false;
@@ -553,16 +522,16 @@ export default {
         //     // $("#example").DataTable();
         //   });
 
-      // axios.get("/loans/api/v1/loans/" + id + "/").then((res) => {
+      // getAPI.get("/loans/api/v1/loans/" + id + "/").then((res) => {
       // 	this.loading = false;
 
       // 	this.memberloan = res.data;
       // 	// $("#example").DataTable();
       // });
-    },
+    // },
     addnewmeber() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -599,7 +568,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.selectedid + "/", {
           User_id: this.memberloan.id,
           email: this.memberloan.email,
@@ -640,7 +609,7 @@ export default {
       this.member = member;
 
       Promise.all([
-        axios
+        getAPI
           .post(`dj-rest-auth/registration/`, {
             // names: '',
             username: this.member.email,
@@ -665,7 +634,7 @@ export default {
             this.errors.push(e.data);
           }),
 
-        axios
+        getAPI
           .put("/members/update/" + this.member.id + "/", {
             Application_Status: "True",
             invited: "True",
@@ -699,7 +668,7 @@ export default {
       // let random = Math.random();
       // item.label = random;
 
-      axios
+      getAPI
         .put("/loans/api/v1/loans/" + this.loan.id + "/", {
           User_id: this.loan.id,
           email: this.loan.email,
@@ -728,7 +697,7 @@ export default {
     },
 
     AddGuarantor() {
-      axios
+      getAPI
         .post("/loans/api/v1/guarantors/", {
           User_id: this.user_id,
           name: "",
@@ -764,7 +733,7 @@ export default {
       if (this.selectedemailG === this.email) {
         this.message = "You can not add yourself as a guarantor";
       } else {
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { Document: "deposits" },
           })
@@ -778,7 +747,7 @@ export default {
           .catch((error) => {
             console.error(error);
           }),
-          axios
+          getAPI
             .get("/finance/api/v1/documents/", {
               params: { Document: "loans" },
             })
@@ -809,7 +778,7 @@ export default {
       // alert(item.Total_Loan);
 
       Promise.all([
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: {
               email: this.email,
@@ -820,7 +789,7 @@ export default {
             this.optionloans = res.data.results;
             $("#walla").DataTable();
           }),
-        axios
+        getAPI
           .get("/loans/api/v1/loans/", {
             params: { email: this.email },
           })
@@ -830,7 +799,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: this.email },
           })
@@ -843,7 +812,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { email: memberfilter },
           })
@@ -855,7 +824,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: this.email, Document: "deposits" },
           })
@@ -868,7 +837,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/members/api/v1/MonthDeposits/", {
             params: { email: this.email },
           })
@@ -881,7 +850,7 @@ export default {
             console.error(error);
           }),
 
-        axios
+        getAPI
           .get("/finance/api/v1/documents/", {
             params: { memberemail: memberfilter, Document: "loans" },
           })
@@ -890,7 +859,7 @@ export default {
             $("#walla").DataTable();
           }),
 
-        axios.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
+        getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
           this.employer = res.data.results;
           // $("#example").DataTable();
         }),
@@ -912,7 +881,7 @@ export default {
     },
     addrecords() {
       Promise.all([
-        axios
+        getAPI
           .post(`/members/api/v1/MemberDetails/`, {
             // names: '',
             // User_id: this.user_id,
@@ -945,7 +914,7 @@ export default {
     },
 
     saveloan() {
-      axios
+      getAPI
         .post(`/loans/api/v1/loans/`, {
           // names: '',
           User_id: this.loan.id,
@@ -1237,9 +1206,14 @@ export default {
     },
 
     memberloan(){
-      return this.myloans1.filter(
-        (item) => item.id == this.selectedid
-      )[0];
+      if(this.myloans1.length > 0){
+        return this.myloans1.filter((item) => item.loan_id == this.loan.loan_id)[0];
+      
+      }
+      else{
+        return this.memberloan1;
+      }
+      
     },
     
 

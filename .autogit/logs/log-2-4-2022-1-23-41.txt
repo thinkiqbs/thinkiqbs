@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon May 02 2022 01:23:41 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Loans/guarantors.vue
+
+
+Created files:
+* .autogit/logs/log-2-4-2022-0-53-29.txt
+
+
+Deleted files:
+
+
+Renamed files:

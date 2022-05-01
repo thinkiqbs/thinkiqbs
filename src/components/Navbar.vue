@@ -1,20 +1,25 @@
 <template>
   <nav
-    class="navbar  navbar-expand-lg navbar-light bg-white  shadow-sm py-0"
+    class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-1"
     id="mainNav"
   >
     <div class="container">
+     
       <a class="navbar-brand" href="#" v-if="token == null">
         <img
           src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
           width="100"
           height="100"
           alt="Sacco ERP Software"
+          class="navbar-brand-img"
+
         />
       </a>
       <a class="navbar-brand" href="#" v-if="token != null">
         <img class="logo-display img-fluid" :src="this.logo" :title="orgname" />
+
       </a>
+      
       <button
         class="navbar-toggler"
         type="button"
@@ -30,10 +35,14 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="#features" v-if="token == null">Features</a>
+            <a class="nav-link me-lg-3" href="#features" v-if="token == null"
+              >Features</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="#download" v-if="token == null">Download</a>
+            <a class="nav-link me-lg-3" href="#download" v-if="token == null"
+              >Download</a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link me-lg-3" href="/contacts" v-if="token == null"
@@ -41,7 +50,9 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link me-lg-3" href="/Profile" v-if="token != null">My Account</a>
+            <a class="nav-link me-lg-3" href="/Profile" v-if="token != null"
+              >My Account</a
+            >
           </li>
         </ul>
 
@@ -86,7 +97,7 @@
 
         <button
           class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-         @click="gotoSignup"
+          @click="gotoSignup"
           v-if="token == null"
         >
           <span class="d-flex align-items-center">
@@ -95,33 +106,29 @@
           </span>
         </button>
         <div v-if="token != null">
-                <div
-                  v-if="
-                    this.organizationdetails == 2 && this.memberdetails == 2
-                  "
-                >
-                  <button
-                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                    @click="gotocreateorganization"
-                  >
-                    <span class="d-flex align-items-center">
-                      <i class="bi-chat-text-fill me-2"></i>
-                      <span class="small">Start A New SACCO</span>
-                    </span>
-                  </button>
-                </div>
-                <div v-if="this.organizationdetails == 1">
-                  <button
-                    class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-                    @click="gotoDashboard"
-                  >
-                    <span class="d-flex align-items-center">
-                      <i class="bi-chat-text-fill me-2"></i>
-                      <span class="small">Back Office</span>
-                    </span>
-                  </button>
-                </div>
-              </div>
+          <div v-if="this.organizationdetails == 2 && this.memberdetails == 2">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="gotocreateorganization"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Start A New SACCO</span>
+              </span>
+            </button>
+          </div>
+          <div v-if="this.organizationdetails == 1">
+            <button
+              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
+              @click="gotoDashboard"
+            >
+              <span class="d-flex align-items-center">
+                <i class="bi-chat-text-fill me-2"></i>
+                <span class="small">Back Office</span>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -266,8 +273,10 @@ export default {
     },
 
     orgname() {
-      return this.org1;
+      
+      return this.allorg[0].org_name;
     },
+
     allorg() {
       return this.$store.getters.allOrg.filter(
         (item) => item.admin_email == this.email

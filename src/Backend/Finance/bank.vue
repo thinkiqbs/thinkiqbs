@@ -1481,7 +1481,7 @@
                     >Payment Date</label
                   >
 
-                  <div class="col">
+                  <div class="col-2">
                     <label class="visually-hidden" for="autoSizingInput"
                       >Payment Date</label
                     >
@@ -1492,7 +1492,7 @@
                       placeholder="date"
                     />
                   </div>
-                  <div class="col">
+                  <div class="col-2">
                     <label class="visually-hidden" for="autoSizingSelect"
                       >Bank</label
                     >
@@ -1514,7 +1514,7 @@
                       </option>
                     </select>
                   </div>
-                  <div class="col">
+                  <div class="col-2">
                     <label class="visually-hidden" for="autoSizingSelect"
                       >Preference</label
                     >
@@ -1537,11 +1537,23 @@
                     </select>
                   </div>
 
+                  <div class="row primary-info grey-bg">
+                    <div class="zb-txn-form">
+                      <div
+                        tabindex="-1"
+                        id="ember1177"
+                        class="no-outline ember-view"
+                      ></div>
+
+                      <!---->
+                    </div>
+                  </div>
+
                   <div class="form-group row">
                     <label class="col-lg-2 col-form-label required"
                       >Customer Email {{ this.companyid3 }}</label
                     >
-                    <div class="col-lg-5">
+                    <div class="col">
                       <!-- customer area  -->
 
                       <div class="form-row">

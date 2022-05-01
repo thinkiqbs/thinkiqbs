@@ -449,6 +449,7 @@ export default {
       monthdeposits: [],
       memberscount: [],
       myapprovedloans: [],
+      glchanged: [],
 
       loading: false,
       memberloan: [],
@@ -550,8 +551,19 @@ export default {
     },
 
     postJounal(item) {
+      const opt = this.allGls1.find((o) => o.maincode == this.bankgl);
+      console.log("gl", opt);
+
+
+      this.glchanged.account_type = opt.account_type;
+      this.glchanged.accountype_description = opt.accounttype_description;
+      this.glchanged.maincode = opt.maincode;
+      this.glchanged.maincode_description = opt.maincode_description;
+      this.glchanged.parent_account = opt.parent_account;
+      this.glchanged.accountname = opt.accountname;
       Promise.all([
         (this.expense = item),
+         
         getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
@@ -560,9 +572,16 @@ export default {
             DocumentID:
               this.companyid3 + Math.floor(Math.random() * 1000000) + "CR",
             SourcedocID: "NA",
+            maincode:this.glchanged.maincode,
+            maincode_description:this.glchanged.maincode_description,
+            account_type:this.glchanged.account_type,
+            accountype_description:this.glchanged.accountype_description,
+            parent_account:this.glchanged.parent_account,
+            accountname:this.glchanged.accountname,
             Account: this.selectedgl,
             Reporting: "P&L",
             Transaction_date: this.Journal.Posting_Date,
+
             Account_Code: this.selectedgl,
             Document: "Journal",
             Credit: this.amountcr,

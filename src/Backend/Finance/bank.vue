@@ -1491,6 +1491,7 @@
                         class="form-control"
                         id="autoSizingInput"
                         placeholder="date"
+                        v-model="Payments.transactiondate"
                       />
                     </div>
                     <div class="col-2">
@@ -1739,15 +1740,20 @@
                       <div id="ember1187" class="accounts-select ember-view">
                         <div id="ember1188" class="ember-view">
                           <div class="ac-box">
-                            <span class="ac-selected form-control" tabindex="0">
-                              <span data-integrity-label="">{{
-                                selectedbank
-                              }}</span
-                              ><!---->
-                              <div>
-                                <i class="zf-ac-toggler"> </i>
-                              </div>
-                            </span>
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              @click="makepayments"
+                            >
+                              make payment
+                            </button>
                           </div>
 
                           <!---->
@@ -1758,20 +1764,6 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  @click="makepayments"
-                >
-                  make payment
-                </button>
                 {{ this.message }}
               </div>
             </div>
@@ -2032,7 +2024,7 @@ export default {
       ],
       Payments: {
         User_id: "",
-        transactiondate: new Date().toISOString().slice(0, 10),
+        transactiondate: "",
         paymentRef: "",
         Transaction_type: "pymt",
         amount: "",
@@ -3388,7 +3380,7 @@ export default {
             User_id: this.user_id,
             customer: this.selectedemail,
             customertype: this.checkpath,
-            transactiondate: new Date().toISOString().slice(0, 10),
+            transactiondate: this.Payments.transactiondate,
             paymentRef: this.Payments.paymentRef,
             Transaction_type: "pymt",
             amount: this.Payments.amount,
@@ -3434,7 +3426,7 @@ export default {
             user_id: this.user_id,
             email: this.selectedemail,
             notes: "Receipts from Member",
-            Transaction_date: this.currentDate,
+            Transaction_date: this.Payments.transactiondate,
             bank: this.selectedbank,
             Paid_to: "loanrecpt",
             ChequeNo: this.Payments.paymentRef,
@@ -3474,7 +3466,7 @@ export default {
             DocumentID: "PYMTRCT" + this.Payments.paymentRef + "DR" + "r",
             Account: this.bankgl,
             Reporting: "Balance Sheet",
-            Transaction_date: this.currentDate,
+            Transaction_date: this.Payments.transactiondate,
             Account_Code: this.bankgl,
             Accountcode_description: this.glchanged.accountname,
             Document: "bank",

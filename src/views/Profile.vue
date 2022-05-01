@@ -2756,28 +2756,28 @@ export default {
   methods: {
     //create getAPI const to return count
 
-    getinfo() {
-      // create an getAPI get request that also sends username and password
-      getAPI
-        .get("/api/user/", {
-          auth: {
-            username: this.username,
-            password: this.$store.state.password,
-          },
-        })
-        .then(
-          (response) => {
-            console.log(response);
-            this.fetchUser();
-            this.email = response.data.email;
+    // getinfo() {
+    //   // create an getAPI get request that also sends username and password
+    //   getAPI
+    //     .get("/api/user/", {
+    //       auth: {
+    //         username: this.username,
+    //         password: this.$store.state.password,
+    //       },
+    //     })
+    //     .then(
+    //       (response) => {
+    //         console.log(response);
+    //         this.fetchUser();
+    //         this.email = response.data.email;
 
-            this.$swal(response.statusText);
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    },
+    //         this.$swal(response.statusText);
+    //       },
+    //       (error) => {
+    //         console.log(error);
+    //       }
+    //     );
+    // },
 
     ...mapActions([
       "fetchDocuments",

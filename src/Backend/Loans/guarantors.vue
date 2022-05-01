@@ -38,7 +38,7 @@
                     @change="getloan"
                   >
                     <option
-                      v-for="option in optionloans"
+                      v-for="option in myloans1"
                       v-bind:value="option.id"
                       :key="option.id"
                     >
@@ -544,14 +544,14 @@ export default {
           (item) => item.Loan_id == this.selectedid
         );
       }),
-        axios
-          .get("/loans/api/v1/loans/" + this.selectedid + "/")
-          .then((res) => {
-            this.loading = false;
+        // axios
+        //   .get("/loans/api/v1/loans/" + this.selectedid + "/")
+        //   .then((res) => {
+        //     this.loading = false;
 
-            this.memberloan = res.data;
-            // $("#example").DataTable();
-          });
+        //     this.memberloan = res.data;
+        //     // $("#example").DataTable();
+        //   });
 
       // axios.get("/loans/api/v1/loans/" + id + "/").then((res) => {
       // 	this.loading = false;
@@ -886,7 +886,7 @@ export default {
             params: { memberemail: memberfilter, Document: "loans" },
           })
           .then((res) => {
-            this.loanscheduleMe = res.data.results;
+            this.myloans1 = res.data.results;
             $("#walla").DataTable();
           }),
 
@@ -1094,7 +1094,7 @@ export default {
 
     totalGuaranteed: function () {
       var sum = 0;
-      this.guarantors.forEach((e) => {
+      this.allMyguarantee.forEach((e) => {
         sum += e.Amount_guaranteed;
       });
       return sum;
@@ -1122,7 +1122,7 @@ export default {
 
     totalSavingsMe: function () {
       var sum = 0;
-      this.totaldepositsMe.forEach((e) => {
+      this.mymonthdeposits.forEach((e) => {
         sum += e.Amount;
       });
       return sum;
@@ -1234,6 +1234,34 @@ export default {
       return this.$store.getters.allMembers.filter(
         (item) => item.email == this.email
       )[0].company_id;
+    },
+
+    memberloan(){
+      return this.myloans1.filter(
+        (item) => item.id == this.selectedid
+      )[0];
+    },
+    
+
+     myloans1() {
+      return this.$store.getters.allLoans.filter(
+        (item) => item.email == this.email
+      );
+    },
+      mymonthdeposits() {
+      return this.$store.getters.allDeposits.filter(
+        (item) => item.email == this.email
+      );
+    },
+    allMyguarantors() {
+      return this.$store.getters.allGuarantors.filter(
+        (item) => item.borrower_email == this.email
+      );
+    },
+    allMyguarantee() {
+      return this.$store.getters.allGuarantors.filter(
+        (item) => item.email == this.email
+      );
     },
 
     //created a computed function to sum column totals for Amount on Documents

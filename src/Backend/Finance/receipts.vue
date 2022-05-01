@@ -78,7 +78,7 @@
                         <td>{{ item.bankaccount }}</td>
                         <td>{{ item.paymentNumber }}</td>
                         <td>{{ item.referenceNumber }}</td>
-                        <td>{{ item.amount }} </td>
+                        <td>{{ item.amount }}</td>
                         <td>{{ item.paymentmode }}</td>
 
                         <!-- <td>{{ item.notes }}</td> -->
@@ -545,7 +545,8 @@
                           <small class="text-muted"
                             ><span></span>Total Received amount Bills
                             <b style="color: Green"
-                              >{{ paymentrcvd.amount }}
+                              >{{ paymentrcvd.amount
+                              }}{{ this.depositsallocations }}
                             </b></small
                           >
                         </td>
@@ -2001,11 +2002,12 @@ export default {
     this.fetchMembers();
     this.fetchLoans();
     this.fetchBanktransactions();
-    this.fetchPaymentsmade();
+
     this.fetchPaymentsreceived();
     this.fetchBanks();
     this.fetchEmployerinfo();
     this.fetchGl();
+    this.fetchReceipts();
 
     this.start = this.currentDate;
     // this.end = "2022-5-26";
@@ -2256,6 +2258,7 @@ export default {
       "allBanks",
       "allEmployer",
       "allGl",
+      "allReceipts",
     ]),
 
     docidcheck() {
@@ -2675,6 +2678,19 @@ export default {
         (item) => item.company_id == this.companyid3
       );
     },
+
+    depositsallocations() {
+      return this.allreceipts.filter(
+        (item) => item.company_id == this.companyid3 && item.id == 1
+      )[0].allocated_deposit_amount;
+    },
+
+    allreceipts() {
+      return this.$store.getters.allReceipts.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
     members1: function () {
       if (this.checkpath == 2) {
         return this.$store.getters.allMembers.filter(
@@ -2721,11 +2737,11 @@ export default {
       "fetchUserinfo",
       "fetchLoans",
       "fetchBanktransactions",
-      "fetchPaymentsmade",
       "fetchPaymentsreceived",
       "fetchBanks",
       "fetchEmployerinfo",
       "fetchGl",
+      "fetchReceipts",
     ]),
 
     gotobank() {
@@ -3668,7 +3684,6 @@ export default {
     },
 
     allocatedepositspromise(contribution) {
-
       this.loan = contribution;
       const opt = this.allGls1.find((o) => o.maincode == this.loan.accountcode);
 
@@ -3685,7 +3700,7 @@ export default {
       const updateglx = getAPI
         .post(`/finance/api/v1/documents/`, {
           // names: '',
-         user_Id: this.user_id,
+          user_Id: this.user_id,
           memberemail: this.loan.email,
           DocumentID: "deal" + this.paymentrcvd.paymentNumber + this.loan.id,
           SourcedocID: "rcpt" + this.loan.id,
@@ -3712,40 +3727,42 @@ export default {
           response;
           // confirm("Loan Schedule updated");
           alert("Deposits control updated");
-          
         })
         .catch((e) => {
           this.errors.push(e);
           alert(e);
         });
-        const patchreceiptsx = getAPI
-        .patch(`/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/", {
-          // names: '',
-          // User_id: this.user_id,
-          // customer: this.selectedemail,
-          // customertype: this.checkpath,
-          // transactiondate: this.Payments.transactiondate,
-          // paymentRef: this.Payments.paymentRef,
-          // Transaction_type: "pymt",
-          // amount: this.Payments.amount,
-          // document: "MemP",
-          // glaccounts: this.bankgl,
-          // paymentmode: this.Payments.paymentmode,
-          // // paymentNumber: this.Payments.paymentNumber,
-          // bankaccount: "undeposited funds",
-          // // paymentNumber: this.addpayment.paymentNumber,
-          // referenceNumber: this.Payments.paymentRef,
-          // paidthrough: this.selectedbank,
-          // notes: this.Payments.notes,
-          // loan: 0,
-          // interest: 0,
-          // deposits: 0,
-          // Amount: 1000,
-          // checkpath: this.checkpath,
-          // company_id: this.companyid,
-          // organizationprofile: this.orgprofileid,
-          allocated_deposit_amount: this.loan.Amount,
-        })
+      const patchreceiptsx = getAPI
+        .patch(
+          `/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/",
+          {
+            // names: '',
+            // User_id: this.user_id,
+            // customer: this.selectedemail,
+            // customertype: this.checkpath,
+            // transactiondate: this.Payments.transactiondate,
+            // paymentRef: this.Payments.paymentRef,
+            // Transaction_type: "pymt",
+            // amount: this.Payments.amount,
+            // document: "MemP",
+            // glaccounts: this.bankgl,
+            // paymentmode: this.Payments.paymentmode,
+            // // paymentNumber: this.Payments.paymentNumber,
+            // bankaccount: "undeposited funds",
+            // // paymentNumber: this.addpayment.paymentNumber,
+            // referenceNumber: this.Payments.paymentRef,
+            // paidthrough: this.selectedbank,
+            // notes: this.Payments.notes,
+            // loan: 0,
+            // interest: 0,
+            // deposits: 0,
+            // Amount: 1000,
+            // checkpath: this.checkpath,
+            // company_id: this.companyid,
+            // organizationprofile: this.orgprofileid,
+            allocated_deposit_amount: this.loan.Amount,
+          }
+        )
         .then((response) => {
           response;
         })
@@ -3754,9 +3771,7 @@ export default {
           this.message = JSON.stringify(e.response.data);
         });
 
-        Promise.all([
-          updateglx,patchreceiptsx,
-        ])
+      Promise.all([updateglx, patchreceiptsx]);
     },
 
     AllocationFlagupdate(contribution) {
@@ -4083,36 +4098,38 @@ export default {
           alert(e);
         });
 
-        const patchreceiptsx = getAPI
-        .patch(`/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/", {
-          // names: '',
-          // User_id: this.user_id,
-          // customer: this.selectedemail,
-          // customertype: this.checkpath,
-          // transactiondate: this.Payments.transactiondate,
-          // paymentRef: this.Payments.paymentRef,
-          // Transaction_type: "pymt",
-          // amount: this.Payments.amount,
-          // document: "MemP",
-          // glaccounts: this.bankgl,
-          // paymentmode: this.Payments.paymentmode,
-          // // paymentNumber: this.Payments.paymentNumber,
-          // bankaccount: "undeposited funds",
-          // // paymentNumber: this.addpayment.paymentNumber,
-          // referenceNumber: this.Payments.paymentRef,
-          // paidthrough: this.selectedbank,
-          // notes: this.Payments.notes,
-          // loan: 0,
-          // interest: 0,
-          // deposits: 0,
-          // Amount: 1000,
-          // checkpath: this.checkpath,
-          // company_id: this.companyid,
-          // organizationprofile: this.orgprofileid,
-          allocated_loan_amount: this.loan.Principle_Monthly,
-          allocated_interest_amount: this.loan.Interest_Monthly,
-
-        })
+      const patchreceiptsx = getAPI
+        .patch(
+          `/finance/api/v1/PaymentsReceived/` + this.paymentrcvd.id + "/",
+          {
+            // names: '',
+            // User_id: this.user_id,
+            // customer: this.selectedemail,
+            // customertype: this.checkpath,
+            // transactiondate: this.Payments.transactiondate,
+            // paymentRef: this.Payments.paymentRef,
+            // Transaction_type: "pymt",
+            // amount: this.Payments.amount,
+            // document: "MemP",
+            // glaccounts: this.bankgl,
+            // paymentmode: this.Payments.paymentmode,
+            // // paymentNumber: this.Payments.paymentNumber,
+            // bankaccount: "undeposited funds",
+            // // paymentNumber: this.addpayment.paymentNumber,
+            // referenceNumber: this.Payments.paymentRef,
+            // paidthrough: this.selectedbank,
+            // notes: this.Payments.notes,
+            // loan: 0,
+            // interest: 0,
+            // deposits: 0,
+            // Amount: 1000,
+            // checkpath: this.checkpath,
+            // company_id: this.companyid,
+            // organizationprofile: this.orgprofileid,
+            allocated_loan_amount: this.loan.Principle_Monthly,
+            allocated_interest_amount: this.loan.Interest_Monthly,
+          }
+        )
         .then((response) => {
           response;
         })

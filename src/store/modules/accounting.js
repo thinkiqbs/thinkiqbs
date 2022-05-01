@@ -7,6 +7,7 @@ const state = {
     openingbalancesdeposits: [],
     openingbalancesloans: [],
     openingbalancesshares: [],
+    receipts: [],
 
 
 
@@ -17,6 +18,8 @@ const getters = {
     allObdeposits: (state) => state.openingbalancesdeposits,
     allObloans: (state) => state.openingbalancesloans,
     allObshares: (state) => state.openingbalancesshares,
+    allReceipts: (state) => state.receipts,
+
 
 
 
@@ -42,6 +45,10 @@ const actions = {
         const response = await getAPI.get("/finance/api/v1/sharesopeningbalance/");
         commit("setObshares", response.data.results);
     },
+    async fetchReceipts({ commit }) {
+        const response = await getAPI.get("/finance/api/v1/PaymentsReceived/");
+        commit("setReceipts", response.data.results);
+    }
 };
 
 const mutations = {
@@ -50,6 +57,7 @@ const mutations = {
     setObdeposits: (state, openingbalancesdeposits) => (state.openingbalancesdeposits = openingbalancesdeposits),
     setObloans: (state, openingbalancesloans) => (state.openingbalancesloans = openingbalancesloans),
     setObshares: (state, openingbalancesshares) => (state.openingbalancesshares = openingbalancesshares),
+    setReceipts: (state, receipts) => (state.receipts = receipts),
 
 
 };

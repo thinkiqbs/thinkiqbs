@@ -1,0 +1,19 @@
+-------------------- Auto-Git Log --------------------
+		Sun May 01 2022 22:22:04 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Admin/createorganization.vue
+* src/Backend/Finance/bank.vue
+* src/axios-api.js
+* src/main.js
+
+
+Created files:
+* .autogit/logs/log-1-4-2022-18-35-35.txt
+
+
+Deleted files:
+
+
+Renamed files:

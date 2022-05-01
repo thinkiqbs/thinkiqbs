@@ -1494,9 +1494,7 @@
                         v-model="Payments.transactiondate"
                         required
                       />
-                      <div class="invalid-feedback">
-        Please choose a username.
-      </div>
+                      
                     </div>
                     <div class="col-2">
                       <label class="visually-hidden" for="autoSizingSelect"

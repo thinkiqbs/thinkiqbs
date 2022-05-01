@@ -1,26 +1,5 @@
 import axios from "axios";
-import store from "./store";
-import App from './App.vue'
-import { createApp } from 'vue'
-
-// import { store } from "./store";
-
-// import { mapActions } from "vuex";
-import { mapGetters } from "vuex";
-// import { mapMutations } from "vuex";
-import { mapState } from "vuex";
-
-createApp(App).use(store)
-
-mapGetters(["allOrganisations", "allMembers", "allDeposits", "allExpenses", "allJournals", "allReports", "allGL", "allAccounting"])
-mapState("username", "password", "email", "first_name", "last_name", "id")
-
-
-
-
-
-const username = "14632336";
-const password = "Starten1@";
+// import store from "@/store";
 
 
 
@@ -29,16 +8,17 @@ const password = "Starten1@";
 
 
 
-// var Buffer = require('buffer/').Buffer;
 
+// get username from state
+const getUsername = (state) => {
+    return state.username;
+};
 
+// get password from state
+const getPassword = (state) => {
+    return state.password;
+};
 
-
-
-// const username = username;
-// const password = "";
-
-// const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
 
 const getAPI = axios.create({
 
@@ -55,8 +35,8 @@ const getAPI = axios.create({
     },
 
     auth: {
-        username: username,
-        password: password, //store.state.password,
+        username: getUsername,
+        password: getPassword, //store.state.password,
 
         timeout: 10000,
     },

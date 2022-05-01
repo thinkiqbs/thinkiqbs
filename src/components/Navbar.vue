@@ -4,22 +4,24 @@
     id="mainNav"
   >
     <div class="container">
-     
-      <a class="navbar-brand" href="#" v-if="token == null">
+      <a class="navbar-brand" href="/" v-if="token == null">
         <img
           src="../assets/images/logo/IQSACCO_Logo_Blue-PhotoRoom.png"
           width="100"
           height="100"
           alt="Sacco ERP Software"
           class="navbar-brand-img"
-
         />
       </a>
+
       <a class="navbar-brand" href="#" v-if="token != null">
         <img class="logo-display img-fluid" :src="this.logo" :title="orgname" />
-
       </a>
-      
+
+      <small v-if="token != null" class="text-primary">{{
+        this.orgname
+      }}</small>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -191,7 +193,7 @@ export default {
     gotologin() {
       window.location.replace("/login");
     },
-     gotoSignup() {
+    gotoSignup() {
       window.location.replace("/register");
     },
 
@@ -273,8 +275,7 @@ export default {
     },
 
     orgname() {
-      
-      return this.allorg[0].org_name;
+      return this.allorg[0].organization_name;
     },
 
     allorg() {

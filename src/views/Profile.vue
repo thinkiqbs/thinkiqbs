@@ -3198,11 +3198,11 @@ export default {
       return this.usercompanyid;
     },
 
-    userinfo() {
-      return this.$store.getters.allUser.filter(
-        (item) => item.email == this.email
-      )[0].company_id;
-    },
+    // userinfo() {
+    //   return this.$store.getters.allUser.filter(
+    //     (item) => item.email == this.email
+    //   )[0].company_id;
+    // },
 
     memberfirstname() {
       return this.$store.getters.allMembers.filter(

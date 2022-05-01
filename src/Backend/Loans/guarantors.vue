@@ -361,6 +361,8 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
 import $ from "jquery";
+import { mapGetters, mapActions, mapState } from "vuex";
+
 
 // import Popper from "vue-popperjs";
 // import Tab from "@/components/Tab.vue";
@@ -452,6 +454,17 @@ export default {
   created() {
     this.change();
     this.changeGuarantor();
+    this.fetchMembers();
+    this.fetchLoans();
+    this.fetchDeposits();
+    this.fetchSavingtype();
+    this.fetchLoantype();
+    this.fetchOrg();
+    this.fetchDocuments();
+    this.fetchEmployerinfo();
+    this.fetchGuarantors();
+    this.fetchUser();
+
   },
 
   mounted() {
@@ -496,6 +509,22 @@ export default {
 
   methods: {
     // search member details
+
+    ...mapState(["email"]),
+
+     ...mapActions([
+      "fetchDocuments",
+      "fetchMembers",
+      "fetchLoans",
+      "fetchDeposits",
+      "fetchSavingtype",
+      "fetchLoantype",
+      "fetchOrg",
+      "fetchEmployerinfo",
+      "fetchGuarantors",
+      "fetchUser",
+    ]),
+
     searchmember() {
       axios
         .get("/loans/api/v1/loans/" + this.selectedemail, {
@@ -761,6 +790,8 @@ export default {
             .catch((error) => {
               console.error(error);
             });
+
+            
       }
     },
 
@@ -964,6 +995,18 @@ export default {
   },
 
   computed: {
+
+    ...mapGetters([
+      "allDocuments",
+      "allMembers",
+      "allDeposits",
+      "allOrg",
+      "allEmployer",
+      "allLoantype",
+      "allLoans",
+      "allGuarantors",
+    ]),
+
     token() {
       return this.$store.state.accessToken;
     },
@@ -1179,6 +1222,18 @@ export default {
     maximumtoguarantee() {
       const M2g = Math.round((this.Riskacceptable - this.Gcurrentloans) / 6); // 6 is the maximum number of people one can gurantee
       return M2g;
+    },
+
+      companyid3() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.admin_id == this.user_id
+      )[0].company_id;
+    },
+
+      companyid2() {
+      return this.$store.getters.allMembers.filter(
+        (item) => item.email == this.email
+      )[0].company_id;
     },
 
     //created a computed function to sum column totals for Amount on Documents

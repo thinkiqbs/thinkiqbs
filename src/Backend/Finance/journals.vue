@@ -27,8 +27,8 @@
                       class="btn btn-success"
                       style="float: right"
                       type="button"
-                      data-toggle="modal"
-                      data-target="#Newexpense"
+                      data-bs-toggle="modal"
+                      data-bs-target="#Newexpense"
                     >
                       <i class="fa fa-plus-circle" aria-hidden="true"></i>
 
@@ -98,13 +98,13 @@
         <!-- Modal for Approvals  -->
 
         <div
-          class="modal fade"
+          class="modal fade modalbox"
           id="Newexpense"
           tabindex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-xl">
+          <div class="modal-dialog ">
             <div class="modal-content">
               <div class="modal-header">
                 <h3 class="modal-title" id="exampleModalLabel">
@@ -113,7 +113,7 @@
                 <button
                   type="button"
                   class="close"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
@@ -312,7 +312,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  data-dismiss="modal"
+                  data-bs-dismiss="modal"
                 >
                   Close
                 </button>
@@ -340,13 +340,14 @@
 </template>
 
 <script>
-import axios from "axios";
+
+import {getAPI} from  "@/axios-api";
 import financeNav from "@/components/FinanceNav";
 import accountingHeader from "@/components/accountingHeader.vue";
 import AccountingMenu from "@/components/AccountingMenu.vue";
 // import financeNav from "@/components/FinanceNav";
 // import financeNav from "@/components/FinanceNav";
-// import axios from "axios";
+// import getAPI from "getAPI";
 //Bootstrap and jQuery libraries
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -551,7 +552,7 @@ export default {
     postJounal(item) {
       Promise.all([
         (this.expense = item),
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -592,7 +593,7 @@ export default {
         (this.gldocs = this.$store.getters.allDocuments.filter(
           (gldocs) => gldocs.Account == this.expense.gl_account
         )),
-        axios
+        getAPI
           .post(`/finance/api/v1/documents/`, {
             // names: '',
             user_Id: this.user_id,
@@ -648,7 +649,7 @@ export default {
       (this.gldocs = this.$store.getters.allDocuments.filter(
         (gldocs) => gldocs.Account == this.expense.gl_account
       )),
-        axios
+        getAPI
           .put("/finance/api/v1/Chartofaccounts/" + this.glid + "/", {
             account_type: this.glaccountype,
             maincode: this.glmaincode,
@@ -675,7 +676,7 @@ export default {
   },
 
   getProducts(Exception) {
-    axios
+    getAPI
       .get("/loans/api/v1/loans/", {
         params: { organizationprofile: this.orgprofileid },
       })
@@ -689,7 +690,7 @@ export default {
   },
 
   deleteProduct(id) {
-    axios
+    getAPI
       .delete(`products/${id}`)
       .then((res) => {
         for (let i = 0; i < this.tableData.length; i++) {

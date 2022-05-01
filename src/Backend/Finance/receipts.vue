@@ -4228,8 +4228,7 @@ export default {
         });
 
         // close current modal
-        this.$modal
-
+        window.location.reload();
     },
 
     AllocateDepositsControls() {

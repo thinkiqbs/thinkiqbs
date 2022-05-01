@@ -545,8 +545,7 @@
                           <small class="text-muted"
                             ><span></span>Total Received amount Bills
                             <b style="color: Green"
-                              >{{ paymentrcvd.amount
-                              }}{{ this.sumOfallocations }}
+                              >{{ paymentrcvd.amount }}{{ this.netallocations }}
                             </b></small
                           >
                         </td>
@@ -2681,27 +2680,51 @@ export default {
 
     depositsallocations() {
       return this.allreceipts.filter(
-        (item) => item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
+        (item) =>
+          item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
       )[0].allocated_deposit_amount;
     },
-     loansallocations() {
+    loansallocations() {
       return this.allreceipts.filter(
-        (item) => item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
+        (item) =>
+          item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
       )[0].allocated_loan_amount;
     },
-     interestsallocations() {
+    interestsallocations() {
       return this.allreceipts.filter(
-        (item) => item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
+        (item) =>
+          item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
       )[0].allocated_interest_amount;
     },
-    sumOfallocations(){
-      var a = parseInt(this.depositsallocation);
-      var b = parseInt(this.loansallocations) * 1;
-      var c = parseInt(this.interestsallocations) * 1 ;
-      // add the variables
-      return parseInt(a + b + c);
-      
+    receivedamount() {
+      return this.allreceipts.filter(
+        (item) =>
+          item.company_id == this.companyid3 && item.id == this.paymentrcvd.id
+      )[0].amount;
     },
+    sumOfallocations() {
+      var a = this.depositsallocations;
+      var b = parseInt(this.loansallocations);
+      var c = parseInt(this.interestsallocations);
+      // add the variables
+      return a + b + c;
+    },
+    netallocations() {
+      var a = parseInt(this.receivedamount);
+      var b = this.sumOfallocations;
+      return a - b;
+    },
+
+  allocationstatus(){
+    if (this.netallocations == 0) {
+      return true;
+    }
+    else {
+      
+    }
+
+
+  },
 
     allreceipts() {
       return this.$store.getters.allReceipts.filter(
@@ -4144,6 +4167,7 @@ export default {
             // checkpath: this.checkpath,
             // company_id: this.companyid,
             // organizationprofile: this.orgprofileid,
+            allocated:this.allocationstatus,
             allocated_loan_amount: this.loan.Principle_Monthly,
             allocated_interest_amount: this.loan.Interest_Monthly,
           }

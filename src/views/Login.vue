@@ -1,6 +1,6 @@
 <template>
   <div class="card-group container-fluid align-self-center mt-5 mb-auto">
-    <div class="card ">
+    <div class="card">
       <div class="card-body justify-content-center mt-auto">
         <div class="section mt-8 text-center">
           <h1>Log in</h1>
@@ -19,7 +19,6 @@
                   placeholder="Your National ID "
                   v-model="username"
                 />
-                
               </div>
             </div>
             <!-- <div class="form-group basic">
@@ -41,7 +40,6 @@
                   autocomplete="off"
                   v-model="password"
                 />
-                
               </div>
             </div>
             <button
@@ -54,8 +52,6 @@
 
             <div class="form-links mt-2">
               <div>
-               
-
                 <router-link to="/register">Register Now</router-link>
               </div>
 
@@ -118,7 +114,7 @@ export default {
             button: "OK",
           });
 
-          this.$router.push("/profile");
+          window.location.replace("/profile");
         })
         .catch((err) => {
           console.log(err);

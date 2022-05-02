@@ -18,10 +18,6 @@
         <img class="logo-display img-fluid" :src="this.logo" :title="orgname" />
       </a>
 
-      <small v-if="token != null" class="text-primary">{{
-        this.orgname
-      }}</small>
-
       <button
         class="navbar-toggler"
         type="button"
@@ -86,16 +82,7 @@
           </span>
         </button>
 
-        <button
-          class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-          @click="logout"
-          v-if="token != null"
-        >
-          <span class="d-flex align-items-center">
-            <i class="bi-chat-text-fill me-2"></i>
-            <span class="small">Log Out</span>
-          </span>
-        </button>
+        
 
         <button
           class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
@@ -119,51 +106,106 @@
               </span>
             </button>
           </div>
-          <div v-if="this.organizationdetails == 1">
-            <button
-              class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0"
-              @click="gotoDashboard"
-            >
-              <span class="d-flex align-items-center">
-                <i class="bi-chat-text-fill me-2"></i>
-                <span class="small">Back Office</span>
-              </span>
-            </button>
-          </div>
         </div>
-        <div
-          id="ember101"
-          class="dropdown orglist-topband float-right top-item top-item-fixed-width ember-view"
-        >
-          <div id="ember102" class="ember-view">
-            <span
-              class="cursor-pointer"
-              data-ember-action=""
-              data-ember-action-103="103"
+
+        <div v-if="token != null" class="dropdown d-inline-block ms-6">
+          <button
+            type="button"
+            class="btn btn-sm btn-alt-secondary d-flex align-items-center"
+            id="page-header-user-dropdown"
+            data-bs-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-gear"
+              viewBox="0 0 16 16"
             >
-              <div
-                class="over-flow"
-                style="display: inline-block; max-width: 155px"
-                title="BITZ IT Consulting "
+              <path
+                d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+              />
+              <path
+                d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+              />
+            </svg>
+            <span v-if="token != null" class="d-none d-sm-inline-block ms-2">{{
+              this.orgname
+            }}</span>
+            <i
+              class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
+            ></i>
+          </button>
+          <div
+            class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
+            aria-labelledby="page-header-user-dropdown"
+            style=""
+          >
+            <div
+              class="p-3 text-center bg-body-light border-bottom rounded-top"
+            >
+              <img
+                class="img-avatar img-avatar48 img-avatar-thumb"
+                src="assets/media/avatars/avatar10.jpg"
+                alt=""
+              />
+              <p class="mt-2 mb-0 fw-medium">John Smith</p>
+              <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
+              <a class="nav-link me-lg-3" href="/Profile" v-if="token != null"
+              >My Account</a
+            >
+            </div>
+            <div class="p-2">
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="#"
+                @click="gotoDashboard"
+                v-if="this.organizationdetails == 1"
               >
-                <!---->
-                BITZ IT Consulting &nbsp;
-              </div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 165.4 512 512"
-                class="icon icon-xsmall align-top orglist-dropdown fill-siyah-black"
+                <span class="fs-sm fw-medium">Back Office</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="#"
+                @click="gotoDashboard"
+                v-if="this.organizationdetails == 1"
               >
-                <path
-                  d="M512 331.2c0 4.6-2 9.1-6 12.1L265 523.7c-5.3 4-12.7 4-18 0L6 343.3c-6.7-5-8-14.4-3.1-21.1 5-6.7 14.4-8 21.1-3.1l232 173.7 231.9-173.7c6.7-5 16.1-3.6 21.1 3.1 2 2.6 3 5.8 3 9z"
-                ></path>
-              </svg>
-            </span>
-            <!----><!---->
+                <span class="fs-sm fw-medium">Front Office</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="/Customize"
+              >
+                <span class="fs-sm fw-medium">Settings</span>
+              </a>
+            </div>
+            <div role="separator" class="dropdown-divider m-0"></div>
+            <div class="p-2">
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="op_auth_lock.html"
+              >
+                <span class="fs-sm fw-medium">Lock Account</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="#"
+                @click="logout"
+                v-if="token != null"
+              >
+                <span class="fs-sm fw-medium">Log Out</span>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div class="dropdown d-inline-block ms-2">
+        <div v-if="token != null" class="dropdown d-inline-block ms-2">
           <button
             type="button"
             class="btn btn-sm btn-alt-secondary"
@@ -260,7 +302,7 @@
             </div>
           </div>
         </div>
-        <div class="dropdown d-inline-block ms-2">
+        <div v-if="token != null" class="dropdown d-inline-block ms-2">
           <button
             type="button"
             class="btn btn-sm btn-alt-secondary d-flex align-items-center"
@@ -344,7 +386,7 @@
             </div>
           </div>
         </div>
-        <div class="dropdown d-inline-block ms-2">
+        <div v-if="token != null" class="dropdown d-inline-block ms-2">
           <button
             type="button"
             class="btn btn-sm btn-alt-secondary d-flex align-items-center"
@@ -429,7 +471,7 @@
           </div>
         </div>
 
-        <div class="dropdown d-inline-block ms-2">
+        <div v-if="token != null" class="dropdown d-inline-block ms-2">
           <button
             type="button"
             class="btn btn-sm btn-alt-secondary d-flex align-items-center"

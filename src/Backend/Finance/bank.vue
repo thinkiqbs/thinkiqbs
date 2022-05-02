@@ -238,7 +238,6 @@
             </div>
 
             <li v-for="item in allbanks" :key="item.id">
-              
               <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
@@ -246,36 +245,84 @@
                       class="accordion-button"
                       type="button"
                       data-bs-toggle="collapse"
-                      data-bs-target="#collapseOne"
+                      data-bs-target="v-bind:item.id"
                       aria-expanded="true"
                       aria-controls="collapseOne"
                     >
-                      {{ item.accountname }}  #1
+                      {{ item.accountname }} {{ item.bankaccounttype }} #Account
                     </button>
                   </h2>
                   <div
-                    id="collapseOne"
+                    id="v-bind:item.id"
                     class="accordion-collapse collapse show"
                     aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample"
                   >
                     <div class="accordion-body">
-                      <strong>This is the first item's accordion body.</strong>
-                      It is shown by default, until the collapse plugin adds the
-                      appropriate classes that we use to style each element.
-                      These classes control the overall appearance, as well as
-                      the showing and hiding via CSS transitions. You can modify
-                      any of this with custom CSS or overriding our default
-                      variables. It's also worth noting that just about any HTML
-                      can go within the <code>.accordion-body</code>, though the
-                      transition does limit overflow.
+                      <table
+                        class="table-hover table-borderless table-striped walla"
+                      >
+                        <tr>
+                          <td>{{ item.bankname }}</td>
+                          <td>{{ item.accountnumber }}</td>
+                          <td>{{ item.accountname }}</td>
+                          <td>{{ item.bankaccounttype }}</td>
+                          <td>{{ item.accountbalance }}</td>
+                          <td>
+                            <div class="dropdown">
+                              <button
+                                class="btn btn-secondary dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                              >
+                                Actions
+                              </button>
+                              <ul
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                              >
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Receive a Payment</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Make Payment</a
+                                  >
+                                </li>
+                                 <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Pay Loans</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Transfer to another account</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Issue Imprest</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >View Balance</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
             </li>
-
-            
 
             <div class="col">
               <p>reconcile with your bank statement</p>

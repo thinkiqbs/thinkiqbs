@@ -1,5 +1,4 @@
 <template>
-
   <nav
     class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top"
     id="mainNav"
@@ -338,84 +337,93 @@
                 src="assets/media/avatars/avatar10.jpg"
                 alt=""
               />
-              <p class="mt-2 mb-0 fw-medium">John Smith</p>
-              <p class="mb-0 text-muted fs-sm fw-medium">Web Developer</p>
+              <div class="input-group input-group-sm">
+                <input
+                  type="text"
+                  class="form-control form-control-alt"
+                  placeholder="Search.."
+                  id="page-header-search-input2"
+                  name="page-header-search-input2"
+                  autocomplete="off"
+                />
+                <span class="input-group-text border-0">
+                  <i class="fa fa-fw fa-search"></i>
+                </span>
+              </div>
             </div>
             <div class="p-2">
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/organization"
               >
                 <span class="fs-sm fw-medium">Organization</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/imports"
               >
                 <span class="fs-sm fw-medium">Import Data</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/users"
               >
-                <span class="fs-sm fw-medium">Organization</span>
+                <span class="fs-sm fw-medium">Users</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_profile.html"
+                href="/coa"
               >
                 <span class="fs-sm fw-medium">Chart of Accounts </span>
                 <span class="badge rounded-pill bg-primary ms-2">1</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/savingstype"
               >
                 <span class="fs-sm fw-medium">Saving Products</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/loantype"
               >
                 <span class="fs-sm fw-medium">Loan Products</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/banksetup"
               >
                 <span class="fs-sm fw-medium">Banks Setup</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/employers"
               >
                 <span class="fs-sm fw-medium">Employers</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/approvers"
               >
                 <span class="fs-sm fw-medium">Approvers</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="be_pages_generic_inbox.html"
+                href="/users"
               >
                 <span class="fs-sm fw-medium">Users & Staff</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
-              
             </div>
             <div role="separator" class="dropdown-divider m-0"></div>
-            
           </div>
         </div>
         <div v-if="token != null" class="dropdown d-inline-block ms-2">
@@ -502,8 +510,6 @@
             </div>
           </div>
         </div>
-
-        
       </div>
     </div>
   </nav>

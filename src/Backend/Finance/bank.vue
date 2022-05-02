@@ -16,7 +16,7 @@
             >
               <div id="ember912" class="ember-view px-5 pt-4 row no-gutters">
                 <div class="row"></div>
-                <div class="d-flex flex-wrap pr-3 col-lg-9">
+                <div class="d-flex flex-wrap pr-3">
                   <div class="text-left d-flex mb-3 pr-6 pb-4 graph-ele">
                     <div class="col">
                       <select
@@ -86,6 +86,24 @@
                         KES &nbsp; {{ cashatbank }}
                       </div>
                     </div>
+                    <div class="pl-3 over-flow">
+                      <div class="over-flow font-xs pb-1">Unreconciled</div>
+                      <div
+                        id="ember914"
+                        class="tooltip-container ember-view over-flow font-medium text-medium direction-ltr"
+                      >
+                        KES &nbsp; {{ cashatbank }}
+                      </div>
+                    </div>
+                    <div class="pl-3 over-flow">
+                      <div class="over-flow font-xs pb-1">Pending Payment</div>
+                      <div
+                        id="ember914"
+                        class="tooltip-container ember-view over-flow font-medium text-medium direction-ltr"
+                      >
+                        KES &nbsp; {{ cashatbank }}
+                      </div>
+                    </div>
                     <div
                       class="rounded-xlg mx-3 mb-3 entity-dashboard d-flex"
                       style="float: right"
@@ -112,7 +130,7 @@
                             />
                           </svg>
                           <span class="d-none d-sm-inline-block ms-2"
-                            >Add Transactions</span
+                            >Lists</span
                           >
                           <i
                             class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"

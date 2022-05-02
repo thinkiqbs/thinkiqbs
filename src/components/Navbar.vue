@@ -346,38 +346,76 @@
                 class="dropdown-item d-flex align-items-center justify-content-between"
                 href="be_pages_generic_inbox.html"
               >
-                <span class="fs-sm fw-medium">Inbox</span>
+                <span class="fs-sm fw-medium">Organization</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Import Data</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Organization</span>
                 <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
                 href="be_pages_generic_profile.html"
               >
-                <span class="fs-sm fw-medium">Profile</span>
+                <span class="fs-sm fw-medium">Chart of Accounts </span>
                 <span class="badge rounded-pill bg-primary ms-2">1</span>
               </a>
               <a
                 class="dropdown-item d-flex align-items-center justify-content-between"
-                href="javascript:void(0)"
+                href="be_pages_generic_inbox.html"
               >
-                <span class="fs-sm fw-medium">Settings</span>
+                <span class="fs-sm fw-medium">Saving Products</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
               </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Loan Products</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Banks Setup</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Employers</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Approvers</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              <a
+                class="dropdown-item d-flex align-items-center justify-content-between"
+                href="be_pages_generic_inbox.html"
+              >
+                <span class="fs-sm fw-medium">Users & Staff</span>
+                <span class="badge rounded-pill bg-primary ms-2">3</span>
+              </a>
+              
             </div>
             <div role="separator" class="dropdown-divider m-0"></div>
-            <div class="p-2">
-              <a
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                href="op_auth_lock.html"
-              >
-                <span class="fs-sm fw-medium">Lock Account</span>
-              </a>
-              <a
-                class="dropdown-item d-flex align-items-center justify-content-between"
-                href="op_auth_signin.html"
-              >
-                <span class="fs-sm fw-medium">Log Out</span>
-              </a>
-            </div>
+            
           </div>
         </div>
         <div v-if="token != null" class="dropdown d-inline-block ms-2">

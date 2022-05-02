@@ -130,8 +130,8 @@ export default {
         .then((res) => {
           console.log(res);
           this.$swal({
-            title: "Success!",
-            text: "Check your email for a password reset link",
+            title: "Success",
+            text: "Password reset link has been sent to your email",
             icon: "success",
             button: "OK",
           });

@@ -1,5 +1,5 @@
 <template>
-  <Navbar v-if="!$route.meta.hideNavbar"></Navbar>
+  <Navbar></Navbar>
 
   <div class="container-fluid mt-2">
     <error />

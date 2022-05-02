@@ -594,19 +594,9 @@
               </select>
             </div>
 
+            
             <div class="col">
               <p>Step 2</p>
-
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="processMembers"
-              >
-                Process Imports
-              </button>
-            </div>
-            <div class="col">
-              <p>Step 3</p>
 
               <vue-excel-xlsx
                 class="btn btn-success"
@@ -621,8 +611,20 @@
               </vue-excel-xlsx>
             </div>
             <div class="col">
-              <p>Step 4</p>
+              <p>Step 3</p>
               <input type="file" @change="onFileChange" />
+            </div>
+
+            <div class="col">
+              <p>Step 4</p>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="processMembers"
+              >
+                Process Imports
+              </button>
             </div>
 
             <div class="col">

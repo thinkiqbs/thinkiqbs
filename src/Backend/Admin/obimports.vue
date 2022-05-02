@@ -23,7 +23,6 @@
                 <select
                   class="form-select form-select-sm"
                   aria-label=".form-select-sm example"
-
                   v-model="selected"
                 >
                   <option selected>Open this select menu</option>
@@ -108,9 +107,7 @@
                   :file-name="this.selected"
                   :file-type="'xlsx'"
                   :sheet-name="this.selected"
-                  @click = "dataassign"
-                  
-
+                  @click="dataassign"
                 >
                   Download xlsx template
                 </vue-excel-xlsx>
@@ -1133,7 +1130,7 @@ export default {
           label: "organizationprofile(Dont Change)",
           field: "organizationprofile",
         },
-         {
+        {
           label: "keyvalue(Dont Change)",
           field: "keyvalue",
         },
@@ -1349,7 +1346,7 @@ export default {
     },
 
     obdepositsexport() {
-      return this.$store.getters.allObloans.filter(
+      return this.$store.getters.allObdeposits.filter(
         (item) => item.company_id == this.companyid3
       );
     },
@@ -1360,7 +1357,7 @@ export default {
       );
     },
 
-      oblsharesexport() {
+    oblsharesexport() {
       return this.$store.getters.allObshares.filter(
         (item) => item.company_id == this.companyid3
       );
@@ -1399,8 +1396,17 @@ export default {
 
     allGls1Capital: function () {
       return this.$store.getters.allGl.filter(
-        (item) => item.company_id == this.companyid3 && item.account_type == 3000000
+        (item) =>
+          item.company_id == this.companyid3 && item.account_type == 3000000
       );
+    },
+    randomemail() {
+      var chars = "abcdefghijklmnopqrstuvwxyz1234567890";
+      var string = "";
+      for (var ii = 0; ii < 15; ii++) {
+        string += chars[Math.floor(Math.random() * chars.length)];
+      }
+      return string + "@iqsacco.com";
     },
   },
 
@@ -1424,11 +1430,11 @@ export default {
     ]),
 
     // When passing `data` for each cell.
+    
 
     pickdata() {
       //add properties to data1
 
-      
       const expenses = [
         {
           id: 1,
@@ -1457,7 +1463,6 @@ export default {
 
       // if selected is deposits then
 
-     
       if (this.selected == "expenses") {
         this.data1 = expenses;
       }
@@ -1510,9 +1515,10 @@ export default {
       this.glchanged.accountname = optgl.accountname;
     },
 
-    gltypechange(){
-
-      const opt = this.allGls1.find((o) => o.maincode == this.selectedEquityAccount);
+    gltypechange() {
+      const opt = this.allGls1.find(
+        (o) => o.maincode == this.selectedEquityAccount
+      );
       console.log(opt);
 
       this.glchanged.account_type = opt.account_type;
@@ -1521,7 +1527,6 @@ export default {
       this.glchanged.maincode_description = opt.maincode_description;
       this.glchanged.parent_account = opt.parent_account;
       this.glchanged.accountname = opt.accountname;
-
     },
 
     Prepdata() {
@@ -1615,7 +1620,7 @@ export default {
 
         for (var k = 0; k < this.allmembers.length; k++) {
           var sharesob = this.allmembers[k];
-          console.log("hello",sharesob);
+          console.log("hello", sharesob);
           getAPI
             .post("/finance/api/v1/sharesopeningbalance/", {
               Account: this.glchanged.maincode,
@@ -1638,8 +1643,7 @@ export default {
               notes: "Members Shares Opening Balances",
               updatedgl: false,
               organizationprofile: this.organizationprofile,
-              keyvalue:
-                this.companyid3 + this.glchanged.maincode + sharesob.id,
+              keyvalue: this.companyid3 + this.glchanged.maincode + sharesob.id,
             })
             .then((response) => {
               console.log(response);
@@ -1652,8 +1656,7 @@ export default {
       }
     },
 
-
-    dataassign(){
+    dataassign() {
       if (this.selected == "deposits") {
         this.data1 = this.obdepositsexport;
       }
@@ -1664,7 +1667,6 @@ export default {
         this.data1 = this.oblsharesexport;
       }
     },
-      
 
     exportexpense() {
       this.$swal("Update Expense sheet and upload to import opening balance");

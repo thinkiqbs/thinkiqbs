@@ -615,8 +615,19 @@
               <input type="file" @change="onFileChange" />
             </div>
 
-            <div class="col">
+             <div class="col">
               <p>Step 4</p>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="postMembers"
+              >
+                Import
+              </button>
+            </div>
+
+            <div class="col">
+              <p>Step 5</p>
 
               <button
                 type="button"
@@ -627,16 +638,7 @@
               </button>
             </div>
 
-            <div class="col">
-              <p>Step 5</p>
-              <button
-                type="button"
-                class="btn btn-primary"
-                @click="postMembers"
-              >
-                Import
-              </button>
-            </div>
+           
           </div>
           <div class="modal-body">
             <div class="card-body table-responsive">
@@ -2645,9 +2647,8 @@ export default {
       return diff;
     },
     filterloans: function () {
-      return this.members1.filter((member) =>
-        member.email.toLowerCase().includes(this.search.toLowerCase())
-      );
+      return this.members1;
+      
     },
 
     filterimports: function () {

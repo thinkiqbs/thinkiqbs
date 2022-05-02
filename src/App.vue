@@ -1,7 +1,7 @@
 <template>
   <Navbar v-if="!$route.meta.hideNavbar"></Navbar>
 
-  <div class="container-fluid mt-5">
+  <div class="container-fluid mt-2">
     <error />
     <div class="">
       <router-view />

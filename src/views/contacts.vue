@@ -17,7 +17,7 @@ export default {
   name: "contactUs",
   methods: {
     sendEmail() {
-      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this.$refs.form, 'YOUR_PUBLIC_KEY')
+      emailjs.sendForm('service_uoa0168', 'template_zx9pkll', this.$refs.form, '16W_pZT3IC4vK0p21')
         .then((result) => {
             console.log('SUCCESS!', result.text);
         }, (error) => {

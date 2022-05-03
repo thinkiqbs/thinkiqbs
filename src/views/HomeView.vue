@@ -226,7 +226,7 @@
             <div class="px-5 px-sm-0">
               <img
                 class="img-fluid rounded-circle"
-                src="../assets/images/cta/iqsacco-CTA.jpeg"
+                src="https://picsum.photos/500/500"
                 alt="..."
               />
             </div>
@@ -244,8 +244,8 @@
             Start Growing.
           </h2>
           <a
-            class="btn btn-outline-light py-3 px-4 rounded-pill"
-            href="https://startbootstrap.com/theme/new-age"
+            class="btn btn-primary  py-3 px-4 rounded-pill"
+            href="/contacts"
             target="_blank"
             >Contact US Now</a
           >

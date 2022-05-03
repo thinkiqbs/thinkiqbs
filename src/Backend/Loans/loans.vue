@@ -1896,6 +1896,8 @@ export default {
             Transactiontype: "DIS" + Math.random(),
             organizationprofile: this.orgprofileid,
             company_id: this.loan.company_id,
+            username:this.loan.username,
+          created_by:this.username,
           })
           .then((response) => {
             response;
@@ -1923,6 +1925,8 @@ export default {
             organizationprofile: this.orgprofileid,
             gl_account: this.loan.gl_account,
             company_id: this.loan.company_id,
+             username:this.loan.username,
+          created_by:this.username,
           })
           .then((response) => {
             response;
@@ -1962,16 +1966,14 @@ export default {
             current_balance: this.loanbalance,
             noofmonthspaid: this.loan.noofmonthspaid,
             noofmonthspaidvar: this.loan.noofmonthspaidvar,
+             username:this.loan.username,
+          created_by:this.username,
           })
           .then((response) => {
             response;
-            this.fetchDocuments();
-            this.fetchDeposits();
-            this.fetchMembers();
+            
             this.fetchLoans();
-            this.fetchBanktransactions();
-            this.fetchPaymentsmade();
-            this.fetchPaymentsreceived();
+            
             // window.location.reload();
             // confirm("We have received your application");
           })
@@ -1986,39 +1988,35 @@ export default {
       // item.label = random;
 
       getAPI
-        .put("/loans/api/v1/loans/" + this.loan.id + "/", {
-          User_id: this.loan.id,
-          email: this.loan.email,
-          Amount: this.loan.Amount,
-          loan_Type: this.loan.loan_Type,
-          interest: this.loan.interest,
-          Interest_Monthly: this.loan.Interest_Monthly,
-          Term: this.loan.Term,
+        .patch("/loans/api/v1/loans/" + this.loan.id + "/", {
+          // User_id: this.loan.id,
+          // email: this.loan.email,
+          // Amount: this.loan.Amount,
+          // loan_Type: this.loan.loan_Type,
+          // interest: this.loan.interest,
+          // Interest_Monthly: this.loan.Interest_Monthly,
+          // Term: this.loan.Term,
           Status: this.loan.Status * 1 + 1,
-          TotalLoans: this.loan.TotalLoans,
-          Monthrepayment: this.loan.Monthrepayment,
-          Principle_Monthly: this.loan.Principle_Monthly,
-          Total_Loan: this.loan.Total_Loan,
-          gl_account: this.loan.gl_account,
-          income_account: this.loan.income_account,
+          // TotalLoans: this.loan.TotalLoans,
+          // Monthrepayment: this.loan.Monthrepayment,
+          // Principle_Monthly: this.loan.Principle_Monthly,
+          // Total_Loan: this.loan.Total_Loan,
+          // gl_account: this.loan.gl_account,
+          // income_account: this.loan.income_account,
 
-          organizationprofile: this.loan.organizationprofile,
-          EmployerProfile: this.loan.EmployerProfile,
-          company_id: this.loan.company_id,
-          current_balance: this.loanbalance,
-          noofmonthspaid: this.loan.noofmonthspaid,
-          noofmonthspaidvar: this.loan.noofmonthspaidvar,
+          // organizationprofile: this.loan.organizationprofile,
+          // EmployerProfile: this.loan.EmployerProfile,
+          // company_id: this.loan.company_id,
+          // current_balance: this.loanbalance,
+          // noofmonthspaid: this.loan.noofmonthspaid,
+          // noofmonthspaidvar: this.loan.noofmonthspaidvar,
         })
         .then((response) => {
           response;
 
-          this.fetchDocuments();
-          this.fetchDeposits();
-          this.fetchMembers();
+       
           this.fetchLoans();
-          this.fetchBanktransactions();
-          this.fetchPaymentsmade();
-          this.fetchPaymentsreceived();
+          
           window.location.reload();
 
           // confirm("We have received your application");
@@ -2195,28 +2193,10 @@ export default {
       // item.label = random;
 
       getAPI
-        .put("/loans/api/v1/loans/" + this.loan.id + "/", {
-          User_id: this.loan.id,
-          email: this.loan.email,
-          Amount: this.loan.Amount,
-          loan_Type: this.loan.loan_Type,
-          interest: this.loan.interest,
-          Interest_Monthly: this.loan.Interest_Monthly,
-          Term: this.loan.Term,
+        .patch("/loans/api/v1/loans/" + this.loan.id + "/", {
+        
           Status: this.loan.Status * 1 + 1,
-          TotalLoans: this.loan.TotalLoans,
-          Monthrepayment: this.loan.Monthrepayment,
-          Principle_Monthly: this.loan.Principle_Monthly,
-          Total_Loan: this.loan.Total_Loan,
-          gl_account: this.loan.gl_account,
-          income_account: this.loan.income_account,
-
-          organizationprofile: this.loan.organizationprofile,
-          EmployerProfile: this.loan.EmployerProfile,
-          company_id: this.loan.company_id,
-          current_balance: this.loanbalance,
-          noofmonthspaid: this.loan.noofmonthspaid,
-          noofmonthspaidvar: this.loan.noofmonthspaidvar,
+          
         })
         .then((response) => {
           response;
@@ -2228,7 +2208,7 @@ export default {
           this.fetchLoans();
 
           //reload page
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((e) => {
           this.errors.push(e);
@@ -2551,6 +2531,9 @@ export default {
     },
     firstname() {
       return this.$store.state.firstname;
+    },
+    username() {
+      return this.$store.state.username;
     },
 
     maxtopup: function () {

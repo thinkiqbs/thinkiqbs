@@ -3174,27 +3174,51 @@ export default {
     // },
 
     memberfirstname() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].first_name;
+      if(this.allMembers.length > 0){
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].first_name;
+      }
+      else {
+        return null
+      }
     },
 
     memberlastname() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].last_name;
+      if( this .allMembers.length > 0 ){
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].last_name;
+      }
+      else {
+        return null
+      }
     },
 
     memberaccounname() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].account_no;
+      if(this.allMembers.length>0){
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].account_no;
+      }
+      else {
+        return null 
+      }
     },
 
     usercompanyid() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].company_id;
+      if(this.allMembers.length > 0) {
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].company_id;
+      }
+      else {
+        return null
+      }
     },
 
     employer() {

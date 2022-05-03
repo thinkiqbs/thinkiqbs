@@ -2262,6 +2262,10 @@ export default {
       "allReceipts",
     ]),
 
+     username() {
+      return this.$store.state.username;
+    },
+
     docidcheck() {
       return "deal" + this.paymentrcvd.paymentNumber + this.loan.id;
     },
@@ -3765,6 +3769,8 @@ export default {
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+          username:this.loan.username,
+          created_by:this.username,
         })
         .then((response) => {
           response;
@@ -4035,6 +4041,8 @@ export default {
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+          username:this.loan.username,
+          created_by:this.username,
 
         })
         .then((response) => {
@@ -4071,6 +4079,8 @@ export default {
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+          username:this.loan.username,
+          created_by:this.username,
 
         })
         .then((response) => {
@@ -4108,6 +4118,8 @@ export default {
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+          username:this.loan.username,
+          created_by:this.username,
         })
         .then((response) => {
           response;
@@ -4144,6 +4156,8 @@ export default {
           accountype_description: this.glchanged.accountype_description,
           maincode: this.glchanged.maincode,
           maincode_description: this.glchanged.maincode_description,
+          username:this.loan.username,
+          created_by:this.username,
         })
         .then((response) => {
           response;

@@ -311,7 +311,7 @@
                                     >Make Payment</a
                                   >
                                 </li>
-                                 <li>
+                                <li>
                                   <a class="dropdown-item" href="#"
                                     >Pay Loans</a
                                   >
@@ -2051,6 +2051,7 @@ export default {
   },
   data() {
     return {
+      memberchanged: {},
       glchanged: [],
       employeremail: "",
       employerid: "",
@@ -2169,7 +2170,7 @@ export default {
   created() {
     this.getProducts();
     // this.selectcustomertype();
-    this.paramfilter();
+    // this.paramfilter();
     this.getProducts();
     this.initDatatable();
     this.initDatatable();
@@ -2479,8 +2480,12 @@ export default {
     user_id() {
       return this.$store.state.id;
     },
+
     firstname() {
       return this.$store.state.firstname;
+    },
+    username() {
+      return this.$store.state.username;
     },
     currentDate() {
       const current = new Date();
@@ -2821,6 +2826,11 @@ export default {
       });
       return sum;
     },
+    allmembers() {
+      return this.$store.getters.allMembers.filter(
+        (item) => (item.company_id = this.companyid3)
+      );
+    },
 
     totalEmployerInterest: function () {
       var sum = 0;
@@ -2969,6 +2979,13 @@ export default {
         .catch((e) => {
           alert(e);
         });
+    },
+
+    changemember() {
+      const opt = this.allmembers.find((o) => o.email == this.selectedemail);
+      console.log(opt);
+
+      this.memberchanged.username = this.opt.username;
     },
 
     Postexpense(item) {
@@ -3159,6 +3176,12 @@ export default {
 
     paramfilter() {
       const memberfilter = this.selectedemail;
+
+      const opt = this.allmembers.find(
+        (o) => o.email == this.selectedemail);
+      console.log(opt.username);
+
+      this.memberchanged.username = opt.username;
 
       const optemployer = this.allEmployer.find(
         (o) => o.id === this.employerid
@@ -3506,6 +3529,8 @@ export default {
             checkpath: this.checkpath,
             company_id: this.companyid,
             organizationprofile: this.orgprofileid,
+            created_by: this.username,
+            username: this.memberchanged.username,
           })
           .then((response) => {
             response;
@@ -3545,6 +3570,8 @@ export default {
             gl_account: this.bankgl,
             paid_to_email: this.selectedemail,
             paid_to_names: "fill" + "names",
+            created_by: this.username,
+            username: this.memberchanged.username,
           })
           .then((response) => {
             response;
@@ -3585,6 +3612,8 @@ export default {
             accountype_description: this.glchanged.accountype_description,
             maincode: this.glchanged.maincode,
             maincode_description: this.glchanged.maincode_description,
+            created_by: this.username,
+            username: this.memberchanged.username,
           })
           .then((response) => {
             response;
@@ -3623,6 +3652,8 @@ export default {
             interest: 0,
             deposits: 0,
             Amount: 1000,
+            created_by: this.username,
+            username: this.memberchanged.username,
           })
           .then((response) => {
             response;
@@ -3857,6 +3888,9 @@ export default {
           noofmonthspaidvar: this.loantopay[0].noofmonthspaidvar,
           income_account: this.loantopay[0].income_account,
           date_disbursed: this.currentDate,
+          created_by: this.username,
+          username: this.loantopay[0].username,
+          
         })
         .then((response) => {
           response;
@@ -3892,6 +3926,8 @@ export default {
               organizationprofile: this.orgprofileid,
               gl_account: this.payment.gl_account,
               company_id: this.payment.company_id,
+              username:this.loan.username,
+          created_by:this.username,
             })
             .then((response) => {
               response;
@@ -3930,6 +3966,8 @@ export default {
               accountype_description: this.glchanged.accountype_description,
               maincode: this.glchanged.maincode,
               maincode_description: this.glchanged.maincode_description,
+              created_by: this.username,
+          username: this.loantopay[0].username,
             })
             .then((response) => {
               response;
@@ -3971,6 +4009,8 @@ export default {
               accountype_description: this.glchanged.accountype_description,
               maincode: this.glchanged.maincode,
               maincode_description: this.glchanged.maincode_description,
+             created_by: this.username,
+          username: this.loantopay[0].username,
             })
             .then((response) => {
               response;
@@ -4004,6 +4044,8 @@ export default {
               gl_account: this.payment.gl_account,
               company_id: this.payment.company_id,
               posted: "true",
+              created_by: this.username,
+          username: this.loantopay[0].username,
             })
             .then((response) => {
               response;

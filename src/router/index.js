@@ -165,7 +165,7 @@ const routes = [{
         name: 'members',
         component: members,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
 
     },
@@ -174,7 +174,7 @@ const routes = [{
         name: 'DashBoards',
         component: DashBoards,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -182,7 +182,7 @@ const routes = [{
         name: 'profile',
         component: ProfilePage,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -196,7 +196,7 @@ const routes = [{
         name: 'LoansArea',
         component: LoansArea,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -204,7 +204,7 @@ const routes = [{
         name: 'FosaPage',
         component: FosaPage,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
 
     },
@@ -214,7 +214,7 @@ const routes = [{
         name: 'AccountingPage',
         component: AccountingPage,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -222,7 +222,7 @@ const routes = [{
         name: 'ReportArea',
         component: ReportArea,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -230,7 +230,7 @@ const routes = [{
         name: 'customize',
         component: CustomizeOrg,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -238,7 +238,7 @@ const routes = [{
         name: 'BankingActivities',
         component: BankingActivities,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -246,7 +246,7 @@ const routes = [{
         name: 'organization',
         component: CustomizeOrg,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -254,7 +254,7 @@ const routes = [{
         name: 'createorganization',
         component: CreateOrg,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {
@@ -268,7 +268,7 @@ const routes = [{
         name: "logout",
         component: Logout,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -322,7 +322,7 @@ const routes = [{
         name: "balancesheet",
         component: balancesheet,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -331,7 +331,7 @@ const routes = [{
         name: "trialbalance",
         component: trialbalance,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -349,7 +349,7 @@ const routes = [{
         name: "documents",
         component: documents,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -358,7 +358,7 @@ const routes = [{
         name: "documents",
         component: documents,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -367,7 +367,7 @@ const routes = [{
         name: "budgets",
         component: budgets,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -470,7 +470,7 @@ const routes = [{
         name: "shares",
         component: shares,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -479,7 +479,7 @@ const routes = [{
         name: "openingbalances",
         component: openingBalances,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
 
@@ -586,7 +586,7 @@ const routes = [{
         name: "loanschedule",
         component: loanschedule,
         meta: {
-            requiresLogin: false,
+            requiresLogin: true,
         },
     },
     {

@@ -101,7 +101,7 @@
           </div>
         </div>
 
-        <div v-if="token != null" class="dropdown d-inline-block ms-6" >
+        <div v-if="token != null" class="dropdown d-inline-block ms-6">
           <button
             type="button"
             class="btn btn-sm btn-alt-secondary d-flex align-items-center"
@@ -110,7 +110,6 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            
             <span v-if="token != null" class="d-none d-sm-inline-block ms-2">{{
               this.orgname
             }}</span>
@@ -121,8 +120,7 @@
           <div
             class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
             aria-labelledby="page-header-user-dropdown"
-            
-            style="width:300px;"
+            style="width: 300px"
           >
             <div
               class="p-3 text-center bg-body-light border-bottom rounded-top"
@@ -132,10 +130,16 @@
                 src="assets/media/avatars/avatar10.jpg"
                 alt=""
               />
-              <p class="mt-2 mb-0 fw-medium">{{this.memberfirstname}} {{this.memberlastname}}</p>
-              <p class="mb-0 text-muted fs-sm fw-medium">Member #ACC No:{{this.memberaccounname}}</p>
-              <p class="mb-0 text-muted fs-sm fw-medium">Company ID: {{this.usercompanyid}}</p>
-              
+              <p class="mt-2 mb-0 fw-medium" v-if="this.allmembers != null">
+                {{ this.memberfirstname }} {{ this.memberlastname }}
+              </p>
+              <p class="mb-0 text-muted fs-sm fw-medium">
+                Member #ACC No:{{ this.memberaccounname }}
+              </p>
+              <p class="mb-0 text-muted fs-sm fw-medium">
+                Company ID: {{ this.usercompanyid }}
+              </p>
+
               <a class="nav-link me-lg-3" href="/Profile" v-if="token != null"
                 >My Account</a
               >
@@ -187,10 +191,7 @@
           </div>
         </div>
 
-        <div v-if="token != null" class="dropdown d-inline-block ms-2" 
-
-        
-        >
+        <div v-if="token != null" class="dropdown d-inline-block ms-2">
           <button
             type="button"
             class="btn btn-sm btn-alt-secondary"
@@ -205,8 +206,7 @@
           <div
             class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 border-0 fs-sm"
             aria-labelledby="page-header-notifications-dropdown"
-            style="width:400px;"
-            
+            style="width: 400px"
           >
             <div
               class="p-2 bg-body-light border-bottom text-center rounded-top"
@@ -220,7 +220,11 @@
                     <i class="fa fa-fw fa-check-circle text-success"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold">You have a <span class="badge rounded-pill bg-primary ms-2">3</span> new member Pending Approval</div>
+                    <div class="fw-semibold">
+                      You have a
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      new member Pending Approval
+                    </div>
                     <span class="fw-medium text-muted">15 min ago</span>
                   </div>
                 </a>
@@ -231,7 +235,10 @@
                     <i class="fa fa-fw fa-plus-circle text-primary"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold"><span class="badge rounded-pill bg-primary ms-2">3</span> new loan applications</div>
+                    <div class="fw-semibold">
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      new loan applications
+                    </div>
                     <span class="fw-medium text-muted">22 min ago</span>
                   </div>
                 </a>
@@ -242,7 +249,10 @@
                     <i class="fa fa-fw fa-times-circle text-danger"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold"> <span class="badge rounded-pill bg-primary ms-2">3</span> Pending Cheques</div>
+                    <div class="fw-semibold">
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      Pending Cheques
+                    </div>
                     <span class="fw-medium text-muted">26 min ago</span>
                   </div>
                 </a>
@@ -253,7 +263,10 @@
                     <i class="fa fa-fw fa-plus-circle text-primary"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold"><span class="badge rounded-pill bg-primary ms-2">3</span> Un-Reconciles Bank Transactions</div>
+                    <div class="fw-semibold">
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      Un-Reconciles Bank Transactions
+                    </div>
                     <span class="fw-medium text-muted">33 min ago</span>
                   </div>
                 </a>
@@ -264,7 +277,11 @@
                     <i class="fa fa-fw fa-user-plus text-success"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold">You have <span class="badge rounded-pill bg-primary ms-2">3</span> new Pending Receipts Allocations</div>
+                    <div class="fw-semibold">
+                      You have
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      new Pending Receipts Allocations
+                    </div>
                     <span class="fw-medium text-muted">41 min ago</span>
                   </div>
                 </a>
@@ -275,7 +292,10 @@
                     <i class="fa fa-fw fa-check-circle text-success"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold"><span class="badge rounded-pill bg-primary ms-2">3</span> Journals Have not been posted to GL</div>
+                    <div class="fw-semibold">
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      Journals Have not been posted to GL
+                    </div>
                     <span class="fw-medium text-muted">42 min ago</span>
                   </div>
                 </a>
@@ -286,7 +306,10 @@
                     <i class="fa fa-fw fa-check-circle text-success"></i>
                   </div>
                   <div class="flex-grow-1 pe-2">
-                    <div class="fw-semibold"><span class="badge rounded-pill bg-primary ms-2">3</span> Expenses Have not been posted to GL</div>
+                    <div class="fw-semibold">
+                      <span class="badge rounded-pill bg-primary ms-2">3</span>
+                      Expenses Have not been posted to GL
+                    </div>
                     <span class="fw-medium text-muted">42 min ago</span>
                   </div>
                 </a>
@@ -332,7 +355,7 @@
           <div
             class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
             aria-labelledby="page-header-user-dropdown"
-            style="width:300px;"
+            style="width: 300px"
           >
             <div
               class="p-3 text-center bg-body-light border-bottom rounded-top"
@@ -463,7 +486,7 @@
           <div
             class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
             aria-labelledby="page-header-user-dropdown"
-            style="width:300px;"
+            style="width: 300px"
           >
             <div
               class="p-3 text-center bg-body-light border-bottom rounded-top"
@@ -547,6 +570,7 @@ export default {
     // this.countadmin();
     this.becomememberhide();
     this.fetchOrg();
+    this.fetchMembers();
   },
   mounted() {
     this.admincheck = this.allorg;
@@ -631,34 +655,79 @@ export default {
       return this.$store.state.id;
     },
     first_name() {
-      return this.$store.state.first_name;
+      if(this.$store.state.first_name != null){
+
+        return this.$store.state.first_name;
+      }
+      else {
+        return null
+      }
     },
     last_name() {
-      return this.$store.state.last_name;
+      if(this.$store.state.first_name != null){
+
+        return this.$store.state.last_name;
+      }
+      else {
+        return null
+      }
+      
     },
 
     memberfirstname() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].first_name;
+      if(this.allMembers.length > 0) {
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].first_name;
+      }
+      else {
+        return null
+      }
     },
 
     memberlastname() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].last_name;
+      if( this .allMembers.length > 0 ) {
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].last_name;
+      }
+      else {
+
+        return null
+      }
     },
 
     memberaccounname() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].account_no;
+      if(this.allorg.length > 0 ){
+        return null
+      }
+      else {
+        if(this.allmember.length>0){
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].account_no;
+      }
+      else {
+        return null 
+      }
+
+      }
+      
     },
 
     usercompanyid() {
-      return this.$store.getters.allMembers.filter(
-        (item) => item.email == this.email
-      )[0].company_id;
+      if(this.allmember.length > 0) {
+
+        return this.$store.getters.allMembers.filter(
+          (item) => item.email == this.email
+        )[0].company_id;
+      }
+      else {
+        return null
+      }
     },
     staffcheck() {
       return this.$store.state.is_staff;
@@ -683,7 +752,11 @@ export default {
     },
 
     orgname() {
-      return this.allorg[0].organization_name;
+      if (this.allorg.length > 0) {
+        return this.allorg[0].organization_name;
+      } else {
+        return null;
+      }
     },
 
     allorg() {

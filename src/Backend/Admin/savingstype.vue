@@ -743,6 +743,10 @@ export default {
           memberkey: this.companyid3 + this.selected,
           company_id: this.companyid3,
           security: this.addsavingtype.security,
+          created_by:this.username,
+          username:this.username,
+          
+          
         })
         .then((response) => {
           response;

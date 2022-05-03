@@ -1,0 +1,26 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 03 2022 09:16:47 GMT+0300 (East Africa Time)
+------------------------------------------------------
+
+Modified files:
+* src/Backend/Finance/accounting.vue
+* src/Backend/Finance/documents.vue
+* src/Backend/Finance/shares.vue
+* src/Backend/Members/members.vue
+* src/assets/css/style.css
+* src/components/FinanceNav.vue
+* src/components/Navbar.vue
+* src/components/headerdashboard.vue
+* src/components/refresh.vue
+* src/store/modules/sys_config.js
+* src/views/Profile.vue
+
+
+Created files:
+* .autogit/logs/log-2-4-2022-17-26-17.txt
+
+
+Deleted files:
+
+
+Renamed files:

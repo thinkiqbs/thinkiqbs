@@ -393,7 +393,7 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form id="New Member " >
+            <form id="New Member " @submit.prevent="addnewmeber">
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
@@ -550,7 +550,6 @@
                   class="btn btn-primary rounded-pill btn-lg"
                   id="submitButton"
                   type="submit"
-                  @click="addnewmeber"
                 >
                   Submit
                 </button>
@@ -1429,146 +1428,6 @@
     </div>
 
     <!-- Modal to Add Members  -->
-    <div
-      class="modal fade modalbox"
-      id="Addnewbank"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header"></div>
-          <div class="modal-body">
-            <form class="modal-content">
-              <div class="container">
-                <h2>New Member</h2>
-                <p>Please fill in this form to create an new member account.</p>
-                <hr />
-
-                <!--  -->
-                <label for="email"><b>Email</b></label>
-                <input
-                  type="text"
-                  placeholder="Enter Email"
-                  name="email"
-                  required
-                  v-model="addmembers.email"
-                />
-
-                <label for="psw"><b>First Name</b></label>
-                <input
-                  type="text"
-                  placeholder="John"
-                  name="firstname"
-                  required
-                  v-model="addmembers.first_name"
-                />
-
-                <label for="lastname"><b>Last Name</b></label>
-                <input
-                  type="text"
-                  placeholder="Apopo"
-                  name="lastname"
-                  required
-                  v-model="addmembers.last_name"
-                />
-
-                <label for="psw-repeat"><b>Mobile Number</b></label>
-                <input
-                  type="tel"
-                  placeholder="254723456789"
-                  name="mobilenumber"
-                  required
-                  v-model="addmembers.phone_no"
-                />
-
-                <label for="address"><b>Address</b></label>
-                <input
-                  type="tel"
-                  placeholder="Address"
-                  name="address"
-                  required
-                  v-model="addmembers.Address"
-                />
-
-                <div class="form-row">
-                  <div class="col">
-                    <label for="psw-repeat"><b>Select Employer</b></label>
-
-                    <select class="form-control" v-model="selectedemployer">
-                      <option
-                        v-for="option in employers"
-                        v-bind:value="option.id"
-                        :key="option.id"
-                      >
-                        {{ option.employer_name }}
-                      </option>
-                    </select>
-                    <span>selected: {{ selectedemployer }}</span>
-                    {{ this.employers }}{{ this.companyid3 }}
-                  </div>
-                  <div class="col">
-                    <label class="form-label" for="form6Example4"
-                      ><b>Department</b></label
-                    >
-                    <input
-                      type="text"
-                      id="form6Example4"
-                      class="form-control"
-                      v-model="addmembers.Department"
-                    />
-                  </div>
-
-                  <div class="col">
-                    <label class="form-label" for="form6Example7"
-                      ><b>County</b></label
-                    >
-                    <select class="form-control" v-model="selectedcounty">
-                      <option
-                        v-for="option in county"
-                        v-bind:value="option.county"
-                        :key="option.id"
-                      >
-                        {{ option.county }}
-                      </option>
-                    </select>
-                    <span>selected: {{ selectedcounty }}</span>
-                  </div>
-                </div>
-
-                <p>
-                  By creating an account the user has agreed to become a member
-                  <!-- <a href="#" style="color:dodgerblue">Terms & Privacy</a>. -->
-                </p>
-
-                <div class="form-row">
-                  <div class="col">
-                    <button
-                      style="margin-right: 16px"
-                      type="button"
-                      class="btn btn-secondary"
-                      bs-="modal"
-                    >
-                      Cancel
-                    </button>
-
-                    <button
-                      style="margin-right: 16px"
-                      type="submit"
-                      class="btn btn-secondary"
-                      @click="addrecords"
-                    >
-                      Add Member
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -1596,7 +1455,6 @@ import "datatables.net-dt/css/jquery.dataTables.min.css";
 //Datatable Modules
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-dt/css/jquery.dataTables.min.css";
-
 
 export default {
   name: "MemberDetails",
@@ -1769,30 +1627,24 @@ export default {
     this.fetchLoans();
     this.fetchEmployerinfo();
     this.fetchMemberImports();
-
   },
 
   mounted() {
+    this.companyid = this.companyid3;
 
-    this.companyid = this.companyid3
-
-
-      getAPI
-        .get("/members/api/v1/MemberDetails/", {
-          params: { organizationprofile: this.orgprofileid },
-        })
-        .then((res) => {
-          this.tableData = res.data.results.filter(
-            (loan) => loan.company_id == this.companyid3
-          );
-          this.initDatatable();
-        })
-        .catch((error)=> {
-        console.log(error)
+    getAPI
+      .get("/members/api/v1/MemberDetails/", {
+        params: { organizationprofile: this.orgprofileid },
+      })
+      .then((res) => {
+        this.tableData = res.data.results.filter(
+          (loan) => loan.company_id == this.companyid3
+        );
+        this.initDatatable();
+      })
+      .catch((error) => {
+        console.log(error);
       });
-
-
-
   },
 
   methods: {
@@ -1999,6 +1851,8 @@ export default {
           SavingsType: this.selected,
           company_id: this.membersavings.company_id,
           organizationprofile: this.orgprofileid,
+          username: this.membersavings.username,
+          created_by: this.membersavings.username,
         })
         .then((response) => {
           response;
@@ -2026,9 +1880,10 @@ export default {
             last_name: this.addmembers.last_name,
             phone_no: this.addmembers.phone_no,
             national_id: this.addmembers.national_id,
+            username: this.addmembers.national_id,
+            created_by: this.username,
             bankname: this.addmembers.bankname,
             email: this.addmembers.email,
-            username: this.addmembers.email,
             date_of_birth: this.addmembers.date_of_birth,
             Employer: this.selectedemployer,
             Department: this.addmembers.Department,
@@ -2104,7 +1959,7 @@ export default {
             national_id: this.member.national_id,
             bankname: this.member.bankname,
             email: this.member.email,
-            username: this.member.email,
+            username: this.member.national_id,
             date_of_birth: this.member.date_of_birth,
             Employer: this.member.Employer,
             Department: this.member.Department,
@@ -2112,6 +1967,7 @@ export default {
             Address: this.member.Address,
             organizationprofile: this.orgprofileid,
             company_id: this.companyid3,
+            created_by: this.username,
           })
           .then((response) => {
             response;
@@ -2327,6 +2183,9 @@ export default {
           current_balance: this.loanbalance,
           noofmonthspaid: 0,
           noofmonthspaidvar: 0,
+          username:this.loan.username,
+          created_by:this.username,
+          
         })
         .then((response) => {
           response;
@@ -2399,6 +2258,9 @@ export default {
     },
     email() {
       return this.$store.state.email;
+    },
+    username() {
+      return this.$store.state.username;
     },
     user_id() {
       return this.$store.state.id;
@@ -2616,7 +2478,6 @@ export default {
       return diff;
     },
     filterloans: function () {
-      
       return this.members1;
     },
 

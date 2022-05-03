@@ -238,9 +238,7 @@
                   <div class="fw-bolder">Form submission successful!</div>
                   To activate this form, sign up at
                   <br />
-                  <a href="https://startbootstrap.com/solution/contact-forms"
-                    >https://startbootstrap.com/solution/contact-forms</a
-                  >
+                  
                 </div>
               </div>
               <!-- Submit error message-->
@@ -636,6 +634,8 @@ export default {
           // names: '',
           admin_id: this.user_id,
           admin_email: this.email,
+          created_by:this.username,
+          username:this.username,
           organization_name: this.org1.name,
           industry: this.org1.industry,
           business_location: this.org1.business_location,
@@ -681,6 +681,9 @@ export default {
     },
     email() {
       return this.$store.state.email;
+    },
+    username() {
+      return this.$store.state.username;
     },
     first_name() {
       return this.$store.state.first_name;

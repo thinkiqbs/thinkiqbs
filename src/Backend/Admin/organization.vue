@@ -679,6 +679,9 @@ export default {
     email() {
       return this.$store.state.email;
     },
+     username() {
+      return this.$store.state.username;
+    },
     user_id() {
       return this.$store.state.id;
     },
@@ -763,6 +766,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 2,
@@ -782,6 +787,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 3,
@@ -800,6 +807,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 4,
@@ -818,6 +827,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 5,
@@ -836,6 +847,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 6,
@@ -854,6 +867,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 15,
@@ -873,6 +888,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 16,
@@ -892,6 +909,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
         {
           id: 17,
@@ -911,6 +930,8 @@ export default {
           credit: 0,
           balance: 0,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
       ];
 
@@ -965,6 +986,8 @@ export default {
           company_id: this.companyid3,
           security: true,
           organizationprofile: this.organizationprofile,
+          created_by:this.username,
+          username:this.username,
         },
       ];
 
@@ -1048,6 +1071,7 @@ export default {
           organizationprofile: this.organizationprofile,
           gl_account: "1212000",
           company_id: this.companyid3,
+          created_by:this.username,
         },
         {
           id: 2,
@@ -1062,6 +1086,7 @@ export default {
           organizationprofile: this.organizationprofile,
           gl_account: "1211020",
           company_id: this.companyid3,
+          created_by:this.username,
         },
       ];
 
@@ -1096,6 +1121,7 @@ export default {
           deposits_control: "9000002",
           company_id: this.companyid3,
           interest_control: "9000003",
+          created_by:this.username,
         },
       ];
 

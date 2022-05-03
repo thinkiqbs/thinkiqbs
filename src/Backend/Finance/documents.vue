@@ -7,7 +7,7 @@
       </div>
 
       <div class="col-10">
-        <div class="mb-11" style="max-width: 98rem">
+        <div style="max-width: 80rem">
           <!-- <button @click="$store.dispatch('all_loans')">+</button> -->
 
           <div class="row">
@@ -17,7 +17,7 @@
             <!-- {{this.glid }} -->
             <!-- {{ this.gldocs }} -->
 
-            <div class="col-sm-12">
+            <div class="col-12">
               <div class="card">
                 <div class="card-header">
                   <h4 class="card-title">All Loans</h4>

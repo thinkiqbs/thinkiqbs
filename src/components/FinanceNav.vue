@@ -1,7 +1,6 @@
 @
 <template>
   <div>
-
     <hr />
 
     <ul class="list-group">
@@ -98,8 +97,6 @@
           </router-link>
         </li>
 
-        
-
         <li class="nav-item" v-if="token != null">
           <router-link to="/AccountingPage" exact
             ><svg
@@ -144,27 +141,6 @@
           </router-link>
         </li>
 
-        <li class="nav-item" v-if="token != null">
-          <router-link to="/Customize" exact
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-layers"
-            >
-              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-              <polyline points="2 17 12 22 22 17"></polyline>
-              <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-            Customize
-          </router-link>
-        </li>
         <!-- <li class="nav-item" v-if="token != null">
           <router-link to="/FosaPage" exact>
             <svg
@@ -190,8 +166,6 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
-import { getAPI } from "@/axios-api.js";
-
 export default {
   data() {
     return {
@@ -199,22 +173,7 @@ export default {
     };
   },
 
-  mounted() {
-    getAPI
-      .get("/members/api/v1/MemberDetails/", {
-        params: {
-          organizationprofile: this.user_id,
-          Application_Status: "0",
-        },
-      })
-      .then((res) => {
-        this.applicount = res.data.count;
-      });
-  },
-
-  created() {
-   
-  },
+  created() {},
 
   methods: {
     ...mapActions([

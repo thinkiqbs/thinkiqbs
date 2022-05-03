@@ -35,7 +35,7 @@
                   <!--  -->
 
                   <table
-                    class="table table-borderless table-hover walla"
+                    class="table-borderless table-hover table-striped walla"
                   >
                     <thead>
                       <tr class="line-item-header">
@@ -43,14 +43,14 @@
 
                         <th>Name</th>
                         <th>Accoung GL code</th>
-                        <th>description</th>
+                        <th style="width:200px">description</th>
 
                         <!---->
 
-                        <th class="text-left">debit</th>
-                        <th class="text-left">credit</th>
+                        <th class="text-right">debit</th>
+                        <th class="text-right">credit</th>
 
-                        <th class="text-left">Balance</th>
+                        <th class="text-right">Balance</th>
 
                         
 
@@ -64,9 +64,9 @@
                         <td>{{ item.maincode }}</td>
                         <td>{{ item.description }}</td>
 
-                        <td>{{ item.debit }}</td>
-                        <td>{{ item.credit }}</td>
-                        <td>{{ item.balance }}</td>
+                        <td class="text-right">{{ item.debit }}</td>
+                        <td class="text-right">{{ item.credit }}</td>
+                        <td class="text-right">{{ item.balance }}</td>
                         
                       </tr>
                     </tbody>

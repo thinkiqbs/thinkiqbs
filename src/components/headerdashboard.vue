@@ -447,39 +447,20 @@ export default {
   },
 
   created() {
-    this.fetchDocuments();
-    this.fetchDeposits();
-    this.fetchMembers();
-    this.fetchLoans();
-    this.fetchBanktransactions();
-    this.fetchPaymentsmade();
-    this.fetchPaymentsreceived();
-    this.fetchExpenses();
+    // this.fetchDocuments();
+    // this.fetchDeposits();
+    // this.fetchMembers();
+    // this.fetchLoans();
+    // this.fetchBanktransactions();
+    // this.fetchPaymentsmade();
+    // this.fetchPaymentsreceived();
+    // this.fetchExpenses();
+    this.fetchCounty();
     console.log(this.monthdeposits);
   },
 
   mounted() {
-    getAPI
-      .get("/members/api/v1/MemberDetails/", {
-        params: {
-          organizationprofile: this.orgprofileid,
-          Application_Status: "0",
-        },
-      })
-      .then((res) => {
-        this.applicount = res.data.count;
-      });
-
-    //count records based on getAPI filter  for MemberDetails
-    getAPI
-      .get("/members/api/v1/MemberDetails/", {
-        params: {
-          company_id: this.companyid3,
-        },
-      })
-      .then((res) => {
-        this.memberscount = res.data.count;
-      });
+    
   },
 
   methods: {
@@ -494,6 +475,7 @@ export default {
       "fetchPaymentsmade",
       "fetchPaymentsreceived",
       "fetchExpenses",
+      "fetchCounty",
     ]),
 
     
@@ -576,6 +558,7 @@ export default {
       "allPaymentsmade",
       "allPaymentsreceived",
       "allExpenses",
+      "allCounty"
     ]),
     token() {
       return this.$store.state.accessToken;

@@ -2548,40 +2548,9 @@
           </div>
         </div>
       </div>
-      <!-- * App Sidebar -->
-
-      <!-- ///////////// Js Files ////////////////////  -->
-      <!-- Jquery -->
-
-      <!-- Mirrored from egemem.com/theme/finapp/view/app-index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Feb 2020 06:38:01 GMT -->
-      <iframe
-        frameborder="0"
-        scrolling="no"
-        style="background-color: transparent; border: 0px; display: none"
-      ></iframe>
-      <div
-        id="GOOGLE_INPUT_CHEXT_FLAG"
-        input=""
-        input_stat='{"tlang":true,"tsbc":true,"pun":true,"mk":true,"ss":true}'
-        style="display: none"
-      ></div>
-      <quillbot-extension-portal></quillbot-extension-portal
-      ><span
-        id="buffer-extension-hover-button"
-        style="
-          display: none;
-          position: absolute;
-          z-index: 8675309;
-          width: 100px;
-          height: 25px;
-          background-image: url('chrome-extension://noojglkidnpfjbincgijbaiedldjfbhh/data/shared/img/buffer-hover-icon@2x.png');
-          background-size: 100px 25px;
-          opacity: 0.9;
-          cursor: pointer;
-          top: 1708.37px;
-          left: 721px;
-        "
-      ></span>
+      
+      
+      
     </body>
   </div>
 </template>

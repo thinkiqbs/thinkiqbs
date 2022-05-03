@@ -8,6 +8,7 @@ const state = {
     employerinfo: [],
     savingtype: [],
     loantype: [],
+    county: [],
 };
 const getters = {
     currentUser: (state) => state.user,
@@ -16,6 +17,7 @@ const getters = {
     allEmployer: (state) => state.employerinfo,
     allSavinttype: (state) => state.savingtype,
     allLoantype: (state) => state.loantype,
+    allCounty: (state) => state.county,
 };
 const actions = {
     async fetchOrg({ commit }) {
@@ -45,6 +47,10 @@ const actions = {
         const response = await getAPI.get("/sys_config/api/v1/LoanType/");
         commit("setLoantype", response.data.results);
     },
+    async fetchCounty({ commit }) {
+        const response = await getAPI.get("/sys_config/api/v1/county/");
+        commit("setCounty", response.data.results);
+    },
 };
 const mutations = {
     setOrg: (state, org1) => (state.org1 = org1),
@@ -53,6 +59,8 @@ const mutations = {
     setUserinfo: (state, userinfo) => (state.userinfo = userinfo),
     setSavingtype: (state, savingtype) => (state.savingtype = savingtype),
     setLoantype: (state, loantype) => (state.loantype = loantype),
+    setCounty: (state, county) => (state.county = county),
+
     setEmployerinfo: (state, employerinfo) => (state.employerinfo = employerinfo),
 };
 

@@ -7,7 +7,7 @@
       </div>
 
       <div class="col-10">
-        <div class="mb-11" style="max-width: 98rem">
+
           <!-- <button @click="$store.dispatch('all_loans')">+</button> -->
 
           <div class="row">
@@ -87,7 +87,7 @@
               </div>
             </div>
           </div>
-        </div>
+
 
         <!-- Modal for Allocating Deposits  -->
 
@@ -1343,7 +1343,7 @@ export default {
 
     alldocuments: function () {
       return this.$store.getters.allDocuments.filter(
-        (item) => item.company_id == this.companyid3
+        (item) => item.company_id == this.companyid3 && item.Document=="shares"
       );
     },
 

@@ -393,7 +393,7 @@
             <!-- To make this form functional, sign up at-->
             <!-- https://startbootstrap.com/solution/contact-forms-->
             <!-- to get an API token!-->
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+            <form id="New Member " >
               <!-- Name input-->
               <div class="form-floating mb-3">
                 <input
@@ -594,7 +594,6 @@
               </select>
             </div>
 
-            
             <div class="col">
               <p>Step 2</p>
 
@@ -615,7 +614,7 @@
               <input type="file" @change="onFileChange" />
             </div>
 
-             <div class="col">
+            <div class="col">
               <p>Step 4</p>
               <button
                 type="button"
@@ -637,8 +636,6 @@
                 Process Imports
               </button>
             </div>
-
-           
           </div>
           <div class="modal-body">
             <div class="card-body table-responsive">
@@ -657,7 +654,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="member in filterloans" :key="member.id">
+                  <tr v-for="member in tableData" :key="member.id">
                     <td>{{ member.id }}</td>
                     <td>{{ member.first_name }} {{ member.last_name }}</td>
                     <td>{{ member.phone_no }}</td>
@@ -1011,7 +1008,7 @@
 
               <div>
                 <table
-                  class="table line-item-table table-borderless table-hover table-striped walla"
+                  class="ttable line-item-table table-borderless table-hover table-striped walla"
                 >
                   <thead>
                     <tr class="line-item-header">
@@ -1592,6 +1589,14 @@ import $ from "jquery";
 import { mapGetters, mapActions } from "vuex";
 // import PhoneMaskInput from "vue-phone-mask-input";
 // import "vue-phone-mask-input/dist/vue-phone-mask-input.min.css";
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+//Datatable Modules
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+
 
 export default {
   name: "MemberDetails",
@@ -1607,28 +1612,27 @@ export default {
       message: "",
       contribution: [],
       memberdetails: [],
-      savings: [],
+
       search: "",
       myapprovedloans: [],
       orgprofile: [],
-      orgprofileid: [],
+
       selectedmember: [],
       ExcelData: [],
       accounttypes: [],
       orgprofile1: {},
       companyid1: "",
+      companyid: "",
       members: [],
       member: "",
       memberscount: [],
       membersavings: {},
       path: "",
       selectedemployer: "",
-      employer: [],
-      employerselect: [],
+
       selectedcounty: "",
-      county: [],
       selected: "A",
-      options: [],
+
       tableData: [],
       add_product: false,
       editing: false,
@@ -1653,7 +1657,7 @@ export default {
         Total_Loan: "",
       },
       loan: [],
-      applicount: [],
+
       product: [],
       loan_type: "",
       monthlyloan: [],
@@ -1756,74 +1760,39 @@ export default {
   },
 
   created() {
+    this.initDatatable();
     this.fetchLoantype();
     this.fetchSavingtype();
     this.fetchDocuments();
     this.fetchDeposits();
     this.fetchMembers();
     this.fetchLoans();
-    this.fetchBanktransactions();
-    this.fetchPaymentsmade();
-    this.fetchPaymentsreceived();
-    this.initDatatable();
     this.fetchEmployerinfo();
     this.fetchMemberImports();
+
   },
 
   mounted() {
-    getAPI
-      .get("/sys_config/api/v1/OrganizationProfile/", {
-        params: { admin_email: this.email },
-      })
-      .then((res) => {
-        this.orgprofile = res.data.results;
-        this.companyid1 = this.orgprofile[0].company_id;
-        this.companyid = this.orgprofile[0].company_id;
-        this.orgprofileid = this.orgprofile[0].id;
-      }),
-      getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
-        this.employerselect = res.data.results.filter(
-          (item) => item.company_id == this.companyid3
-        );
+
+    this.companyid = this.companyid3
+
+
+      getAPI
+        .get("/members/api/v1/MemberDetails/", {
+          params: { organizationprofile: this.orgprofileid },
+        })
+        .then((res) => {
+          this.tableData = res.data.results.filter(
+            (loan) => loan.company_id == this.companyid3
+          );
+          this.initDatatable();
+        })
+        .catch((error)=> {
+        console.log(error)
       });
 
-    getAPI.get("/sys_config/api/v1/SavingsType/").then((res) => {
-      this.savings = res.data.results.filter(
-        (item) => item.company_id == this.companyid3
-      );
 
-      // $("#example").DataTable();
-    });
 
-    getAPI.get("/sys_config/api/v1/county/").then((res) => {
-      this.county = res.data.results;
-      // $("#example").DataTable();
-    });
-
-    getAPI
-      .get("/members/api/v1/MemberDetails/", {
-        params: {
-          company_id: this.companyid3,
-          Application_Status: "0",
-        },
-      })
-      .then((res) => {
-        this.applicount = res.data.count;
-      });
-
-    getAPI.get("/sys_config/api/v1/LoanType/").then((res) => {
-      this.options = res.data.results.filter(
-        (member) => member.company_id == this.companyid3
-        // $("#example").DataTable();
-      );
-    });
-
-    getAPI.get("/sys_config/api/v1/EmployerProfile/").then((res) => {
-      this.employer = res.data.results.filter(
-        (member) => member.company_id == this.companyid3
-      );
-      // $("#example").DataTable();
-    });
   },
 
   methods: {
@@ -2066,13 +2035,13 @@ export default {
             County: this.selectedcounty,
             Address: this.addmembers.Address,
             organizationprofile: this.orgprofileid,
-            company_id: this.companyid,
+            company_id: this.companyid3,
             password1: "qxcv2010A",
             password2: "qxcv2010A",
           })
           .then((response) => {
             response;
-            this.fetchMembers(this.selected);
+            this.fetchMembers();
 
             // this.$router.go(); // Refreshes page
             this.$swal({
@@ -2127,7 +2096,7 @@ export default {
 
         getAPI
           .put("/members/update/" + this.member.id + "/", {
-            Application_Status: "True",
+            Application_Status: "true",
             invited: "True",
             first_name: this.member.first_name,
             last_name: this.member.last_name,
@@ -2647,8 +2616,8 @@ export default {
       return diff;
     },
     filterloans: function () {
-      return this.members1;
       
+      return this.members1;
     },
 
     filterimports: function () {
@@ -2663,7 +2632,23 @@ export default {
       )[0].company_id;
     },
 
+    orgprofileid() {
+      return this.$store.getters.allOrg.filter(
+        (item) => item.admin_email == this.email
+      )[0].id;
+    },
+
+    employerselect() {
+      return this.employers;
+    },
+
     employers() {
+      return this.$store.getters.allEmployer.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+
+    employer() {
       return this.$store.getters.allEmployer.filter(
         (item) => item.company_id == this.companyid3
       );
@@ -2703,8 +2688,32 @@ export default {
       );
     },
 
+    applicount() {
+      return this.newApplications.length;
+    },
+
+    newApplications() {
+      return this.$store.getters.allMembers.filter(
+        (item) =>
+          item.company_id == this.companyid3 && item.Application_Status == false
+      );
+    },
+
     loansStore: function () {
       return this.$store.getters.allLoans.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+    options() {
+      return this.$store.getters.allLoantype.filter(
+        (item) => item.company_id == this.companyid3
+      );
+    },
+    county() {
+      return this.$store.getters.allCounty;
+    },
+    savings() {
+      return this.$store.getters.allSavinttype.filter(
         (item) => item.company_id == this.companyid3
       );
     },

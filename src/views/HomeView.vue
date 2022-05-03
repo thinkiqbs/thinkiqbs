@@ -85,8 +85,8 @@
       <div class="container px-5">
         <div class="row gx-5 justify-content-center">
           <div class="col-xl-8">
-            <div class="h2 fs-1 text-white mb-4">
-              "Simple, low-cost software that allows you to manage your business
+            <div class="h2 fs-1 text-black mb-4">
+              "Simple, low-cost software that allows you to manage your SACCO
               from anywhere. and rapidly expand your membership You have the
               option of customizing it to your liking."
             </div>
@@ -123,7 +123,7 @@
                       <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                     </svg>
                     <h3 class="font-alt">Member Management</h3>
-                    <p class="text-muted mb-0">
+                    <p class="lead fw-normal text-muted mb-0">
                       Several methods for onboarding new members, with the
                       ability to manage them all from a single location!!
                     </p>
@@ -136,7 +136,7 @@
                       class="bi-camera icon-feature text-gradient d-block mb-3"
                     ></i>
                     <h3 class="font-alt">Loan Managment</h3>
-                    <p class="text-muted mb-0">
+                    <p class="lead fw-normal text-muted mb-0">
                       Loan Approval Automation Powered by an Intelligent
                       Decision Engine!
                     </p>
@@ -151,7 +151,7 @@
                       class="bi-gift icon-feature text-gradient d-block mb-3"
                     ></i>
                     <h3 class="font-alt">Finace & Accounting</h3>
-                    <p class="text-muted mb-0">
+                    <p class="lead fw-normal text-muted mb-0">
                       Real-time reporting with checks and balances, and all
                       major financial statements are ready for printing.
                     </p>
@@ -164,7 +164,7 @@
                       class="bi-patch-check icon-feature text-gradient d-block mb-3"
                     ></i>
                     <h3 class="font-alt">Bank Operations</h3>
-                    <p class="text-muted mb-0">
+                    <p class="lead fw-normal text-muted mb-0">
                       With a REST API that is ready for integration with any
                       third-party organization systems!
                     </p>
@@ -238,7 +238,7 @@
     <section class="cta">
       <div class="cta-content">
         <div class="container px-5">
-          <h2 class="text-white display-1 lh-1 mb-4">
+          <h2 class="text-black display-1 lh-1 mb-4">
             Stop waiting.
             <br />
             Start Growing.

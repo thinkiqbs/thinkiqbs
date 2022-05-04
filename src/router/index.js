@@ -261,6 +261,9 @@ const routes = [{
         path: "/contacts",
         name: "contacts",
         component: contacts,
+        meta: {
+            requiresLogin: true,
+        },
     },
 
     {

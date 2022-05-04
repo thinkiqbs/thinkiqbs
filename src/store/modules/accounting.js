@@ -8,6 +8,8 @@ const state = {
     openingbalancesloans: [],
     openingbalancesshares: [],
     receipts: [],
+    payments: [],
+
 
 
 
@@ -19,6 +21,7 @@ const getters = {
     allObloans: (state) => state.openingbalancesloans,
     allObshares: (state) => state.openingbalancesshares,
     allReceipts: (state) => state.receipts,
+    allPayments: (state) => state.payments,
 
 
 
@@ -48,6 +51,10 @@ const actions = {
     async fetchReceipts({ commit }) {
         const response = await getAPI.get("/finance/api/v1/PaymentsReceived/");
         commit("setReceipts", response.data.results);
+    },
+    async fetchPayments({ commit }) {
+        const response = await getAPI.get("/finance/api/v1/Payments/");
+        commit("setPayments", response.data.results);
     }
 };
 
@@ -58,6 +65,7 @@ const mutations = {
     setObloans: (state, openingbalancesloans) => (state.openingbalancesloans = openingbalancesloans),
     setObshares: (state, openingbalancesshares) => (state.openingbalancesshares = openingbalancesshares),
     setReceipts: (state, receipts) => (state.receipts = receipts),
+    setPayments: (state, payments) => (state.payments = payments),
 
 
 };
